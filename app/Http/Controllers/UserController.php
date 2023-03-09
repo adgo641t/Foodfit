@@ -32,7 +32,4 @@ class UserController extends Controller
         return back()->with('message','Usuario Actualizado');
 }
 
-
-
-
 }

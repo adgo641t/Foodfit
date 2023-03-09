@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\BlogController;
 use App\Mail\TestEmail;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
@@ -23,28 +24,42 @@ use Carbon\Carbon;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Not logged user views
+//GETS
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/faqs', function () {
     return view('faqs');
 });
-// Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-Route::post('/bill', [CouponsController::class, 'validCoupon'], function () {
-})->name('coupon.store');
-Route::delete('/bill', [CouponsController::class, 'destroy'])->name('coupon.destroy');
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
 Route::get('/sobre', function () {
     return view('sobre');
 });
 
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+
+Route::get('/register', [LoginController::class, 'registration'])->name('register-user');
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+//POSTS
+// Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::post('/bill', [CouponsController::class, 'validCoupon'], function () {
+})->name('coupon.store');
+
+Route::post('/validating', [LoginController::class, 'validating'])->name('validating'); 
+Route::post('/custom-registration', [LoginController::class, 'customRegistration'])->name('register.custom'); 
+
+
+//DELETES
+Route::delete('/bill', [CouponsController::class, 'destroy'])->name('coupon.destroy');
+
+
 
 // Login views 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/validating', [LoginController::class, 'validating'])->name('validating'); 
-Route::get('/register', [LoginController::class, 'registration'])->name('register-user');
-Route::post('/custom-registration', [LoginController::class, 'customRegistration'])->name('register.custom'); 
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 
