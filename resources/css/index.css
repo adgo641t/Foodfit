@@ -1,0 +1,101 @@
+body{
+    font-family: 'Exo 2', sans-serif;
+    background-color: red;
+}
+
+.logo-img{
+    width: 170px;
+    height: 50px;
+}
+
+.icon-cart{
+    width: 50px;
+    height: 30px;
+}
+
+.pageHeader{
+    background-color: #FAF3EF;
+}
+
+.marginHeader{
+    margin-top: 50px;
+}
+
+.btnColor{
+    margin-top: 2rem;
+    background-color: #DDC44B;
+    color: white;
+}
+
+.greenSpaghetti{
+    width: 590px;
+    height: 590px;
+    margin-left: 22rem;
+}
+
+.textAlignment{
+    text-align: center;
+}
+.someText{
+    font-size: 20px; 
+}
+
+#testimonials{
+    text-align: center;
+    background-color: #FAF3EF
+}
+.testimonial-text{
+    font-size: 3rem;
+    line-height: 1.5;
+}
+.testimonial-img{
+    width: 20%;
+    border-radius: 100%;
+    margin: 20px;
+}
+
+#press{
+    text-align: center;
+    background-color: #FAF3EF;
+    padding-bottom: 3%;
+}
+
+.press-logo{
+    width: 15%;
+    margin: 20px 20px 50px;
+}
+
+.carousel-item{
+    padding: 7% 15%
+}
+
+.vegies{
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+}
+
+#footer{
+    height: 200px;
+    background-color: #FAF3EF;
+    text-align: center;
+    padding-top: 10%;
+}
+
+.icon-footer{
+    margin-bottom: 1%;
+}
+
+@media (max-width:1800px){
+    .greenSpaghetti{
+        display: none;
+    }
+}
+
+@media (max-width:800px){
+    .vegies{
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+    }
+}

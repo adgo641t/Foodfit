@@ -1,0 +1,44 @@
+#login{
+    margin-top: 120px;
+    margin-left: 200px;
+}
+#titulo{
+    text-align: center;
+}
+#form2Example1{
+    width: 500px;
+}
+#form2Example2{
+    width: 500px;
+}
+
+#bkg{
+background-color: #181d27;
+}
+
+body{
+    font-family: 'Exo 2', sans-serif;
+}
+
+.logo-img{
+    width: 170px;
+    height: 50px;
+}
+
+.icon-cart{
+    width: 50px;
+    height: 30px;
+}
+
+.pageHeader{
+    background-color: #FAF3EF;
+}
+
+.marginHeader{
+    margin-top: 180px;
+
+}
+
+.navbarColor{
+    background-color: #ecffeb;
+}
