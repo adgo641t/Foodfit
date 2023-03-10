@@ -32,7 +32,6 @@ Route::get('/faqs', function () {
     return view('faqs');
 });
 
-Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 Route::get('/sobre', function () {
     return view('sobre');
@@ -72,6 +71,9 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/home', function () {
         return view('home');
     });
+
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
 
     Route::get('/faq', function () {
         return view('profile.userFaqs');
