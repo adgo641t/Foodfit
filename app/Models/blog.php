@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class blog extends Model
 {
-    use HasFactory;
+    protected $table = 'blogs';
+
+    public function blogs()
+    {
+        return $this->hasMany(blog::class);
+    }
 }

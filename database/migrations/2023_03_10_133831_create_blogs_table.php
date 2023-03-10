@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('Categori_blog');
+            $table->string('category');
+            //$table->foreign('category')->references('name')->on('category_blogs');
             $table->timestamps();
         });
     }

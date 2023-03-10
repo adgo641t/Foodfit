@@ -14,5 +14,21 @@ class BlogController extends Controller
         
         return view('blog/index', compact('blog'));  
     }
+
+    public function show($id) {
+
+        $blog = Blog::find($id);
+        
+        return view('blog/ShowBlog', compact('blog'));  
+    }
+
+    
+    public function showCategory($category) {
+
+        $blog = Blog::where('Categori_blog', $category);
+        //dd($blog);
+        
+        return view('blog/ShowBlogCategory', compact('blog'));  
+    }
 }
 
