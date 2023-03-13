@@ -13,6 +13,7 @@ class BlogController extends Controller
 
         $blog = Blog::all();
         
+        
         return view('blog/index', compact('blog'));  
     }
 
@@ -38,5 +39,42 @@ class BlogController extends Controller
 
        return view('blog/AddBlog', compact('category_blog')); 
     }
+
+    public function StoreBlog(Request $request) {
+       
+        $request->validate([
+            'title' => ['required','string','max:50'],
+            'description' => ['required','string','max:50'],
+            'category' => ['required'],
+        ]);
+
+        if($request->hasFile('file')){
+            $blog = Blog::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'category' => $request->category,
+                'image' => $request->file
+            ]);
+
+            $input = $request->all();
+            if($image = $request->file('file')){
+                
+                $destinationPath = 'public/';
+                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['file'] = "$profileImage";
+        }
+
+            //$request->file->store('product', 'public');
+
+            $blog->save(); // Finally, save the record.
+
+            return redirect()->route('blog');
+        }
+        
+
+    }
+
+
 }
 

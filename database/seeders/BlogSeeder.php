@@ -19,6 +19,7 @@ class BlogSeeder extends Seeder
             'title' => 'Que alimentos tienen las proteinas que necessitamos',
             'description' => 'TOdo lo que tenga Proteinas',
             'category' => 'Guay',
+            'image' => 'Deporte',
 
         ]);
 
@@ -26,18 +27,24 @@ class BlogSeeder extends Seeder
             'title' => 'Ciclismo como Deporte',
             'description' => 'Te hacemos un dto por ser guay',
             'category' => 'Deporte',
+            'image' => 'ciclismo.jpg',
+
         ]);
 
         Blog::create([
             'title' => 'Una manuela al dia alegra el dia',
             'description' => 'Te hacemos un dto por ser guay',
             'category' => 'Salud',
+            'image' => 'Deporte',
+
         ]);
 
         Blog::create([
             'title' => 'Como la comida engorda',
             'description' => 'Te hacemos un dto por ser guay',
             'category' => 'Comida',
+            'image' => 'berengena.jpg',
+
         ]);
     }
 }
