@@ -75,6 +75,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
     Route::get('/ShowCategoryBlog/{category}', [BlogController::class, 'showCategory'])->name('ShowCategoryBlog');
+    Route::get('/add_blog', [BlogController::class, 'AddNewBlog'])->name('add_blog');
 
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\Category_blogs;
 
 class BlogController extends Controller
 {
@@ -29,6 +30,13 @@ class BlogController extends Controller
         //dd($blog);
         
         return view('blog/ShowBlogCategory', compact('blog'));  
+    }
+
+    public function AddNewBlog() {
+
+        $category_blog = Category_blogs::all();
+
+       return view('blog/AddBlog', compact('category_blog')); 
     }
 }
 
