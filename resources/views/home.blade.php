@@ -4,7 +4,7 @@
       <div class="container-fluid pageHeader">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12 marginHeader">
-                <h1> La suscripción semanal para que comas rico y sano</h1>
+                <h1> La suscripción semanal para que comas rico y sano.</h1>
                 <p class="lead">
                   Food&Fit cocina por ti y llena tu nevera de tápers ricos y saludables sin complicarte la vida.
                 </p>

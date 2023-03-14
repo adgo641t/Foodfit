@@ -128,6 +128,8 @@ Route::group(['middleware', ['role:admin']],function () {
 
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
+
+    Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
 });
 
 Route::get('/forget-password', [ForgotPasswordController::class, 'getEmail']);
