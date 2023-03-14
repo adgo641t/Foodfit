@@ -31,7 +31,13 @@
                 <form action="{{ route('deleteBlog',  $Blog->id) }}" method="post">
                 @csrf                
                 <button type="submit" class="btn btn-primary"><a style=" text-decoration: none; color: inherit">Delete</a></button>   
+                <br>
+                <br>
                 </form>
+                <form action="{{ route('UpdateBlog',  $Blog->id) }}" method="post">
+                @csrf                
+                <button type="submit" class="btn btn-primary"><a style=" text-decoration: none; color: inherit">Update Blog</a></button>  
+                </form> 
                 @endif
             </div>
             </div>

@@ -130,6 +130,10 @@ Route::group(['middleware', ['role:admin']],function () {
     Route::resource('coupons', CouponsController::class);
 
     Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
+
+    Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
+    Route::post('UpdateNewBlog/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlog');
+
 });
 
 Route::get('/forget-password', [ForgotPasswordController::class, 'getEmail']);
