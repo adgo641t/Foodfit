@@ -72,8 +72,7 @@ class BillController extends Controller
             'tarjetaNumero' => 'required|digits:15',
             'cvv' => 'required|digits:3',
         ]);
-        $cartItems = \Cart::clear();
-        return redirect('/thanks');
+        return redirect('send-mail');
     }
 
     /**
