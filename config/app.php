@@ -198,6 +198,12 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
 
+        /**
+         * Spatie ROls
+         */
+
+        Spatie\Permission\PermissionServiceProvider::class,
+  
     ],
 
     /*

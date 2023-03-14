@@ -73,10 +73,17 @@
                                         class="nav-link">Logout</a>
                                 </li>
                                 <!--If user is logged-->
+                                @if(@Auth::user()->hasRole('cliente'))
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/product') }}">Pedir a
                                         la carta</a>
                                 </li>
+                                @endif
+                                @if(@Auth::user()->hasRole('admin'))
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/product') }}">Seccion Admin </a>
+                                </li>
+                                @endif
                                 <!--Icon cart and go to cart-->
                                 <a href="{{ route('cart.list') }}" class="flex items-center">
                                 <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"

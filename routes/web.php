@@ -67,7 +67,7 @@ Route::delete('/bill', [CouponsController::class, 'destroy'])->name('coupon.dest
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:user'])->group(function () {
+Route::group(['middleware', ['role:cliente']],function () {
     Route::get('/home', function () {
         return view('home');
     });
@@ -117,7 +117,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:admin'])->group(function () {
+Route::group(['middleware', ['role:admin']],function () {
 
     Route::get('/admin', function () {
         return view('admin');
