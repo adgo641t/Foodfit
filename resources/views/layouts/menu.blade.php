@@ -109,7 +109,7 @@
             </nav>
         </header>
     </div>
-    <div>
+    <div class="mt-5">
             @yield('content')
         </div>
 </body>
