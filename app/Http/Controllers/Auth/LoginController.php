@@ -60,20 +60,21 @@ class LoginController extends Controller
             ],
         );
 
-        $role = auth()->user()->type; 
-        dd($role);
-        switch ($role) {
-          case '0':
-            return view('/home');
-            break;
-          case '1':
-            return view('/admin');
-            break; 
+
+        // $role = auth()->user()->type; 
+        // dd($role);
+        // switch ($role) {
+        //   case '0':
+        //     return view('/home');
+        //     break;
+        //   case '1':
+        //     return view('/admin');
+        //     break; 
       
-          default:
-            return view('/'); 
-          break;
-        }
+        //   default:
+        //     return view('/'); 
+        //   break;
+        // }
 
     }
 // Registration view
@@ -93,8 +94,9 @@ class LoginController extends Controller
         $data = $request->all();
         Hash::make($data['password']);
         $check = $this->create($data);
-          
-        return redirect("/home")->withSuccess('Te has registrado!');
+        $check->assignRole('cliente');
+        Auth::login($check);
+        return redirect("/home");
     }
 // Function that creates user that registrates and adds it to the database
     public function create(array $data)

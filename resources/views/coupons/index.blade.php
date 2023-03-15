@@ -68,11 +68,6 @@
                                 {{$coupon->description}}
                             </td>
                             <td class="p-3 ">
-                                <a href="{{ route('coupons.show',$coupon->id) }}" class="px-1">
-                                    <button type="submit">
-                                        <i class="fa-solid fa-eye text-indigo-400"></i>
-                                      </button>
-                                </a>
                                 <a href="{{ route('coupons.edit',$coupon->id) }}" class="px-1">
                                     <button type="submit">
                                         <i class="fa-solid fa-pen-to-square text-emerald-400"></i>
@@ -94,7 +89,7 @@
                 {!! $coupons->links() !!}
                 <br>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ url('/admin') }}"> Atrás</a>
+                    <a class="btn btn-primary" href="{{ url('/home') }}"> Atrás</a>
                     <a class="btn btn-success" href="{{ route('coupons.create') }}"> Crear nuevo cupón</a>
                 </div>        
 

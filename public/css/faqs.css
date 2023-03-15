@@ -25,7 +25,7 @@ body{
 }
 
 .btnColor{
-    margin-top: 2rem;
+    margin-top: 0rem;
     background-color: #3A7D44;
     color: white;
 }
@@ -94,7 +94,7 @@ body{
 }
 
 .faqs{
-    margin-top: 4%;
+    margin-top: 6rem;
 }
 .faqs2{
     margin-top: 2%;

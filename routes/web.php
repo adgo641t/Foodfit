@@ -39,7 +39,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/register', [LoginController::class, 'registration'])->name('register-user');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 //POSTS
 // Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
