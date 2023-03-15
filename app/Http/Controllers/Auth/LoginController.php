@@ -60,8 +60,19 @@ class LoginController extends Controller
             ],
         );
 
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
 
-        // $role = auth()->user()->type; 
+        $role = auth()->user()->type; 
+
+        if(Auth::attempt($credentials)) {
+            return view('/home');
+        } else {
+            return view('auth.login');
+        }
+
         // dd($role);
         // switch ($role) {
         //   case '0':
@@ -93,10 +104,15 @@ class LoginController extends Controller
             
         $data = $request->all();
         Hash::make($data['password']);
+
         $check = $this->create($data);
+        
         $check->assignRole('cliente');
+
+
         Auth::login($check);
-        return redirect("/home");
+        
+        return redirect("/home")->withSuccess('Te has registrado!');
     }
 // Function that creates user that registrates and adds it to the database
     public function create(array $data)

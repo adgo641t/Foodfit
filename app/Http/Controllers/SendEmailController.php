@@ -12,7 +12,8 @@ class SendEmailController extends Controller
      public function index()
      {
          $mailData = [
-             'title' => 'Su pedido es: '
+             'title' => 'Su pedido es: ',
+             'url' => 'http://127.0.0.1:8000/home'
          ];
           
          Mail::to('fpb1.adrian@gmail.com')->send(new TestEmail($mailData));
