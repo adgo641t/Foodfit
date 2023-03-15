@@ -82,6 +82,20 @@ class BlogController extends Controller
         
     }
 
+    public function GetUpdateView($id) {
+        $blog = Blog::find($id);
+        $category_blog = Category_blogs::all();
+        return view('blog/UpdateBlog', compact('blog','category_blog'));
+    }
+
+    public function UpdateNewBlog(Request $request, $blog) {
+        $blog = Blog::find($blog);
+        $blog->update($request->all());
+        $blog->save;
+
+        return redirect()->route('blog');
+    }
+
 
 }
 
