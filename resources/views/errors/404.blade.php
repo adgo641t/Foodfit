@@ -28,7 +28,7 @@
                     Lo sentimos, no hemos podido encontrar la página que busca 
                 </p>
                 
-                <a href="{{ url('/') }}" class="px-5 inline py-3 text-sm font-medium leading-5 shadow-2xl text-white transition-all duration-400 border border-transparent rounded-lg focus:outline-none bg-teal-600 active:bg-emerald-600 hover:bg-emerald-700">Volver a la página de inicio</a>
+                <a href="{{ url('/home') }}" class="px-5 inline py-3 text-sm font-medium leading-5 shadow-2xl text-white transition-all duration-400 border border-transparent rounded-lg focus:outline-none bg-teal-600 active:bg-emerald-600 hover:bg-emerald-700">Volver a la página de inicio</a>
         </div>
             <div class="w-full lg:flex lg:justify-end lg:w-1/2 mx-5 my-12">
             <img src="https://user-images.githubusercontent.com/43953425/166269493-acd08ccb-4df3-4474-95c7-ad1034d3c070.svg" class="" alt="Page not found">

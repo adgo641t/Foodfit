@@ -45,7 +45,7 @@
                           @if (Route::has('login'))
                           @auth
                             <li class="nav-item">
-                                <a href="{{ url('/dashboard') }}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                              <a href="{{ url('/logout') }}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link">Logout</a>
                             </li>
                           @else
                             <li class="nav-item">

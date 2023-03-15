@@ -30,7 +30,7 @@
 </style>
 </head>
 <body>
-    <h2 class="text-center">Lista de cupones</h2>
+    <h2 class="text-center" style="margin-top: 3rem; font-size:2rem">Lista de cupones</h2>
         
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -42,7 +42,7 @@
     <div class="flex items-center justify-center min-h-screen">
         <div class="col-span-12">
             <div class="overflow-auto lg:overflow-visible">
-                <table class="table text-gray-400 border-separate text-sm text-center">
+                <table class="table text-gray-400 border-separate text-sm text-center mb-5">
                     <thead class="bg-gray-50 text-gray-900">
                         <tr>
                             <th class="p-3">id</th>

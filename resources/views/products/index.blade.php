@@ -8,10 +8,7 @@
     <!-- Icon -->
     <link rel="icon" href="public/favicon.ico">
     <!-- Style -->
-    <link rel="stylesheet" href="css/tables.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../css/index.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet"> 
     <!-- Bootstrap & TailwindCSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,21 +20,16 @@
     <!-- Font awesome icons -->
     <script src="https://kit.fontawesome.com/2469414de4.js" crossorigin="anonymous"></script>
 
-    <style>
-        body{
-    font-family: 'Exo 2', sans-serif;
-}
-    </style>
 </head>
-<body class="antialiased">
-    <h2 class="text-center">List of products</h2>
+<body> 
+    <h1 class="text-center" style="margin-top: 3rem; font-size:2rem">Lista de Productos</h1>
         @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
             </div>
         @endif
         <!-- new -->
-        <div class="flex items-center justify-center min-h-screen">
+        <div class="flex items-center justify-center min-h-screen mt-5">
             <div class="col-span-12">
                 <div class="overflow-auto lg:overflow-visible">
                     <table class="table text-gray-400 border-separate text-sm text-center">
@@ -66,11 +58,6 @@
                                     <img src="public/{{$product->image}}" width="100px">
                                 </td>
                                 <td class="p-3 ">
-                                    <a href="{{ route('products.show',$product->id) }}" class="px-1">
-                                        <button type="submit">
-                                            <i class="fa-solid fa-eye text-indigo-400"></i>
-                                          </button>
-                                    </a>
                                     <a href="{{ route('products.edit',$product->id) }}" class="px-1">
                                         <button type="submit">
                                             <i class="fa-solid fa-pen-to-square text-emerald-400"></i>

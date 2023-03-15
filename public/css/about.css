@@ -86,19 +86,15 @@ body{
 }
 
 #imagen1{
-    width: 299px;
+    width: 30%;
 }
 #imagen2{
-    width: 360px;
+    width: 30%;
 }
 #imagen3{
-    width: 325px;
+    width: 30%;
 }
 
-#bloque_img{
-
-    margin-left: 400px;
-}
 
 #footer{
     height: 200px;

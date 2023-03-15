@@ -5,14 +5,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\Auth\LoginController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\BlogController;
-use App\Mail\TestEmail;
-use Illuminate\Support\Facades\Mail;
-use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,7 +67,7 @@ Route::group(['middleware', ['role:cliente']],function () {
     Route::get('/home', function () {
         return view('home');
     });
-
+    Route::get('send-mail', [SendEmailController::class, 'index']);
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
     Route::get('/ShowCategoryBlog/{category}', [BlogController::class, 'showCategory'])->name('ShowCategoryBlog');

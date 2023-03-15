@@ -42,10 +42,14 @@
                           <li class="nav-item">
                             <a class="nav-link" href="{{ url('/abouts') }}">About us</a>
                           </li>
+                          <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ url('/product') }}">Pedir a
+                                la carta</a>
+                        </li>
                           @if (Route::has('login'))
                           @auth
                             <li class="nav-item">
-                                <a href="{{ url('/dashboards') }}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                              <a href="{{ url('/logout') }}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link">Logout</a>
                             </li>
                           @else
                             <li class="nav-item">
