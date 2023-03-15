@@ -31,6 +31,7 @@ class TestEmail extends Mailable
     // It displays the email view
     public function build()
     {
-        return $this->subject('Recibo de pedido')->view('email.invoiceMail');
+        return $this->subject('REcibo de Pedido')
+                    ->markdown('emails.demoMail');
     }
 }

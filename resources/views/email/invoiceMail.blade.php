@@ -23,11 +23,11 @@
                 <td>{{ $item->quantity }}</td>
                 <td>{{ $item->price}}</td>
             </tr>
+            @endforeach
         </table>
-        @endforeach
+       
         <p>Iva 21%</p>
         <p>Total: ${{round(Cart::getTotal()*1.21 ,2, PHP_ROUND_HALF_EVEN)}}</p>
-        <img src="public/ciclismo.jpg" alt="">
         </div>
     </body>
 </html>

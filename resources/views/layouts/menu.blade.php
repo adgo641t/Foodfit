@@ -60,9 +60,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Blog</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{{ url('/abouts') }}">About</a>
                         </li>
                         @if (Route::has('login'))
@@ -77,6 +74,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/product') }}">Pedir a
                                         la carta</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Blog</a>
                                 </li>
                                 @endif
                                 @if(@Auth::user()->hasRole('admin'))
