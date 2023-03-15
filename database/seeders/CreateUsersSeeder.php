@@ -42,8 +42,8 @@ class CreateUsersSeeder extends Seeder
 
 
         //Give Permision to Update Delete to Admin
-        $role->givePermissionTo('Delete');
-        $role->givePermissionTo('Update');
+        $role->givePermissionTo('DeleteBlog');
+        $role->givePermissionTo('UpdateBlog');
 
 
         $user = User::create([
@@ -56,8 +56,8 @@ class CreateUsersSeeder extends Seeder
 
         $user->assignRole($role_Blog);
 
-        $role_Blog->givePermissionTo('Delete');
-        $role_Blog->givePermissionTo('Update');
+        $role_Blog->givePermissionTo('DeleteBlog');
+        $role_Blog->givePermissionTo('UpdateBlog');
 
         $user = User::create([
             'name' => 'wintop',
@@ -68,6 +68,7 @@ class CreateUsersSeeder extends Seeder
         $role_cliente = Role::create(['name' => 'cliente']);
 
         $user->assignRole($role_cliente);
+        $role_cliente->givePermissionTo('ComprarProductos');
 
 
         

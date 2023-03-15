@@ -38,7 +38,7 @@
                 <!--Admin-->
                 @if(@Auth::user()->hasRole('admin'))
                      <!--Delete-->
-                    @if(@Auth::user()->hasPermissionTo('Delete'))
+                    @if(@Auth::user()->hasPermissionTo('DeleteBlog'))
                         <form action="{{ route('deleteBlog',  $Blog->id) }}" method="post">
                         @csrf                
                         <button type="submit" class="btn btn-primary"><a style=" text-decoration: none; color: inherit">Delete</a></button>   
@@ -47,7 +47,7 @@
                         </form>
                     @endif
                     <!--Update-->
-                    @if(@Auth::user()->hasPermissionTo('Update'))
+                    @if(@Auth::user()->hasPermissionTo('UpdateBlog'))
                         <form action="{{ route('UpdateBlog',  $Blog->id) }}" method="post">
                         @csrf                
                         <button type="submit" class="btn btn-primary"><a style=" text-decoration: none; color: inherit">Update Blog</a></button>  
@@ -57,7 +57,7 @@
                 @endif
                 @hasrole('BlogCreator')
                      <!--Delete-->
-                    @if(@Auth::user()->hasPermissionTo('Delete'))
+                    @if(@Auth::user()->hasPermissionTo('DeleteBlog'))
                         <form action="{{ route('deleteBlog',  $Blog->id) }}" method="post">
                         @csrf                
                         <button type="submit" class="btn btn-primary"><a style=" text-decoration: none; color: inherit">Delete</a></button>   
@@ -66,7 +66,7 @@
                         </form>
                     @endif
                     <!--Update-->
-                    @if(@Auth::user()->hasPermissionTo('Update'))
+                    @if(@Auth::user()->hasPermissionTo('UpdateBlog'))
                         <form action="{{ route('UpdateBlog',  $Blog->id) }}" method="post">
                         @csrf                
                         <button type="submit" class="btn btn-primary"><a style=" text-decoration: none; color: inherit">Update Blog</a></button>  

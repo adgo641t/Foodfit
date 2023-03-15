@@ -15,7 +15,7 @@ class SendEmailController extends Controller
              'title' => 'Su pedido es: '
          ];
           
-         Mail::to('wintopadedokun@gmail.com')->send(new TestEmail($mailData));
+         Mail::to('fpb1.adrian@gmail.com')->send(new TestEmail($mailData));
          $cartItems = \Cart::clear();   
          return view('products.thanks');
      }
