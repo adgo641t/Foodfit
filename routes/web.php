@@ -40,6 +40,9 @@ Route::get('/register', [LoginController::class, 'registration'])->name('registe
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+    Route::get('/abouts', function () {
+        return view('layouts.about');
+    });
 
 //POSTS
 // Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -64,7 +67,7 @@ Route::delete('/bill', [CouponsController::class, 'destroy'])->name('coupon.dest
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::group(['middleware' => ['role:cliente']], function () {
+Route::group(['middleware' => ['role:client']],function () {
     Route::get('/home', function () {
         return view('home');
     });
@@ -155,8 +158,6 @@ Route::group(['middleware' => ['role:admin']],function () {
         return view('layouts.about');
     });
 
-
-    
 
     Route::get('/admin', function () {
         return view('admin');

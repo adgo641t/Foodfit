@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:web', ['except' => ['index']]);
+    }
+
+
     public function index() {
 
         $blog = Blog::all();

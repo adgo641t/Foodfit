@@ -70,7 +70,6 @@
                                         class="nav-link">Logout</a>
                                 </li>
                                 <!--If user is logged-->
-                                @if(@Auth::user()->hasRole('cliente'))
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/product') }}">Pedir a
                                         la carta</a>
@@ -78,10 +77,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Blog</a>
                                 </li>
-                                @endif
                                 @if(@Auth::user()->hasRole('admin'))
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/product') }}">Seccion Admin </a>
+                                    <a class="nav-link" aria-current="page" href="{{ route('products.index') }}">Seccion Admin </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ route('coupons.index') }}">Seccion coupons </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Blog</a>

@@ -67,7 +67,7 @@ class LoginController extends Controller
         //$role = auth()->user()->type; 
 
         if(Auth::attempt($credentials)) {
-            return view('/home');
+            return view('/');
         } else {
             return view('auth.login');
         }
@@ -111,7 +111,7 @@ class LoginController extends Controller
 
         Auth::login($check);
         
-        return redirect("/home")->withSuccess('Te has registrado!');
+        return redirect("/")->withSuccess('Te has registrado!');
     }
 // Function that creates user that registrates and adds it to the database
     public function create(array $data)

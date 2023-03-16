@@ -20,55 +20,66 @@ class CreateUsersSeeder extends Seeder
     {
 
         
-        $user = User::create([
-            'name' => 'Adrian',
-            'email'     => 'Adrian@UPC.com',
-            'password' => '$2y$10$x.Ot5fO84DkomAhWkPBXTOEYNjsn.pZ9YGS2PDFPpfve8eJYsKu0q',
-        ]);
+        // $user = User::create([
+        //     'name' => 'Adrian',
+        //     'email'     => 'Adrian@UPC.com',
+        //     'password' => '$2y$10$x.Ot5fO84DkomAhWkPBXTOEYNjsn.pZ9YGS2PDFPpfve8eJYsKu0q',
+        // ]);
 
-        $role = Role::create(['name' => 'admin']);
+        // $role = Role::create(['name' => 'admin']);
 
-        $user->assignRole($role);
+        // $user->assignRole($role);
 
-        //Create the Permision to Admin
-        //Blogs Permision
-        Permission::create(['name' => 'DeleteBlog']);
-        Permission::create(['name' => 'UpdateBlog']);
-        //Products Premisions
-        Permission::create(['name' => 'ComprarProductos']);
-        Permission::create(['name' => 'DeleteProductos']);
-        Permission::create(['name' => 'UpdateProductos']);
+        // //Create the Permision to Admin
+        // //Blogs Permision
+        // Permission::create(['name' => 'DeleteBlog']);
+        // Permission::create(['name' => 'UpdateBlog']);
+        // //Products Premisions
+        // Permission::create(['name' => 'ComprarProductos']);
+        // Permission::create(['name' => 'DeleteProductos']);
+        // Permission::create(['name' => 'UpdateProductos']);
+        // //Coupons Permisions
+        // Permission::create(['name' => 'CreateCoupons']);
+        // Permission::create(['name' => 'DeleteCoupons']);
+        // Permission::create(['name' => 'UpdateCoupons']);
+
+        // //Give Permision blog to Update Delete to Admin
+        // $role->givePermissionTo('DeleteBlog');
+        // $role->givePermissionTo('UpdateBlog');
+
+        // //Give permision admin to Products
+        // $role->givePermissionTo('ComprarProductos');
+        // $role->givePermissionTo('DeleteProductos');
+        // $role->givePermissionTo('UpdateProductos');
+        
+        // //Give Permision Coupons to Admin
+        // $role->givePermissionTo('CreateCoupons');
+        // $role->givePermissionTo('DeleteCoupons');
+        // $role->givePermissionTo('UpdateCoupons');
 
 
+        // $user_blog = User::create([
+        //     'name' => 'Jose',
+        //     'email'     => 'Jose@upc.com',
+        //     'password' => '$2y$10$x.Ot5fO84DkomAhWkPBXTOEYNjsn.pZ9YGS2PDFPpfve8eJYsKu0q',
+        // ]);
 
-        //Give Permision to Update Delete to Admin
-        $role->givePermissionTo('DeleteBlog');
-        $role->givePermissionTo('UpdateBlog');
+        // $role_Blog = Role::create(['name' => 'BlogCreator']);
 
+        // $user_blog->assignRole($role_Blog);
 
-        $user = User::create([
-            'name' => 'Jose',
-            'email'     => 'Jose@upc.com',
-            'password' => '$2y$10$x.Ot5fO84DkomAhWkPBXTOEYNjsn.pZ9YGS2PDFPpfve8eJYsKu0q',
-        ]);
+        // $role_Blog->givePermissionTo('DeleteBlog');
+        // $role_Blog->givePermissionTo('UpdateBlog');
 
-        $role_Blog = Role::create(['name' => 'BlogCreator']);
-
-        $user->assignRole($role_Blog);
-
-        $role_Blog->givePermissionTo('DeleteBlog');
-        $role_Blog->givePermissionTo('UpdateBlog');
-
-        $user = User::create([
+        $user_cliente= User::create([
             'name' => 'wintop',
             'email'     => 'wintop@upc.com',
             'password' => '$2y$10$x.Ot5fO84DkomAhWkPBXTOEYNjsn.pZ9YGS2PDFPpfve8eJYsKu0q',
         ]);
 
-        $role_cliente = Role::create(['name' => 'cliente']);
+        $role_cliente = Role::create(['name' => 'client']);
 
-        $user->assignRole($role_cliente);
-        $role_cliente->givePermissionTo('ComprarProductos');
+        $user_cliente->assignRole($role_cliente);
 
 
         
