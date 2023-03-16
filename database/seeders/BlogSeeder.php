@@ -19,7 +19,7 @@ class BlogSeeder extends Seeder
             'title' => 'Que alimentos tienen las proteinas que necessitamos',
             'description' => 'TOdo lo que tenga Proteinas',
             'category' => 'Guay',
-            'image' => 'Deporte',
+            'image' => 'Arnolds.jpeg',
 
         ]);
 
@@ -28,14 +28,6 @@ class BlogSeeder extends Seeder
             'description' => 'Te hacemos un dto por ser guay',
             'category' => 'Deporte',
             'image' => 'ciclismo.jpg',
-
-        ]);
-
-        Blog::create([
-            'title' => 'Una manuela al dia alegra el dia',
-            'description' => 'Te hacemos un dto por ser guay',
-            'category' => 'Salud',
-            'image' => 'Deporte',
 
         ]);
 

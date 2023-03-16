@@ -64,8 +64,7 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ];
-
-        $role = auth()->user()->type; 
+        //$role = auth()->user()->type; 
 
         if(Auth::attempt($credentials)) {
             return view('/home');
@@ -106,7 +105,7 @@ class LoginController extends Controller
         Hash::make($data['password']);
 
         $check = $this->create($data);
-        
+
         $check->assignRole('cliente');
 
 

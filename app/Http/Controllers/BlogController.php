@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Category_blogs;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -49,21 +50,17 @@ class BlogController extends Controller
         ]);
 
         if($request->hasFile('file')){
+
+            $imageName = time() . '.' . $request->file->extension();
+            $request->file->move(public_path('public'), $imageName);
+
+
             $blog = Blog::create([
                 'title' => $request->title,
                 'description' => $request->description,
                 'category' => $request->category,
-                'image' => $request->file
+                'image' => $imageName
             ]);
-
-            $input = $request->all();
-            if($image = $request->file('file')){
-                
-                $destinationPath = 'public/';
-                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-                $image->move($destinationPath, $profileImage);
-                $input['file'] = "$profileImage";
-        }
 
             //$request->file->store('product', 'public');
 
@@ -88,14 +85,30 @@ class BlogController extends Controller
         return view('blog/UpdateBlog', compact('blog','category_blog'));
     }
 
-    public function UpdateNewBlog(Request $request, $blog) {
-        $blog = Blog::find($blog);
-        $blog->update($request->all());
-        $blog->save;
+    public function UpdateNewBlog(Request $request, Blog $blog) {
+
+        $request->validate([
+            'title' => ['required','string','max:50'],
+            'description' => ['required','string','max:50'],
+            'category' => ['required'],
+        ]);
+
+        $input = $request->all();
+
+        if($request->hasFile('image')){
+
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('public'), $imageName);
+            $input['image'] = $imageName;
+
+            //$request->file->store('product', 'public');
+
+        }else {
+            unset($input['image']);
+        }
+        $blog->update($input); // Finally, save the record.
 
         return redirect()->route('blog');
     }
 
-
 }
-

@@ -83,6 +83,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/product') }}">Seccion Admin </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Blog</a>
+                                </li>
                                 @endif
                                 <!--Icon cart and go to cart-->
                                 <a href="{{ route('cart.list') }}" class="flex items-center">
