@@ -54,6 +54,9 @@
                                 aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
+                                                         <!--To logout-->
+                                                         <li class="nav-item">
+                                                            <a href="{{ url('/logout') }}"class="nav-link">Logout</a></li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/abouts') }}">About</a>
                             </li>
@@ -85,9 +88,6 @@
                                     <a class="nav-link active" aria-current="page" href="{{ route('coupons.index') }}">Seccion cupones</a>
                                 </li>
                                 @endif
-                             <!--To logout-->
-                             <li class="nav-item">
-                            <a href="{{ url('/logout') }}"class="nav-link">Logout</a></li>
                             @else
                             <a href="{{ url('/') }}"><img src="logo.png" alt="" class="logo-img"></a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
