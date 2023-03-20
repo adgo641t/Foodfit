@@ -1,5 +1,8 @@
-@extends('layouts.menu')
-@section('content')
+<header>
+    @extends('layouts.menu')
+</header>
+
+<body>@section('content')
     <h2 class=" text-center" style="margin-top: 6rem; font-size:2rem">Lista de cupones</h2>
         
     @if ($message = Session::get('success'))
@@ -67,3 +70,4 @@
         </div>
     </div>    
 @endsection
+</body>

@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add to cart - Foot&Fit</title>
+    
+    <script src="https://kit.fontawesome.com/2469414de4.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+ integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+ crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+ integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+ crossorigin="anonymous"></script>
+
+
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <!-- Icon -->
     <link rel="icon" href="img/favicon.ico">
@@ -19,16 +31,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/faqs.css">
 <!-- Font awesome -->
-<script src="https://kit.fontawesome.com/2469414de4.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
- integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
- crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
- integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
- crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
- integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
- crossorigin="anonymous"></script>
+
  <link rel="icon" href="img/favicon.ico">
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,18 +45,20 @@
 <body>
     <div class="bg-white">
         <header>
-         <nav class="navbar navbar-expand-lg fixed-top navbar-light " style="background-color: #ecffeb" >
+         <nav class="navbar navbar-expand-lg fixed-top navbar-light" style="background-color: #ecffeb" >
             <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            @if(Route::has('login'))
+            <a href="{{ url('/home') }}"><img src="logo.png" alt="" class="logo-img"></a>
+            @else
+            <a href="{{ url('/') }}"><img src="logo.png" alt="" class="logo-img"></a>
+            @endif
+            <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <span class="navbar-toggler-icon"></span>
+             </button>
+                <div class="navbar-collapse collapse" id="collapseExample">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         @if (Route::has('login'))
-                            @auth
-                            <a href="{{ url('/home') }}"><img src="logo.png" alt="" class="logo-img"></a>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
+                            @auth                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/abouts') }}">About</a>
                             </li>
@@ -115,10 +120,9 @@
             </nav>
         </header>
     </div>
-    <div class="mt-5">
+    <div class="p-9">
             @yield('content')
         </div>
         <script src="js/faqs.js"></script>
 </body>
-
 </html>
