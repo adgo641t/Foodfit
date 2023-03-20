@@ -1,9 +1,8 @@
-@extends('layouts.frontend')
+@extends('layouts.menu')
 @section('content')
     <div class="container px-6 mx-auto">
-        <h3 class="text-2xl font-small text-gray-700">Product List</h3>
         <form action="/product">
-          <div class="relative border-2 border-gray-100 m-4 rounded-lg">
+          <div class="relative border-2 border-gray-100 rounded-lg search">
               <div class="absolute top-4 left-3">
                   <i
                       class="fa fa-search text-gray-400 z-20 hover:text-gray-500"

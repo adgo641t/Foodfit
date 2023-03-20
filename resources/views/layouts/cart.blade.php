@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.menu')
 @section('style')
 <script src="//unpkg.com/alpinejs" defer></script>
 <link

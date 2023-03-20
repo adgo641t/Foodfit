@@ -108,10 +108,12 @@ class LoginController extends Controller
 
         $check->assignRole('cliente');
 
-
         Auth::login($check);
-        
-        return redirect("/")->withSuccess('Te has registrado!');
+        $user = Auth::user();
+        // if($user->created_at == $user->updated_at){
+        //     return redirect("/home")->with("Coupon","Tienes un cupon");
+        // }
+        return redirect("/home")->withSuccess('Te has registrado!');
     }
 // Function that creates user that registrates and adds it to the database
     public function create(array $data)

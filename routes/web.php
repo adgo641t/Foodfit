@@ -39,10 +39,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/register', [LoginController::class, 'registration'])->name('register-user');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
-    Route::get('/abouts', function () {
-        return view('layouts.about');
-    });
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 //POSTS
 // Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -67,7 +64,7 @@ Route::delete('/bill', [CouponsController::class, 'destroy'])->name('coupon.dest
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::group(['middleware' => ['role:client']],function () {
+Route::group(['middleware', ['role:cliente']],function () {
     Route::get('/home', function () {
         return view('home');
     });
@@ -117,47 +114,7 @@ Route::group(['middleware' => ['role:client']],function () {
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::group(['middleware' => ['role:admin']],function () {
-    Route::get('/home', function () {
-        return view('home');
-    });
-    Route::get('send-mail', [SendEmailController::class, 'index']);
-    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
-    Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
-    Route::get('/ShowCategoryBlog/{category}', [BlogController::class, 'showCategory'])->name('ShowCategoryBlog');
-
-    Route::get('/add_blog', [BlogController::class, 'AddNewBlog'])->name('add_blog');
-
-
-    Route::post('/blog.store', [BlogController::class, 'StoreBlog'])->name('blog.store');
-
-
-
-    Route::get('/faq', function () {
-        return view('profile.userFaqs');
-    });
-    Route::post('/user','UserController@update')->name('users.update');
-    Route::get('/bill', [BillController::class, 'index'], function () {
-    })->name('bill.list');
-    Route::post('/pago', [BillController::class, 'store']);
-    Route::get('/thanks', function () {
-        return view('products.thanks');
-    });
-    Route::post('/user/profile', [UserController::class, 'update'], function () {
-    })->name('users.update');
-    Route::get('/product', [ProductController::class, 'productList'], function () {
-    })->name('products.list');
-    Route::get('/cart', [CartController::class, 'cartList'])->name('cart.list');
-    Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
-    Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
-    Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
-    Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
-    Route::post('/coupon', [CouponsController::class, 'validCoupon']);
-    Route::post('removeAllItems', [CartController::class, 'removeAllItems'])->name('cart.deleteAll');
-    Route::get('/abouts', function () {
-        return view('layouts.about');
-    });
-
+Route::group(['middleware', ['role:admin']],function () {
 
     Route::get('/admin', function () {
         return view('admin');
@@ -182,5 +139,3 @@ Route::post('/forget-password',  [ForgotPasswordController::class, 'postEmail'])
 
 
 // Auth::routes();
-
-
