@@ -75,7 +75,7 @@
                                         la carta</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Blog</a>
+                                    <a class="nav-link" aria-current="page" href="{{ route('blog') }}">Blog</a>
                                 </li>
                                 @if(@Auth::user()->hasRole('admin'))
                                 <li class="nav-item">
@@ -85,7 +85,7 @@
                                     <a class="nav-link" aria-current="page" href="{{ route('coupons.index') }}">Seccion coupons </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Blog</a>
+                                    <a class="nav-link" aria-current="page" href="{{ route('blog') }}">Blog</a>
                                 </li>
                                 @endif
                                 <!--Icon cart and go to cart-->
