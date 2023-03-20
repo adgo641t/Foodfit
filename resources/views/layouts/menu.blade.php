@@ -52,9 +52,6 @@
             @else
             <a href="{{ url('/') }}"><img src="logo.png" alt="" class="logo-img"></a>
             @endif
-            <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                <span class="navbar-toggler-icon"></span>
-             </button>
                 <div class="navbar-collapse collapse" id="collapseExample">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         @if (Route::has('login'))
