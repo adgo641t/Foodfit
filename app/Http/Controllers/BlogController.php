@@ -19,10 +19,10 @@ class BlogController extends Controller
 
     public function index() {
 
-        $blog = Blog::all();
+        $blog = Blog::latest()->paginate(9);
         
         
-        return view('blog/index', compact('blog'));  
+        return view('blog/index', compact('blog'))->with('i', (request()->input('page', 1) - 1) * 5);  
     }
 
     public function show($id) {
@@ -49,11 +49,12 @@ class BlogController extends Controller
     }
 
     public function StoreBlog(Request $request) {
-       
+      // dd($request);
         $request->validate([
             'title' => ['required','string','max:50'],
             'description' => ['required','string','max:50'],
             'category' => ['required'],
+            'creator' => ['required'],
         ]);
 
         if($request->hasFile('file')){
@@ -61,13 +62,12 @@ class BlogController extends Controller
             $imageName = time() . '.' . $request->file->extension();
             $request->file->move(public_path('public'), $imageName);
 
-
-            $blog = Blog::create([
-                'title' => $request->title,
-                'description' => $request->description,
-                'category' => $request->category,
-                'image' => $imageName
-            ]);
+            $blog = new Blog();
+            $blog->title = $request->title;
+            $blog->description = $request->description;
+            $blog->category = $request->category;
+            $blog->creator = $request->creator;
+            $blog->image =  $imageName;
 
             //$request->file->store('product', 'public');
 

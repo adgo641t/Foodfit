@@ -20,4 +20,17 @@ class blog extends Model
     {
         return $this->hasMany(blog::class);
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        if($filters['category'] ?? false){
+            $query->where('category_blogs', 'like', '%' . request('category') . '%');
+        }
+        // If is not false then do what's in here
+        if($filters['search'] ?? false){
+            $query->where('title', 'like', '%' . request('search') . '%')
+            ->orWhere('description', 'like', '%' . request('search') . '%')
+            ->orWhere('creator', 'like', '%' . request('search') . '%');
+        }
+    }
 }

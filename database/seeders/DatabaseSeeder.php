@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
 
         //Seeders of DB 
         $this->call(CreateUsersSeeder::class);
-        $this->call(BlogSeeder::class);
         $this->call(categorys_blog::class);
+        $this->call(BlogSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(CouponsSeeder::class);
