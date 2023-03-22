@@ -25,7 +25,7 @@
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
         Description of Blog
       </label>
-      <textarea value="{{old('description')}}" name="description" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text-area" placeholder="Description of the new blog here....."></textarea>
+      <textarea  name="description" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text-area" placeholder="Description of the new blog here.....">{{old('description')}}</textarea>
         @error('description')
             <small style="color: red;">{{$message}}</small>
           @enderror
@@ -36,7 +36,7 @@
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
         Creator of the blog
       </label>
-      <input id="creator" name="creator" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Creator">
+      <input value="{{old('creator')}}" id="creator" name="creator" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Creator">
       @error('creator')
           <small style="color: red;">{{$message}}</small>
         @enderror

@@ -19,10 +19,12 @@ class BlogController extends Controller
 
     public function index() {
 
-        $blog = Blog::latest()->paginate(9);
+        //$blog = Blog::all();
         
-        
-        return view('blog/index', compact('blog'))->with('i', (request()->input('page', 1) - 1) * 5);  
+        return view('blog/index' ,[
+            'blogs' => Blog::latest()->filter(request(['category','search']))->simplePaginate(4)
+
+        ]);  
     }
 
     public function show($id) {

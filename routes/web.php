@@ -39,7 +39,6 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/register', [LoginController::class, 'registration'])->name('register-user');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 //POSTS
 // Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -71,14 +70,6 @@ Route::group(['middleware', ['role:cliente']],function () {
     Route::get('send-mail', [SendEmailController::class, 'index']);
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
-    Route::get('/ShowCategoryBlog/{category}', [BlogController::class, 'showCategory'])->name('ShowCategoryBlog');
-
-    Route::get('/add_blog', [BlogController::class, 'AddNewBlog'])->name('add_blog');
-
-
-    Route::post('/blog.store', [BlogController::class, 'StoreBlog'])->name('blog.store');
-
-
 
     Route::get('/faq', function () {
         return view('profile.userFaqs');
@@ -116,6 +107,9 @@ All Admin Routes List
 --------------------------------------------*/
 Route::group(['middleware', ['role:admin']],function () {
 
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
+    
     Route::get('/admin', function () {
         return view('admin');
     });
@@ -125,6 +119,25 @@ Route::group(['middleware', ['role:admin']],function () {
 
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
+
+    Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
+
+    Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
+    Route::post('UpdateNewBlog/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlog');
+
+});
+
+Route::group(['middleware', ['role:BlogCreator']],function () {
+
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+    Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
+    Route::get('/ShowCategoryBlog/{category}', [BlogController::class, 'showCategory'])->name('ShowCategoryBlog');
+
+    Route::get('/add_blog', [BlogController::class, 'AddNewBlog'])->name('add_blog');
+
+
+    Route::post('/blog.store', [BlogController::class, 'StoreBlog'])->name('blog.store');
+
 
     Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
 

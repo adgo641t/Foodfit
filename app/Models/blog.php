@@ -12,7 +12,8 @@ class blog extends Model
     protected $fillable = [
         'title',
         'description',
-        'category',
+        'category_id',
+        'creator',
         'image',
     ];
 
@@ -24,13 +25,16 @@ class blog extends Model
     public function scopeFilter($query, array $filters)
     {
         if($filters['category'] ?? false){
-            $query->where('category_blogs', 'like', '%' . request('category') . '%');
+            $query->where('category_id', 'like', '%' . request('category') . '%');
         }
-        // If is not false then do what's in here
+
         if($filters['search'] ?? false){
+
             $query->where('title', 'like', '%' . request('search') . '%')
             ->orWhere('description', 'like', '%' . request('search') . '%')
-            ->orWhere('creator', 'like', '%' . request('search') . '%');
+            ->orWhere('category_id', 'like', '%' . request('search') . '%')
+            ->orWhere('creator', 'like', '%' . request('search') . '%')
+            ->orWhere('created_at', 'like', '%' . request('search') . '%');
         }
     }
 }

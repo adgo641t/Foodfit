@@ -90,6 +90,11 @@
                                     <a class="nav-link" aria-current="page" href="{{ route('blog') }}">Blog</a>
                                 </li>
                                 @endif
+                                @if(@Auth::user()->hasRole('BlogCreator'))
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ route('blog') }}">Seccion Blog</a>
+                                </li>
+                                @endif
                              <!--To logout-->
                              <li class="nav-item">
                             <a href="{{ url('/logout') }}"class="nav-link">Logout</a></li>

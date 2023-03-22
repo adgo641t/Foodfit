@@ -47,8 +47,28 @@
           </div>
       </form>
       <br>
+      @if(count($blogs) == 0)
+        <h3 class="text-center">Blog no encontrados</h3>
+    @endif
+
+    <div class="row">
+        <div class="col-md-4 px-4">
+          <form action="/blog">
+            <select name="category" class="form-select form-select-sm" aria-label="Default select example">
+              <option value="">---</option>
+              <option value="1">Salud y Bienestar</option>
+              <option value="2">Alimentacion</option>
+              <option value="3">Deporte</option>
+
+            </select>
+            <button type="submit" class="px-4 py-2 text-white bg-blue-800 rounded mt-2">Elegir categoria</button>
+          </form>
+        </div>
+      </div>
+      <br>
+      
         <div class="grid grid-cols-3 gap-3">
-    @foreach($blog as $Blog)
+    @foreach($blogs as $Blog)
             <div class="rounded overflow-hidden shadow-lg">
                 <img class="lg:h-72 md:h-48 w-full object-cover object-center" src="public/{{$Blog->image}}" alt="Sunset in the mountains">
                 <div class="px-6 py-4">
