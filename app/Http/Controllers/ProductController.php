@@ -126,6 +126,7 @@ public function index()
         }
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
