@@ -21,9 +21,54 @@
 @endrole
 <br>
 <section class="flex flex-row items-center text-gray-600">
+    
         <div class="container px-6 py-24 mx-auto ">
+        <form action="/blog">
+          <div class="relative border-2 border-gray-100 rounded-lg search">
+              <div class="absolute top-4 left-3">
+                  <i
+                      class="fa fa-search text-gray-400 z-20 hover:text-gray-500"
+                  ></i>
+              </div>
+              <input
+                  type="text"
+                  name="search"
+                  class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
+                  placeholder="Busca un blog...."
+              />
+              <div class="absolute top-2 right-2">
+                  <button
+                      type="submit"
+                      class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600"
+                  >
+                      Search
+                  </button>
+              </div>
+          </div>
+      </form>
+      <br>
+      @if(count($blogs) == 0)
+        <h3 class="text-center">Blog no encontrados</h3>
+    @endif
+
+    <div class="row">
+        <div class="col-md-4 px-4">
+          <form action="/blog">
+            <select name="category" class="form-select form-select-sm" aria-label="Default select example">
+              <option value="">---</option>
+              <option value="1">Salud y Bienestar</option>
+              <option value="2">Alimentacion</option>
+              <option value="3">Deporte</option>
+
+            </select>
+            <button type="submit" class="px-4 py-2 text-white bg-blue-800 rounded mt-2">Elegir categoria</button>
+          </form>
+        </div>
+      </div>
+      <br>
+      
         <div class="grid grid-cols-3 gap-3">
-    @foreach($blog as $Blog)
+    @foreach($blogs as $Blog)
             <div class="rounded overflow-hidden shadow-lg">
                 <img class="lg:h-72 md:h-48 w-full object-cover object-center" src="public/{{$Blog->image}}" alt="Sunset in the mountains">
                 <div class="px-6 py-4">
@@ -34,7 +79,15 @@
                 </div>
                 <div class="px-6 pt-4 pb-2">
                    
-                <button><span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><a style=" text-decoration: none; color: inherit">#{{$Blog->category}}</a></span></button>
+                <button><span
+                @if($Blog->category_id == 1)
+                {{$Blog->category_id = 'Salud y bienestar'}}
+                @elseif($Blog->category_id == 2)
+                {{$Blog->category_id = 'Alimentación'}}
+                @elseif($Blog->category_id == 3)
+                {{$Blog->category_id = 'Deporte'}}
+                @endif
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><a style=" text-decoration: none; color: inherit">{{$Blog->category_id}}</a></span></button>
                 <!--Admin-->
                 @if(@Auth::user()->hasRole('admin'))
                      <!--Delete-->
@@ -74,6 +127,11 @@
                     @endif
                 <!--Blog Creator-->
                 @endrole
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <div class="text-sm font-light text-gray-500 dark:text-gray-400">Creator: <b>{{$Blog->creator}}</b></div>
+                <div class="text-sm font-light text-gray-500 dark:text-gray-400">Created: <b>{{$Blog->created_at->format('d-m-Y')}}</b></div>
+                <div class="text-sm font-light text-gray-500 dark:text-gray-400">Updated: <b>{{$Blog->updated_at->format('d-m-Y')}} at {{$Blog->updated_at->format('H:i')}}</b></div>
             </div>
             </div>
     @endforeach

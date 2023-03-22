@@ -1,27 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Listado de productos - Food&Fit</title>
-    <!-- Icon -->
-    <link rel="icon" href="public/favicon.ico">
-    <!-- Style -->
-    <link rel="stylesheet" href="../../css/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet"> 
-    <!-- Bootstrap & TailwindCSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-
-    <!-- Font awesome icons -->
-    <script src="https://kit.fontawesome.com/2469414de4.js" crossorigin="anonymous"></script>
-
-</head>
-<body> 
+@extends('layouts.menu')
+@section('content')
     <h1 class="text-center" style="margin-top: 3rem; font-size:2rem">Lista de Productos</h1>
         @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -63,6 +41,9 @@
                                             <i class="fa-solid fa-pen-to-square text-emerald-400"></i>
                                         </button>
                                     </a>
+                                    @hasrole('admin')
+                                        @if(@Auth::user()->hasPermissionTo('DeleteProductos'))
+                                    <!--Delete-->
                                     <form action="{{ route('products.destroy',$product->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -71,6 +52,8 @@
                                             <i class="fa-solid fa-trash-can text-rose-400"></i>
                                           </button>
                                     </form>
+                                        @endif
+                                    @endrole
                                 </td>
                             </tr>
                             @endforeach
@@ -85,7 +68,6 @@
                 </div>
             </div>
         </div>
-</body>
-</html>
+@endsection
 
         

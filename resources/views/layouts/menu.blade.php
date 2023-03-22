@@ -30,10 +30,15 @@
 <body>
     <div class="bg-white">
         <header>
-         <nav class="navbar navbar-expand-lg fixed-top navbar-light " style="background-color: #ecffeb" >
+         <nav class="navbar navbar-expand-lg fixed-top navbar-light" style="background-color: #ecffeb" >
             <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            @if(Route::has('login'))
+            <a href="{{ url('/home') }}"><img src="logo.png" alt="" class="logo-img"></a>
+            @else
+            <a href="{{ url('/') }}"><img src="logo.png" alt="" class="logo-img"></a>
+            @endif
+                <div class="navbar-collapse collapse" id="collapseExample">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         @if (Route::has('login'))
                             @auth
                             <a href="{{ url('/home') }}"><img src="logo.png" alt="" class="logo-img"></a>
@@ -49,7 +54,7 @@
                                 <a class="nav-link" href="{{ url('/abouts') }}">About</a>
                             </li>
                                 <!--If user is logged-->
-                                @if(@Auth::user()->hasRole('cliente'))
+                                @if(@Auth::user()->hasRole('client'))
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/product') }}">Pedir a
                                         la carta</a>
@@ -70,10 +75,18 @@
                                 @endif
                                 @if(@Auth::user()->hasRole('admin'))
                                 <li class="nav-item">
-                                    <a class="nav-link " aria-current="page" href="{{ route('products.index') }}">Seccion de Productos</a>
+                                    <a class="nav-link" aria-current="page" href="{{ route('products.index') }}">Pedir a la carta</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link " aria-current="page" href="{{ route('coupons.index') }}">Seccion cupones</a>
+                                    <a class="nav-link" aria-current="page" href="{{ route('coupons.index') }}">Seccion cupones</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ route('blog') }}">Blog</a>
+                                </li>
+                                @endif
+                                @if(@Auth::user()->hasRole('BlogCreator'))
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ route('blog') }}">Seccion Blog</a>
                                 </li>
                                 @endif
                             @else
@@ -100,7 +113,7 @@
             </nav>
         </header>
     </div>
-    <div class="mt-5">
+    <div class="p-9">
             @yield('content')
         </div>
 <script src="https://kit.fontawesome.com/2469414de4.js" crossorigin="anonymous"></script>
@@ -115,5 +128,4 @@
  crossorigin="anonymous"></script>
         <script src="js/faqs.js"></script>
 </body>
-
 </html>

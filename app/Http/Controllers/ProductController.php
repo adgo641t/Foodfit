@@ -105,12 +105,14 @@ public function index()
         ]);
 
         $input = $request->all();
+
         // It gets the image that the user chose to input and updates the file chosen and destination to save the file
         if ($image = $request->file('image')) {
             $destinationPath = 'public/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";
+            
         }else{
             unset($input['image']);
         }

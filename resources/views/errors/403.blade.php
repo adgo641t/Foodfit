@@ -27,9 +27,14 @@
                 <p class="text-2xl md:text-3xl font-light leading-normal mb-8">
                     Lo sentimos, no tienes acceso en la página que busca 
                 </p>
-                
+                @if (Route::has('login'))
+                    @auth
                 <a href="{{ url('/home') }}" class="px-5 inline py-3 text-sm font-medium leading-5 shadow-2xl text-white transition-all duration-400 border border-transparent rounded-lg focus:outline-none bg-teal-600 active:bg-emerald-600 hover:bg-emerald-700">Volver a la página de inicio</a>
-        </div>
+                @else
+                <a href="{{ url('/') }}" class="px-5 inline py-3 text-sm font-medium leading-5 shadow-2xl text-white transition-all duration-400 border border-transparent rounded-lg focus:outline-none bg-teal-600 active:bg-emerald-600 hover:bg-emerald-700">Volver a la página de inicio</a>
+                    @endauth
+                @endif
+            </div>
             <div class="w-full lg:flex lg:justify-end lg:w-1/2 mx-5 my-12">
             <img src="https://user-images.githubusercontent.com/43953425/166269493-acd08ccb-4df3-4474-95c7-ad1034d3c070.svg" class="" alt="Page not found">
             </div>
