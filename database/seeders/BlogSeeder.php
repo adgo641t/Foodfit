@@ -18,7 +18,8 @@ class BlogSeeder extends Seeder
         Blog::create([
             'title' => 'Que alimentos tienen las proteinas que necessitamos',
             'description' => 'TOdo lo que tenga Proteinas',
-            'category' => 'Guay',
+            'category_id' => 2,
+            'creator' => 'Pau',
             'image' => 'Arnolds.jpeg',
 
         ]);
@@ -26,7 +27,8 @@ class BlogSeeder extends Seeder
         Blog::create([
             'title' => 'Ciclismo como Deporte',
             'description' => 'Te hacemos un dto por ser guay',
-            'category' => 'Deporte',
+            'category_id' => 3,
+            'creator' => 'Adrian',
             'image' => 'ciclismo.jpg',
 
         ]);
@@ -34,7 +36,8 @@ class BlogSeeder extends Seeder
         Blog::create([
             'title' => 'Como la comida engorda',
             'description' => 'Te hacemos un dto por ser guay',
-            'category' => 'Comida',
+            'category_id' => 1,
+            'creator' => 'Wintop',
             'image' => 'berengena.jpg',
 
         ]);

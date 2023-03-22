@@ -48,19 +48,9 @@
         Category Blog
       </label>
       <div class="relative">
-        <select name="category" id="category" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-        @foreach($blog as $id)
-            <option
-             @if($id->category_id == 1) 
-             {{$id->category_id = 'Salud'}} 
-             @elseif($id->category_id == 2)
-             {{$id->category_id = 'Guay'}} 
-             @elseif($id->category_id == 3)
-             {{$id->category_id = 'Deporte'}} 
-             @endif 
-             name="category">{{$id->category_id}}</option>
-
-
+        <select name="category_id" id="category_id" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+        @foreach($category_blog as $id)
+            <option value="{{$id->id}}">{{$id->name}}</option>
         @endforeach
         </select>
           @error('category')

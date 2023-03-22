@@ -49,11 +49,11 @@ class BlogController extends Controller
     }
 
     public function StoreBlog(Request $request) {
-      // dd($request);
+       //dd($request);
         $request->validate([
             'title' => ['required','string','max:50'],
             'description' => ['required','string','max:50'],
-            'category' => ['required'],
+            'category_id' => ['required'],
             'creator' => ['required'],
         ]);
 
@@ -65,7 +65,7 @@ class BlogController extends Controller
             $blog = new Blog();
             $blog->title = $request->title;
             $blog->description = $request->description;
-            $blog->category = $request->category;
+            $blog->category_id = $request->category_id;
             $blog->creator = $request->creator;
             $blog->image =  $imageName;
 
@@ -97,25 +97,41 @@ class BlogController extends Controller
         $request->validate([
             'title' => ['required','string','max:50'],
             'description' => ['required','string','max:50'],
-            'category' => ['required'],
+            'category_id' => ['required'],
+            'creator' => ['required'],
         ]);
 
-        $input = $request->all();
+        $inputs = $request->all();
 
         if($request->hasFile('image')){
 
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('public'), $imageName);
-            $input['image'] = $imageName;
 
-            //$request->file->store('product', 'public');
+            $blog = Blog::find($blog->id);
+
+            $blog->title = $inputs['title'];
+            $blog->description = $inputs['description'];
+            $blog->category_id = $inputs['category_id'];
+            $blog->creator = $inputs['creator'];
+            $blog->image = $imageName;
+
+            $blog->save();
+            // redirect
+            return redirect()->route('blog');    
 
         }else {
-            unset($input['image']);
+            unset($inputs['image']);
+            $blog = Blog::find($blog->id);
+
+            $blog->title = $inputs['title'];
+            $blog->description = $inputs['description'];
+            $blog->category_id = $inputs['category_id'];
+            $blog->creator = $inputs['creator'];
+
+            $blog->save();
+            // redirect
+            return redirect()->route('blog');    
         }
-        $blog->update($input); // Finally, save the record.
-
-        return redirect()->route('blog');
     }
-
 }
