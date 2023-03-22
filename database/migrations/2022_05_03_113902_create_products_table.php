@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('image');
             $table->string('categories');
+            $table->string('stock');
             $table->timestamps();
         });
     }

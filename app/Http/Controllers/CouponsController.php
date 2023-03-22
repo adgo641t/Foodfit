@@ -49,12 +49,9 @@ class CouponsController extends Controller
                     'code' => $coupon->code,
                     'amount' => $coupon->amount,
                 ]);
-                return redirect()->route('bill.list')->with('success_message', 'cupon ha sido aplicado con exito');
             }
-            if(session()->has('success_message')){
-                $request->session()->forget('coupon');
-            }
-        }
+            return redirect()->route('bill.list')->with('success_message', 'cupon ha sido aplicado con exito');
+        } 
     }
 
 // Function that creates a coupon and adds it to the database
@@ -116,12 +113,18 @@ class CouponsController extends Controller
     public function update(Request $request, Coupon $coupon)
     {
         $request->validate([
-            'code' => 'required',
-            'amount' => 'required',
-            'description' => 'required'
+            'code' => 'required|string',
+            'description' => 'required',
+            'amount' => 'required|numeric|min:0'
             ]);
             $input = $request->all();
-            $coupon->update($input);
+            $coupon = Coupon::find($coupon->id);
+
+            $coupon->code = $input['code'];
+            $coupon->description = $input['description'];
+            $coupon->amount = $input['amount'];
+            
+            $coupon->save();
             return redirect()->route('coupons.index')
             ->with('success','Cupón actualizado correctamente');
     }

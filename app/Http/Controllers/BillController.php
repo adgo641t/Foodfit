@@ -25,7 +25,6 @@ class BillController extends Controller
     public function index(Request $request)
     {
         return view('layouts/bill');
-    
     }
 // This is a function that implements the stripe api it sets the implementation and it charges the amount currency
 // and sends a message but first we need to put the stripe account in the env file
@@ -68,10 +67,20 @@ class BillController extends Controller
             'email' => ['required', 'email'],
             'adresa' => 'required',
             'zip' => 'required|digits:5',
-            'tarjeta' => 'required',
             'tarjetaNumero' => 'required|digits:15',
             'cvv' => 'required|digits:3',
         ]);
+        $cartItems = \Cart::getContent();
+        foreach ($cartItems as $cartItem) {
+            $bill = new Bill;
+            $bill->user_id = auth()->user()->id;
+            $bill->product_id = $cartItem->id;
+            $bill->name = $cartItem->name;
+            $bill->price = $cartItem->price;
+            $bill->quantity = $cartItem->quantity;
+            $bill->save();
+        } 
+        $request->session()->forget('coupon');
         return redirect('send-mail');
     }
 

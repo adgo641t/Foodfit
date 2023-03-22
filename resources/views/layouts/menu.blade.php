@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add to cart - Foot&Fit</title>
+    <title>Add to cart - Food&Fit</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <!-- Icon -->
     <link rel="icon" href="img/favicon.ico">
@@ -18,25 +18,13 @@
  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/faqs.css">
+<link rel="stylesheet" href="css/index.css">
 <!-- Font awesome -->
-<script src="https://kit.fontawesome.com/2469414de4.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
- integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
- crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
- integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
- crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
- integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
- crossorigin="anonymous"></script>
  <link rel="icon" href="img/favicon.ico">
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">  
-        <!-- My css style -->
-    <link rel="stylesheet" href="css/index.css">
-    <!-- Font awesome icons -->
 </head>
 
 <body>
@@ -82,10 +70,10 @@
                                 @endif
                                 @if(@Auth::user()->hasRole('admin'))
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{ route('products.index') }}">Pedir a la carta</a>
+                                    <a class="nav-link " aria-current="page" href="{{ route('products.index') }}">Seccion de Productos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{ route('coupons.index') }}">Seccion cupones</a>
+                                    <a class="nav-link " aria-current="page" href="{{ route('coupons.index') }}">Seccion cupones</a>
                                 </li>
                                 @endif
                             @else
@@ -115,6 +103,16 @@
     <div class="mt-5">
             @yield('content')
         </div>
+<script src="https://kit.fontawesome.com/2469414de4.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+ integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+ crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+ integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+ crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+ integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+ crossorigin="anonymous"></script>
         <script src="js/faqs.js"></script>
 </body>
 
