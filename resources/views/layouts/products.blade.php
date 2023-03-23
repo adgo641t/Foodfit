@@ -1,107 +1,106 @@
- @extends('layouts.frontend')
-    @section('content')
-        <div class="container px-6 mx-auto">
-            <h3 class="text-2xl font-small text-gray-700">Product List</h3>
-            <form action="/product">
-              <div class="relative border-2 border-gray-100 m-4 rounded-lg">
-                  <div class="absolute top-4 left-3">
-                      <i
-                          class="fa fa-search text-gray-400 z-20 hover:text-gray-500"
-                      ></i>
-                  </div>
-                  <input
-                      type="text"
-                      name="search"
-                      class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
-                      placeholder="Busca un producto...."
-                  />
-                  <div class="absolute top-2 right-2">
-                      <button
-                          type="submit"
-                          class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600"
-                      >
-                          Search
-                      </button>
-                  </div>
+@extends('layouts.menu')
+@section('content')
+    <div class="container px-6 mx-auto">
+        <form action="/product">
+          <div class="relative border-2 border-gray-100 rounded-lg search">
+              <div class="absolute top-4 left-3">
+                  <i
+                      class="fa fa-search text-gray-400 z-20 hover:text-gray-500"
+                  ></i>
               </div>
-          </form>
-          @if (count($products) == 0)
-              <h3 class="text-center">Producto no encontrado</h3>
-          @endif
-          <div class="row">
-            <div class="col-md-4 px-4">
-              <form action="/product">
-                <select name="category" class="form-select form-select-sm" aria-label="Default select example">
-                  <option value="">---</option>
-                  <option value="Desayuno">Desayuno</option>
-                  <option value="100% saludable">100% saludable</option>
-                  <option value="Vegetariano">Vegetariano</option>
-                  <option value="Nuevo">Nuevo</option>
-                  <option value="Favoritos">Favoritos</option>
-                </select>
-                <button type="submit" class="px-4 py-2 text-white bg-blue-800 rounded mt-2">Elegir categoria</button>
-              </form>
-            </div>
+              <input
+                  type="text"
+                  name="search"
+                  class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
+                  placeholder="Busca un producto...."
+              />
+              <div class="absolute top-2 right-2">
+                  <button
+                      type="submit"
+                      class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600"
+                  >
+                      Search
+                  </button>
+              </div>
           </div>
+      </form>
+      @if (count($products) == 0)
+          <h3 class="text-center">Producto no encontrado</h3>
+      @endif
+      <div class="row">
+        <div class="col-md-4 px-4">
+          <form action="/product">
+            <select name="category" class="form-select form-select-sm" aria-label="Default select example">
+              <option value="">---</option>
+              <option value="Desayuno">Desayuno</option>
+              <option value="100% saludable">100% saludable</option>
+              <option value="Vegetariano">Vegetariano</option>
+              <option value="Nuevo">Nuevo</option>
+              <option value="Favoritos">Favoritos</option>
+            </select>
+            <button type="submit" class="px-4 py-2 text-white bg-blue-800 rounded mt-2">Elegir categoria</button>
+          </form>
+        </div>
+      </div>
 
-            <div class="grid grid-cols-1 gap-6 mt-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                @foreach ($products as $product)
-                <div class="w-full max-w-sm mx-auto overflow-hidden rounded-md shadow-md">
-                    <img src="public/{{$product->image}}" alt="" class="w-full max-h-60">
-                    <div class="flex items-end justify-end w-full bg-cover">
-                        
-                    </div>
-                    <div class="px-5 py-3">
-                        <p class="text-gray-700" style="font-size: 1.2rem">{{ $product->name }}</p>
-                        <span class="mt-2 text-gray-500">${{ $product->price }}</span>
-                        <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf  
-                            <input type="hidden" value="{{ $product->id }}" name="id">
-                            <input type="hidden" value="{{ $product->name }}" name="name">
-                            <input type="hidden" value="{{ $product->price }}" name="price">
-                            <input type="hidden" value="{{ $product->image }}"  name="image">
-                            <input type="hidden" value="1" name="quantity">
-                            @if ($product->categories == 'Desayuno')
-                            <p style="color: darkgoldenrod">{{$product->categories}}</p>
-                            @elseif ($product->categories == 'Favoritos')
-                            <p style="color:darkorange">{{$product->categories}}</p>
-                            @elseif ($product->categories == 'Vegetariano')
-                            <p style="color:rgb(7, 186, 7)">{{$product->categories}}</p>
-                            @elseif ($product->categories == 'Nuevo')
-                            <p style="color:rgb(208, 188, 6)">🌟 {{$product->categories}}</p>
-                            @elseif ($product->categories == '100% saludable')
-                            <p style="color:rgb(66, 69, 224)">{{$product->categories}}</p>
-                            @endif
-                            <button class="px-4 py-2 text-white bg-blue-800 rounded">Add To Cart</button>
-                        </form>
-                    </div>
+        <div class="grid grid-cols-1 gap-6 mt-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            @foreach ($products as $product)
+            <div class="w-full max-w-sm mx-auto overflow-hidden rounded-md shadow-md">
+                <img src="public/{{$product->image}}" alt="" class="w-100 max-h-60">
+                <div class="flex items-end justify-end w-full bg-cover">
                     
                 </div>
-                @endforeach
-                <div class="mt-6 p-4">
-                  {{$products->links()}}
-              </div>
+                <div class="px-5 py-3">
+                    <p class="text-gray-700" style="font-size: 1.2rem">{{ $product->name }}</p>
+                    <span class="mt-2 text-gray-500">${{ $product->price }}</span>
+                    <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf  
+                        <input type="hidden" value="{{ $product->id }}" name="id">
+                        <input type="hidden" value="{{ $product->name }}" name="name">
+                        <input type="hidden" value="{{ $product->price }}" name="price">
+                        <input type="hidden" value="{{ $product->image }}"  name="image">
+                        <input type="hidden" value="1" name="quantity">
+                        @if ($product->categories == 'Desayuno')
+                        <p style="color: darkgoldenrod">🥓 {{$product->categories}}</p>
+                        @elseif ($product->categories == 'Favoritos')
+                        <p style="color:darkorange">{{$product->categories}}</p>
+                        @elseif ($product->categories == 'Vegetariano')
+                        <p style="color:rgb(7, 186, 7)">🥬 {{$product->categories}}</p>
+                        @elseif ($product->categories == 'Nuevo')
+                        <p style="color:rgb(208, 188, 6)">🌟 {{$product->categories}}</p>
+                        @elseif ($product->categories == '100% saludable')
+                        <p style="color:rgb(66, 69, 224)">🥗 {{$product->categories}}</p>
+                        @endif
+                        <button class="px-4 py-2 text-white bg-blue-800 rounded">Add To Cart</button>
+                    </form>
+                </div>
+                
             </div>
-        </div>
-        <footer id="footer">
-          <div class="col">
-            <a class="nav-link" href="{{ url('/faq') }}">Preguntas Frequentes</a>
+            @endforeach
+            <div class="mt-6 p-4">
+              {{$products->links()}}
           </div>
-          <div class="col">
-            <div class="icon-footer">
-              <i class="fa-brands fa-twitter"></i>
-              <i class="fa-brands fa-facebook"></i>
-              <i class="fa-brands fa-instagram"></i>
-              <i class="fa-solid fa-envelope"></i>
-            </div>
-          <p>© Copyright FOOD&FIT</p>
-      
-        </footer>
-    @endsection
+        </div>
+    </div>
+    <footer id="footer">
+      <div class="col">
+        <a class="nav-link" href="{{ url('/faq') }}">Preguntas Frequentes</a>
+      </div>
+      <div class="col">
+        <div class="icon-footer">
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+      <p>© Copyright FOOD&FIT</p>
+  
+    </footer>
+@endsection
 
-  <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-    </svg>
-  </button>
+<button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+</svg>
+</button>
 

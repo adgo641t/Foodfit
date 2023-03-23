@@ -16,13 +16,10 @@ class categorys_blog extends Seeder
     public function run()
     {
         Category_blogs::create([
-            'name' => 'Salud',
+            'name' => 'Salud y Bienestar',
         ]);
         Category_blogs::create([
-            'name' => 'Guay',
-        ]);
-        Category_blogs::create([
-            'name' => 'Comida',
+            'name' => 'Alimentacion',
         ]);
         Category_blogs::create([
             'name' => 'Deporte',

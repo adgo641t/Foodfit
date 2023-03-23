@@ -60,20 +60,31 @@ class LoginController extends Controller
             ],
         );
 
-        $role = auth()->user()->type; 
-        dd($role);
-        switch ($role) {
-          case '0':
-            return view('/home');
-            break;
-          case '1':
-            return view('/admin');
-            break; 
-      
-          default:
-            return view('/'); 
-          break;
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+        //$role = auth()->user()->type; 
+
+        if(Auth::attempt($credentials)) {
+            return view('/');
+        } else {
+            return view('auth.login');
         }
+
+        // dd($role);
+        // switch ($role) {
+        //   case '0':
+        //     return view('/home');
+        //     break;
+        //   case '1':
+        //     return view('/admin');
+        //     break; 
+      
+        //   default:
+        //     return view('/'); 
+        //   break;
+        // }
 
     }
 // Registration view
@@ -92,8 +103,16 @@ class LoginController extends Controller
             
         $data = $request->all();
         Hash::make($data['password']);
+
         $check = $this->create($data);
-          
+
+        $check->assignRole('cliente');
+
+        Auth::login($check);
+        $user = Auth::user();
+        // if($user->created_at == $user->updated_at){
+        //     return redirect("/home")->with("Coupon","Tienes un cupon");
+        // }
         return redirect("/home")->withSuccess('Te has registrado!');
     }
 // Function that creates user that registrates and adds it to the database

@@ -26,7 +26,6 @@ body{
 }
 
 .btnColor{
-    margin-top: 2rem;
     background-color: #DDC44B;
     color: white;
 }
@@ -85,13 +84,15 @@ body{
 }
 
 #imagen1{
-    width: 300px;
+    width: 25%;
 }
+
 #imagen2{
-    width: 370px;
+    width: 25%;
 }
+
 #imagen3{
-    width: 330px;
+    width: 25%;
 }
 
 #bloque_img{

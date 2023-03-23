@@ -28,7 +28,7 @@
   </head>
   <body class="bg-light">
 <div class="container">
-  <main>
+  <main>   
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="logo.png" alt="" width="130" height="57">
       <h2>Checkout form</h2>
@@ -100,6 +100,9 @@
           <span>Total (EUR)</span>
           <strong>€{{round(Cart::getTotal()*1.21,2, PHP_ROUND_HALF_EVEN)}}</strong>
         </li>
+        @if (Cart::getTotal()*1.21 > 40)
+        <p class="text-success">Tienes un cupon disponible - <b>EATWELL</b></p>
+       @endif
         </form>
         @endif
       </div>

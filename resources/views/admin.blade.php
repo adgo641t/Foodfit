@@ -1,28 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Food&Fit - Nourish what you want</title>
-        <!-- Icon -->
-        <link rel="icon" href="img/favicon.ico">
-        <!-- Google Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">  
-        <!-- My css style -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css">
-    <!-- Font awesome icons -->
-    <script src="https://kit.fontawesome.com/2469414de4.js" crossorigin="anonymous"></script>
-    <!-- Bootrap scripts -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+@extends('layouts.menu')
+@section('content')
+<div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             <!-- Menu -->
           <header>
             <nav class="navbar navbar-expand-lg fixed-top navbar-light navbarColor">
@@ -57,7 +35,7 @@
                 <p class="lead">
                   Food&Fit cocina por ti y llena tu nevera de tápers ricos y saludables sin complicarte la vida.
                 </p>
-                <button class="btn btnColor"><a href="{{ route('products.index') }}">PEDIR A LA CARTA</a></button>
+                <button class="btn btnColor"><a href="{{ route('products.index') }}" style="all:inherit">PEDIR A LA CARTA</a></button>
             </div>
         </div>
     </div>
@@ -193,7 +171,5 @@
   
     </footer>
   </div>
-
-        </div>
-    </body>
-</html>
+ </div>
+@endsection

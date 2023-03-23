@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('category');
+            $table->foreignId('category_id')->references('id')->on('category_blogs');
+            $table->string('creator');
             $table->string('image');
-            //$table->foreign('category')->references('name')->on('category_blogs');
+            //$table->foreignId('category_id')->references('id')->on('category_blogs');
             $table->timestamps();
         });
     }

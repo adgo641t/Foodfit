@@ -4,11 +4,16 @@
       <div class="container-fluid pageHeader">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12 marginHeader">
-                <h1> La suscripción semanal para que comas rico y sano.</h1>
+                <h1> La suscripción semanal para que comas rico y sano</h1>
                 <p class="lead">
                   Food&Fit cocina por ti y llena tu nevera de tápers ricos y saludables sin complicarte la vida.
                 </p>
-                <button class="btn btnColor"><a href="/product">PEDIR A LA CARTA</a></button>
+                @if(@Auth::user()->hasRole('cliente'))
+                <button class="btn btnColor"><a href="/product" style="all: inherit">PEDIR A LA CARTA</a></button>
+                @endif
+                @if(@Auth::user()->hasRole('admin'))
+                <button class="btn btnColor"><a href="{{ route('products.index') }}" style="all: inherit">PEDIR A LA CARTA</a></button>
+                @endif
             </div>
         </div>
     </div>

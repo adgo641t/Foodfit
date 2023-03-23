@@ -73,6 +73,10 @@
                   <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Precio</label>
                   <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="number" step="0.01" name="price" placeholder="Price" />
                 </div>
+                <div class="grid grid-cols-1">
+                  <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Categoria</label>
+                  <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="text" step="0.01" name="categories" placeholder="categoria" />
+                </div>
               </div>
           
               <div class="grid grid-cols-1 mt-5 mx-7">

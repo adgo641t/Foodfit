@@ -12,12 +12,29 @@ class blog extends Model
     protected $fillable = [
         'title',
         'description',
-        'category',
+        'category_id',
+        'creator',
         'image',
     ];
 
     public function blogs()
     {
         return $this->hasMany(blog::class);
+    }
+
+    public function scopeFilter($query, array $filters)
+    {
+        if($filters['category'] ?? false){
+            $query->where('category_id', 'like', '%' . request('category') . '%');
+        }
+
+        if($filters['search'] ?? false){
+
+            $query->where('title', 'like', '%' . request('search') . '%')
+            ->orWhere('description', 'like', '%' . request('search') . '%')
+            ->orWhere('category_id', 'like', '%' . request('search') . '%')
+            ->orWhere('creator', 'like', '%' . request('search') . '%')
+            ->orWhere('created_at', 'like', '%' . request('search') . '%');
+        }
     }
 }

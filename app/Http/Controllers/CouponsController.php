@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Coupon;
+use Darryldecode\Cart\Cart;
+use Illuminate\Http\Request;
 
 class CouponsController extends Controller
 {
@@ -42,15 +43,20 @@ class CouponsController extends Controller
         $coupon = Coupon::where('code', $request->coupon_code)->first();
         if (!$coupon) {
             return redirect()->route('bill.list')->with('danger', 'coupon no existe. Inténtalo otra vez.');
+        }else if($request->coupon_code === $coupon->code){
+            if(\Cart::getTotal()*1.21 > 40){
+                $request->session()->put('coupon',  [
+                    'code' => $coupon->code,
+                    'amount' => $coupon->amount,
+                ]);
+                return redirect()->route('bill.list')->with('success_message', 'cupon ha sido aplicado con exito');
+            }
+            if(session()->has('success_message')){
+                $request->session()->forget('coupon');
+            }
         }
-         $request->session()->put('coupon',  [
-             'code' => $coupon->code,
-             'amount' => $coupon->amount,
-         ]);
-
-         return redirect()->route('bill.list')->with('success_message', 'cupon ha sido aplicado con exito');
-
     }
+
 // Function that creates a coupon and adds it to the database
     public function store(Request $request)
     {

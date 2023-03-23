@@ -5,14 +5,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\Auth\LoginController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\BlogController;
-use App\Mail\TestEmail;
-use Illuminate\Support\Facades\Mail;
-use Carbon\Carbon;
+use App\Http\Controllers\SendEmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +40,6 @@ Route::get('/register', [LoginController::class, 'registration'])->name('registe
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
 //POSTS
 // Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::post('/bill', [CouponsController::class, 'validCoupon'], function () {
@@ -71,17 +67,9 @@ Route::group(['middleware', ['role:cliente']],function () {
     Route::get('/home', function () {
         return view('home');
     });
-
+    Route::get('send-mail', [SendEmailController::class, 'index']);
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
-    Route::get('/ShowCategoryBlog/{category}', [BlogController::class, 'showCategory'])->name('ShowCategoryBlog');
-
-    Route::get('/add_blog', [BlogController::class, 'AddNewBlog'])->name('add_blog');
-
-
-    Route::post('/blog.store', [BlogController::class, 'StoreBlog'])->name('blog.store');
-
-
 
     Route::get('/faq', function () {
         return view('profile.userFaqs');
@@ -119,6 +107,9 @@ All Admin Routes List
 --------------------------------------------*/
 Route::group(['middleware', ['role:admin']],function () {
 
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
+    
     Route::get('/admin', function () {
         return view('admin');
     });
@@ -128,6 +119,31 @@ Route::group(['middleware', ['role:admin']],function () {
 
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
+
+    Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
+
+    Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
+    Route::post('UpdateNewBlog/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlog');
+
+});
+
+Route::group(['middleware', ['role:BlogCreator']],function () {
+
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+    Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
+    Route::get('/ShowCategoryBlog/{category}', [BlogController::class, 'showCategory'])->name('ShowCategoryBlog');
+
+    Route::get('/add_blog', [BlogController::class, 'AddNewBlog'])->name('add_blog');
+
+
+    Route::post('/blog.store', [BlogController::class, 'StoreBlog'])->name('blog.store');
+
+
+    Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
+
+    Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
+    Route::post('UpdateNewBlog/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlog');
+
 });
 
 Route::get('/forget-password', [ForgotPasswordController::class, 'getEmail']);
@@ -136,5 +152,3 @@ Route::post('/forget-password',  [ForgotPasswordController::class, 'postEmail'])
 
 
 // Auth::routes();
-
-

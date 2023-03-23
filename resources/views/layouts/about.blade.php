@@ -1,25 +1,31 @@
 @extends('layouts.menu')
 @section('content')
     <!--sobre nosotros-->
-    <div class="container mx-auto px-7" id="about">
+    <div class="container" id="about">
       <div class="row">
-        <h1 class="">Quienes somos y que es este Negocio</h1>
+      <h1 class="">Quienes somos y que es este Negocio</h1>
         <br>
         <p>Hola queridos visitantes, En estos momentos vamos a explicaros en que consiste nuestro modelo de restaurante: Nuestro restaurante trata de servir 
             un tipo de comida diferente a la usual, ofrecemos comida variada sin necesidad de poner carne, respecto a nosotros somos 3 humildes chavales 
             que hemos salido de DAW llenos de sabiduria y experiencia gracias a nuestros maravillosos profesores. 
         </p>
       </div>
-    </div>
-
-    <div class="container col-xl-12 col-md-6 col-sm-3" id="bloque_img">
-      <div class="row">
-        <img class="col-lg-4 col-md-2 col-sm-1" id="imagen1" src="public/DANI_CHAD.jpg" alt="">
-        <img class="col-lg-4 col-md-2 col-sm-1" id="imagen2" src="public/JORDI_CHAD.jpg" alt="">
-        <img class="col-lg-4 col-md-2 col-sm-1" id="imagen3" src="public/obama_CHAD.jpg" alt="">
+      <div class="row justify-content-center">
+        <div  class="col-md-5 mt-3 col-lg-3">
+          <img style="width:83%" class="img-fluid" id="Adrian" src="public/DANI_CHAD.jpg" alt="Imagen adrian">
+        </div>
+        <div  class="col-md-5 mt-3 col-lg-3">
+          <img class="img-fluid"  id="Jose"  src="public/JORDI_CHAD.jpg" alt="Imagen Jord">
+        </div >
+        <div  class="col-md-5 mt-3 col-lg-3">  
+          <img style="width:90%" class="img-fluid" id="Wintop" src="public/obama_CHAD.jpg" alt="">
+        </div>
+        <div  class="col-md-5 mt-3 col-lg-3">  
+          <img style="width:90%" class="img-fluid" id="Wintop" src="public/Pau.png" alt="">
+        </div>
       </div>
     </div>
-
+  </div>
     <!-- Footer section -->
     <footer id="footer">
       <div class="col text-center">
