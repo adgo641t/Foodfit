@@ -79,14 +79,13 @@
                 </div>
                 <div class="px-6 pt-4 pb-2">
                    
+                <!---->
                 <button><span
-                @if($Blog->category_id == 1)
-                {{$Blog->category_id = 'Salud y bienestar'}}
-                @elseif($Blog->category_id == 2)
-                {{$Blog->category_id = 'Alimentación'}}
-                @elseif($Blog->category_id == 3)
-                {{$Blog->category_id = 'Deporte'}}
-                @endif
+                @foreach($Category_blogs as $category)
+                    @if($Blog->category_id == $category->id)
+                            {{$Blog->category_id = $category->name}}
+                    @endif
+                @endforeach
                 class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><a style=" text-decoration: none; color: inherit">{{$Blog->category_id}}</a></span></button>
                 <!--Admin-->
                 @if(@Auth::user()->hasRole('admin'))
@@ -138,4 +137,7 @@
     </div>
     </div>
     </section>
+    <div class="flex flex-row items-center text-gray-600">
+              {{$blogs->links()}}
+    </div>
 @endsection

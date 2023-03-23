@@ -53,6 +53,23 @@
             <option value="{{$id->id}}">{{$id->name}}</option>
         @endforeach
         </select>
+          <br>
+          <button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Category</button>  
+            <div id="Add_category" style="display: hidden;" class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <form action="{{ route('Add_new_category') }}" method="post">
+              @csrf
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                  Name of Category
+                </label>
+                <input value="{{old('category_name')}}" id="category_name" name="category_name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Creator">
+                <input name="StoreCategory" type="submit" button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                @error('creator')
+                    <small style="color: red;">{{$message}}</small>
+                  @enderror
+                </form> 
+              </div>
+            </div>
           @error('category')
             <small style="color: red;">{{$message}}</small>
           @enderror
@@ -68,7 +85,20 @@
             <small style="color: red;">{{$message}}</small>
           @enderror
       <br> 
-    <input type="submit" button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+    <input name="store" type="submit" button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
 </form>
 </div>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#Add_category").hide();
+
+    $("#dynamic-ar").click(function() {
+      $('#Add_category').show();
+    })
+    
+  }); 
+</script>

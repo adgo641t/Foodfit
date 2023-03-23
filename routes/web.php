@@ -10,6 +10,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\Category_controller;
+use App\Models\Category_blogs;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,6 +121,8 @@ Route::group(['middleware', ['role:admin']],function () {
 
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
+
+    Route::post('Add_new_category', [BlogController::class,'CreateNewCategory'])->name('Add_new_category');
 
     Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
 
