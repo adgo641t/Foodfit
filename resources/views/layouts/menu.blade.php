@@ -58,7 +58,7 @@
                                 <a class="nav-link" href="{{ url('/abouts') }}">About</a>
                             </li>
                                 <!--If user is logged-->
-                                @if(@Auth::user()->hasRole('cliente'))
+                                @if(@Auth::user()->hasRole('client'))
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/product') }}">Pedir a
                                         la carta</a>
@@ -86,6 +86,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link " aria-current="page" href="{{ route('coupons.index') }}">Administración de cupones</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Administracion de Blog</a>
                                 </li>
                                 @endif
                              <!--To logout-->

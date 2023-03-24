@@ -8,7 +8,7 @@
                 <p class="lead">
                   Food&Fit cocina por ti y llena tu nevera de tápers ricos y saludables sin complicarte la vida.
                 </p>
-                @if(@Auth::user()->hasRole('cliente'))
+                @if(@Auth::user()->hasRole('client'))
                 <button class="btn btnColor"><a href="/product" style="all: inherit">PEDIR A LA CARTA</a></button>
                 @endif
                 @if(@Auth::user()->hasRole('admin'))
