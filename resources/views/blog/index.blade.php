@@ -55,18 +55,15 @@
         <div class="col-md-4 px-4">
           <form action="/blog">
             <select name="category" class="form-select form-select-sm" aria-label="Default select example">
-              <option value="">---</option>
-              <option value="1">Salud y Bienestar</option>
-              <option value="2">Alimentacion</option>
-              <option value="3">Deporte</option>
-
+            @foreach($Category_blogs as $category)
+              <option value="{{$category->id}}">{{$category->name}}</option>
+              @endforeach
             </select>
             <button type="submit" class="px-4 py-2 text-white bg-blue-800 rounded mt-2">Elegir categoria</button>
           </form>
         </div>
       </div>
       <br>
-      
         <div class="grid grid-cols-3 gap-3">
     @foreach($blogs as $Blog)
             <div class="rounded overflow-hidden shadow-lg">
@@ -79,14 +76,13 @@
                 </div>
                 <div class="px-6 pt-4 pb-2">
                    
+                <!---->
                 <button><span
-                @if($Blog->category_id == 1)
-                {{$Blog->category_id = 'Salud y bienestar'}}
-                @elseif($Blog->category_id == 2)
-                {{$Blog->category_id = 'Alimentación'}}
-                @elseif($Blog->category_id == 3)
-                {{$Blog->category_id = 'Deporte'}}
-                @endif
+                @foreach($Category_blogs as $category)
+                    @if($Blog->category_id == $category->id)
+                            {{$Blog->category_id = $category->name}}
+                    @endif
+                @endforeach
                 class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><a style=" text-decoration: none; color: inherit">{{$Blog->category_id}}</a></span></button>
                 <!--Admin-->
                 @if(@Auth::user()->hasRole('admin'))
@@ -138,4 +134,7 @@
     </div>
     </div>
     </section>
+    <div class="flex flex-row items-center text-gray-600">
+              {{$blogs->links()}}
+    </div>
 @endsection
