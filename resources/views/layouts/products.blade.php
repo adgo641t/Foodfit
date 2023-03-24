@@ -59,6 +59,7 @@
                         <input type="hidden" value="{{ $product->name }}" name="name">
                         <input type="hidden" value="{{ $product->price }}" name="price">
                         <input type="hidden" value="{{ $product->image }}"  name="image">
+                        <input type="hidden" value="{{ $product->stock }}" name="stock">
                         <input type="hidden" value="1" name="quantity">
                         @if ($product->categories == 'Desayuno')
                         <p style="color: darkgoldenrod">🥓 {{$product->categories}}</p>

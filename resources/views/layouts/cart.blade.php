@@ -15,6 +15,11 @@
                               <p class="text-green-800">{{ $message }}</p>
                           </div>
                       @endif
+                      @if ($message = Session::get('error'))
+                      <div class="p-4 mb-3 bg-red-400 rounded" x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show">
+                          <p class="text-green-800">{{ $message }}</p>
+                      </div>
+                  @endif
                       <a href="/product" class="inline-block text-black ml-4 mb-4"
 ><i class="fa-solid fa-arrow-left"></i> Back
 </a>
@@ -49,7 +54,9 @@
                                     <form action="{{ route('cart.update') }}" method="POST">
                                       @csrf
                                       <input type="hidden" name="id" value="{{ $item->id}}" >
+                                      <input type="hidden" name="stock" value="{{ $item->attributes->stock}}" >
                                     <input type="number" name="quantity" value="{{ $item->quantity }}" 
+
                                     class="w-12 text-center bg-gray-300" />
                                     <button type="submit">
                                       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-emerald-400"
@@ -83,7 +90,6 @@
                               </td>
                             </tr>
                             @endforeach
-                             
                           </tbody>
                         </table>
                         <div>

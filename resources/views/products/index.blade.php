@@ -1,13 +1,13 @@
 @extends('layouts.menu')
 @section('content')
-    <h1 class="text-center" style="margin-top: 3rem; font-size:2rem">Lista de Productos</h1>
+    <h1 class="text-center" style="margin-top: 5rem; font-size:2rem">Lista de Productos</h1>
         @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
             </div>
         @endif
         <!-- new -->
-        <div class="flex items-center justify-center min-h-screen mt-5">
+        <div class="flex items-center justify-center min-h-screen mb-5">
             <div class="col-span-12">
                 <div class="overflow-auto lg:overflow-visible">
                     <table class="table text-gray-400 border-separate text-sm text-center">
@@ -41,9 +41,6 @@
                                             <i class="fa-solid fa-pen-to-square text-emerald-400"></i>
                                         </button>
                                     </a>
-                                    @hasrole('admin')
-                                        @if(@Auth::user()->hasPermissionTo('DeleteProductos'))
-                                    <!--Delete-->
                                     <form action="{{ route('products.destroy',$product->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -52,8 +49,7 @@
                                             <i class="fa-solid fa-trash-can text-rose-400"></i>
                                           </button>
                                     </form>
-                                        @endif
-                                    @endrole
+                                    
                                 </td>
                             </tr>
                             @endforeach

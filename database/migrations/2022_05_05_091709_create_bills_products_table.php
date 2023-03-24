@@ -15,19 +15,22 @@ return new class extends Migration
     {
         Schema::create('bills_products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('bill_id');
-            $table->foreign('bill_id')
-                  ->references('id')
-                  ->on('bills')
-                  ->cascadeOnDelete()
-                  ->cascadeOnUpdate();
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')
                     ->references('id')
                     ->on('products')
                     ->cascadeOnDelete()
                     ->cascadeOnUpdate();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->cascadeOnDelete()
+                    ->cascadeOnUpdate();        
+            $table->string('name');
             $table->integer('quantity');
+            $table->integer('price');
+            $table->integer('totalprice');
             $table->timestamps();
         });
     }
