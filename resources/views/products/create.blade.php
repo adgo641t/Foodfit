@@ -26,29 +26,18 @@
 </style>
 
 </head>
-<body>
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Add New Product</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
-         
+<body>         
     @if ($errors->any())
         <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <strong>Whoops!</strong> Hay problemas con tu input.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
-    @endif    
-
+    @endif 
+    
     <div class="flex h-screen items-center justify-center  mt-32 mb-32">
         <div class="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-1/2">
           <div class="flex justify-center py-4">
@@ -67,21 +56,21 @@
               <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
                 <div class="grid grid-cols-1">
                   <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Nombre</label>
-                  <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="text" name="name" placeholder="Name" />
+                  <input  value="{{old('name')}}" class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="text" name="name" placeholder="Name"  />
                 </div>
                 <div class="grid grid-cols-1">
                   <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Precio</label>
-                  <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="number" step="0.01" name="price" placeholder="Price" />
+                  <input value="{{old('price')}}" class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="number" step="0.01" name="price" placeholder="Price"/>
                 </div>
                 <div class="grid grid-cols-1">
                   <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Categoria</label>
-                  <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="text" step="0.01" name="categories" placeholder="categoria" />
+                  <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="text" step="0.01" name="categories" placeholder="categoria"  />
                 </div>
               </div>
           
               <div class="grid grid-cols-1 mt-5 mx-7">
                 <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Descripción</label>
-                <textarea class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" style="height:150px" name="description" placeholder="Description"></textarea>
+                <textarea class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" style="height:150px" name="description" placeholder="Description">{{old('description')}}</textarea>
               </div>
     
               <div class="grid grid-cols-1 mt-5 mx-7">
@@ -99,6 +88,10 @@
             
              <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
                 <button class='w-auto bg-teal-500 hover:bg-teal-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Crear</button>
+              </div>
+
+              <div class='flex items-center justify-center  md:gap-8 gap-4 pt-1 pb-5'>
+                  <a class="btn btn-primary" href="{{ route('products.index') }}">Back</a>
               </div>
              
         </form>

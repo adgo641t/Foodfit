@@ -38,7 +38,7 @@
 
   <!-- Testimonails section -->
   <div class="container-fluid">
-    <div class="row marginHeader">
+    <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
           <h1 class="display-6 textAlignment">Lo que dicen de nosotros</h1>
       </div>
@@ -49,12 +49,12 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <h2 class="testimonial-text">Estos chicos son unos cracks fui al restaurante era perfecto tuve que cancelar el programa</h2>
-          <img src="public/gordon.jpg" class="testimonial-img" alt="dog-profile">
+          <img class="content-center" src="public/gordon.jpg" class="testimonial-img " alt="dog-profile">
           <em>Gordon Ramsay, New York</em>
         </div>
         <div class="carousel-item">
           <h2 class="testimonial-text">Ahora me llaman Don sucio me acabo de hinchar a comer en este restaurante me encanta.</h2>
-          <img src="public/don-limpio.png" class="testimonial-img" alt="lady-profile">
+          <img src="public/don-limpio.png" class="testimonial-img object-center" alt="lady-profile">
           <em>Don limpio, Illinois</em>
         </div>
         <div class="carousel-item">
@@ -79,7 +79,7 @@
     </div>
 
   </section>
-  <section id="press">
+  <section class="row py-12 object-center	" id="press">
     <img class="press-logo" src="public/Spacex.png" alt="tc-logo">
     <img class="press-logo" src="public/mcdonald.png" alt="tnw-logo">
     <img class="press-logo" src="public/forbes-logo.png" alt="biz-insider-logo">

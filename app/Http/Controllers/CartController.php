@@ -17,7 +17,6 @@ class CartController extends Controller
     public function cartList()
     {
         $cartItems = \Cart::getContent();
-        // dd($cartItems);
         return view('layouts/cart', compact('cartItems'));
     }
 // Function that adds to the cart the attributes of the product
@@ -30,7 +29,8 @@ class CartController extends Controller
             'quantity' => $request->quantity,
             'attributes' => array(
             'image' => $request->image,
-            )
+            'stock' => $request->stock
+            ),
         ]);
         session()->flash('success', 'Producto añadido!');
 
@@ -39,19 +39,27 @@ class CartController extends Controller
 // Function that updates the cart and sends a message when updated
     public function updateCart(Request $request)
     {
-        \Cart::update(
-            $request->id,
-            [
-                'quantity' => [
-                    'relative' => false,
-                    'value' => $request->quantity
-                ],
-            ]
-        );
-
-        session()->flash('success', 'Carrito actualizado !');
-
-        return redirect()->route('cart.list');
+        if($request->quantity > $request->stock){
+            session()->flash('error', 'Productos insuficientes en nuestro Stock');
+            return redirect()->route('cart.list');
+        }else if($request->quantity <= 0 ){
+            session()->flash('error', 'Cantidad no puede ser negativa');
+            return redirect()->route('cart.list');
+        }else{
+            \Cart::update(
+                $request->id,
+                [
+                    'quantity' => [
+                        'relative' => false,
+                        'value' => $request->quantity
+                    ],
+                ]
+            );
+    
+            session()->flash('success', 'Carrito actualizado !');
+    
+            return redirect()->route('cart.list');
+        }
     }
 // It removes and element from the cart by the id of the product
     public function removeCart(Request $request)

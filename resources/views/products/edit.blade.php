@@ -25,21 +25,10 @@
 </style>
 
 </head>
-<body>
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Product</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
-     
+<body>     
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <div class="p-4 mb-3 bg-red-400 rounded" x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show">
+            <strong>Whoops!</strong> Hay problemas en el input.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -47,6 +36,12 @@
             </ul>
         </div>
     @endif
+
+    @if ($message = Session::get('error'))
+    <div class="p-4 mb-3 bg-red-400 rounded" x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show">
+        <p class="text-green-800">{{ $message }}</p>
+    </div>
+@endif
     
     <div class="flex h-screen items-center justify-center  mt-32 mb-32">
         <div class="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-1/2">
@@ -97,6 +92,9 @@
              <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
                 <button class='w-auto bg-teal-500 hover:bg-teal-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Editar</button>
               </div>
+              <div class='flex items-center justify-center  md:gap-8 gap-4 pt-2 pb-5'>
+                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
+            </div>
              
         </form>
       

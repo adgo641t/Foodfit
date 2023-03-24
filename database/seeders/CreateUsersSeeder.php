@@ -77,7 +77,7 @@ class CreateUsersSeeder extends Seeder
             'password' => '$2y$10$x.Ot5fO84DkomAhWkPBXTOEYNjsn.pZ9YGS2PDFPpfve8eJYsKu0q',
         ]);
 
-        $role_cliente = Role::create(['name' => 'client']);
+        $role_cliente = Role::create(['name' => 'cliente']);
 
         $user_cliente->assignRole($role_cliente);
 

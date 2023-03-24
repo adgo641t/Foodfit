@@ -45,7 +45,8 @@ public function index()
     public function store(Request $request)
     {
             $request->validate([
-                'name' => 'required',
+                'name' => 'required|string',
+                'price' => 'required|numeric|min:0',
                 'description' => 'required',
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
@@ -58,11 +59,10 @@ public function index()
                 $image->move($destinationPath, $profileImage);
                 $input['image'] = "$profileImage";
             }
-        
+
             Product::create($input);
-         
             return redirect()->route('products.index')
-                            ->with('success','Product creado exitosamente.');
+            ->with('success','Product creado exitosamente.');  
     }
 
     /**
@@ -100,10 +100,10 @@ public function index()
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'name' => 'required',
-            'price' => 'required'
+            'name' => 'required|string',
+            'price' => 'required|numeric'
         ]);
-  
+
         $input = $request->all();
 
         // It gets the image that the user chose to input and updates the file chosen and destination to save the file
@@ -116,12 +116,16 @@ public function index()
         }else{
             unset($input['image']);
         }
+        if($request->price < 0){
+            return redirect()->back()->with('error', 'No se pueden poner numeros negativos');
+        }else{
         // it updates the product and saves the new values in the database
         $product->update($input);
-    
         return redirect()->route('products.index')
-                        ->with('success','Product actualizado correctamente');
+        ->with('success','Product actualizado correctamente');
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.
