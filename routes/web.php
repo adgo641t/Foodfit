@@ -125,8 +125,12 @@ Route::group(['middleware', ['role:admin']],function () {
 
     Route::get('ShowAddCategory', function () {
         return view('blog.AddCategoryBlog');
-    });
+    })->name('ShowAddCategory');
+
     Route::post('Add_new_category', [BlogController::class,'CreateNewCategory'])->name('Add_new_category');
+
+    Route::post('StoreCategory', [Category_controller::class,'CreateNewCategory'])->name('StoreCategory');
+
 
     Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
 

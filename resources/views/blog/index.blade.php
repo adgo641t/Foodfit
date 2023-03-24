@@ -55,18 +55,15 @@
         <div class="col-md-4 px-4">
           <form action="/blog">
             <select name="category" class="form-select form-select-sm" aria-label="Default select example">
-              <option value="">---</option>
-              <option value="1">Salud y Bienestar</option>
-              <option value="2">Alimentacion</option>
-              <option value="3">Deporte</option>
-
+            @foreach($Category_blogs as $category)
+              <option value="{{$category->id}}">{{$category->name}}</option>
+              @endforeach
             </select>
             <button type="submit" class="px-4 py-2 text-white bg-blue-800 rounded mt-2">Elegir categoria</button>
           </form>
         </div>
       </div>
       <br>
-      
         <div class="grid grid-cols-3 gap-3">
     @foreach($blogs as $Blog)
             <div class="rounded overflow-hidden shadow-lg">
