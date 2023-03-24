@@ -84,7 +84,6 @@
               <small class="text-muted">{{$item->name}}</small>
             </div>
             <span class="text-muted">{{$item->price}}€</span>
-            @endforeach
           </li>
           <li class="list-group-item d-flex justify-content-between">
             <span>IVA 21%</span>
@@ -103,6 +102,7 @@
         @if (Cart::getTotal()*1.21 > 40)
         <p class="text-success">Tienes un cupon disponible - <b>EATWELL</b></p>
        @endif
+       @endforeach
         </form>
         @endif
       </div>

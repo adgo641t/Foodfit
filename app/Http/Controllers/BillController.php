@@ -78,6 +78,7 @@ class BillController extends Controller
             $bill->name = $cartItem->name;
             $bill->price = $cartItem->price;
             $bill->quantity = $cartItem->quantity;
+            $bill->totalprice = round(\Cart::getTotal()*1.21,2);
             $bill->save();
         } 
         $request->session()->forget('coupon');
@@ -92,7 +93,13 @@ class BillController extends Controller
      */
     public function show(Bill $bill)
     {
-        //
+        $user = auth()->user()->id;
+
+        $bill = Bill::select('*')
+        ->where('user_id', '=', $user)
+        ->get();
+        
+        return view('layouts/show-bill', compact('bill'));
     }
 
     /**

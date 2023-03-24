@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coupon;
+use App\Models\Product;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 
@@ -40,6 +41,7 @@ class CouponsController extends Controller
     // It validates if the coupons exist when applied and it gives a message if applied correctly or not
     public function validCoupon(Request $request)
     {
+        $cartItems = \Cart::getContent();
         $coupon = Coupon::where('code', $request->coupon_code)->first();
         if (!$coupon) {
             return redirect()->route('bill.list')->with('danger', 'coupon no existe. Inténtalo otra vez.');

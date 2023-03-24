@@ -12,10 +12,10 @@ class Bill extends Model
     protected $table = 'bills_products';
 
     protected $fillable = [
-        'name', 'quantity', 'price',
+        'name', 'quantity', 'price','totalprice'
     ];
 
     protected $hidden = [
-        'name', 'quantity', 'price',
+        'name', 'quantity', 'price','totalprice'
     ];
 }

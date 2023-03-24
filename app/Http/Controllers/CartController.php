@@ -42,6 +42,9 @@ class CartController extends Controller
         if($request->quantity > $request->stock){
             session()->flash('error', 'Productos insuficientes en nuestro Stock');
             return redirect()->route('cart.list');
+        }else if($request->quantity <= 0 ){
+            session()->flash('error', 'Cantidad no puede ser negativa');
+            return redirect()->route('cart.list');
         }else{
             \Cart::update(
                 $request->id,
