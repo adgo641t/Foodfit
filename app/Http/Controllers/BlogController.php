@@ -22,7 +22,7 @@ class BlogController extends Controller
         //$blog = Blog::all();
         
         return view('blog/index' ,[
-            'blogs' => Blog::latest()->filter(request(['category','search']))->simplePaginate(2),
+            'blogs' => Blog::latest()->filter(request(['category','search']))->simplePaginate(4),
             'Category_blogs' => Category_blogs::all()
         ]);  
     }
