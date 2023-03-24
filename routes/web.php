@@ -121,7 +121,11 @@ Route::group(['middleware', ['role:admin']],function () {
 
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
+    
 
+    Route::get('ShowAddCategory', function () {
+        return view('blog.AddCategoryBlog');
+    });
     Route::post('Add_new_category', [BlogController::class,'CreateNewCategory'])->name('Add_new_category');
 
     Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
