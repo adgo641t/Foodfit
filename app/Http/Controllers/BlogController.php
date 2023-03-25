@@ -30,8 +30,9 @@ class BlogController extends Controller
     public function show($id) {
 
         $blog = Blog::find($id);
+        $Category_blogs = Category_blogs::all();
         
-        return view('blog/ShowBlog', compact('blog'));  
+        return view('blog/ShowBlog', compact('blog', 'Category_blogs'));  
     }
 
     
@@ -72,10 +73,17 @@ class BlogController extends Controller
             $blog->category_id = $request->category_id;
             $blog->creator = $request->creator;
             $blog->image =  $imageName;
+            
 
             //$request->file->store('product', 'public');
 
             $blog->save(); // Finally, save the record.
+
+            //$category = Category_blogs::find($request->category_id);
+
+            //$blog->categories()->attach([$blog->id, $request->category_id]);
+
+            
 
             return redirect()->route('blog');
         }

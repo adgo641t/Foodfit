@@ -1,11 +1,21 @@
 @extends('layouts.menu')
 @section('content')
-<br>
-<br>
-<br>
-<br>
-<div class="container">
-    <form action="{{ route('UpdateNewBlog', $blog) }}" method="post" enctype="multipart/form-data">
+<body class="bg-gray-200 font-sans leading-normal tracking-normal">
+	<!--Header-->
+	<div class="w-full m-0 p-0 bg-cover bg-bottom" style="background-image:url('https://tailwindtoolbox.github.io/Ghostwind/cover.jpg'); height: 60vh; max-height:460px;">
+			<div class="container max-w-4xl mx-auto pt-16 md:pt-32 text-center break-normal">
+				<!--Title-->
+					<p class="text-white font-extrabold text-3xl md:text-5xl">
+						 Food&Fit Blog
+					</p>
+					<p class="text-xl md:text-2xl text-gray-500">Welcome to Food&Fit Blog</p>
+			</div>
+		</div>
+<div class="container space-y-12">
+    <h1 style="text-align: center">Edit the post</h1>
+  <form action="{{ route('UpdateNewBlog', $blog) }}" method="post" enctype="multipart/form-data">
+  <div class="block w-100 p-8 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">  
+
     @csrf
     <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -64,6 +74,40 @@
   </div>
   <br> 
     <input type="submit" button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+    </div>
+
 </form>
 </div>
+<br>
+<footer class="bg-gray-900">	
+		<div class="container max-w-6xl mx-auto flex items-center px-2 py-8">
+
+			<div class="w-full mx-auto flex flex-wrap items-center">
+				<div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+					<a class="text-gray-900 no-underline hover:text-gray-900 hover:no-underline" href="#">
+					    <span class="text-base text-gray-200">Food&Fit Blog</span>
+					</a>
+				</div>
+				<div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+					<ul class="list-reset flex justify-center flex-1 md:flex-none items-center">
+					  <li>
+						<a class="inline-block py-2 px-3 text-white no-underline" href="#">Blog</a>
+					  </li>
+					  <li>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="{{ route('faqs') }}">Faqs</a>
+					  </li>
+					  <li>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Facebook</a>
+					  </li>
+						<li>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Linkedin</a>
+					  </li>
+					</ul>
+				</div>
+			</div>
+        
+		
+		</div>
+	</footer>
+</body>
 @endsection
