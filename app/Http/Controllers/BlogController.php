@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Blog;
+use App\Models\blog;
 use App\Models\Category_blogs;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,7 +13,7 @@ class BlogController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:web', ['except' => ['index']]);
+        $this->middleware('auth:web');
     }
 
 
@@ -22,14 +22,14 @@ class BlogController extends Controller
         //$blog = Blog::all();
         
         return view('blog/index' ,[
-            'blogs' => Blog::latest()->filter(request(['category','search']))->simplePaginate(4),
+            'blogs' => blog::latest()->filter(request(['category','search']))->simplePaginate(4),
             'Category_blogs' => Category_blogs::all()
         ]);  
     }
 
     public function show($id) {
 
-        $blog = Blog::find($id);
+        $blog = blog::find($id);
         $Category_blogs = Category_blogs::all();
         
         return view('blog/ShowBlog', compact('blog', 'Category_blogs'));  
@@ -38,7 +38,7 @@ class BlogController extends Controller
     
     public function showCategory($category) {
 
-        $blog = Blog::where('Categori_blog', $category);
+        $blog = blog::where('Categori_blog', $category);
         //dd($blog);
         
         return view('blog/ShowBlogCategory', compact('blog'));  
@@ -67,7 +67,7 @@ class BlogController extends Controller
             $imageName = time() . '.' . $request->file->extension();
             $request->file->move(public_path('public'), $imageName);
 
-            $blog = new Blog();
+            $blog = new blog();
             $blog->title = $request->title;
             $blog->description = $request->description;
             $blog->category_id = $request->category_id;
@@ -91,7 +91,7 @@ class BlogController extends Controller
 
     }
     public function DeleteBlog($id) {
-        $blog = Blog::find($id);
+        $blog = blog::find($id);
         $blog->delete();
 
         return redirect()->route('blog');
@@ -99,9 +99,9 @@ class BlogController extends Controller
     }
 
     public function GetUpdateView($id) {
-        $blog = Blog::find($id);
+        $blog = blog::find($id);
         $category_blog = Category_blogs::all();
-        return view('blog/UpdateBlog', compact('blog','category_blog'));
+        return view('blog/UpdateBLog', compact('blog','category_blog'));
     }
 
     public function UpdateNewBlog(Request $request, Blog $blog) {

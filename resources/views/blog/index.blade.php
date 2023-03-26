@@ -1,4 +1,5 @@
 @extends('layouts.menu')
+
 @section('content')
 <body class="bg-gray-200 font-sans leading-normal tracking-normal">
 	<!--Header-->
@@ -19,7 +20,7 @@
 <section class="mx-auto flex flex-row items-center text-gray-600">
     
         <div class="container px-6 py-24 mx-auto ">
-        <form action="/blog">
+        <form action="blog">
           <div class="relative border-2 border-gray-100 rounded-lg search">
               <div class="absolute top-4 left-3">
                   <i
@@ -48,7 +49,7 @@
     @endif
     <div class="w-full lg:w-1/4">
     <label for="category" class="block text-gray-700 font-bold mb-2">Categoría:</label>
-    <form action="/blog">
+    <form action="blog">
                 <select name="category" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
                 <option value="">Todas las categorias</option>
                 @foreach($Category_blogs as $category)
@@ -79,7 +80,7 @@
             
             <div style="background-color:white" class="rounded overflow-hidden shadow-lg">
                 <a href="{{route('ShowBlog', $Blog->id)}}">
-                    <img  class="lg:h-72 md:h-48 w-full object-cover object-center" src="public/{{$Blog->image}}" alt="Sunset in the mountains">
+                    <img  class="lg:h-72 md:h-48 w-full object-cover object-center" src="../public/{{$Blog->image}}" alt="Sunset in the mountains">
                 </a>
                 <p
                 @foreach($Category_blogs as $category)

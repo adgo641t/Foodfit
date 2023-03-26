@@ -36,6 +36,10 @@ Route::get('/sobre', function () {
     return view('sobre');
 });
 
+Route::get('/abouts', function () {
+    return view('layouts.about');
+});
+
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::get('/register', [LoginController::class, 'registration'])->name('register-user');
@@ -65,7 +69,9 @@ Route::delete('/bill', [CouponsController::class, 'destroy'])->name('coupon.dest
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::group(['middleware', ['role:cliente']],function () {
+Route::group(['middleware' => ['role:cliente']],function () {
+
+    
     Route::get('/home', function () {
         return view('home');
     });
@@ -96,9 +102,7 @@ Route::group(['middleware', ['role:cliente']],function () {
     Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
     Route::post('/coupon', [CouponsController::class, 'validCoupon']);
     Route::post('removeAllItems', [CartController::class, 'removeAllItems'])->name('cart.deleteAll');
-    Route::get('/abouts', function () {
-        return view('layouts.about');
-    });
+
 });
 
 
@@ -109,7 +113,8 @@ Route::group(['middleware', ['role:cliente']],function () {
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::group(['middleware', ['role:admin']],function () {
+Route::group(['middleware' => ['role:admin']],function () {
+
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
@@ -140,6 +145,7 @@ Route::group(['middleware', ['role:admin']],function () {
     Route::post('UpdateNewBlog/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlog');
 
 });
+
 
 Route::group(['middleware', ['role:BlogCreator']],function () {
 

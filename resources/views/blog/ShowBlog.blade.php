@@ -17,7 +17,7 @@
         <a href="{{ route('blog') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Go back</a>
         <div class="row">
             <div style="background-color:white" class=" py-12 sw-75 rounded overflow-hidden shadow-lg">
-                <img  src="../public/{{$blog->image}}" alt="Sunset in the mountains">
+                <img  src="../../public/{{$blog->image}}" alt="Sunset in the mountains">
                 <br>
                 <div class="px-6 py-4">
                 <p

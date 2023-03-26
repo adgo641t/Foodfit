@@ -30,8 +30,8 @@
 
 
 
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/faqs.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/faqs.css">
 <!-- Font awesome -->
 
 
@@ -48,13 +48,15 @@
 <body>
     <div class="bg-white">
         <header>
-         <nav class="navbar navbar-expand-lg fixed-top navbar-light " style="background-color: #ecffeb" >
             <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <nav class="navbar navbar-expand-lg fixed-top navbar-light " style="background-color: #ecffeb" >
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
                         @if (Route::has('login'))
                             @auth
-                            <a href="{{ url('/home') }}"><img src="logo.png" alt="Logo foodfit" class="logo-img"></a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +66,7 @@
                                 <a class="nav-link" href="{{ url('/abouts') }}">About</a>
                             </li>
                                 <!--If user is logged-->
-                                @if(@Auth::user()->hasRole('client'))
+                                @if(@Auth::user()->hasRole('cliente'))
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/product') }}">Pedir a
                                         la carta</a>
