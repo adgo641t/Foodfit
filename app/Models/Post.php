@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Category_blogs;
 
-class blog extends Model
+
+class Post extends Model
 {
-    protected $table = 'blogs';
+    protected $table = 'posts';
 
     protected $fillable = [
         'title',
@@ -17,9 +19,9 @@ class blog extends Model
         'image',
     ];
 
-    public function blogs()
+    public function categories()
     {
-        return $this->hasMany(blog::class);
+        return $this->belongsToMany(Category_blogs::class);
     }
 
     public function scopeFilter($query, array $filters)

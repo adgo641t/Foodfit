@@ -42,7 +42,7 @@
                               @foreach ($cartItems as $item)
                             <tr>
                               <td class="hidden pb-4 md:table-cell">
-                                  <img src="public/{{ $item->attributes->image }}" class="w-20 rounded" alt="Thumbnail">
+                                  <img src="../public/{{ $item->attributes->image }}" class="w-20 rounded" alt="Thumbnail">
                               </td>
                               <td>
                                   <p class="mb-2 md:ml-4">{{ $item->name }}</p>
