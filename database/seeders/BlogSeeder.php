@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Blog;
+use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +15,7 @@ class BlogSeeder extends Seeder
     public function run()
     {
         
-        Blog::create([
+        Post::create([
             'title' => 'Que alimentos tienen las proteinas que necessitamos',
             'description' => 'TOdo lo que tenga Proteinas',
             'category_id' => 2,
@@ -24,7 +24,7 @@ class BlogSeeder extends Seeder
 
         ]);
 
-        Blog::create([
+        Post::create([
             'title' => 'Ciclismo como Deporte',
             'description' => 'Te hacemos un dto por ser guay',
             'category_id' => 3,
@@ -33,7 +33,7 @@ class BlogSeeder extends Seeder
 
         ]);
 
-        Blog::create([
+        Post::create([
             'title' => 'Como la comida engorda',
             'description' => 'Te hacemos un dto por ser guay',
             'category_id' => 1,

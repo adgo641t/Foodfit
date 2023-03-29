@@ -9,7 +9,7 @@
         <div class="grid grid-cols-3 gap-3">
     @foreach($blog as $Blog)
             <div class="rounded overflow-hidden shadow-lg">
-                <img class="lg:h-72 md:h-48 w-full object-cover object-center" src="public/card-top.jpg" alt="Sunset in the mountains">
+                <img class="lg:h-72 md:h-48 w-full object-cover object-center" src="/public/card-top.jpg" alt="Sunset in the mountains">
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-2"><a href="{{route('ShowBlog', $Blog->id)}}">{{$Blog->title}}</a></div>
                     <p class=" truncate ... text-gray-700 text-base">

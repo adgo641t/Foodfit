@@ -8,7 +8,7 @@
                 <p class="lead">
                   Food&Fit cocina por ti y llena tu nevera de tápers ricos y saludables sin complicarte la vida.
                 </p>
-                @if(@Auth::user()->hasRole('client'))
+                @if(@Auth::user()->hasRole('cliente'))
                 <button class="btn btnColor"><a href="/product" style="all: inherit">PEDIR A LA CARTA</a></button>
                 @endif
                 @if(@Auth::user()->hasRole('admin'))
@@ -54,12 +54,12 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <h2 class="testimonial-text">Estos chicos son unos cracks fui al restaurante era perfecto tuve que cancelar el programa</h2>
-          <img src="public/gordon.jpg" class="testimonial-img" alt="dog-profile">
+          <img src="../public/gordon.jpg" class="testimonial-img" alt="dog-profile">
           <em>Gordon Ramsay, New York</em>
         </div>
         <div class="carousel-item">
           <h2 class="testimonial-text">Ahora me llaman Don sucio me acabo de hinchar a comer en este restaurante me encanta.</h2>
-          <img src="public/don-limpio.png" class="testimonial-img" alt="lady-profile">
+          <img src="../public/don-limpio.png" class="testimonial-img" alt="lady-profile">
           <em>Don limpio, Illinois</em>
         </div>
         <div class="carousel-item">
@@ -85,10 +85,10 @@
 
   </section>
   <section id="press">
-    <img class="press-logo" src="public/Spacex.png" alt="tc-logo">
-    <img class="press-logo" src="public/mcdonald.png" alt="tnw-logo">
-    <img class="press-logo" src="public/forbes-logo.png" alt="biz-insider-logo">
-    <img class="press-logo" src="public/masterchef.png" alt="mashable-logo">
+    <img class="press-logo" src="../public/Spacex.png" alt="tc-logo">
+    <img class="press-logo" src="../public/mcdonald.png" alt="tnw-logo">
+    <img class="press-logo" src="../public/forbes-logo.png" alt="biz-insider-logo">
+    <img class="press-logo" src="../public/masterchef.png" alt="mashable-logo">
 
   </section>
   </div>
@@ -103,7 +103,7 @@
       <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>Reducimos la huella de carbono.</strong>.A través de un transporte semanal en vez de diario. Menos viajes, menos contaminación.</p>
     </div>
     <div class="col-lg-6 col-md-12 col-sm-12">
-      <img src="public/sostenible.png" class="vegies" alt="">
+      <img src="../public/sostenible.png" class="vegies" alt="">
     </div>
   </div>
 
@@ -119,22 +119,22 @@
   <div class="container">
     <div class="row marginHeader">
       <div class="col-md-2 mt-3 col-lg-4">
-        <img src="public/gente-increible-bici.png" class="img-fluid" alt="">
+        <img src="../public/gente-increible-bici.png" class="img-fluid" alt="">
       </div>
     <div class="col-md-2 mt-3 col-lg-4">
-      <img src="public/gente-increible-comiendo.png" class="img-fluid" alt="">
+      <img src="../public/gente-increible-comiendo.png" class="img-fluid" alt="">
     </div>
       <div class="col-md-2 mt-3 col-lg-4">
-        <img src="public/gente-increible-hijo.png" class="img-fluid"  alt="">
+        <img src="../public/gente-increible-hijo.png" class="img-fluid"  alt="">
       </div> 
       <div class="col-md-2 mt-3 col-lg-4">
-        <img src="public/gente-increible-trabajando.jpg" class="img-fluid" alt="">
+        <img src="../public/gente-increible-trabajando.jpg" class="img-fluid" alt="">
       </div>
     <div class="col-md-2 mt-3 col-lg-4">
-      <img src="public/gente-increible-viaje.jpg" class="img-fluid" alt="">
+      <img src="../public/gente-increible-viaje.jpg" class="img-fluid" alt="">
     </div>
       <div class="public-md-2 mt-3 col-lg-4">
-        <img src="public/gente-increible-silencio.jpg" class="img-fluid"  alt="">
+        <img src="../public/gente-increible-silencio.jpg" class="img-fluid"  alt="">
       </div> 
     </div>
   </div>

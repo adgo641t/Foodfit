@@ -57,21 +57,7 @@
       </nav>
     </header> 
 
-    <!--sobre nosotros-->
-    <div class="container col-lg-12 col-md-12 col-sm-12" id="about">
-        <h1 class="col-lg-12 col-md-12 col-sm-12">Quienes somos y que es este Negocio</h1>
-        <br>
-        <p>Hola queridos visitantes, En estos momentos vamos a explicaros en que consiste nuestro modelo de restaurante: Nuestro restaurante trata de servir 
-            un tipo de comida diferente a la usual, ofrecemos comida variada sin necesidad de poner carne, respecto a nosotros somos 3 humildes chavales 
-            que hemos salido de DAW llenos de sabiduria y experiencia gracias a nuestros maravillosos profesores. 
-        </p>
-    </div>
-    <div class="container col-lg-12" id="bloque_img">
-        <img class="col-lg-3 imagen1" id="imagen1" src="public/DANI_CHAD.jpg" alt="">
-        <img class="col-lg-3" id="imagen2" src="public/JORDI_CHAD.jpg" alt="">
-        <img class="col-lg-3" id="imagen3" src="public/obama_CHAD.jpg" alt="">
-    </div>
-
+  
     <!-- Footer section -->
     <footer id="footer">
       <div class="col text-center">

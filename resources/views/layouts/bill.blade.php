@@ -109,7 +109,7 @@
 
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Facturación</h4>
-        <form action="/pago" method="POST">
+        <form action="pago" method="POST">
           @csrf
           <div class="row g-3">
             <div class="col-sm-6">

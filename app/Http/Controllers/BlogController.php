@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Blog;
+use App\Models\Post;
 use App\Models\Category_blogs;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,7 +13,7 @@ class BlogController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:web', ['except' => ['index']]);
+        $this->middleware('auth:web');
     }
 
 
@@ -22,22 +22,23 @@ class BlogController extends Controller
         //$blog = Blog::all();
         
         return view('blog/index' ,[
-            'blogs' => Blog::latest()->filter(request(['category','search']))->simplePaginate(4),
+            'blogs' => Post::latest()->filter(request(['category','search']))->simplePaginate(4),
             'Category_blogs' => Category_blogs::all()
         ]);  
     }
 
     public function show($id) {
 
-        $blog = Blog::find($id);
+        $blog = Post::find($id);
+        $Category_blogs = Category_blogs::all();
         
-        return view('blog/ShowBlog', compact('blog'));  
+        return view('blog/ShowBlog', compact('blog', 'Category_blogs'));  
     }
 
     
     public function showCategory($category) {
 
-        $blog = Blog::where('Categori_blog', $category);
+        $blog = Post::where('Categori_blog', $category);
         //dd($blog);
         
         return view('blog/ShowBlogCategory', compact('blog'));  
@@ -66,16 +67,23 @@ class BlogController extends Controller
             $imageName = time() . '.' . $request->file->extension();
             $request->file->move(public_path('public'), $imageName);
 
-            $blog = new Blog();
+            $blog = new Post();
             $blog->title = $request->title;
             $blog->description = $request->description;
             $blog->category_id = $request->category_id;
             $blog->creator = $request->creator;
             $blog->image =  $imageName;
+            
 
             //$request->file->store('product', 'public');
 
             $blog->save(); // Finally, save the record.
+
+            //$category = Category_blogs::find($request->category_id);
+
+            //$blog->categories()->attach([$blog->id, $request->category_id]);
+
+            
 
             return redirect()->route('blog');
         }
@@ -83,7 +91,7 @@ class BlogController extends Controller
 
     }
     public function DeleteBlog($id) {
-        $blog = Blog::find($id);
+        $blog = Post::find($id);
         $blog->delete();
 
         return redirect()->route('blog');
@@ -91,12 +99,12 @@ class BlogController extends Controller
     }
 
     public function GetUpdateView($id) {
-        $blog = Blog::find($id);
+        $blog = Post::find($id);
         $category_blog = Category_blogs::all();
-        return view('blog/UpdateBlog', compact('blog','category_blog'));
+        return view('blog/UpdateBLog', compact('blog','category_blog'));
     }
 
-    public function UpdateNewBlog(Request $request, Blog $blog) {
+    public function UpdateNewBlog(Request $request, Post $blog) {
 
         $request->validate([
             'title' => ['required','string','max:50'],
@@ -112,7 +120,7 @@ class BlogController extends Controller
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('public'), $imageName);
 
-            $blog = Blog::find($blog->id);
+            $blog = Post::find($blog->id);
 
             $blog->title = $inputs['title'];
             $blog->description = $inputs['description'];
@@ -126,7 +134,7 @@ class BlogController extends Controller
 
         }else {
             unset($inputs['image']);
-            $blog = Blog::find($blog->id);
+            $blog = Post::find($blog->id);
 
             $blog->title = $inputs['title'];
             $blog->description = $inputs['description'];

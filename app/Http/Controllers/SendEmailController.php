@@ -13,7 +13,7 @@ class SendEmailController extends Controller
      {
          $mailData = [
              'title' => 'Su pedido es: ',
-             'url' => 'http://127.0.0.1:8000/home'
+             'url' => 'http://142.132.185.47/foodfit/public/index.php'
          ];
           
          Mail::to('fpb1.adrian@gmail.com')->send(new TestEmail($mailData));
