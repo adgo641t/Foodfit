@@ -53,7 +53,6 @@ class BlogController extends Controller
 
     public function StoreBlog(Request $request) {
 
-        
        //dd($request);
         $request->validate([
             'title' => ['required','string','max:50'],
@@ -71,6 +70,8 @@ class BlogController extends Controller
             $blog->title = $request->title;
             $blog->description = $request->description;
             $blog->category_id = $request->category_id;
+            $blog->category_id_2 = $request->category_id_2;
+            $blog->category_id_3 = $request->category_id_3;
             $blog->creator = $request->creator;
             $blog->image =  $imageName;
             
@@ -79,11 +80,11 @@ class BlogController extends Controller
 
             $blog->save(); // Finally, save the record.
 
-            //$category = Category_blogs::find($request->category_id);
+            // $category_id = $request->category_id;
+            // $category_id_2 = $request->category_id_2;
+            // $category_id_3 = $request->category_id_3;
+            //$blog->categories()->attach($category_id, $category_id_2, $category_id_3);
 
-            //$blog->categories()->attach([$blog->id, $request->category_id]);
-
-            
 
             return redirect()->route('blog');
         }

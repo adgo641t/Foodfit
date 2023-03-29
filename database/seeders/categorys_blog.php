@@ -16,6 +16,9 @@ class categorys_blog extends Seeder
     public function run()
     {
         Category_blogs::create([
+            'name' => 'Ninguna categoria',
+        ]);
+        Category_blogs::create([
             'name' => 'Salud y Bienestar',
         ]);
         Category_blogs::create([

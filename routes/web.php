@@ -114,7 +114,10 @@ All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::group(['middleware' => ['role:admin']],function () {
-
+    
+    Route::get('/home', function () {
+        return view('home');
+    });
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 

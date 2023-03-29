@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->foreignId('category_id')->references('id')->on('category_blogs');
+            $table->foreignId('category_id_2')->references('id')->on('category_blogs');
+            $table->foreignId('category_id_3')->references('id')->on('category_blogs');
+
             $table->string('creator');
             $table->string('image');
             //$table->foreignId('category_id')->references('id')->on('category_blogs');

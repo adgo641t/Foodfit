@@ -107,9 +107,9 @@
         @endif
       </div>
 
-      <div class="col-md-7 col-lg-8">
+      <div class="leading-loose">
         <h4 class="mb-3">Facturación</h4>
-        <form action="pago" method="POST">
+        <form action="pago" class="max-w-xl m-4 p-10 bg-white rounded shadow-xl" method="POST">
           @csrf
           <div class="row g-3">
             <div class="col-sm-6">
@@ -210,6 +210,7 @@
 
           <button class="w-100 btn btn-primary btn-lg" type="submit">Completar Pago</button>
         </form>
+        
       </div>
     </div>
   </main>

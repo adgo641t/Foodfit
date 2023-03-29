@@ -27,7 +27,10 @@ class Post extends Model
     public function scopeFilter($query, array $filters)
     {
         if($filters['category'] ?? false){
-            $query->where('category_id', 'like', '%' . request('category') . '%');
+            $query->where('category_id' , 'like', '%' . request('category') . '%')
+                ->orWhere('category_id_2', 'like', '%' . request('search') . '%')
+                ->orWhere('category_id_3', 'like', '%' . request('search') . '%');
+
         }
 
         if($filters['search'] ?? false){
@@ -35,6 +38,8 @@ class Post extends Model
             $query->where('title', 'like', '%' . request('search') . '%')
             ->orWhere('description', 'like', '%' . request('search') . '%')
             ->orWhere('category_id', 'like', '%' . request('search') . '%')
+            ->orWhere('category_id_2', 'like', '%' . request('search') . '%')
+            ->orWhere('category_id_3', 'like', '%' . request('search') . '%')
             ->orWhere('creator', 'like', '%' . request('search') . '%')
             ->orWhere('created_at', 'like', '%' . request('search') . '%');
         }
