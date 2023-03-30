@@ -52,6 +52,7 @@ public function index()
                 'name' => 'required|string',
                 'price' => 'required|numeric|min:0',
                 'description' => 'required',
+                'quantity' => 'required|numeric',
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
       
@@ -64,7 +65,18 @@ public function index()
                 $input['image'] = "$profileImage";
             }
 
-            Product::create($input);
+            $product = new Product();
+            $product->name = $input['name'];
+            $product->price = $input['price'];
+            $product->categories = $input['categories'];
+            $product->description = $input['description'];
+            $product->stock = $input['quantity'];
+            $product->image = $input['image'];
+
+            $product->save();
+
+            //Product::create($input);
+
             return redirect()->route('products.index')
             ->with('success','Product creado exitosamente.');  
     }
@@ -103,9 +115,11 @@ public function index()
     // Firstly it validates the field of the product they can't be empty
     public function update(Request $request, Product $product)
     {
+        //dd($request);
         $request->validate([
             'name' => 'required|string',
-            'price' => 'required|numeric'
+            'price' => 'required|numeric',
+            'quantity' => 'required|numeric'
         ]);
 
         $input = $request->all();
@@ -124,6 +138,7 @@ public function index()
             return redirect()->back()->with('error', 'No se pueden poner numeros negativos');
         }else{
         // it updates the product and saves the new values in the database
+        $product->stock = $input['quantity'];
         $product->update($input);
         return redirect()->route('products.index')
         ->with('success','Product actualizado correctamente');

@@ -45,10 +45,26 @@
   <div class="flex flex-wrap -mx-3 mb-2">
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-        Category Blog
+        Category Blog 
       </label>
       <div class="relative">
         <select name="category_id" id="category_id" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+        @foreach($category_blog as $id)
+            <option value="{{$id->id}}">{{$id->name}}</option>
+        @endforeach
+        </select>
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+          Category Blog 2
+        </label>
+        <select name="category_id_2" id="category_id_2" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+        @foreach($category_blog as $id)
+            <option value="{{$id->id}}">{{$id->name}}</option>
+        @endforeach
+        </select>
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+           Category Blog 3
+        </label>
+        <select name="category_id_3" id="category_id_3" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
         @foreach($category_blog as $id)
             <option value="{{$id->id}}">{{$id->name}}</option>
         @endforeach

@@ -22,26 +22,40 @@
                 <div class="px-6 py-4">
                 <p
                 @foreach($Category_blogs as $category)
-                    @if($blog->category_id == $category->id)
-                            {{$blog->category_id = $category->name}}
+				@if($blog->category_id == $category->id)
+                        {{$blog->category_id = $category->name}}
                     @endif
-                @endforeach class="w-full text-gray-600 text-xs md:text-sm px-6">{{$blog->category_id}}</p>
-                    <div class="font-bold text-xl mb-2">{{$blog->title}}</div>
+                    @if($blog->category_id_2 == $category->id)
+                            {{$blog->category_id_2 = $category->name}}
+                    @endif
+                    @if($blog->category_id_3 == $category->id)
+                            {{$blog->category_id_3 = $category->name}}
+                    @endif
+                @endforeach
+				@if($blog->category_id == "Ninguna categoria")
+                	{{$blog->category_id = ''}}
+                @elseif($blog->category_id_2 == "Ninguna categoria")
+                	{{$blog->category_id_2 = ''}}
+                @elseif($blog->category_id_3 == "Ninguna categoria")
+                	{{$blog->category_id_3 = ''}}
+                @endif class="w-full text-gray-600 text-xs md:text-sm px-6"> {{$blog->category_id}} {{$blog->category_id_2}} {{$blog->category_id_3}}</p>
+                <div class="font-bold text-xl mb-2">{{$blog->title}}</div>
                     <p class="text-gray-700 text-base">
                         {{$blog->description}}
                     </p>
                 </div>
                 <div class="px-6 pt-4 pb-2">
-                    <div class="px-6 pt-4 pb-2">
-                <div class="text-sm font-light text-gray-500 dark:text-gray-400">Creator: <b>{{$blog->creator}}</b></div>
-                <div class="text-sm font-light text-gray-500 dark:text-gray-400">Created: <b>{{$blog->created_at->format('d-m-Y')}}</b></div>
-                <div class="text-sm font-light text-gray-500 dark:text-gray-400">Updated: <b>{{$blog->updated_at->format('d-m-Y')}} at {{$blog->updated_at->format('H:i')}}</b></div>
-            </div>
+                <div class="px-6 pt-4 pb-2">
+                	<div class="text-sm font-light text-gray-500 dark:text-gray-400">Creator: <b>{{$blog->creator}}</b></div>
+                	<div class="text-sm font-light text-gray-500 dark:text-gray-400">Created: <b>{{$blog->created_at->format('d-m-Y')}}</b></div>
+                	<div class="text-sm font-light text-gray-500 dark:text-gray-400">Updated: <b>{{$blog->updated_at->format('d-m-Y')}} at {{$blog->updated_at->format('H:i')}}</b></div>
+            	</div>
                 </div>
                 
             </div>
         </div>
         </div>
+		<br>
         <footer class="bg-gray-900">	
 		<div class="container max-w-6xl mx-auto flex items-center px-2 py-8">
 

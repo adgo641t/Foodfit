@@ -53,6 +53,10 @@
                 <select name="category" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
                 <option value="">Todas las categorias</option>
                 @foreach($Category_blogs as $category)
+                @if($category->id == 1) {
+                    @continue
+                }
+                @endif
                 <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
                 </select>
@@ -85,9 +89,24 @@
                 <p
                 @foreach($Category_blogs as $category)
                     @if($Blog->category_id == $category->id)
-                            {{$Blog->category_id = $category->name}}
+                        {{$Blog->category_id = $category->name}}
                     @endif
-                @endforeach class="w-full text-gray-600 text-xs md:text-sm px-6">{{$Blog->category_id}}</p>
+                    @if($Blog->category_id_2 == $category->id)
+                            {{$Blog->category_id_2 = $category->name}}
+                    @endif
+                    @if($Blog->category_id_3 == $category->id)
+                            {{$Blog->category_id_3 = $category->name}}
+                    @endif
+                @endforeach            
+                @if($Blog->category_id == "Ninguna categoria")
+                {{$Blog->category_id = ''}}
+                @elseif($Blog->category_id_2 == "Ninguna categoria")
+                {{$Blog->category_id_2 = ''}}
+                @elseif($Blog->category_id_3 == "Ninguna categoria")
+                {{$Blog->category_id_3 = ''}}
+                @endif class="w-full text-gray-600 text-xs md:text-sm px-6">
+                         {{$Blog->category_id}} {{$Blog->category_id_2}} {{$Blog->category_id_3}}</p>
+
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-2"><a href="{{route('ShowBlog', $Blog->id)}}">{{$Blog->title}}</a></div>
                     <p class=" truncate ... text-gray-700 text-base">

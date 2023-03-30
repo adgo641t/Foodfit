@@ -44,7 +44,7 @@
             <div class="flex lg:flex-row flex-col justify-between gap-8 pt-12">
                 <div class="w-full lg:w-5/12 flex flex-col justify-center">
                     <h1 class="text-3xl lg:text-4xl font-bold leading-9 text-gray-800 dark:text-white pb-4">Our Story</h1>
-                    <p class="font-normal text-base leading-6 text-gray-600 dark:text-white">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.In the first place we have granted to God, and by this our present charter confirmed for us and our heirs forever that the English Church shall be free, and shall have her rights entire, and her liberties inviolate; and we will that it be thus observed; which is apparent from</p>
+                    <p class="font-normal text-base leading-6 text-gray-600 dark:text-white"></p>
                 </div>
                 <div class="w-full lg:w-8/12 lg:pt-8">
                     <div class="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 lg:gap-4 shadow-lg rounded-md">
@@ -74,19 +74,34 @@
         </div>
     
     <!-- Footer section -->
-    <footer id="footer">
-      <div class="col text-center">
-        <a class="nav-link" href="{{ url('/faq') }}">Faqs</a>
-      </div>
-      <div class="col text-center">
-        <div class="icon-footer">
-          <i class="fa-brands fa-twitter"></i>
-          <i class="fa-brands fa-facebook"></i>
-          <i class="fa-brands fa-instagram"></i>
-          <i class="fa-solid fa-envelope"></i>
-        </div>
-      </div>
-      <p class="text-center">© Copyright FOOD&FIT</p>
-  
-    </footer>
+    <footer class="bg-gray-900">	
+		<div class="container max-w-6xl mx-auto flex items-center px-2 py-8">
+
+			<div class="w-full mx-auto flex flex-wrap items-center">
+				<div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+					<a class="text-gray-900 no-underline hover:text-gray-900 hover:no-underline" href="#">
+					    <span class="text-base text-gray-200">Food&Fit Blog</span>
+					</a>
+				</div>
+				<div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+					<ul class="list-reset flex justify-center flex-1 md:flex-none items-center">
+					  <li>
+						<a class="inline-block py-2 px-3 text-white no-underline" href="#">Blog</a>
+					  </li>
+					  <li>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="{{ route('faqs') }}">Faqs</a>
+					  </li>
+					  <li>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Facebook</a>
+					  </li>
+						<li>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Linkedin</a>
+					  </li>
+					</ul>
+				</div>
+			</div>
+        
+		
+		</div>
+	</footer>
 @endsection

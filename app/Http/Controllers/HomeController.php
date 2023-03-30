@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:web', ['except' => ['index']]);
+        $this->middleware('auth:web');
     }
 
     /**
