@@ -62,6 +62,16 @@
           <img src="../public/don-limpio.png" class="testimonial-img object-center" alt="lady-profile">
           <em>Don limpio, Illinois</em>
         </div>
+        <div class="carousel-item">
+          <h2 class="testimonial-text">Gracias a esta app he conseguido adelgazar 80Kg</h2>
+          <img src="public/Alberto-Chicote.jpg" class="testimonial-img" alt="lady-profile">
+          <em>Alberto Chicote</em>
+        </div>
+        <div class="carousel-item">
+          <h2 class="testimonial-text">Después de probar esta app, la familia ya no es lo más importante</h2>
+          <img src="public/bin.jpeg" class="testimonial-img" alt="lady-profile">
+          <em>Vin Diesel</em>
+        </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
