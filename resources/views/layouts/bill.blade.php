@@ -27,12 +27,14 @@
     </style>
   </head>
   <body class="bg-light">
+
 <div class="container">
   <main>   
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="logo.png" alt="" width="130" height="57">
-      <h2>Checkout form</h2>
+      <h2>Checkout form</h2><br><br>
     </div>
+    <section style="align-content: center;">
     <div class="row g-5">
       @if (Session::has('coupon'))
       <div class="col-md-5 col-lg-4 order-md-last">
@@ -46,7 +48,7 @@
             <span class="text-muted">{{$item->price}}€</span>
             @endforeach
           </li>
-          <li class="list-group-item d-flex justify-content-between">
+          <li class="list-group-item d-flex justify-content-between" >
             <span>IVA 21%</span>
           </li>
         </ul>
@@ -89,7 +91,7 @@
             <span>IVA 21%</span>
           </li>
         </ul>
-        <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
+        <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST" style="background-color: #e6f9ff;">
           @csrf
           <div class="input-group">
            <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code">
@@ -107,9 +109,11 @@
         @endif
       </div>
 
-      <div class="col-md-7 col-lg-8">
-        <h4 class="mb-3">Facturación</h4>
-        <form action="pago" method="POST">
+      <div class="col-md-7 col-lg-8" style="background-color: #e6f9ff; ">
+        
+        <form action="pago" method="POST" class="mx-1 mx-md-4">
+          <div style="margin:20px;">
+          <br><h4 class="mb-3">Facturación</h4>
           @csrf
           <div class="row g-3">
             <div class="col-sm-6">
@@ -208,12 +212,15 @@
 
           <hr class="my-4">
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Completar Pago</button>
+          <div style="margin-bottom:10px; text-align:center;">
+          <button type="submit" class="btn btn-outline-primary" >Completar Pago</button><br><br>
+          </div>
+          </div>
         </form>
       </div>
     </div>
   </main>
-
+  </section>
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2017–2023 FoodFit</p>
     <ul class="list-inline">
