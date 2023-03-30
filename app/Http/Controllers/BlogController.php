@@ -126,6 +126,8 @@ class BlogController extends Controller
             $blog->title = $inputs['title'];
             $blog->description = $inputs['description'];
             $blog->category_id = $inputs['category_id'];
+            $blog->category_id_2 = $inputs['category_id_2'];
+            $blog->category_id_3 = $inputs['category_id_3'];
             $blog->creator = $inputs['creator'];
             $blog->image = $imageName;
 

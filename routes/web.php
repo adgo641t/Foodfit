@@ -147,6 +147,7 @@ Route::group(['middleware' => ['role:admin']],function () {
     Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
 
     Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
+
     Route::post('UpdateNewBlog/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlog');
 
 });
@@ -168,7 +169,8 @@ Route::group(['middleware', ['role:BlogCreator']],function () {
 
     Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
 
-    Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
+       Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
+    
     Route::post('UpdateNewBlog/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlog');
 
 });
