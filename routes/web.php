@@ -58,7 +58,7 @@ Route::post('/custom-registration', [LoginController::class, 'customRegistration
 
 //DELETES
 Route::delete('/bill', [CouponsController::class, 'destroy'])->name('coupon.destroy');
-
+//Route::get('/home', [HomeController::class, 'index']);
 
 
 // Login views 
@@ -71,9 +71,10 @@ All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::group(['middleware' => ['role:cliente']],function () {
+    Route::get('/home', [HomeController::class, 'index']);
 
     
-    Route::get('/home', [HomeController::class, 'index']);
+    //Route::get('/home', [HomeController::class, 'index']);
     
     Route::get('send-mail', [SendEmailController::class, 'index']);
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
@@ -114,8 +115,11 @@ All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::group(['middleware' => ['role:admin']],function () {
-    
+
     Route::get('/home', [HomeController::class, 'index']);
+
+    
+    //Route::get('/home', [HomeController::class, 'index']);
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
@@ -127,7 +131,7 @@ Route::group(['middleware' => ['role:admin']],function () {
         return view('dashboard');
     });
 
-    Route::resource('products', ProductController::class);
+    //Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
     
 
@@ -149,6 +153,8 @@ Route::group(['middleware' => ['role:admin']],function () {
 
 
 Route::group(['middleware', ['role:BlogCreator']],function () {
+
+    Route::get('/home', [HomeController::class, 'index']);
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');

@@ -341,7 +341,7 @@
 </section>
 
   <section class="row py-12 object-center	" id="press">
-    <img class="press-logo" src="../Spacex.png" alt="tc-logo">
+    <img class="press-logo" src="../public/Spacex.png" alt="tc-logo">
     <img class="press-logo" src="../public/mcdonald.png" alt="tnw-logo">
     <img class="press-logo" src="../public/forbes-logo.png" alt="biz-insider-logo">
     <img class="press-logo" src="../public/masterchef.png" alt="mashable-logo">

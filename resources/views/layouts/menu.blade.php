@@ -52,7 +52,7 @@
             <nav class="navbar navbar-expand-lg fixed-top navbar-light " style="background-color: #ecffeb" >
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                    </button>
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         @if (Route::has('login'))
@@ -62,11 +62,12 @@
                                 aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/abouts') }}">About</a>
-                            </li>
                                 <!--If user is logged-->
-                                @if(@Auth::user()->hasRole('cliente'))
+                                @if(@Auth::user()->hasRole('cliente'))   
+                                <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>                      
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/abouts') }}">About</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/product') }}">Pedir a
                                         la carta</a>
@@ -77,6 +78,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Blog</a>
                                 </li>
+                                    <a href="{{ url('/logout') }}"class="nav-link">Logout</a>
+                                </li>
+
                                                                                 <!--Icon cart and go to cart-->
                                                                                 <a href="{{ route('cart.list') }}" class="flex items-center">
                                                                                     <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -90,6 +94,9 @@
                                 @endif
                                 @if(@Auth::user()->hasRole('admin'))
                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/abouts') }}">About</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link " aria-current="page" href="{{ route('products.index') }}">Administración de productos</a>
                                 </li>
                                 <li class="nav-item">
@@ -98,12 +105,22 @@
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Administracion de Blog</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/logout') }}"class="nav-link">Logout</a>
+                                </li>
+                                @endif
+                                @if(@Auth::user()->hasRole('BlogCreator'))
+                                <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Administracion de Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/logout') }}"class="nav-link">Logout</a>
+                                </li>
                                 @endif
                              <!--To logout-->
-                             <li class="nav-item">
-                            <a href="{{ url('/logout') }}"class="nav-link">Logout</a></li>
                             @else
-                            <a href="{{ url('/') }}"><img src="logo.png" alt="" class="logo-img"></a>
+                            <a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
