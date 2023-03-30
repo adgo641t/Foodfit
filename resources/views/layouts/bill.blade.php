@@ -147,7 +147,7 @@
 
             <div class="col-12">
               <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" name="adresa">
+              <input type="text" class="form-control" id="adresa" name="adresa">
               <div class="invalid-feedback">
                 Please enter your shipping address.
               </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Stripe;
+use App\Models\Product;
 use App\Models\Bill;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
@@ -61,6 +62,7 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
+       // dd($request);
         $formFields = $request->validate([
             'nombre' => 'required',
             'apellidos' => 'required',
@@ -70,8 +72,18 @@ class BillController extends Controller
             'tarjetaNumero' => 'required|digits:15',
             'cvv' => 'required|digits:3',
         ]);
+
+
         $cartItems = \Cart::getContent();
+
         foreach ($cartItems as $cartItem) {
+            $quantity = $cartItem->quantity;
+
+            $product = Product::find($cartItem->id);
+
+            $stockActual = $product->stock;
+
+            $product->stock = $stockActual-$quantity;
             $bill = new Bill;
             $bill->user_id = auth()->user()->id;
             $bill->product_id = $cartItem->id;
@@ -79,8 +91,11 @@ class BillController extends Controller
             $bill->price = $cartItem->price;
             $bill->quantity = $cartItem->quantity;
             $bill->totalprice = round(\Cart::getTotal()*1.21,2);
+            $bill->adress = $request->adresa;
+            $product->save();
             $bill->save();
         } 
+
         $request->session()->forget('coupon');
         return redirect('send-mail');
     }

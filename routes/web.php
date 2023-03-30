@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\Auth\LoginController;
@@ -72,9 +73,8 @@ All Normal Users Routes List
 Route::group(['middleware' => ['role:cliente']],function () {
 
     
-    Route::get('/home', function () {
-        return view('home');
-    });
+    Route::get('/home', [HomeController::class, 'index']);
+    
     Route::get('send-mail', [SendEmailController::class, 'index']);
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
@@ -115,9 +115,7 @@ All Admin Routes List
 --------------------------------------------*/
 Route::group(['middleware' => ['role:admin']],function () {
     
-    Route::get('/home', function () {
-        return view('home');
-    });
+    Route::get('/home', [HomeController::class, 'index']);
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 

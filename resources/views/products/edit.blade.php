@@ -74,6 +74,11 @@
                 <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Descripción</label>
                 <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" value="{{ $product->description }}" type="text" name="description" placeholder="Description" />
               </div>
+
+              <div class="grid grid-cols-1 mt-5 mx-7">
+                <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Quatity</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" value="{{ $product->stock }}" type="text" name="quantity" placeholder="quantity" />
+              </div>
     
               <div class="grid grid-cols-1 mt-5 mx-7">
                 <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold mb-1">Imagen</label>
