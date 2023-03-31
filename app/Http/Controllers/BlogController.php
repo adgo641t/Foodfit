@@ -91,12 +91,6 @@ class BlogController extends Controller
 
             $Post_blog_Category->save();
 
-            // $category_id = $request->category_id;
-            // $category_id_2 = $request->category_id_2;
-            // $category_id_3 = $request->category_id_3;
-            //$blog->categories()->attach($category_id, $category_id_2, $category_id_3);
-
-
             return redirect()->route('blog');
         }
         
@@ -143,6 +137,15 @@ class BlogController extends Controller
             $blog->image = $imageName;
 
             $blog->save();
+
+            $post = Post_category_blog::find($blog->id);
+
+            $post->category_blogs_id = $blog->category_id ;
+            $post->category_blogs_id_2  =  $blog->category_id_2;
+            $post->category_blogs_id_3 = $blog->category_id_3;
+            $post->post_id  = $blog->id;
+            
+            $post->save();
             // redirect
             return redirect()->route('blog');    
 
@@ -153,9 +156,22 @@ class BlogController extends Controller
             $blog->title = $inputs['title'];
             $blog->description = $inputs['description'];
             $blog->category_id = $inputs['category_id'];
+            $blog->category_id_2 = $inputs['category_id_2'];
+            $blog->category_id_3 = $inputs['category_id_3'];
             $blog->creator = $inputs['creator'];
-
+            
             $blog->save();
+
+            $post = Post_category_blog::find($blog->id);
+            dd($post);
+
+            $post->category_blogs_id = $blog->category_id ;
+            $post->category_blogs_id_2  =  $blog->category_id_2;
+            $post->category_blogs_id_3 = $blog->category_id_3;
+            $post->post_id = $blog->id;
+            
+            $post->update();
+
             // redirect
             return redirect()->route('blog');    
         }
