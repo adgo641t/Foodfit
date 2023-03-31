@@ -32,7 +32,7 @@
   <main>   
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="logo.png" alt="" width="130" height="57">
-      <h2>Checkout form</h2><br><br>
+      <h2>{{ __('Checkout form') }}</h2><br><br>
     </div>
     <section style="align-content: center;">
     <div class="row g-5">
@@ -42,24 +42,24 @@
           @foreach (\Cart::getContent() as $item)
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
-              <h6 class="my-0">Nombre del Producto:</h6>
+              <h6 class="my-0">{{ __('bill1') }}</h6>
               <small class="text-muted">{{$item->name}}</small>
             </div>
             <span class="text-muted">{{$item->price}}€</span>
             @endforeach
           </li>
-          <li class="list-group-item d-flex justify-content-between" >
-            <span>IVA 21%</span>
-          </li>
+          <!--<li class="list-group-item d-flex justify-content-between">
+            <span>{{ __('bill2') }}</span>
+          </li>-->
         </ul>
         <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
           @csrf
           <div class="input-group">
            <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code">
-           <button type="submit" class="btn btn-secondary">Aplicar Cupon</button>
+           <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
-          <span>Total (EUR)</span>
+          <span>{{ __('bill4') }}</span>
           <strong>€{{round(Cart::getTotal()*1.21-Session::get('coupon')['amount'],2, PHP_ROUND_HALF_EVEN)}}</strong>
         </li>
          @if (Session::has('danger'))
@@ -82,23 +82,24 @@
           @foreach (\Cart::getContent() as $item)
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
-              <h6 class="my-0">Nombre del Producto:</h6>
+              <h6 class="my-0">{{ __('bill1') }}</h6>
               <small class="text-muted">{{$item->name}}</small>
             </div>
             <span class="text-muted">{{$item->price}}€</span>
           </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>IVA 21%</span>
-          </li>
+          <!--<li class="list-group-item d-flex justify-content-between">
+            <span>{{ __('bill2') }}</span>-->
+            @endforeach
+          <!--</li>-->
         </ul>
         <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST" style="background-color: #e6f9ff;">
           @csrf
           <div class="input-group">
            <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code">
-           <button type="submit" class="btn btn-secondary">Aplicar Cupon</button>
+           <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
-          <span>Total (EUR)</span>
+          <span>{{ __('bill4') }}</span>
           <strong>€{{round(Cart::getTotal()*1.21,2, PHP_ROUND_HALF_EVEN)}}</strong>
         </li>
         @if (Cart::getTotal()*1.21 > 40)
@@ -113,14 +114,14 @@
         
         <form action="pago" method="POST" class="mx-1 mx-md-4">
           <div style="margin:20px;">
-          <br><h4 class="mb-3">Facturación</h4>
+          <br><h4 class="mb-3">{{ __('bill5') }}</h4>
           @csrf
           <div class="row g-3">
             <div class="col-sm-6">
-              <label for="firstName" class="form-label">Nombre</label>
+              <label for="firstName" class="form-label">{{ __('Name') }}</label>
               <input type="text" class="form-control" name="nombre">
               <div class="invalid-feedback">
-                Valid first name is required.
+                {{ __('bill6') }}
               </div>
               @error('nombre')
               <p class="text-danger">{{$message}}</p>
@@ -128,10 +129,10 @@
             </div>
 
             <div class="col-sm-6">
-              <label for="lastName" class="form-label">Apellidos</label>
+              <label for="lastName" class="form-label">{{ __('Lastnames') }}</label>
               <input type="text" class="form-control" name="apellidos">
               <div class="invalid-feedback">
-                Valid last name is required.
+                {{ __('bill7') }}
               </div>
               @error('apellidos')
               <p class="text-danger">{{$message}}</p>
@@ -139,10 +140,10 @@
             </div>
 
             <div class="col-12">
-              <label for="email" class="form-label">Email</label>
+              <label for="email" class="form-label">{{ __('E-Mail Address') }}</label>
               <input type="email" class="form-control" name="email">
               <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
+                {{ __('bill8') }}
               </div>
               @error('email')
               <p class="text-danger">{{$message}}</p>
@@ -150,10 +151,10 @@
             </div>
 
             <div class="col-12">
-              <label for="address" class="form-label">Address</label>
+              <label for="address" class="form-label">{{ __('Address') }}</label>
               <input type="text" class="form-control" id="adresa" name="adresa">
               <div class="invalid-feedback">
-                Please enter your shipping address.
+                {{ __('bill9') }}
               </div>
               @error('adresa')
               <p class="text-danger">{{$message}}</p>
@@ -161,10 +162,10 @@
             </div>
 
             <div class="col-md-3">
-              <label for="zip" class="form-label">Zip</label>
+              <label for="zip" class="form-label">{{ __('Zip code') }}</label>
               <input type="text" class="form-control" name="zip">
               <div class="invalid-feedback">
-                Zip code required.
+                {{ __('bill10') }}
               </div>
             </div>
             @error('zip')
@@ -174,13 +175,13 @@
 
           <hr class="my-4">
 
-          <h4 class="mb-3">Payment</h4>
+          <h4 class="mb-3">{{ __('Payment Method') }}</h4>
           <div class="row gy-3">
             <div class="col-md-6">
-              <label for="cc-name" class="form-label">Nombre en la tarjeta</label>
+              <label for="cc-name" class="form-label">{{ __('Cardholder') }}</label>
               <input type="text" class="form-control" name="tarjeta">
               <div class="invalid-feedback">
-                Name on card is required
+                {{ __('bill11') }}
               </div>
               @error('tarjeta')
               <p class="text-danger">{{$message}}</p>
@@ -188,10 +189,10 @@
             </div>
 
             <div class="col-md-6">
-              <label for="cc-number" class="form-label">Numero de la tarjeta</label>
+              <label for="cc-number" class="form-label">{{ __('Card number') }}</label>
               <input type="text" class="form-control" name="tarjetaNumero">
               <div class="invalid-feedback">
-                Credit card number is required
+                {{ __('bill12') }}
               </div>
               @error('tarjetaNumero')
               <p class="text-danger">{{$message}}</p>
@@ -199,10 +200,10 @@
             </div>
 
             <div class="col-md-3">
-              <label for="cc-cvv" class="form-label">CVV</label>
+              <label for="cc-cvv" class="form-label">{{ __('CVV') }}</label>
               <input type="text" class="form-control" name="cvv">
               <div class="invalid-feedback">
-                Security code required
+                {{ __('bill13') }}
               </div>
             </div>
             @error('cvv')
@@ -213,7 +214,7 @@
           <hr class="my-4">
 
           <div style="margin-bottom:10px; text-align:center;">
-          <button type="submit" class="btn btn-outline-primary" >Completar Pago</button><br><br>
+          <button type="submit" class="btn btn-outline-primary" >{{ __('Complete payment') }}</button><br><br>
           </div>
           </div>
         </form>
@@ -225,9 +226,9 @@
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2017–2023 FoodFit</p>
     <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
+      <li class="list-inline-item"><a href="#">{{ __('Privacy') }}</a></li>
+      <li class="list-inline-item"><a href="#">{{ __('Terms') }}</a></li>
+      <li class="list-inline-item"><a href="#">{{ __('Support') }}</a></li>
     </ul>
   </footer>
 </div>

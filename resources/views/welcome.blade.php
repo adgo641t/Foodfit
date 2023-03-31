@@ -4,11 +4,11 @@
       <div class="container-fluid pageHeader">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12 marginHeader">
-                <h1> La suscripción semanal para que comas rico y sano</h1>
+                <h1> {{ __('text1') }}</h1>
                 <p class="lead">
-                  Food&Fit cocina por ti y llena tu nevera de tápers ricos y saludables sin complicarte la vida.
+                  {{ __('text2') }}
                 </p>
-                <button class="btn btnColor">PEDIR A LA CARTA</button>
+                <button class="btn btnColor">{{ __('Our dishes') }}</button>
             </div>
         </div>
     </div>
@@ -18,20 +18,20 @@
   <div class="container-fluid">
     <div class="row marginHeader">
       <div class="col-lg-12 col-md-12 col-sm-12">
-          <p class="someText textAlignment">NO TE COMPLIQUES LA VIDA</p>
-          <h1 class="textAlignment display-6">Únete a las más de 103.602 personas que ya han comido Food&Fit</h1>
+          <p class="someText textAlignment">{{ __('text3') }}</p>
+          <h1 class="textAlignment display-6">{{ __('text4') }}</h1>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12 marginHeader">
         <i class="fa-solid fa-clock fa-4x d-flex justify-content-center"></i>
-        <p class="mt-5 textAlignment">Menos horas en el super, cocinando y limpiando. Y más tiempo para ti. Cinco horas extra en tu semana.</p>
+        <p class="mt-5 textAlignment">{{ __('text5') }}</p>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12 marginHeader">
         <i class="fa-solid fa-basket-shopping fa-4x d-flex justify-content-center"></i>
-        <p class="mt-5 textAlignment">Cocinamos por ti menús saludables y llenos de sabor.Cero aditivos, cero procesados, comida como la de tu madre.</p>
+        <p class="mt-5 textAlignment">{{ __('text6') }}</p>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12 marginHeader">
         <i class="fa-solid fa-bowl-food fa-4x d-flex justify-content-center"></i>
-        <p class="mt-5 textAlignment">Platos con ingredientes naturales desde 5,45€/plato Ahorra comiendo mejor. Que el precio no sea un problema.</p>
+        <p class="mt-5 textAlignment">{{ __('text7') }}</p>
       </div>
     </div>
   </div>
@@ -40,45 +40,9 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
-          <h1 class="display-6 textAlignment">Lo que dicen de nosotros</h1>
+          <h1 class="display-6 textAlignment">{{ __('text8') }}</h1>
       </div>
   </div>
-  <!-- <section id="testimonials" class="marginHeader">
-
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <h2 class="testimonial-text">Estos chicos son unos cracks fui al restaurante era perfecto tuve que cancelar el programa</h2>
-          <img class="content-center" src="public/gordon.jpg" class="testimonial-img " alt="dog-profile">
-          <em>Gordon Ramsay, New York</em>
-        </div>
-        <div class="carousel-item">
-          <h2 class="testimonial-text">Ahora me llaman Don sucio me acabo de hinchar a comer en este restaurante me encanta.</h2>
-          <img src="../public/don-limpio.png" class="testimonial-img object-center" alt="lady-profile">
-          <em>Don limpio, Illinois</em>
-        </div>
-        <div class="carousel-item">
-          <h2 class="testimonial-text">Gracias a esta app he conseguido adelgazar 80Kg</h2>
-          <img src="public/chicote.jpg" class="testimonial-img" alt="lady-profile">
-          <em>Alberto Chicote, España</em>
-        </div>
-        <div class="carousel-item">
-          <h2 class="testimonial-text">Después de probar esta app, la familia ya no es lo más importante</h2>
-          <img src="/public/vin.jpg" class="testimonial-img" alt="lady-profile">
-          <em>Vin Diesel, California</em>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
-  </section> -->
 
 <section class="text-neutral-700 dark:text-neutral-300">
   <div class="grid gap-6 text-center md:grid-cols-3">
@@ -91,7 +55,7 @@
           <img src="../public/don-limpio.png" style="width:300px" alt="lady-profile">
         </div>
         <div class="p-6">
-          <h4 class="mb-4 text-2xl font-semibold">Don Limpio</h4>
+          <h4 class="mb-4 text-2xl font-semibold">{{ __('text12') }}</h4>
           <hr />
           <p class="mt-4">
             <svg
@@ -102,7 +66,7 @@
               <path
                 d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
             </svg>
-            Este restaurante me ha costa mi calvicie pero servicio 10/10 recomendado por los cuatro pelos que me faltan
+            {{ __('text11') }}
           </p>
         </div>
         <ul class="mb-0 flex items-center justify-center">
@@ -179,7 +143,7 @@
           <img class="content-center" src="public/gordon.jpg" alt="dog-profile">
         </div>
         <div class="p-6">
-          <h4 class="mb-4 text-2xl font-semibold">Gordon Ramsay</h4>
+          <h4 class="mb-4 text-2xl font-semibold">{{ __('text10') }}</h4>
           <hr />
           <p class="mt-4">
             <svg
@@ -190,7 +154,7 @@
               <path
                 d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
             </svg>
-            Despues de Comer aqui se me fue el mal genio por el culo de lo bien que cague 
+            {{ __('text9') }} 
           </p>
           <ul class="mb-0 flex items-center justify-center">
         <li>
@@ -264,11 +228,10 @@
         <div class="h-28 overflow-hidden rounded-t-lg bg-[#6d5b98]"></div>
         <div
           class="mx-auto -mt-12 w-24 overflow-hidden rounded-full border-2 border-white bg-white dark:border-neutral-800 dark:bg-neutral-800">
-          <img
-            src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp" />
+          <img class="content-center" src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp" />
         </div>
         <div class="p-6">
-          <h4 class="mb-4 text-2xl font-semibold">John Smith</h4>
+          <h4 class="mb-4 text-2xl font-semibold">{{ __('text26') }}</h4>
           <hr />
           <p class="mt-4">
             <svg
@@ -279,7 +242,7 @@
               <path
                 d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
             </svg>
-            Yo simplemente me fume un cigarro
+            {{ __('text27') }}
           </p>
           <ul class="mb-0 flex items-center justify-center">
         <li>
@@ -362,11 +325,11 @@
   <!-- Another information section -->
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6">
-      <h1 class="display-5 px-5">Comer responsable es comer sostenible</h1>
-      <p class="px-5">Una alimentación responsable es una alimentación sostenible. Trabajar con productos que crecen de la tierra nos hace muy conscientes de esto y de lo vital que es cuidarla.</p>
-      <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>Donamos el excedente de alimentos</strong>. Todas las semana enviamos las raciones excedentes a familias vulnerables.</p>
-      <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>Somos Plastic Neutral.</strong>. Recogemos del mar los mismos kg de plástico que generamos.</p>
-      <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>Reducimos la huella de carbono.</strong>.A través de un transporte semanal en vez de diario. Menos viajes, menos contaminación.</p>
+      <h1 class="display-5 px-5">{{ __('text13') }}</h1>
+      <p class="px-5">{{ __('text14') }}</p>
+      <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text15') }}</strong> {{ __('text16') }}</p>
+      <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text17') }}</strong> {{ __('text18') }}</p>
+      <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text19') }}</strong> {{ __('text20') }}</p>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6">
       <img src="../public/sostenible.png" class="vegies" alt="">
@@ -377,10 +340,10 @@
         
   <div class="row ">
     <div class="col-lg-12 col-md-12 col-sm-12 marginHeader">
-      <p class="textAlignment marginHeader">GENTE INCREÍBLE QUE YA COME FOODFIT</p>
-      <h1 class="display-5 px-5 textAlignment ">Forma parte de una comunidad que inspira a los demás</h1>
+      <p class="textAlignment marginHeader">{{ __('text21') }}</p>
+      <h1 class="display-5 px-5 textAlignment ">{{ __('text22') }}</h1>
     </div>
-    <p class="textAlignment ">Formamos parte de la vida de personas con pasión por lo que hacen. Personas que buscan confianza en lo que comen porque saben que de la buena comida se nutren las mejores cosas.</p>
+    <p class="textAlignment ">{{ __('text23') }}</p>
   </div>
   <div class="container">
     <div class="row marginHeader">
@@ -407,28 +370,6 @@
 
   <!-- Footer section -->
 
-  <!-- <div class="row marginHeader textAlignment">
-    <div class="col">
-      <p>¿Cuánto vale tu tiempo?</p>
-      <h2 class="display-6">Nutre lo que quieres</h2>
-    </div>
-    <footer id="footer">
-      <div class="col">
-        <a class="nav-link" href="{{ url('/faqs') }}">Faqs</a>
-      </div>
-      <div class="col">
-        <div class="icon-footer">
-          <i class="fa-brands fa-twitter"></i>
-          <i class="fa-brands fa-facebook"></i>
-          <i class="fa-brands fa-instagram"></i>
-          <i class="fa-solid fa-envelope"></i>
-        </div>
-      </div>
-      <p>© Copyright FOOD&FIT</p>
-  
-    </footer>
-  </div> -->
-
   <br>
 
   <footer class="bg-gray-900">	
@@ -446,13 +387,13 @@
 						<a class="inline-block py-2 px-3 text-white no-underline" href="#">Blog</a>
 					  </li>
 					  <li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Faqs</a>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 py-2 px-3" href="{{ url('/faqs') }}">{{ __('FAQs') }}</a>
 					  </li>
 					  <li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Facebook</a>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 py-2 px-3" href="#">Facebook</a>
 					  </li>
 						<li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Linkedin</a>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 py-2 px-3" href="#">Linkedin</a>
 					  </li>
 					</ul>
 				</div>
