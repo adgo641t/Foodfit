@@ -19,7 +19,7 @@ class BillController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:web');
     }
 
 // It displays the bill view
@@ -76,7 +76,9 @@ class BillController extends Controller
 
         $cartItems = \Cart::getContent();
 
+        
         foreach ($cartItems as $cartItem) {
+            
             $quantity = $cartItem->quantity;
 
             $product = Product::find($cartItem->id);
@@ -84,6 +86,7 @@ class BillController extends Controller
             $stockActual = $product->stock;
 
             $product->stock = $stockActual-$quantity;
+
             $bill = new Bill;
             $bill->user_id = auth()->user()->id;
             $bill->product_id = $cartItem->id;

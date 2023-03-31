@@ -14,7 +14,7 @@
 	<div class="absolute bg-black opacity-60 inset-0 z-0"></div>
 	<div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl z-10">
 		<div class="text-center">
-			<img src="logo.png" alt="" class="logo">
+			<img src="../public/logo.png" alt="" class="logo">
 			<p class="mt-2 text-sm text-gray-600">Registrase y disfrute del bien comer</p>
 		</div>
 		<form class="mt-8 space-y-6" action="{{ route('register.custom') }}" method="POST">

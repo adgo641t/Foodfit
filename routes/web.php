@@ -13,6 +13,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\Category_controller;
 use App\Models\Category_blogs;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,7 +74,8 @@ All Normal Users Routes List
 Route::group(['middleware' => ['role:cliente']],function () {
     Route::get('/home', [HomeController::class, 'index']);
 
-    
+    Route::resource('products', ProductController::class);
+    Route::resource('coupons', CouponsController::class);    
     //Route::get('/home', [HomeController::class, 'index']);
     
     Route::get('send-mail', [SendEmailController::class, 'index']);
@@ -117,6 +119,9 @@ All Admin Routes List
 Route::group(['middleware' => ['role:admin']],function () {
 
     Route::get('/home', [HomeController::class, 'index']);
+
+    Route::resource('products', ProductController::class);
+    Route::resource('coupons', CouponsController::class);
 
     
     //Route::get('/home', [HomeController::class, 'index']);

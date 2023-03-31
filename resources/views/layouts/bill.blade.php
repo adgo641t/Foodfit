@@ -31,7 +31,7 @@
 <div class="container">
   <main>   
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="logo.png" alt="" width="130" height="57">
+      <img class="d-block mx-auto mb-4" src="../logo.png" alt="" width="130" height="57">
       <h2>Checkout form</h2><br><br>
     </div>
     <section style="align-content: center;">
