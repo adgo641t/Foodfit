@@ -28,12 +28,5 @@ class Post_categorys_blog extends Seeder
             'category_blogs_id_3' => 3,
             'post_id' => 2
         ]);
-
-        Post_category_blog::create([
-            'category_blogs_id' => 1,
-            'category_blogs_id_2' => 1,
-            'category_blogs_id_3' => 3,
-            'post_id' => 3
-        ]);
     }
 }

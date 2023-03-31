@@ -89,22 +89,29 @@
                 <p
                 @foreach($Category_blogs as $category)
                     @if($Blog->category_id == $category->id)
-                        {{$Blog->category_id = $category->name}}
+                        @if($category->name  != 'Ninguna categoria')
+                            {{$Blog->category_id = $category->name}}
+                        @else 
+                            {{$Blog->category_id = null}}
+                        @endif          
                     @endif
+
                     @if($Blog->category_id_2 == $category->id)
+                        @if($category->name != 'Ninguna categoria')
                             {{$Blog->category_id_2 = $category->name}}
-                    @endif
+                         @else 
+                         {{$Blog->category_id_2 = null}}
+                        @endif          
+                    @endif    
+
                     @if($Blog->category_id_3 == $category->id)
+                        @if($category->name  != 'Ninguna categoria')
                             {{$Blog->category_id_3 = $category->name}}
-                    @endif
-                @endforeach            
-                @if($Blog->category_id == "Ninguna categoria")
-                {{$Blog->category_id = ''}}
-                @elseif($Blog->category_id_2 == "Ninguna categoria")
-                {{$Blog->category_id_2 = ''}}
-                @elseif($Blog->category_id_3 == "Ninguna categoria")
-                {{$Blog->category_id_3 = ''}}
-                @endif class="w-full text-gray-600 text-xs md:text-sm px-6">
+                        @else 
+                        {{$Blog->category_id_3 = null}}
+                        @endif   
+                    @endif               
+                @endforeach  class="w-full text-gray-600 text-xs md:text-sm px-6">
                          {{$Blog->category_id}} {{$Blog->category_id_2}} {{$Blog->category_id_3}}</p>
 
                 <div class="px-6 py-4">
@@ -157,7 +164,12 @@
                 @endrole
             </div>
             <div class="px-6 pt-4 pb-2">
-                <div class="text-sm font-light text-gray-500 dark:text-gray-400">Creator: <b>{{$Blog->creator}}</b></div>
+                <div class="text-sm font-light text-gray-500 dark:text-gray-400">Creator: <b
+                @foreach ($users as $user)
+                    @if($user->id == $Blog->creator)
+                     {{$Blog->creator = $user->name}}          
+                    @endif
+                @endforeach>{{$Blog->creator}}</b></div>
                 <div class="text-sm font-light text-gray-500 dark:text-gray-400">Created: <b>{{$Blog->created_at->format('d-m-Y')}}</b></div>
                 <div class="text-sm font-light text-gray-500 dark:text-gray-400">Updated: <b>{{$Blog->updated_at->format('d-m-Y')}} at {{$Blog->updated_at->format('H:i')}}</b></div>
             </div>

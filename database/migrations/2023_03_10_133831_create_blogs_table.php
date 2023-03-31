@@ -20,8 +20,8 @@ return new class extends Migration
             $table->foreignId('category_id')->references('id')->on('category_blogs')->cascadeOnDelete();
             $table->foreignId('category_id_2')->references('id')->on('category_blogs')->cascadeOnDelete();
             $table->foreignId('category_id_3')->references('id')->on('category_blogs')->cascadeOnDelete();
-
-            $table->string('creator');
+            $table->foreignId('creator')->references('id')->on('users');
+           
             $table->string('image');
             //$table->foreignId('category_id')->references('id')->on('category_blogs');
             $table->timestamps();

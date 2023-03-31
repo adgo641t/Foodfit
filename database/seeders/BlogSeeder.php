@@ -21,7 +21,7 @@ class BlogSeeder extends Seeder
             'category_id' => 2,
             'category_id_2' => 1,
             'category_id_3' => 3,
-            'creator' => 'Pau',
+            'creator' => 1,
             'image' => 'Arnolds.jpeg',
 
         ]);
@@ -32,20 +32,11 @@ class BlogSeeder extends Seeder
             'category_id' => 3,
             'category_id_2' => 1,
             'category_id_3' => 3,
-            'creator' => 'Adrian',
+            'creator' => 2,
             'image' => 'ciclismo.jpg',
 
         ]);
 
-        Post::create([
-            'title' => 'Como la comida engorda',
-            'description' => 'Te hacemos un dto por ser guay',
-            'category_id' => 1,
-            'category_id_2' => 1,
-            'category_id_3' => 3,
-            'creator' => 'Wintop',
-            'image' => 'berengena.jpg',
 
-        ]);
     }
 }
