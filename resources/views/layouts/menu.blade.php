@@ -50,35 +50,35 @@
         <header>
             <div class="container-fluid">
             <nav class="navbar navbar-expand-lg fixed-top navbar-light " style="background-color: #ecffeb" >
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+            <button onclick="menu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div id="myMenu" class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         @if (Route::has('login'))
                             @auth
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            <!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
-                            </button>
+                            </button>-->
                                 <!--If user is logged-->
                                 @if(@Auth::user()->hasRole('cliente'))   
-                                <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>                      
+                                <!--<a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>-->                
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/abouts') }}">About</a>
+                                    <a class="nav-link" href="{{ url('/abouts') }}">{{ __('About us') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/product') }}">Pedir a
-                                        la carta</a>
+                                    <a class="nav-link" aria-current="page" href="{{ url('/product') }}">{{ __('Our dishes') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/show-bill') }}">Facturas cobradas</a>
+                                    <a class="nav-link" aria-current="page" href="{{ url('/show-bill') }}">{{ __('Bills') }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Blog</a>
                                 </li>
-                                    <a href="{{ url('/logout') }}"class="nav-link">Logout</a>
+                                    <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
                                 </li>
 
                                                                                 <!--Icon cart and go to cart-->
@@ -106,39 +106,46 @@
                                     <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Administracion de Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('/logout') }}"class="nav-link">Logout</a>
+                                    <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
                                 </li>
                                 @endif
                                 @if(@Auth::user()->hasRole('BlogCreator'))
-                                <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+                                <!--<a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>-->
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Administracion de Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('/logout') }}"class="nav-link">Logout</a>
+                                    <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
                                 </li>
                                 @endif
                              <!--To logout-->
                             @else
-                            <a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+                            <!--<a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
-                            </button>
+                            </button>-->
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/abouts') }}">About</a>
+                                <a class="nav-link" href="{{ url('/abouts') }}">{{ __('About us') }}</a>
                             </li>
                                 <li class="nav-item">
                                     <a href="{{ route('login') }}"
-                                        class="nav-link text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                                        class="nav-link text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Sign in') }}</a>
                                 </li>
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}"
-                                        class="nav-link ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                        class="nav-link ml-4 text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Sign up') }}</a>
                                 @endif
                             @endauth
                         @endif
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link">{{ __("Choose language") }} <i class="fa fa-caret-down"></i></button>
+                            <div id="myDropdown" class="dropdown-content">
+                              <a href="{{route('set_language', ['es'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/es.png" alt=""> {{ __("idioma1") }}</a>
+                              <a href="{{route('set_language', ['en'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/en.png" alt=""> {{ __("idioma2") }}</a>
+                            </div>
+                          </div>
                     </ul>
             </nav>
         </header>
