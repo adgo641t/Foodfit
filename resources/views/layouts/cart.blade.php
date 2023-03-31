@@ -21,21 +21,21 @@
                       </div>
                   @endif
                       <a href="/product" class="inline-block text-black ml-4 mb-4"
-><i class="fa-solid fa-arrow-left"></i> Back
+><i class="fa-solid fa-arrow-left"></i> {{ __('Back') }}
 </a>
-                        <h3 class="text-3xl text-bold">Cart List</h3>
+                        <h3 class="text-3xl text-bold">{{ __('Your cart') }}</h3>
                       <div class="flex-1" >
                         <table class="w-full text-sm lg:text-base" cellspacing="0">
                           <thead>
                             <tr class="h-12 uppercase">
                               <th class="hidden md:table-cell"></th>
-                              <th class="text-left">Name</th>
+                              <th class="text-left">{{ __('Name') }}</th>
                               <th class="pl-5 text-left lg:text-right lg:pl-0">
-                                <span class="lg:hidden" title="Quantity">Qtd</span>
-                                <span class="hidden lg:inline">Quantity</span>
+                                <span class="lg:hidden" title="Quantity">{{ __('QTD') }}</span>
+                                <span class="hidden lg:inline">{{ __('Quantity') }}</span>
                               </th>
-                              <th class="hidden text-right md:table-cell"> price</th>
-                              <th class="hidden text-right md:table-cell"> Remove </th>
+                              <th class="hidden text-right md:table-cell">{{ __('Price') }}</th>
+                              <!--<th class="hidden text-right md:table-cell"> Remove </th>-->
                             </tr>
                           </thead>
                           <tbody>
@@ -71,7 +71,7 @@
                               </td>
                               <td class="hidden text-right md:table-cell">
                                 <span class="text-sm font-medium lg:text-base">
-                                    ${{ $item->price}}
+                                    {{ $item->price}}€
                                 </span>
                               </td>
                               <td class="hidden text-right md:table-cell">
@@ -93,19 +93,19 @@
                           </tbody>
                         </table>
                         <div>
-                         Total: ${{round(Cart::getTotal()*1.21 ,2, PHP_ROUND_HALF_EVEN)}}
+                         Total: {{round(Cart::getTotal()*1.21 ,2, PHP_ROUND_HALF_EVEN)}}€
                         </div>
                         <div>
                           <form action="{{ route('cart.clear') }}" method="POST">
                             @csrf
-                            <button class="px-6 py-2 text-red-800 bg-red-300 rounded">Remove All Cart</button>
+                            <button class="px-6 py-2 text-red-800 bg-red-300 rounded">{{ __('Remove all cart') }}</button>
                           </form>
                         </div>
                         <div>
                           @if (Cart::getTotal() > 0)
                         <form action="{{ url('/bill') }}" method="GET">
                             @csrf
-                            <button class="px-6 py-2 text-white-800 bg-green-300 rounded">Checkout</button>
+                            <button class="px-6 py-2 text-white-800 bg-green-300 rounded">{{ __('Checkout') }}</button>
                           </form>
                           @endif
                         </div>

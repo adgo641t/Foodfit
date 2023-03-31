@@ -12,33 +12,33 @@
                   type="text"
                   name="search"
                   class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
-                  placeholder="Busca un producto...."
+                  placeholder="{{ __('Search for a product...') }}"
               />
               <div class="absolute top-2 right-2">
                   <button
                       type="submit"
                       class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600"
                   >
-                      Search
+                  {{ __('Search') }}
                   </button>
               </div>
           </div>
       </form>
       @if (count($products) == 0)
-          <h3 class="text-center">Producto no encontrado</h3>
+          <h3 class="text-center">{{ __('Product not found') }}</h3>
       @endif
       <div class="row">
         <div class="col-md-4 px-4">
           <form action="product">
             <select name="category" class="form-select form-select-sm" aria-label="Default select example">
               <option value="">---</option>
-              <option value="Desayuno">Desayuno</option>
-              <option value="100% saludable">100% saludable</option>
-              <option value="Vegetariano">Vegetariano</option>
-              <option value="Nuevo">Nuevo</option>
-              <option value="Favoritos">Favoritos</option>
+              <option value="Desayuno">{{ __('Breakfast') }}</option>
+                <option value="100% saludable">{{ __('100% healthy') }}</option>
+                <option value="Vegetariano">{{ __('Vegetarian') }}</option>
+                <option value="Nuevo">{{ __('New') }}</option>
+                <option value="Favoritos">{{ __('Favorites') }}</option>
             </select>
-            <button type="submit" class="px-4 py-2 text-white bg-blue-800 rounded mt-2">Elegir categoria</button>
+            <button type="submit" class="px-4 py-2 text-white bg-blue-800 rounded mt-2">{{ __('Choose category') }}</button>
           </form>
         </div>
       </div>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="px-5 py-3">
                     <p class="text-gray-700" style="font-size: 1.2rem">{{ $product->name }}</p>
-                    <span class="mt-2 text-gray-500">${{ $product->price }}</span>
+                    <span class="mt-2 text-gray-500">{{ $product->price }}€</span>
                     <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf  
                         <input type="hidden" value="{{ $product->id }}" name="id">
@@ -72,7 +72,7 @@
                         @elseif ($product->categories == '100% saludable')
                         <p style="color:rgb(66, 69, 224)">🥗 {{$product->categories}}</p>
                         @endif
-                        <button class="px-4 py-2 text-white bg-blue-800 rounded">Add To Cart</button>
+                        <button class="px-4 py-2 text-white bg-blue-800 rounded">{{ __('Add to cart') }}</button>
                     </form>
                 </div>
                 
@@ -85,7 +85,7 @@
     </div>
     <footer id="footer">
       <div class="col">
-        <a class="nav-link" href="{{ url('/faq') }}">Preguntas Frequentes</a>
+        <a class="nav-link" href="{{ url('/faq') }}">{{ __('FAQs') }}</a>
       </div>
       <div class="col">
         <div class="icon-footer">

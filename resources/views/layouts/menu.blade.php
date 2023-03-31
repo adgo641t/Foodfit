@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add to cart - Foot&Fit</title>
+    <title>{{ __('title1') }}</title>
     <script src="https://kit.fontawesome.com/2469414de4.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -147,6 +147,7 @@
             @yield('content')
         </div>
         <script src="js/faqs.js"></script>
+        <script src="js/navbar.js"></script>
 </body>
 
 </html>

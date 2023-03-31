@@ -13,7 +13,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\Category_controller;
 use App\Models\Category_blogs;
-use App\Models\Product;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -182,6 +182,11 @@ Route::group(['middleware', ['role:BlogCreator']],function () {
 
 Route::get('/forget-password', [ForgotPasswordController::class, 'getEmail']);
 Route::post('/forget-password',  [ForgotPasswordController::class, 'postEmail']);
+
+Route::get('/set_language/{lang}', [App\Http\Controllers\Controller::class, 'set_language'])->name('set_language');
+
+Route::get('email-pdf', [PDFController::class, 'emailPDF']);
+Route::get('bill-pdf', [PDFController::class, 'billPDF']);
 
 
 

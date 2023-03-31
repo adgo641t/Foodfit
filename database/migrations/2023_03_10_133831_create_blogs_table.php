@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id();
+            $table->id()->cascadeOnDelete();
             $table->string('title');
             $table->string('description');
-            $table->foreignId('category_id')->references('id')->on('category_blogs');
-            $table->foreignId('category_id_2')->references('id')->on('category_blogs');
-            $table->foreignId('category_id_3')->references('id')->on('category_blogs');
+            $table->foreignId('category_id')->references('id')->on('category_blogs')->cascadeOnDelete();
+            $table->foreignId('category_id_2')->references('id')->on('category_blogs')->cascadeOnDelete();
+            $table->foreignId('category_id_3')->references('id')->on('category_blogs')->cascadeOnDelete();
 
             $table->string('creator');
             $table->string('image');

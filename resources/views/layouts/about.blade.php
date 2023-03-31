@@ -31,10 +31,8 @@
         <div class="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4">
             <div class="flex flex-col lg:flex-row justify-between gap-8">
                 <div class="w-full lg:w-5/12 flex flex-col justify-center">
-                    <h1 class="text-3xl lg:text-4xl font-bold leading-9 text-gray-800 dark:text-white pb-4">About Us</h1>
-                    <p class="font-normal text-base leading-6 text-gray-600 dark:text-white">Hola queridos visitantes, En estos momentos vamos a explicaros en que consiste nuestro modelo de restaurante: Nuestro restaurante trata de servir 
-            un tipo de comida diferente a la usual, ofrecemos comida variada sin necesidad de poner carne, respecto a nosotros somos 3 humildes chavales 
-            que hemos salido de DAW llenos de sabiduria y experiencia gracias a nuestros maravillosos profesores. </p>
+                    <h1 class="text-3xl lg:text-4xl font-bold leading-9 text-gray-800 dark:text-white pb-4">{{ __('about1') }}</h1>
+                    <p class="font-normal text-base leading-6 text-gray-600 dark:text-white">{{ __('about2') }}</p>
                 </div>
                 <div class="w-full lg:w-8/12">
                     <img class="w-full h-full" src="https://i.ibb.co/FhgPJt8/Rectangle-116.png" alt="A group of People" />
@@ -43,8 +41,8 @@
     
             <div class="flex lg:flex-row flex-col justify-between gap-8 pt-12">
                 <div class="w-full lg:w-5/12 flex flex-col justify-center">
-                    <h1 class="text-3xl lg:text-4xl font-bold leading-9 text-gray-800 dark:text-white pb-4">Our Story</h1>
-                    <p class="font-normal text-base leading-6 text-gray-600 dark:text-white"></p>
+                    <h1 class="text-3xl lg:text-4xl font-bold leading-9 text-gray-800 dark:text-white pb-4">{{ __('about3') }}</h1>
+                    <p class="font-normal text-base leading-6 text-gray-600 dark:text-white">{{ __('about4') }}</p>
                 </div>
                 <div class="w-full lg:w-8/12 lg:pt-8">
                     <div class="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 lg:gap-4 shadow-lg rounded-md">
@@ -66,7 +64,7 @@
                         <div class="p-4 pb-6 flex justify-center flex-col items-center">
                             <img class="md:block hidden" src="https://i.ibb.co/7nSJPXQ/Rectangle-121.png" alt="Elijah featured image" />
                             <img class="md:hidden block" src="https://i.ibb.co/ThZBWxH/Rectangle-121.png" alt="Elijah featured image" />
-                            <p class="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4">Pau </p>
+                            <p class="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4">Pau</p>
                         </div>
                     </div>
                 </div>
@@ -74,34 +72,19 @@
         </div>
     
     <!-- Footer section -->
-    <footer class="bg-gray-900">	
-		<div class="container max-w-6xl mx-auto flex items-center px-2 py-8">
-
-			<div class="w-full mx-auto flex flex-wrap items-center">
-				<div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
-					<a class="text-gray-900 no-underline hover:text-gray-900 hover:no-underline" href="#">
-					    <span class="text-base text-gray-200">Food&Fit Blog</span>
-					</a>
-				</div>
-				<div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
-					<ul class="list-reset flex justify-center flex-1 md:flex-none items-center">
-					  <li>
-						<a class="inline-block py-2 px-3 text-white no-underline" href="#">Blog</a>
-					  </li>
-					  <li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="{{ route('faqs') }}">Faqs</a>
-					  </li>
-					  <li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Facebook</a>
-					  </li>
-						<li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Linkedin</a>
-					  </li>
-					</ul>
-				</div>
-			</div>
-        
-		
-		</div>
-	</footer>
+    <footer id="footer">
+      <div class="col text-center">
+        <a class="nav-link" href="{{ url('/faq') }}">Faqs</a>
+      </div>
+      <div class="col text-center">
+        <div class="icon-footer">
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+      </div>
+      <p class="text-center">© Copyright FOOD&FIT</p>
+  
+    </footer>
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category_blogs;
+use App\Models\Post_category_blog;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
@@ -72,13 +73,23 @@ class BlogController extends Controller
             $blog->category_id = $request->category_id;
             $blog->category_id_2 = $request->category_id_2;
             $blog->category_id_3 = $request->category_id_3;
+
             $blog->creator = $request->creator;
             $blog->image =  $imageName;
+
             
 
             //$request->file->store('product', 'public');
 
             $blog->save(); // Finally, save the record.
+
+            $Post_blog_Category = new  Post_category_blog();
+            $Post_blog_Category->category_blogs_id = $blog->category_id;
+            $Post_blog_Category->category_blogs_id_2  = $blog->category_id_2;
+            $Post_blog_Category->category_blogs_id_3  = $blog->category_id_3;
+            $Post_blog_Category->post_id  = $blog->id;
+
+            $Post_blog_Category->save();
 
             // $category_id = $request->category_id;
             // $category_id_2 = $request->category_id_2;
