@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Post_category_blog', function (Blueprint $table) {
+           $table->id();
             $table->foreignId('category_blogs_id')->references('id')->on('category_blogs');
             $table->foreignId('category_blogs_id_2')->references('id')->on('category_blogs');
             $table->foreignId('category_blogs_id_3')->references('id')->on('category_blogs');

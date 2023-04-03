@@ -79,12 +79,14 @@ Route::group(['middleware' => ['role:cliente']],function () {
     //Route::get('/home', [HomeController::class, 'index']);
     
     Route::get('send-mail', [SendEmailController::class, 'index']);
-    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+    Route::get('/usersFilter', [User::class, 'index'])->name('usersFilter');
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
 
     Route::get('/faq', function () {
         return view('profile.userFaqs');
     });
+    Route::get('/user', [BlogController::class, 'index'])->name('user');
+
     Route::post('/user','UserController@update')->name('users.update');
     Route::get('/bill', [BillController::class, 'index'], function () {
     })->name('bill.list');

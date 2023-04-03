@@ -28,16 +28,17 @@ class BlogController extends Controller
         return view('blog/index' ,[
             'blogs' => Post::latest()->filter(request(['category','search']))->simplePaginate(4),
             'Category_blogs' => Category_blogs::all(),
-            'users' => User::all()
+            'users' => User::latest()->filter(request(['users']))->simplePaginate(4),
         ]);  
     }
 
     public function show($id) {
 
         $blog = Post::find($id);
+        $users = User::all();
         $Category_blogs = Category_blogs::all();
         
-        return view('blog/ShowBlog', compact('blog', 'Category_blogs'));  
+        return view('blog/ShowBlog', compact('blog', 'Category_blogs','users'));  
     }
 
     
@@ -61,7 +62,7 @@ class BlogController extends Controller
        //dd($request);
         $request->validate([
             'title' => ['required','string','max:50'],
-            'description' => ['required','string','max:50'],
+            'description' => ['required','string','max:1000'],
             'category_id' => ['sometimes','required'],
             'category_id_2' => ['sometimes','required'],
             'category_id_3' => ['sometimes','required'],
@@ -78,7 +79,7 @@ class BlogController extends Controller
             $blog->category_id = $request->category_id;
             $blog->category_id_2 = $request->category_id_2;
             $blog->category_id_3 = $request->category_id_3;
-            $blog->creator =  auth()->user()->name;
+            $blog->creator =  auth()->user()->id;
             $blog->image =  $imageName;
 
             if($blog->category_id == 1 && $blog->category_id_2 == 1 && $blog->category_id_3 == 1) {
@@ -126,9 +127,8 @@ class BlogController extends Controller
 
         $request->validate([
             'title' => ['required','string','max:50'],
-            'description' => ['required','string','max:50'],
+            'description' => ['required','string','max:1000'],
             'category_id' => ['required'],
-            'creator' => ['required'],
         ]);
 
         $inputs = $request->all();
@@ -145,19 +145,23 @@ class BlogController extends Controller
             $blog->category_id = $inputs['category_id'];
             $blog->category_id_2 = $inputs['category_id_2'];
             $blog->category_id_3 = $inputs['category_id_3'];
-            $blog->creator = $inputs['creator'];
+            //$blog->creator = $inputs['creator'];
             $blog->image = $imageName;
 
             $blog->save();
 
-            // $post = Post_category_blog::find($blog->id);
+            $id_blog = $blog->id;
 
-            // $post->category_blogs_id = $blog->category_id ;
-            // $post->category_blogs_id_2  =  $blog->category_id_2;
-            // $post->category_blogs_id_3 = $blog->category_id_3;
-            // $post->post_id  = $blog->id;
-            
-            // $post->save();
+            //get the post where the id of the post and retrieve the data of the post
+            $posts = Post_category_blog::where('post_id', $id_blog)->get();
+
+            foreach($posts as $post) {
+                $post->update(['category_blogs_id' => $blog->category_id]);
+                $post->update(['category_blogs_id_2' => $blog->category_id_2]);
+                $post->update(['category_blogs_id_3' => $blog->category_id_3]);
+                $post->update(['post_id' => $id_blog]);
+            }
+
             // redirect
             return redirect()->route('blog');    
 
@@ -170,18 +174,21 @@ class BlogController extends Controller
             $blog->category_id = $inputs['category_id'];
             $blog->category_id_2 = $inputs['category_id_2'];
             $blog->category_id_3 = $inputs['category_id_3'];
-            $blog->creator = $inputs['creator'];
+            //$blog->creator = $inputs['creator'];
             
             $blog->save();
-
-            // $post = Post_category_blog::find($blog->id);
-
-            // $post->category_blogs_id = $blog->category_id ;
-            // $post->category_blogs_id_2  =  $blog->category_id_2;
-            // $post->category_blogs_id_3 = $blog->category_id_3;
-            // $post->post_id = $blog->id;
             
-            // $post->update();
+            $id_blog = $blog->id;
+
+            //get the post where the id of the post and retrieve the data of the post
+            $posts = Post_category_blog::where('post_id', $id_blog)->get();
+
+            foreach($posts as $post) {
+                $post->update(['category_blogs_id' => $blog->category_id]);
+                $post->update(['category_blogs_id_2' => $blog->category_id_2]);
+                $post->update(['category_blogs_id_3' => $blog->category_id_3]);
+                $post->update(['post_id' => $id_blog]);
+            }
 
             // redirect
             return redirect()->route('blog');    

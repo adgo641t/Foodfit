@@ -31,7 +31,7 @@ class BlogSeeder extends Seeder
             'description' => 'Te hacemos un dto por ser guay',
             'category_id' => 3,
             'category_id_2' => 1,
-            'category_id_3' => 3,
+            'category_id_3' => 4,
             'creator' => 2,
             'image' => 'ciclismo.jpg',
 

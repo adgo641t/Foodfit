@@ -44,11 +44,16 @@
           </div>
       </form>
       <br>
-      @if(count($blogs) == 0)
+
+    @if(count($blogs) == 0)
         <h3 class="text-center">Blog no encontrados</h3>
     @endif
+
+    @if(count($users) == 0)
+        <h3 class="text-center">Blog no encontrados con esos usuarios</h3>
+    @endif
     <div class="w-full lg:w-1/4">
-    <label for="category" class="block text-gray-700 font-bold mb-2">Categoría:</label>
+    <label for="category" class="block text-gray-700 font-bold mb-2">Filtrar por categorias:</label>
     <form action="blog">
                 <select name="category" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
                 <option value="">Todas las categorias</option>
@@ -58,6 +63,19 @@
                 }
                 @endif
                 <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+                </select>
+                <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Elegir categoria</button>
+        </form>
+    </div>
+    <br>
+    <div class="w-full lg:w-1/4">
+    <label for="category" class="block text-gray-700 font-bold mb-2">Filtrar por usuarios:</label>
+    <form action="blog">
+                <select name="users" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
+                <option value="">Todas los Usuarios</option>
+                @foreach($users as $user)
+                <option value="{{$user->id}}">{{$user->name}}</option>
                 @endforeach
                 </select>
                 <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Elegir categoria</button>
@@ -167,7 +185,8 @@
                 <div class="text-sm font-light text-gray-500 dark:text-gray-400">Creator: <b
                 @foreach ($users as $user)
                     @if($user->id == $Blog->creator)
-                     {{$Blog->creator = $user->name}}          
+                     {{$Blog->creator = $user->name}}
+                     
                     @endif
                 @endforeach>{{$Blog->creator}}</b></div>
                 <div class="text-sm font-light text-gray-500 dark:text-gray-400">Created: <b>{{$Blog->created_at->format('d-m-Y')}}</b></div>
