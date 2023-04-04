@@ -77,6 +77,8 @@ Route::group(['middleware' => ['role:cliente']],function () {
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);    
     //Route::get('/home', [HomeController::class, 'index']);
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
     
     Route::get('send-mail', [SendEmailController::class, 'index']);
     Route::get('/usersFilter', [User::class, 'index'])->name('usersFilter');
@@ -176,7 +178,7 @@ Route::group(['middleware', ['role:BlogCreator']],function () {
 
     Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
 
-       Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
+    Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
     
     Route::post('UpdateNewBlog/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlog');
 

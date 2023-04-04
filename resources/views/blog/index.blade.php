@@ -52,6 +52,7 @@
     @if(count($users) == 0)
         <h3 class="text-center">Blog no encontrados con esos usuarios</h3>
     @endif
+   <!---Filtrar por categorias-->
     <div class="w-full lg:w-1/4">
     <label for="category" class="block text-gray-700 font-bold mb-2">Filtrar por categorias:</label>
     <form action="blog">
@@ -69,6 +70,7 @@
         </form>
     </div>
     <br>
+    <!------Filtrar por usuarios-------->
     <div class="w-full lg:w-1/4">
     <label for="category" class="block text-gray-700 font-bold mb-2">Filtrar por usuarios:</label>
     <form action="blog">
@@ -135,7 +137,8 @@
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-2"><a href="{{route('ShowBlog', $Blog->id)}}">{{$Blog->title}}</a></div>
                     <p class=" truncate ... text-gray-700 text-base">
-                        {{$Blog->description}}
+<!--{{$Blog->description}}-->
+                        {{($Blog->description)}}
                     </p>
                 </div>
                 <div class="px-6 pt-4 pb-2">

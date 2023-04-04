@@ -78,7 +78,7 @@
     </div>
   </div>
   <br> 
-  <button type="submit" class="btn btn-primary"><a style=" text-decoration: none; color: inherit">Update Blog</a></button>  
+  <input type="submit" class="btn btn-primary">  
     </div>
 
 </form>

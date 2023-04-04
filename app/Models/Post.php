@@ -34,7 +34,7 @@ class Post extends Model
         }
 
         if($filters['users'] ?? false){
-            $query->where('id' , 'like', '%' . request('user') . '%');
+            $query->where('creator' , 'like', '%' . request('users') . '%');
         }
 
         if($filters['search'] ?? false){
@@ -48,4 +48,5 @@ class Post extends Model
             ->orWhere('created_at', 'like', '%' . request('search') . '%');
         }  
     }
+    
 }

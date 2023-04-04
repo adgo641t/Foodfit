@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
-    public function index()
-    {   
-        
-    }
 
     // Function that displays the data of the user to edit
     public function edit(User $user)

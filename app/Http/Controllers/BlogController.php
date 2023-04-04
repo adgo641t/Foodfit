@@ -26,9 +26,9 @@ class BlogController extends Controller
         //$blog = Blog::all();
         
         return view('blog/index' ,[
-            'blogs' => Post::latest()->filter(request(['category','search']))->simplePaginate(4),
+            'blogs' => Post::latest()->filter(request(['category','search','users']))->simplePaginate(4),
             'Category_blogs' => Category_blogs::all(),
-            'users' => User::latest()->filter(request(['users']))->simplePaginate(4),
+            'users' => User::all()
         ]);  
     }
 
@@ -62,7 +62,7 @@ class BlogController extends Controller
        //dd($request);
         $request->validate([
             'title' => ['required','string','max:50'],
-            'description' => ['required','string','max:1000'],
+            'description' => ['required','string'],
             'category_id' => ['sometimes','required'],
             'category_id_2' => ['sometimes','required'],
             'category_id_3' => ['sometimes','required'],
@@ -127,7 +127,7 @@ class BlogController extends Controller
 
         $request->validate([
             'title' => ['required','string','max:50'],
-            'description' => ['required','string','max:1000'],
+            'description' => ['required','string'],
             'category_id' => ['required'],
         ]);
 
@@ -165,8 +165,25 @@ class BlogController extends Controller
             // redirect
             return redirect()->route('blog');    
 
-        }else {
+        }else if($inputs['category_id'] == 1 && $inputs['category_id_2'] == 1 && $inputs['category_id_3'] == 1) {
+            unset($inputs['category_id']);
+            unset($inputs['category_id_2']);
+            unset($inputs['category_id_3']);
+
+
+            $blog = Post::find($blog->id);
+
+            $blog->title = $inputs['title'];
+            $blog->description = $inputs['description'];
+            //$blog->creator = $inputs['creator'];
+            
+            $blog->save();
+
+            // redirect
+            return redirect()->route('blog');  
+        } else {
             unset($inputs['image']);
+
             $blog = Post::find($blog->id);
 
             $blog->title = $inputs['title'];

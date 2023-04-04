@@ -31,13 +31,8 @@
 <div class="container">
   <main>   
     <div class="py-5 text-center">
-<<<<<<< HEAD
-      <img class="d-block mx-auto mb-4" src="../logo.png" alt="" width="130" height="57">
-      <h2>Checkout form</h2><br><br>
-=======
       <img class="d-block mx-auto mb-4" src="logo.png" alt="" width="130" height="57">
       <h2>{{ __('Checkout form') }}</h2><br><br>
->>>>>>> 306120288077709923af1317e483e272f64a71a7
     </div>
     <section style="align-content: center;">
     <div class="row g-5">
@@ -110,7 +105,6 @@
         @if (Cart::getTotal()*1.21 > 40)
         <p class="text-success">Tienes un cupon disponible - <b>EATWELL</b></p>
        @endif
-       @endforeach
         </form>
         @endif
       </div>

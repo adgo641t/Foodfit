@@ -8,6 +8,7 @@ use App\Models\Bill;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
+use Illuminate\Validation\Rule;
 
 class BillController extends Controller
 {
@@ -61,7 +62,7 @@ class BillController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
        // dd($request);
         $formFields = $request->validate([
             'nombre' => 'required',
