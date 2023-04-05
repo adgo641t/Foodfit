@@ -32,6 +32,7 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('totalprice');
             $table->string('adress');
+            $table->string('status');
             $table->timestamps();
         });
     }

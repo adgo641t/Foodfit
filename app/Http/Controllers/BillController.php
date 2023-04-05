@@ -96,6 +96,7 @@ class BillController extends Controller
             $bill->quantity = $cartItem->quantity;
             $bill->totalprice = round(\Cart::getTotal()*1.21,2);
             $bill->adress = $request->adresa;
+            $bill->status = 'En realización';
             $product->save();
             $bill->save();
         } 
@@ -120,6 +121,26 @@ class BillController extends Controller
         
         return view('layouts/show-bill', compact('bill'));
     }
+
+    public function ShowAll()
+    {
+        $bill = Bill::all();
+        
+        return view('layouts/show-bill', compact('bill'));
+    }
+
+    public function updateStatus(Request $request, $bill_id)
+    {
+        $bill = Bill::find($bill_id);
+
+        $bill->status = $request->input('status');
+
+        $bill->save();
+
+        return redirect('showBill');
+    }
+
+
 
     /**
      * Show the form for editing the specified resource.

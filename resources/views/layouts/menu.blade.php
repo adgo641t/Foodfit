@@ -118,6 +118,14 @@
                                     <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
                                 </li>
                                 @endif
+                                @if(@Auth::user()->hasRole('chef'))
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/showBill') }}">{{ __('Bills') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
+                                </li>
+                                @endif
                              <!--To logout-->
                             @else
                             <!--<a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>

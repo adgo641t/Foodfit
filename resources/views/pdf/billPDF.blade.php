@@ -13,6 +13,7 @@
                 <th scope="col">Fecha</th>
                 <th scope="col">Comida</th>
                 <th scope="col">Cantidad</th>
+                <th scope="col">EStado del pedido</th>
                 <th scope="col">Precio</th>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
                 <td>{{$billItem->name}}</td>
                 <td>{{$billItem->quantity}}</td>
                 <td>{{round($billItem->totalprice*1.21,2,PHP_ROUND_HALF_EVEN)}}€</td>
+                <td>{{$billItem->status}}</td>
             </tr>
             @endforeach
         </tbody>

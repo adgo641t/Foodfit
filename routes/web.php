@@ -98,6 +98,7 @@ Route::group(['middleware' => ['role:cliente']],function () {
     });
     Route::get('/show-bill', [BillController::class, 'show'], function () {
     })->name('show');
+
     Route::post('/user/profile', [UserController::class, 'update'], function () {
     })->name('users.update');
     Route::get('/product', [ProductController::class, 'productList'], function () {
@@ -109,7 +110,6 @@ Route::group(['middleware' => ['role:cliente']],function () {
     Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
     Route::post('/coupon', [CouponsController::class, 'validCoupon']);
     Route::post('removeAllItems', [CartController::class, 'removeAllItems'])->name('cart.deleteAll');
-
 });
 
 
@@ -181,6 +181,16 @@ Route::group(['middleware', ['role:BlogCreator']],function () {
     Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
     
     Route::post('UpdateNewBlog/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlog');
+
+});
+
+
+Route::group(['middleware' => ['role:chef']],function () {
+    
+    Route::get('/showBill', [BillController::class, 'ShowAll'], function () {
+    })->name('show');
+
+    Route::post('/update-status/{id}', [BillController::class, 'updateStatus'])->name('update-status');
 
 });
 
