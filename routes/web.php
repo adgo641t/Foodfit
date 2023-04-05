@@ -72,12 +72,14 @@ Route::group(['middleware', ['role:cliente']],function () {
         return view('home');
     });
     Route::get('send-mail', [SendEmailController::class, 'index']);
-    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+    Route::get('/usersFilter', [User::class, 'index'])->name('usersFilter');
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
 
     Route::get('/faq', function () {
         return view('profile.userFaqs');
     });
+    Route::get('/user', [BlogController::class, 'index'])->name('user');
+
     Route::post('/user','UserController@update')->name('users.update');
     Route::get('/bill', [BillController::class, 'index'], function () {
     })->name('bill.list');
@@ -87,6 +89,7 @@ Route::group(['middleware', ['role:cliente']],function () {
     });
     Route::get('/show-bill', [BillController::class, 'show'], function () {
     })->name('show');
+
     Route::post('/user/profile', [UserController::class, 'update'], function () {
     })->name('users.update');
     Route::get('/product', [ProductController::class, 'productList'], function () {
@@ -112,6 +115,9 @@ All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::group(['middleware', ['role:admin']],function () {
+
+    Route::resource('products', ProductController::class);
+    Route::resource('coupons', CouponsController::class);
 
     
     //Route::get('/home', [HomeController::class, 'index']);
@@ -169,9 +175,19 @@ Route::group(['middleware', ['role:BlogCreator']],function () {
 
     Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
 
-       Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
+    Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
     
     Route::post('UpdateNewBlog/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlog');
+
+});
+
+
+Route::group(['middleware' => ['role:chef']],function () {
+    
+    Route::get('/showBill', [BillController::class, 'ShowAll'], function () {
+    })->name('show');
+
+    Route::post('/update-status/{id}', [BillController::class, 'updateStatus'])->name('update-status');
 
 });
 

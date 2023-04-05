@@ -28,9 +28,13 @@ class Post extends Model
     {
         if($filters['category'] ?? false){
             $query->where('category_id' , 'like', '%' . request('category') . '%')
-                ->orWhere('category_id_2', 'like', '%' . request('search') . '%')
-                ->orWhere('category_id_3', 'like', '%' . request('search') . '%');
+                ->orWhere('category_id_2', 'like', '%' . request('category') . '%')
+                ->orWhere('category_id_3', 'like', '%' . request('category') . '%');
 
+        }
+
+        if($filters['users'] ?? false){
+            $query->where('creator' , 'like', '%' . request('users') . '%');
         }
 
         if($filters['search'] ?? false){
@@ -42,6 +46,7 @@ class Post extends Model
             ->orWhere('category_id_3', 'like', '%' . request('search') . '%')
             ->orWhere('creator', 'like', '%' . request('search') . '%')
             ->orWhere('created_at', 'like', '%' . request('search') . '%');
-        }
+        }  
     }
+    
 }

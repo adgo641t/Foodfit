@@ -14,8 +14,13 @@
 	<div class="absolute bg-black opacity-60 inset-0 z-0"></div>
 	<div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl z-10">
 		<div class="text-center">
+<<<<<<< HEAD
+			<img src="../public/logo.png" alt="" class="logo">
+			<p class="mt-2 text-sm text-gray-600">Registrase y disfrute del bien comer</p>
+=======
 			<img src="logo.png" alt="" class="logo">
 			<p class="mt-2 text-sm text-gray-600">{{ __('Register and enjoy good food') }}</p>
+>>>>>>> 306120288077709923af1317e483e272f64a71a7
 		</div>
 		<form class="mt-8 space-y-6" action="{{ route('register.custom') }}" method="POST">
             @csrf

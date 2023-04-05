@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(CouponsSeeder::class);
+        $this->call(Post_categorys_blog::class);
+
     }
 }

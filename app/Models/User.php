@@ -73,4 +73,12 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
     // It saves the user role in an array
+
+    public function scopeFilter($query, array $filters)
+    {
+        if($filters['name'] ?? false){
+            $query->where('name' , 'like', '%' . request('name') . '%');
+
+        }
+    }
 }

@@ -34,6 +34,7 @@ return new class extends Migration
             $table->double('totalprice');
             $table->string('coupon')->nullable();
             $table->string('adress');
+            $table->string('status');
             $table->timestamps();
         });
     }

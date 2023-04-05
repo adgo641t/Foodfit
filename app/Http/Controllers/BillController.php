@@ -9,6 +9,7 @@ use App\Models\Product;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
+use Illuminate\Validation\Rule;
 
 class BillController extends Controller
 {
@@ -20,7 +21,7 @@ class BillController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:web');
     }
 
 // It displays the bill view
@@ -62,7 +63,7 @@ class BillController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
        // dd($request);
         $formFields = $request->validate([
             'nombre' => 'required|alpha',
@@ -78,7 +79,9 @@ class BillController extends Controller
 
         $cartItems = \Cart::getContent();
 
+        
         foreach ($cartItems as $cartItem) {
+<<<<<<< HEAD
             $coupon = $request->session()->get('coupon');
             if($coupon != null){
                 $quantity = $cartItem->quantity;
@@ -119,6 +122,28 @@ class BillController extends Controller
                 $product->save();
                 $bill->save();
             }
+=======
+            
+            $quantity = $cartItem->quantity;
+
+            $product = Product::find($cartItem->id);
+
+            $stockActual = $product->stock;
+
+            $product->stock = $stockActual-$quantity;
+
+            $bill = new Bill;
+            $bill->user_id = auth()->user()->id;
+            $bill->product_id = $cartItem->id;
+            $bill->name = $cartItem->name;
+            $bill->price = $cartItem->price;
+            $bill->quantity = $cartItem->quantity;
+            $bill->totalprice = round(\Cart::getTotal()*1.21,2);
+            $bill->adress = $request->adresa;
+            $bill->status = 'En realización';
+            $product->save();
+            $bill->save();
+>>>>>>> a248b2ec7709ee438ec3d3fcacc800ebecf92697
         } 
 
         $request->session()->forget('coupon');
@@ -141,6 +166,26 @@ class BillController extends Controller
         
         return view('layouts/show-bill', compact('bill'));
     }
+
+    public function ShowAll()
+    {
+        $bill = Bill::all();
+        
+        return view('layouts/show-bill', compact('bill'));
+    }
+
+    public function updateStatus(Request $request, $bill_id)
+    {
+        $bill = Bill::find($bill_id);
+
+        $bill->status = $request->input('status');
+
+        $bill->save();
+
+        return redirect('showBill');
+    }
+
+
 
     /**
      * Show the form for editing the specified resource.

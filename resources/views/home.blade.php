@@ -12,7 +12,7 @@
                 <button class="btn btnColor"><a href="product" style="all: inherit">PEDIR A LA CARTA</a></button>
                 @endif
                 @if(@Auth::user()->hasRole('admin'))
-                <button class="btn btnColor"><a href="{{ route('products.index') }}" style="all: inherit">PEDIR A LA CARTA</a></button>
+                <button class="btn btnColor"><a href="{{ route('products.index')}}" style="all: inherit">PEDIR A LA CARTA</a></button>
                 @endif
             </div>
         </div>
@@ -350,9 +350,7 @@
       </ul>
         </div>
       </div>
-      
     </div>
-  </div>
 </section>
 
   <section class="row py-12 object-center	" id="press">
@@ -360,7 +358,6 @@
     <img class="press-logo" src="../public/mcdonald.png" alt="tnw-logo">
     <img class="press-logo" src="../public/forbes-logo.png" alt="biz-insider-logo">
     <img class="press-logo" src="../public/masterchef.png" alt="mashable-logo">
-
   </section>
   </div>
 
@@ -374,7 +371,7 @@
       <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>Reducimos la huella de carbono.</strong>.A través de un transporte semanal en vez de diario. Menos viajes, menos contaminación.</p>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6">
-      <img src="../public/sostenible.png" class="vegies" alt="">
+      <img src="public/sostenible.png" class="vegies" alt="">
     </div>
   </div>
 

@@ -31,17 +31,6 @@
           @enderror
     </div>
   </div>
-  <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-        Creator of the blog
-      </label>
-      <input value="{{old('creator')}}" id="creator" name="creator" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Creator">
-      @error('creator')
-          <small style="color: red;">{{$message}}</small>
-        @enderror
-    </div>
-  </div>
   <div class="flex flex-wrap -mx-3 mb-2">
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
@@ -69,6 +58,11 @@
             <option value="{{$id->id}}">{{$id->name}}</option>
         @endforeach
         </select>
+        @if ($errors->has('category_id_3'))
+            <div class="alert alert-danger">
+                {{ $errors->first('category_id_3') }}
+            </div>
+        @endif
           <br>
           <a href="{{ route('ShowAddCategory') }}" type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Category</a>  
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

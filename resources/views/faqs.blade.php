@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+@extends('layouts.menu')
+@section('content')
+=======
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -27,41 +31,8 @@
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
     crossorigin="anonymous"></script>
     </head>
+>>>>>>> 306120288077709923af1317e483e272f64a71a7
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            <!-- Menu -->
-          <header>
-            <nav class="navbar navbar-expand-lg fixed-top navbar-light navbarColor">
-                <div class="container-fluid">
-                    <a href="{{ url('/') }}"><img src="logo.png" alt="" class="logo-img"></a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                          <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/sobre') }}">About us</a>
-                          </li>
-                          @if (Route::has('login'))
-                          @auth
-                            <li class="nav-item">
-                              <a href="{{ url('/logout') }}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link">Logout</a>
-                            </li>
-                          @else
-                            <li class="nav-item">
-                                <a href="{{ route('login') }}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-                            </li>
-                          @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="nav-link ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                          @endif
-                          @endauth
-                          @endif
-                    </ul>
-                </div>
-                </div>
-            </nav>
-          </header>  
-          
           <div class="container faqs">
             <h3>{{ __('faq1') }} <b>{{ __('faq2') }}</b></h3>
           </div>
@@ -125,29 +96,45 @@
   <p class="panelText">{{ __('faq42') }}</p>
   <p class="panelText">{{ __('faq43') }}</p>
 </div>
-          </div>
+<br>
+</div>
+
+		
+</div>
+</body>
+  <footer class="bg-gray-900">	
+		<div class="container max-w-6xl mx-auto flex items-center px-2 py-8">
+
+			<div class="w-full mx-auto flex flex-wrap items-center">
+				<div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+					<a class="text-gray-900 no-underline hover:text-gray-900 hover:no-underline" href="#">
+					    <span class="text-base text-gray-200">Food&Fit</span>
+					</a>
+				</div>
+				<div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+					<ul class="list-reset flex justify-center flex-1 md:flex-none items-center">
+					  <li>
+						<a class="inline-block py-2 px-3 text-white no-underline" href="#">Blog</a>
+					  </li>
+					  <li>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Faqs</a>
+					  </li>
+					  <li>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Facebook</a>
+					  </li>
+						<li>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Linkedin</a>
+					  </li>
+					</ul>
+				</div>
+			</div>
+        
+      </div>
+	</footer>
           
             
 
-  <!-- Footer section -->
-    <footer id="footer">
-      <div class="col text-center">
-        <a class="nav-link" href="{{ url('/faqs') }}">Faqs</a>
-      </div>
-      <div class="col text-center">
-        <div class="icon-footer">
-          <i class="fa-brands fa-twitter"></i>
-          <i class="fa-brands fa-facebook"></i>
-          <i class="fa-brands fa-instagram"></i>
-          <i class="fa-solid fa-envelope"></i>
-        </div>
-      </div>
-      <p class="text-center">© Copyright FOOD&FIT</p>
-  
-    </footer>
-  </div>
 
         <script src="js/faqs.js"></script>
 
-    </body>
-</html>
+  @section('content')

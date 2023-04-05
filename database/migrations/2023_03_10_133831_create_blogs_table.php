@@ -14,14 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id();
+            $table->id()->cascadeOnDelete();
             $table->string('title');
-            $table->string('description');
-            $table->foreignId('category_id')->references('id')->on('category_blogs');
-            $table->foreignId('category_id_2')->references('id')->on('category_blogs');
-            $table->foreignId('category_id_3')->references('id')->on('category_blogs');
-
-            $table->string('creator');
+            $table->text('description', 16000);
+            $table->foreignId('category_id')->references('id')->on('category_blogs')->cascadeOnDelete();
+            $table->foreignId('category_id_2')->references('id')->on('category_blogs')->cascadeOnDelete();
+            $table->foreignId('category_id_3')->references('id')->on('category_blogs')->cascadeOnDelete();
+            $table->foreignId('creator')->references('id')->on('users');
+           
             $table->string('image');
             //$table->foreignId('category_id')->references('id')->on('category_blogs');
             $table->timestamps();

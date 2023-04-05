@@ -52,7 +52,7 @@
         <div class="h-28 overflow-hidden rounded-t-lg bg-[#9d789b]"></div>
         <div
           class="mx-auto -mt-12 w-24 overflow-hidden rounded-full border-2 border-white bg-white dark:border-neutral-800 dark:bg-neutral-800">
-          <img src="../public/don-limpio.png" style="width:300px" alt="lady-profile">
+          <img src="public/don-limpio.png" style="width:300px" alt="lady-profile">
         </div>
         <div class="p-6">
           <h4 class="mb-4 text-2xl font-semibold">{{ __('text12') }}</h4>
@@ -313,12 +313,12 @@
   </div>
 </section>
 
-  <section class="row py-12 object-center	" id="press">
-    <img class="press-logo" src="../public/Spacex.png" alt="tc-logo">
-    <img class="press-logo" src="../public/mcdonald.png" alt="tnw-logo">
-    <img class="press-logo" src="../public/forbes-logo.png" alt="biz-insider-logo">
-    <img class="press-logo" src="../public/masterchef.png" alt="mashable-logo">
 
+  <section class="row py-12 object-center	" id="press">
+    <img class="press-logo" src="public/Spacex.png" alt="tc-logo">
+    <img class="press-logo" src="public/mcdonald.png" alt="tnw-logo">
+    <img class="press-logo" src="public/forbes-logo.png" alt="biz-insider-logo">
+    <img class="press-logo" src="public/masterchef.png" alt="mashable-logo">
   </section>
   </div>
 
@@ -348,22 +348,22 @@
   <div class="container">
     <div class="row marginHeader">
       <div class="col-md-2 mt-3 col-lg-4">
-        <img src="../public/gente-increible-bici.png" class="img-fluid" alt="">
+        <img src="public/gente-increible-bici.png" class="img-fluid" alt="">
       </div>
     <div class="col-md-2 mt-3 col-lg-4">
-      <img src="../public/gente-increible-comiendo.png" class="img-fluid" alt="">
+      <img src="public/gente-increible-comiendo.png" class="img-fluid" alt="">
     </div>
       <div class="col-md-2 mt-3 col-lg-4">
-        <img src="../public/gente-increible-hijo.png" class="img-fluid"  alt="">
+        <img src="public/gente-increible-hijo.png" class="img-fluid"  alt="">
       </div> 
       <div class="col-md-2 mt-3 col-lg-4">
-        <img src="../public/gente-increible-trabajando.jpg" class="img-fluid" alt="">
+        <img src="public/gente-increible-trabajando.jpg" class="img-fluid" alt="">
       </div>
     <div class="col-md-2 mt-3 col-lg-4">
-      <img src="../public/gente-increible-viaje.jpg" class="img-fluid" alt="">
+      <img src="public/gente-increible-viaje.jpg" class="img-fluid" alt="">
     </div>
       <div class="col-md-2 mt-3 col-lg-4">
-        <img src="../public/gente-increible-silencio.jpg" class="img-fluid"  alt="">
+        <img src="public/gente-increible-silencio.jpg" class="img-fluid"  alt="">
       </div> 
     </div>
   </div>
