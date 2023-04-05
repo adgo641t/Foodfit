@@ -18,7 +18,7 @@ class SendEmailController extends Controller
              'url' => 'http://142.132.185.47/foodfit/public/index.php'
          ];
           
-         Mail::to('fpb1.adrian@gmail.com')->send(new TestEmail($mailData));
+         Mail::to('wintopadedokun@gmail.com')->send(new TestEmail($mailData));
          $cartItems = \Cart::clear();   
          return view('products.thanks');
      }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bill;
+use App\Models\User;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -28,6 +31,14 @@ public function index()
         ->with('i', (request()->input('page', 1) - 1) * 5);
 }
 
+
+public function listBills(){
+    return view('layouts/list-bills', [
+        'bills' => Bill::latest()->filter(request(['search']))->simplePaginate(4)
+    ]);
+}
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -36,7 +47,8 @@ public function index()
     // It displays the view to create product
     public function create()
     {
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -102,7 +114,8 @@ public function index()
     // it displays the product the admin wants to edit
     public function edit(Product $product)
     {
-        return view('products.edit',compact('product'));
+        $categories = Category::all();
+        return view('products.edit',compact('product','categories'));
     }
 
     /**

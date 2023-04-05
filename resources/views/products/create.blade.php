@@ -64,7 +64,11 @@
                 </div>
                 <div class="grid grid-cols-1">
                   <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Categoria</label>
-                  <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="text" step="0.01" name="categories" placeholder="categoria"  />
+                  <select class="form-select" name="categories">
+                    @foreach ($categories as $item)
+                        <option value="{{$item->name}}">{{$item->name}}</option>
+                    @endforeach
+                  </select>
                 </div>
               </div>
           

@@ -1,5 +1,33 @@
 @extends('layouts.menu')
 @section('content')
+<div class="container px-6 mx-auto">
+    <form action="list-bill">
+        <div class="relative border-2 border-gray-100 rounded-lg search">
+            <div class="absolute top-4 left-3">
+                <i
+                    class="fa fa-search text-gray-400 z-20 hover:text-gray-500"
+                ></i>
+            </div>
+            <input
+                type="text"
+                name="search"
+                class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
+                placeholder="{{ __('Buscador de facturas...') }}"
+            />
+            <div class="absolute top-2 right-2">
+                <button
+                    type="submit"
+                    class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600"
+                >
+                {{ __('Search') }}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+@if(count($bills) == 0)
+<h3 class="text-center">Factura no encontrada</h3>
+@endif
 <section class="relative py-16 bg-blueGray-50">
 <div class="w-full mb-12 px-4">
   <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded 
@@ -15,34 +43,33 @@
       <table class="items-center w-full bg-transparent border-collapse">
         <thead>
           <tr class="text-center">
+            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Nombre de usuario</th>
             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Nombre de producto</th>
             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Cantidad</th>
             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Precio final</th>
             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Cupon aplicado</th>
+            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Domicilio de envio</th>
             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Fecha</th>
-            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Id factura</th>
           </tr>
         </thead>
 
         <tbody>
-          @foreach ($bill as $billItem)
+        @foreach ($bills as $billItem)
           <tr class="text-center">
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->name_user}}</td>   
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->name}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->quantity}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->totalprice}}€</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->coupon}}</td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->adress}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->created_at->format('d/m/y')}}</td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->created_at->format('h:i')}}</td>
           </tr>
           @endforeach
         </tbody>
       </table>
-      <!--@if (Cart::getTotal() > 0)
-        <a href="{{ url('/bill-pdf') }}" style="display:inline-block;background:#DDC44B;color:#fdfdfd;font-family:Helvetica;font-size:14px;font-weight:bold;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:10px; text-center" target="_blank">Descargar PDF</a>
-      @endif-->
-      <a href="{{ url('/bill-pdf') }}" style="display:inline-block;background:#DDC44B;color:#fdfdfd;font-family:Helvetica;font-size:14px;font-weight:bold;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:10px; text-center" target="_blank">Descargar PDF</a>
     </div>
   </div>
 </div>
+{!! $bills->links() !!}
 </section>
 @endsection

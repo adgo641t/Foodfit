@@ -64,6 +64,8 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+
+
      /**
      * Interact with the user's first name.
      *

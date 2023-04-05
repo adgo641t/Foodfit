@@ -124,7 +124,7 @@
                   <tbody>
                     <tr>
                       <td align="center" style="font-size:0px;padding:10px 25px;padding-top:28px;padding-right:25px;padding-bottom:18px;padding-left:25px;">
-                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;">HOLA <p style="font-size:16px;text-align:center;">{{ $user->name }}</p>
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;">HOLA <p style="font-size:16px;text-align:center;">{{ Auth::user()->name }}</p>
                         </div>
                       </td>
                     </tr>

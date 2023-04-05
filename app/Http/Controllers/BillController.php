@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Stripe;
-use App\Models\Product;
 use App\Models\Bill;
+use App\Models\Coupon;
+use App\Models\Product;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
@@ -64,11 +65,12 @@ class BillController extends Controller
     {
        // dd($request);
         $formFields = $request->validate([
-            'nombre' => 'required',
-            'apellidos' => 'required',
+            'nombre' => 'required|alpha',
+            'apellidos' => 'required|alpha',
             'email' => ['required', 'email'],
             'adresa' => 'required',
             'zip' => 'required|digits:5',
+            'tarjeta' => 'required|alpha',
             'tarjetaNumero' => 'required|digits:15',
             'cvv' => 'required|digits:3',
         ]);
@@ -77,23 +79,46 @@ class BillController extends Controller
         $cartItems = \Cart::getContent();
 
         foreach ($cartItems as $cartItem) {
-            $quantity = $cartItem->quantity;
-
-            $product = Product::find($cartItem->id);
-
-            $stockActual = $product->stock;
-
-            $product->stock = $stockActual-$quantity;
-            $bill = new Bill;
-            $bill->user_id = auth()->user()->id;
-            $bill->product_id = $cartItem->id;
-            $bill->name = $cartItem->name;
-            $bill->price = $cartItem->price;
-            $bill->quantity = $cartItem->quantity;
-            $bill->totalprice = round(\Cart::getTotal()*1.21,2);
-            $bill->adress = $request->adresa;
-            $product->save();
-            $bill->save();
+            $coupon = $request->session()->get('coupon');
+            if($coupon != null){
+                $quantity = $cartItem->quantity;
+                $product = Product::find($cartItem->id);
+    
+                $stockActual = $product->stock;
+    
+                $product->stock = $stockActual-$quantity;
+                $bill = new Bill;
+                $bill->user_id = auth()->user()->id;
+                $bill->product_id = $cartItem->id;
+                $bill->name_user = auth()->user()->name;
+                $bill->name = $cartItem->name;
+                $bill->price = $cartItem->price;
+                $bill->quantity = $cartItem->quantity;
+                $bill->totalprice = round(\Cart::getTotal()*1.21,PHP_ROUND_HALF_EVEN);
+                $bill->coupon = $coupon['code'];
+                $bill->adress = $request->adresa;
+                $product->save();
+                $bill->save();
+            }else{
+                $quantity = $cartItem->quantity;
+                $product = Product::find($cartItem->id);
+    
+                $stockActual = $product->stock;
+    
+                $product->stock = $stockActual-$quantity;
+                $bill = new Bill;
+                $bill->user_id = auth()->user()->id;
+                $bill->product_id = $cartItem->id;
+                $bill->name_user = auth()->user()->name;
+                $bill->name = $cartItem->name;
+                $bill->price = $cartItem->price;
+                $bill->quantity = $cartItem->quantity;
+                $bill->totalprice = round(\Cart::getTotal()*1.21,PHP_ROUND_HALF_EVEN);
+                $bill->coupon = "Sin cupon";
+                $bill->adress = $request->adresa;
+                $product->save();
+                $bill->save();
+            }
         } 
 
         $request->session()->forget('coupon');

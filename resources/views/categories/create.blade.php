@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Crear Cupón - Food&Fit</title>
+    <title>Crear Categoria - Food&Fit</title>
     <!-- Icon -->
     <link rel="icon" href="../public/favicon.ico">
     <!-- Google Fonts -->
@@ -44,34 +44,25 @@
       
           <div class="flex justify-center">
             <div class="flex">
-              <h1 class="text-gray-500 font-bold md:text-2xl text-xl">Añadir Cupón</h1>
+              <h1 class="text-gray-500 font-bold md:text-2xl text-xl">Añadir Categoria</h1>
             </div>
           </div>
       
-          <form action="{{ route('coupons.store') }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
     
               <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
                 <div class="grid grid-cols-1">
                   <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Nombre</label>
-                  <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="text" name="code" placeholder="Code" />
+                  <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="text" name="name" placeholder="Categoria" />
                 </div>
-                <div class="grid grid-cols-1">
-                  <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Descuento</label>
-                  <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="text" name="amount" placeholder="Amount" />
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 mt-5 mx-7">
-                <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Descripción</label>
-                <textarea class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" style="height:150px" name="description" placeholder="Description"></textarea>
-              </div>
-          
+        
               <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
                 <button class='w-auto bg-teal-500 hover:bg-teal-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Crear</button>
               </div>
-              <div class='flex items-center justify-center  md:gap-8 gap-4 pt-2 pb-2'>
-                <a class="btn btn-primary" href="{{ route('coupons.index') }}">Atrás</a>
+
+              <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
+                <a class="btn btn-primary" href="{{ route('categories.index') }}">Atrás</a>
               </div>
              
         </form>
