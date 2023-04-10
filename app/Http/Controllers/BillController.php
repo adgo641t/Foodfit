@@ -81,7 +81,6 @@ class BillController extends Controller
 
         
         foreach ($cartItems as $cartItem) {
-<<<<<<< HEAD
             $coupon = $request->session()->get('coupon');
             if($coupon != null){
                 $quantity = $cartItem->quantity;
@@ -100,6 +99,7 @@ class BillController extends Controller
                 $bill->totalprice = round(\Cart::getTotal()*1.21,PHP_ROUND_HALF_EVEN);
                 $bill->coupon = $coupon['code'];
                 $bill->adress = $request->adresa;
+                $bill->status = 'En realizing';
                 $product->save();
                 $bill->save();
             }else{
@@ -119,31 +119,10 @@ class BillController extends Controller
                 $bill->totalprice = round(\Cart::getTotal()*1.21,PHP_ROUND_HALF_EVEN);
                 $bill->coupon = "Sin cupon";
                 $bill->adress = $request->adresa;
+                $bill->status = 'En realizing';
                 $product->save();
                 $bill->save();
             }
-=======
-            
-            $quantity = $cartItem->quantity;
-
-            $product = Product::find($cartItem->id);
-
-            $stockActual = $product->stock;
-
-            $product->stock = $stockActual-$quantity;
-
-            $bill = new Bill;
-            $bill->user_id = auth()->user()->id;
-            $bill->product_id = $cartItem->id;
-            $bill->name = $cartItem->name;
-            $bill->price = $cartItem->price;
-            $bill->quantity = $cartItem->quantity;
-            $bill->totalprice = round(\Cart::getTotal()*1.21,2);
-            $bill->adress = $request->adresa;
-            $bill->status = 'En realización';
-            $product->save();
-            $bill->save();
->>>>>>> a248b2ec7709ee438ec3d3fcacc800ebecf92697
         } 
 
         $request->session()->forget('coupon');

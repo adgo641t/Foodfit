@@ -68,6 +68,7 @@ class CouponsController extends Controller
             $coupon->code = $request->code;
             $coupon->amount = $request->amount;
             $coupon->description = $request->description;
+            $coupon->habilitado = 'yes';
             $coupon->save();
             return redirect()->route('coupons.index')
             ->with('success','Cupón ha sido creado exitosamente.');
