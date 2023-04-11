@@ -72,6 +72,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ route('blog') }}">Blog</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/show-coupons') }}">Cupones disponibles</a>
+                                </li>
                                     <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
                                 </li>
 
@@ -159,7 +162,7 @@
     </div>
     <div class="mt-5">
             @yield('content')
-        </div>
+    </div>
         <script src="js/faqs.js"></script>
         <script src="js/navbar.js"></script>
 </body>
