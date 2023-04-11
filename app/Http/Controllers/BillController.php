@@ -69,6 +69,7 @@ class BillController extends Controller
             'email' => ['required', 'email'],
             'adresa' => 'required',
             'zip' => 'required|digits:5',
+            'tarjeta' => 'required',
             'tarjetaNumero' => 'required|digits:15',
             'cvv' => 'required|digits:3',
         ]);

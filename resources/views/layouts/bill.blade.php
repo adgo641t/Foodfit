@@ -34,7 +34,8 @@
       <img class="d-block mx-auto mb-4" src="logo.png" alt="" width="130" height="57">
       <h2>Checkout form</h2><br><br>
     </div>
-    <section style="align-content: center;">
+
+    <section style="align-items: center;">
     <div class="row g-5">
       @if (Session::has('coupon'))
       <div class="col-md-5 col-lg-4 order-md-last">
@@ -108,8 +109,8 @@
         </form>
         @endif
       </div>
-
-      <div class="col-md-7 col-lg-8" style="background-color: #e6f9ff; ">
+      
+      <div class="col-lg-8 offset-lg-2" style="background-color: #e6f9ff; ">
         
         <form action="pago" method="POST" class="mx-1 mx-md-4">
           <div style="margin:20px;">
@@ -151,7 +152,7 @@
 
             <div class="col-12">
               <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="adresa" name="adresa">
+              <input type="text" class="form-control" name="adresa">
               <div class="invalid-feedback">
                 Please enter your shipping address.
               </div>
@@ -217,7 +218,6 @@
           </div>
           </div>
         </form>
-        
       </div>
     </div>
   </main>
