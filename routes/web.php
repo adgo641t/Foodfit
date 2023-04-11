@@ -25,6 +25,8 @@ use App\Http\Controllers\PDFController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
 //GETS
 Route::get('/', function () {
     return view('welcome');
@@ -72,6 +74,8 @@ Route::group(['middleware' => ['role:cliente']],function () {
         return view('home');
     });
 
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
     Route::get('send-mail', [SendEmailController::class, 'index']);
 
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
@@ -79,6 +83,7 @@ Route::group(['middleware' => ['role:cliente']],function () {
     Route::get('/faq', function () {
         return view('profile.userFaqs');
     });
+
     
     //Route::get('/user', [BlogController::class, 'index'])->name('user');
 
@@ -122,17 +127,14 @@ All Admin Routes List
 --------------------------------------------*/
 Route::group(['middleware' => ['role:admin']],function () {
 
+
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
 
     
     //Route::get('/home', [HomeController::class, 'index']);
 
-    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
-    Route::get('/faqs', function () {
-        return view('profile.userFaqs');
-    });
 
     Route::get('/admin', function () {
         return view('admin');
@@ -169,7 +171,7 @@ Route::group(['middleware' => ['role:BlogCreator']],function () {
 
     // Route::get('/home', [HomeController::class, 'index']);
 
-    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
     Route::get('/ShowCategoryBlog/{category}', [BlogController::class, 'showCategory'])->name('ShowCategoryBlog');
 

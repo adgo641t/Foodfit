@@ -1,5 +1,4 @@
 @extends('layouts.menu')
-
 @section('content')
 <body class="bg-gray-200 font-sans leading-normal tracking-normal">
 	<!--Header-->
