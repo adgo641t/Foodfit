@@ -55,7 +55,7 @@ Route::post('/custom-registration', [LoginController::class, 'customRegistration
 
 //DELETES
 Route::delete('/bill', [CouponsController::class, 'destroy'])->name('coupon.destroy');
-Route::get('/home', [HomeController::class, 'index']);
+//Route::get('/home', [HomeController::class, 'index']);
 
 
 // Login views 
@@ -71,6 +71,7 @@ Route::group(['middleware' => ['role:cliente']],function () {
     Route::get('/home', function () {
         return view('home');
     });
+
     Route::get('send-mail', [SendEmailController::class, 'index']);
 
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
@@ -91,6 +92,7 @@ Route::group(['middleware' => ['role:cliente']],function () {
     Route::get('/thanks', function () {
         return view('products.thanks');
     });
+
     Route::get('/show-bill', [BillController::class, 'show'], function () {
     })->name('show');
 
