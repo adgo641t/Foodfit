@@ -25,16 +25,15 @@ use App\Http\Controllers\PDFController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 //GETS
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/faqs', function () {
     return view('faqs');
 });
-
 
 Route::get('/sobre', function () {
     return view('sobre');
@@ -70,11 +69,11 @@ All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::group(['middleware' => ['role:cliente']],function () {
-    Route::get('/home', function () {
-        return view('home');
-    });
 
-    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+    //Route::get('home', [HomeController::class, 'index'])->name('home');
+
+
+    Route::get('blog', [BlogController::class, 'index'])->name('blog');
 
     Route::get('send-mail', [SendEmailController::class, 'index']);
 
@@ -84,7 +83,6 @@ Route::group(['middleware' => ['role:cliente']],function () {
         return view('profile.userFaqs');
     });
 
-    
     //Route::get('/user', [BlogController::class, 'index'])->name('user');
 
     //Route::post('/user','UserController@update')->name('users.update');
@@ -103,18 +101,21 @@ Route::group(['middleware' => ['role:cliente']],function () {
 
     Route::post('/user/profile', [UserController::class, 'update'], function () {
     })->name('users.update');
+
     Route::get('/product', [ProductController::class, 'productList'], function () {
     })->name('products.list');
+
     Route::get('/cart', [CartController::class, 'cartList'])->name('cart.list');
+
     Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
     Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
     Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
     Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
     Route::post('/coupon', [CouponsController::class, 'validCoupon']);
     Route::post('removeAllItems', [CartController::class, 'removeAllItems'])->name('cart.deleteAll');
-    Route::get('/abouts', function () {
+    Route::get('abouts', function () {
         return view('layouts.about');
-    });
+    })->name("abouts");
 });
 
 
@@ -127,18 +128,20 @@ All Admin Routes List
 --------------------------------------------*/
 Route::group(['middleware' => ['role:admin']],function () {
 
-
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
 
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
     
-    //Route::get('/home', [HomeController::class, 'index']);
+    //Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 
     Route::get('/admin', function () {
         return view('admin');
     });
+    
     Route::get('/dashboard', function () {
         return view('dashboard');
     });
@@ -169,7 +172,9 @@ Route::group(['middleware' => ['role:admin']],function () {
 
 Route::group(['middleware' => ['role:BlogCreator']],function () {
 
-    // Route::get('/home', [HomeController::class, 'index']);
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
@@ -191,9 +196,9 @@ Route::group(['middleware' => ['role:BlogCreator']],function () {
 
 
 Route::group(['middleware' => ['role:chef']],function () {
-    Route::get('/home', function () {
-        return view('home');
-    });
+    
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
     
     
     Route::get('/showBill', [BillController::class, 'ShowAll'], function () {

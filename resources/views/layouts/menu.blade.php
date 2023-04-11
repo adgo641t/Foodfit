@@ -54,23 +54,23 @@
                     <ul class="navbar-nav mr-auto">
                         @if (Route::has('login'))
                             @auth
-                            <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+                            <a href="{{ route('home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
                             <button onclick="menu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                             </button>
                                 <!--If user is logged-->
                                 @if(@Auth::user()->hasRole('cliente'))   
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/abouts') }}">{{ __('About us') }}</a>
+                                    <a class="nav-link" href="{{ route('abouts') }}">{{ __('About us') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/product') }}">{{ __('Our dishes') }}</a>
+                                    <a class="nav-link" aria-current="page" href="{{ route('products.list') }}">{{ __('Our dishes') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/show-bill') }}">{{ __('Bills') }}</a>
+                                    <a class="nav-link" aria-current="page" href="{{ route('show') }}">{{ __('Bills') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Blog</a>
+                                    <a class="nav-link" aria-current="page" href="{{ route('blog') }}">Blog</a>
                                 </li>
                                     <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
                                 </li>
@@ -91,7 +91,7 @@
                                     <a class="nav-link" href="{{ url('/abouts') }}">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link " aria-current="page" href="{{ route('products.index') }}">Gestión de productos</a>
+                                    <a class="nav-link " aria-current="page" href="{{ route('products.list') }}">Gestión de productos</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link " aria-current="page" href="{{ route('coupons.index') }}">Gestión de cupones</a>
@@ -100,7 +100,7 @@
                                     <a class="nav-link " aria-current="page" href="{{ route('categories.index') }}">Gestión de categorias</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Gestión de Blog</a>
+                                    <a class="nav-link" aria-current="page" href="{{ route('blog') }}">Gestión de Blog</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ route('listBills') }}">Gestión de Facturas</a>
