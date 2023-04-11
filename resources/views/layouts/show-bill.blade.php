@@ -32,31 +32,47 @@
 
         <tbody>
           @foreach ($bill as $billItem)
-          <tr class="text-center">
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->name}}</td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->quantity}}</td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->totalprice}}€</td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->coupon}}</td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->created_at->format('d/m/y')}}</td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->created_at->format('h:i')}}</td>
-            @if(@Auth::user()->hasRole('chef'))   
-            <form method="post" action="{{ route('update-status', $billItem->id) }}">
-              @csrf
-              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">            
-                <select style="background-color: #D1D5DB;" name="status" id="status" class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"">
-                  <option selected value="{{$billItem->status}}">{{$billItem->status}}</option>
-                  <option value="Acabado">Acabado</option>
-                  <option value="Entregado">Entregado</option>
-                </select>
-              </td>
-              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">            
-                <input class="btn btn-primary" placeholder="Actulizar" type="submit">
-              </td>
-              </form>
+            @if(@Auth::user()->hasRole('chef'))
+              @if($billItem->status == "Acabado")
+                  @continue
+              @else 
+              <tr class="text-center">
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->name}}</td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->quantity}}</td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->totalprice}}€</td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->coupon}}</td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->created_at->format('d/m/y')}}</td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->created_at->format('h:i')}}</td>
+                    @if(@Auth::user()->hasRole('chef'))   
+                    <form method="post" action="{{ route('update-status', $billItem->id) }}">
+                      @csrf
+                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">            
+                        <select style="background-color: #D1D5DB;" name="status" id="status" class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"">
+                          <option selected value="{{$billItem->status}}">{{$billItem->status}}</option>
+                          <option value="Acabado">Acabado</option>
+                          <option value="Entregado">Entregado</option>
+                        </select>
+                      </td>
+                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">            
+                        <input class="btn btn-primary" placeholder="Actulizar" type="submit">
+                      </td>
+                      </form>
+                    @else
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->status}}</td>
+                    @endif
+                  </tr>
+              @endif    
             @else
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->status}}</td>
-            @endif
-          </tr>
+              <tr class="text-center">
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->name}}</td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->quantity}}</td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->totalprice}}€</td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->coupon}}</td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->created_at->format('d/m/y')}}</td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->created_at->format('h:i')}}</td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->status}}</td>
+                  </tr>
+          @endif
           @endforeach
         </tbody>
       </table>

@@ -52,7 +52,6 @@
             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Fecha</th>
           </tr>
         </thead>
-
         <tbody>
         @foreach ($bills as $billItem)
           <tr class="text-center">

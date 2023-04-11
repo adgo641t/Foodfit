@@ -55,7 +55,7 @@ Route::post('/custom-registration', [LoginController::class, 'customRegistration
 
 //DELETES
 Route::delete('/bill', [CouponsController::class, 'destroy'])->name('coupon.destroy');
-Route::get('/home', [HomeController::class, 'index']);
+//Route::get('/home', [HomeController::class, 'index']);
 
 
 // Login views 
@@ -67,26 +67,32 @@ Route::get('/home', [HomeController::class, 'index']);
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::group(['middleware', ['role:cliente']],function () {
+Route::group(['middleware' => ['role:cliente']],function () {
     Route::get('/home', function () {
         return view('home');
     });
+
     Route::get('send-mail', [SendEmailController::class, 'index']);
-    Route::get('/usersFilter', [User::class, 'index'])->name('usersFilter');
+
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
 
     Route::get('/faq', function () {
         return view('profile.userFaqs');
     });
-    Route::get('/user', [BlogController::class, 'index'])->name('user');
+    
+    //Route::get('/user', [BlogController::class, 'index'])->name('user');
 
-    Route::post('/user','UserController@update')->name('users.update');
+    //Route::post('/user','UserController@update')->name('users.update');
+    
     Route::get('/bill', [BillController::class, 'index'], function () {
     })->name('bill.list');
+    
     Route::post('/pago', [BillController::class, 'store']);
+    
     Route::get('/thanks', function () {
         return view('products.thanks');
     });
+
     Route::get('/show-bill', [BillController::class, 'show'], function () {
     })->name('show');
 
@@ -117,7 +123,7 @@ Route::group(['middleware', ['role:cliente']],function () {
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::group(['middleware', ['role:admin']],function () {
+Route::group(['middleware' => ['role:admin']],function () {
 
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
@@ -162,7 +168,7 @@ Route::group(['middleware', ['role:admin']],function () {
 
 });
 
-Route::group(['middleware', ['role:BlogCreator']],function () {
+Route::group(['middleware' => ['role:BlogCreator']],function () {
 
     // Route::get('/home', [HomeController::class, 'index']);
 
@@ -186,6 +192,10 @@ Route::group(['middleware', ['role:BlogCreator']],function () {
 
 
 Route::group(['middleware' => ['role:chef']],function () {
+    Route::get('/home', function () {
+        return view('home');
+    });
+    
     
     Route::get('/showBill', [BillController::class, 'ShowAll'], function () {
     })->name('show');
