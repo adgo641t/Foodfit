@@ -90,6 +90,9 @@ Route::group(['middleware', ['role:cliente']],function () {
     Route::get('/show-bill', [BillController::class, 'show'], function () {
     })->name('show');
 
+    Route::get('/show-coupons', [CouponsController::class, 'displayCoupons'], function () {
+    })->name('displayCoupons');
+
     Route::post('/user/profile', [UserController::class, 'update'], function () {
     })->name('users.update');
     Route::get('/product', [ProductController::class, 'productList'], function () {
