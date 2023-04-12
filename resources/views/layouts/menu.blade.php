@@ -50,14 +50,18 @@
         <header>
             <div class="container-fluid">
             <nav class="navbar navbar-expand-lg fixed-top navbar-light " style="background-color: #ecffeb" >
+                <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+                <button onclick="menu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
             <div id="myMenu" class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         @if (Route::has('login'))
                             @auth
-                            <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+                            {{-- <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
                             <button onclick="menu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
-                            </button>
+                            </button> --}}
                                 <!--If user is logged-->
                                 @if(@Auth::user()->hasRole('cliente'))   
                                 <li class="nav-item">
@@ -113,7 +117,7 @@
                                 </li>
                                 @endif
                                 @if(@Auth::user()->hasRole('BlogCreator'))
-ç                                <li class="nav-item">
+                               <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Gestión de Blog</a>
                                 </li>
                                 <li class="nav-item">
@@ -130,12 +134,12 @@
                                 @endif
                              <!--To logout-->
                             @else
-                            <a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+                            {{-- <a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
-                            </button>
+                            </button> --}}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/abouts') }}">{{ __('About us') }}</a>
                             </li>

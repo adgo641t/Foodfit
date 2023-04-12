@@ -78,7 +78,7 @@ Route::group(['middleware', ['role:cliente']],function () {
     Route::get('/faq', function () {
         return view('profile.userFaqs');
     });
-    Route::get('/user', [BlogController::class, 'index'])->name('user');
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
     Route::post('/user','UserController@update')->name('users.update');
     Route::get('/bill', [BillController::class, 'index'], function () {
@@ -117,7 +117,7 @@ Route::group(['middleware', ['role:cliente']],function () {
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::group(['middleware', ['role:admin']],function () {
+Route::group(['middleware'=> ['role:admin']],function () {
 
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
@@ -162,7 +162,7 @@ Route::group(['middleware', ['role:admin']],function () {
 
 });
 
-Route::group(['middleware', ['role:BlogCreator']],function () {
+Route::group(['middleware'=> ['role:BlogCreator']],function () {
 
     // Route::get('/home', [HomeController::class, 'index']);
 
