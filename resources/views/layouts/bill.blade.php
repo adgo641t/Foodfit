@@ -9,10 +9,9 @@
       <img class="d-block mx-auto mb-4" src="logo.png" alt="" width="130" height="57">
       <h2>{{ __('Checkout form') }}</h2><br><br>
     </div>
-
     <section style="align-items: center;">
-      @if (Session::has('coupon'))
     <div class="row g-5">
+    @if (Session::has('coupon'))
       <div class="col-lg-4 order-md-last">
         <ul class="list-group mb-3">
           @foreach (\Cart::getContent() as $item)
@@ -196,10 +195,10 @@
           </div>
           </div>
         </form>
+        </section>
       </div>
     </div>
   </main>
-  </section>
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2017–2023 FoodFit</p>
     <ul class="list-inline">

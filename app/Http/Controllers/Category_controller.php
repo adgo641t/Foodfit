@@ -22,7 +22,11 @@ class Category_controller extends Controller
 
         $category->save();
 
-        return redirect()->route('add_blog');
+        if(auth()->user()->name == "Adrian") {
+            return redirect()->route('AdminBlog');
+        } else if (auth()->user()->name == "Jose"){
+            return redirect()->route('CreatorsBlogs');
+        }
     }
 
     public function index(){

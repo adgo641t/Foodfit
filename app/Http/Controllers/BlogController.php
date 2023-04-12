@@ -15,12 +15,19 @@ use Illuminate\Support\Facades\DB;
 class BlogController extends Controller
 {
 
+    /**
+     * This method is for the user authentication and authorization
+     */
     public function __construct()
     {
         $this->middleware('role:admin|BlogCreator|cliente');
     }
 
 
+    /**
+     * This method is for see the content of the blog and filter when th user 
+     * search is requested or selects 
+     */
     public function index() {
 
         //$blog = Blog::all();
@@ -32,6 +39,9 @@ class BlogController extends Controller
         ]);  
     }
 
+    /**
+     * This method Show a single blog and retrieve the content of the blog by ID
+     */
     public function show($id) {
 
         $blog = Post::find($id);
@@ -39,15 +49,6 @@ class BlogController extends Controller
         $Category_blogs = Category_blogs::all();
         
         return view('blog/ShowBlog', compact('blog', 'Category_blogs','users'));  
-    }
-
-    
-    public function showCategory($category) {
-
-        $blog = Post::where('Categori_blog', $category);
-        //dd($blog);
-        
-        return view('blog/ShowBlogCategory', compact('blog'));  
     }
 
     public function AddNewBlog() {
@@ -99,19 +100,18 @@ class BlogController extends Controller
     
                 $Post_blog_Category->save();
 
-                if(auth()->user()->name == "Adrian") {
-                    return redirect()->route('AdminBlog');
-                } else if (auth()->user()->name == "Jose"){
-                    return redirect()->route('CreatorsBlogs');
-                }
+            if(auth()->user()->name == "Adrian") {
+            return redirect()->route('AdminBlog');
+            } else if (auth()->user()->name == "Jose"){
+            return redirect()->route('CreatorsBlogs');
+            }
             }
 
             }
             //$request->file->store('product', 'public');
-        
-        
 
     }
+
     public function DeleteBlog($id) {
         
         $blog = Post::find($id);
@@ -122,7 +122,6 @@ class BlogController extends Controller
         } else if (auth()->user()->name == "Jose"){
             return redirect()->route('CreatorsBlogs');
         }
-        
     }
 
     public function GetUpdateView($id) {
