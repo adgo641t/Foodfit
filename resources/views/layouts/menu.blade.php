@@ -39,7 +39,7 @@
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">  
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
         <!-- My css style -->
     <link rel="stylesheet" href="css/index.css">
     <!-- Font awesome icons -->
@@ -50,18 +50,26 @@
         <header>
             <div class="container-fluid">
             <nav class="navbar navbar-expand-lg fixed-top navbar-light " style="background-color: #ecffeb" >
+            @auth
+            <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+            @else
+            <a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+            @endauth
+            <button onclick="menu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div id="myMenu" class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         @if (Route::has('login'))
                             @auth
-                            <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+                            {{-- <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
                             <button onclick="menu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
-                            </button>
+                            </button> --}}
                                 <!--If user is logged-->
-                                @if(@Auth::user()->hasRole('cliente'))   
+                                @if(@Auth::user()->hasRole('cliente'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/abouts') }}">{{ __('About us') }}</a>
+                                    <a class="nav-link" href="{{ route('aboutUs') }}">{{ __('About us') }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/product') }}">{{ __('Our dishes') }}</a>
@@ -70,7 +78,7 @@
                                     <a class="nav-link" aria-current="page" href="{{ url('/show-bill') }}">{{ __('Bills') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Blog</a>
+                                    <a class="nav-link" aria-current="page" href="{{ route('ClientBlog') }}">Blog</a>
                                 </li>
                                     <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
                                 </li>
@@ -88,7 +96,7 @@
                                 @endif
                                 @if(@Auth::user()->hasRole('admin'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/abouts') }}">About</a>
+                                    <a class="nav-link" href="{{ route('aboutUs') }}">About</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link " aria-current="page" href="{{ route('products.index') }}">Gestión de productos</a>
@@ -100,7 +108,7 @@
                                     <a class="nav-link " aria-current="page" href="{{ route('categories.index') }}">Gestión de categorias</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Gestión de Blog</a>
+                                    <a class="nav-link" aria-current="page" href="{{ url('/AdminBlog') }}">Gestión de Blog</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ route('listBills') }}">Gestión de Facturas</a>
@@ -110,8 +118,13 @@
                                 </li>
                                 @endif
                                 @if(@Auth::user()->hasRole('BlogCreator'))
-ç                                <li class="nav-item">
+<<<<<<< HEAD
+                               <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Gestión de Blog</a>
+=======
+ç                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/CreatorsBlogs') }}">Gestión de Blog</a>
+>>>>>>> d8fc1c95dac90e560167bbf8ee04e79af720d3ff
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
@@ -127,18 +140,18 @@
                                 @endif
                              <!--To logout-->
                             @else
-                            <a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+                            {{-- <a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
-                            </button>
+                            </button> --}}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/abouts') }}">{{ __('About us') }}</a>
                             </li>
                                 <li class="nav-item">
                                     <a href="{{ route('login') }}"
-                                        class="nav-link text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Sign in') }}</a>
+                                        class="nav-link">{{ __('Sign in') }}</a>
                                 </li>
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}"

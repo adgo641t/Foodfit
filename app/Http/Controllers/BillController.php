@@ -76,19 +76,19 @@ class BillController extends Controller
             'cvv' => 'required|digits:3',
         ]);
 
-
         $cartItems = \Cart::getContent();
 
-        
         foreach ($cartItems as $cartItem) {
             $coupon = $request->session()->get('coupon');
             if($coupon != null){
                 $quantity = $cartItem->quantity;
+    
                 $product = Product::find($cartItem->id);
     
                 $stockActual = $product->stock;
     
                 $product->stock = $stockActual-$quantity;
+    
                 $bill = new Bill;
                 $bill->user_id = auth()->user()->id;
                 $bill->product_id = $cartItem->id;
@@ -96,37 +96,38 @@ class BillController extends Controller
                 $bill->name = $cartItem->name;
                 $bill->price = $cartItem->price;
                 $bill->quantity = $cartItem->quantity;
-                $bill->totalprice = round(\Cart::getTotal()*1.21,PHP_ROUND_HALF_EVEN);
-                $bill->coupon = $coupon['code'];
+                $bill->totalprice = round(\Cart::getTotal()*1.21,2);
                 $bill->adress = $request->adresa;
-                $bill->status = 'En realizing';
+                $bill->status = 'En realización';
                 $product->save();
                 $bill->save();
             }else{
                 $quantity = $cartItem->quantity;
+    
                 $product = Product::find($cartItem->id);
     
                 $stockActual = $product->stock;
     
                 $product->stock = $stockActual-$quantity;
+    
                 $bill = new Bill;
                 $bill->user_id = auth()->user()->id;
-                $bill->product_id = $cartItem->id;
                 $bill->name_user = auth()->user()->name;
+                $bill->product_id = $cartItem->id;
                 $bill->name = $cartItem->name;
                 $bill->price = $cartItem->price;
                 $bill->quantity = $cartItem->quantity;
-                $bill->totalprice = round(\Cart::getTotal()*1.21,PHP_ROUND_HALF_EVEN);
+                $bill->totalprice = round(\Cart::getTotal()*1.21,2);
                 $bill->coupon = "Sin cupon";
                 $bill->adress = $request->adresa;
-                $bill->status = 'En realizing';
+                $bill->status = 'En realización';
                 $product->save();
                 $bill->save();
-            }
         } 
 
         $request->session()->forget('coupon');
         return redirect('send-mail');
+    }
     }
 
     /**

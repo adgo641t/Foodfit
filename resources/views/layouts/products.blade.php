@@ -46,7 +46,7 @@
         <div class="grid grid-cols-1 gap-6 mt-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             @foreach ($products as $product)
             <div class="w-full max-w-sm mx-auto overflow-hidden rounded-md shadow-md">
-                <img src="../public/{{$product->image}}" alt="" class="w-100 max-h-60">
+                <img src="public/{{$product->image}}" alt="" class="w-100 max-h-60">
                 <div class="flex items-end justify-end w-full bg-cover">
                     
                 </div>
@@ -62,15 +62,15 @@
                         <input type="hidden" value="{{ $product->stock }}" name="stock">
                         <input type="hidden" value="1" name="quantity">
                         @if ($product->categories == 'Desayuno')
-                        <p style="color: darkgoldenrod">🥓 {{$product->categories}}</p>
+                        <p style="color: darkgoldenrod" value="{{$product->categories}}" name="categories">🥓 {{$product->categories}}</p>
                         @elseif ($product->categories == 'Favoritos')
-                        <p style="color:darkorange">{{$product->categories}}</p>
+                        <p style="color:darkorange" value="{{$product->categories}}" name="categories">{{$product->categories}}</p>
                         @elseif ($product->categories == 'Vegetariano')
-                        <p style="color:rgb(7, 186, 7)">🥬 {{$product->categories}}</p>
+                        <p style="color:rgb(7, 186, 7)" value="{{$product->categories}}" name="categories">🥬 {{$product->categories}}</p>
                         @elseif ($product->categories == 'Nuevo')
-                        <p style="color:rgb(208, 188, 6)">🌟 {{$product->categories}}</p>
+                        <p style="color:rgb(208, 188, 6)" value="{{$product->categories}}" name="categories">🌟 {{$product->categories}}</p>
                         @elseif ($product->categories == '100% saludable')
-                        <p style="color:rgb(66, 69, 224)">🥗 {{$product->categories}}</p>
+                        <p style="color:rgb(66, 69, 224)" value="{{$product->categories}}" name="categories">🥗 {{$product->categories}}</p>
                         @endif
                         <button class="px-4 py-2 text-white bg-blue-800 rounded">{{ __('Add to cart') }}</button>
                     </form>
