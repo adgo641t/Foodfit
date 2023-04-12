@@ -24,7 +24,7 @@
 					{{ __('Name') }}
 				</label>
                 <input type="text" id="name" class="w-full content-center text-base py-2 border-b border-gray-400 focus:outline-none focus:border-teal-600" name="name"
-                required autofocus>
+                required autofocus value="{{old('name')}}">
                 @if ($errors->has('name'))
                 <span class="text-danger">{{ $errors->first('name') }}</span>
                 @endif
@@ -34,7 +34,7 @@
                         {{ __('E-Mail Address') }}
                     </label>
                     <input type="text" id="email_address" class="w-full content-center text-base py-2 border-b border-gray-400 focus:outline-none focus:border-teal-600"
-                    name="email" required autofocus>
+                    name="email" required autofocus value="{{old('email')}}">
                     @if ($errors->has('email'))
                     <span class="text-danger">{{ $errors->first('email') }}</span>
                     @endif
@@ -44,7 +44,7 @@
                             {{ __('Password') }}
                         </label>
                         <input type="password" id="password" class="w-full content-center text-base py-2 border-b border-gray-400 focus:outline-none focus:border-teal-600"
-                        name="password" required>
+                        name="password" required value="{{old('password')}}">
                         @if ($errors->has('password'))
                         <span class="text-danger">{{ $errors->first('password') }}</span>
                         @endif
@@ -53,7 +53,7 @@
 				<label class="text-sm font-bold text-gray-700 tracking-wide">
 					{{ __('Confirm Password') }}
 				</label>
-				<input class="w-full content-center text-base py-2 border-b border-gray-400 focus:outline-none focus:border-teal-600" name="password_confirmation" required autocomplete="new-password" id="password-confirm" type="password">
+				<input class="w-full content-center text-base py-2 border-b border-gray-400 focus:outline-none focus:border-teal-600" name="password_confirmation" required autocomplete="new-password" id="password-confirm" type="password" value="{{old('password_confirmation')}}">
                 
             </div>
 			<div>

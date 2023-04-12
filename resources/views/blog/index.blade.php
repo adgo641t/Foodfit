@@ -52,9 +52,10 @@
         <h3 class="text-center">Blog no encontrados con esos usuarios</h3>
     @endif
    <!---Filtrar por categorias-->
-    <div class="w-full lg:w-1/4">
+    <div id="selectCategory" class="w-full lg:w-1/4">
     <label for="category" class="block text-gray-700 font-bold mb-2">Filtrar por categorias:</label>
-    <form action="blog">
+    @if(@Auth::user()->hasRole('admin'))   
+        <form action="AdminBlog">
                 <select name="category" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
                 <option value="">Todas las categorias</option>
                 @foreach($Category_blogs as $category)
@@ -67,12 +68,42 @@
                 </select>
                 <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Elegir categoria</button>
         </form>
+    @elseif(@Auth::user()->hasRole('BlogCreator'))  
+    <form action="CreatorsBlogs">
+                <select name="category" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
+                <option value="">Todas las categorias</option>
+                @foreach($Category_blogs as $category)
+                @if($category->id == 1) {
+                    @continue
+                }
+                @endif
+                <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+                </select>
+                <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Elegir categoria</button>
+        </form>
+    @else 
+    <form action="ClientBlog">
+                <select name="category" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
+                <option value="">Todas las categorias</option>
+                @foreach($Category_blogs as $category)
+                @if($category->id == 1) {
+                    @continue
+                }
+                @endif
+                <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+                </select>
+                <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Elegir categoria</button>
+        </form>
+    @endif
     </div>
     <br>
     <!------Filtrar por usuarios-------->
-    <div class="w-full lg:w-1/4">
+    <div id="selectUser" class="w-full lg:w-1/4">
     <label for="category" class="block text-gray-700 font-bold mb-2">Filtrar por usuarios:</label>
-    <form action="blog">
+    @if(@Auth::user()->hasRole('admin'))
+    <form action="AdminBlog">
                 <select name="users" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
                 <option value="">Todas los Usuarios</option>
                 @foreach($users as $user)
@@ -81,20 +112,41 @@
                 </select>
                 <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Elegir categoria</button>
         </form>
+    @elseif(@Auth::user()->hasRole('BlogCreator'))
+    <form action="CreatorsBlogs">
+                <select name="users" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
+                <option value="">Todas los Usuarios</option>
+                @foreach($users as $user)
+                <option value="{{$user->id}}">{{$user->name}}</option>
+                @endforeach
+                </select>
+                <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Elegir categoria</button>
+        </form>
+    @else
+    <form action="ClientBlog">
+                <select name="users" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
+                <option value="">Todas los Usuarios</option>
+                @foreach($users as $user)
+                <option value="{{$user->id}}">{{$user->name}}</option>
+                @endforeach
+                </select>
+                <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Elegir categoria</button>
+        </form>
+    @endif
     </div>
 
       <br>
       @if(@Auth::user()->hasRole('admin'))
     <div class="container">
         <p>Add a blog as Admin</p>
-        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><a style="all:unset" href="{{route('add_blog')}}">Add a Blog</a></button>
+        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><a style="all:unset" href="{{route('add_blogAdmin')}}">Add a Blog</a></button>
     </div>
 @endif
 <br>
 @hasrole('BlogCreator')
     <div class="container">
         <p>Add a blog as BlogCreator</p>
-        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><a style="all: unset;" href="{{route('add_blog')}}">Add a Blog</a></button>
+        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><a style="all: unset;" href="{{route('add_blogCreator')}}">Add a Blog</a></button>
     </div>
 @endrole
 <br>
@@ -102,9 +154,19 @@
     @foreach($blogs as $Blog)
             
             <div style="background-color:white" class="rounded overflow-hidden shadow-lg">
-                <a href="{{route('ShowBlog', $Blog->id)}}">
+            @if(@Auth::user()->hasRole('BlogCreator'))
+                <a href="{{route('ShowBlogCreator', $Blog->id)}}">
                     <img  class="lg:h-72 md:h-48 w-full object-cover object-center" src="public/{{$Blog->image}}" alt="Sunset in the mountains">
                 </a>
+            @elseif(@Auth::user()->hasRole('admin'))
+                <a href="{{route('ShowBlogAdmin', $Blog->id)}}">
+                    <img  class="lg:h-72 md:h-48 w-full object-cover object-center" src="public/{{$Blog->image}}" alt="Sunset in the mountains">
+                </a>
+            @else
+            <a href="{{route('ShowBlogClient', $Blog->id)}}">
+                    <img  class="lg:h-72 md:h-48 w-full object-cover object-center" src="public/{{$Blog->image}}" alt="Sunset in the mountains">
+                </a>
+            @endif
                 <p
                 @foreach($Category_blogs as $category)
                     @if($Blog->category_id == $category->id)
@@ -134,7 +196,15 @@
                          {{$Blog->category_id}} {{$Blog->category_id_2}} {{$Blog->category_id_3}}</p>
 
                 <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2"><a href="{{route('ShowBlog', $Blog->id)}}">{{$Blog->title}}</a></div>
+                    <div class="font-bold text-xl mb-2">
+                    @if(@Auth::user()->hasRole('BlogCreator'))
+                    <a href="{{route('ShowBlogCreator', $Blog->id)}}">{{$Blog->title}}</a>
+                    @elseif(@Auth::user()->hasRole('admin'))
+                    <a href="{{route('ShowBlogAdmin', $Blog->id)}}">{{$Blog->title}}</a>
+                    @else
+                    <a href="{{route('ShowBlogClient', $Blog->id)}}">{{$Blog->title}}</a>
+                    @endif
+                    </div>
                     <p class=" truncate ... text-gray-700 text-base">
 <!--{{$Blog->description}}-->
                         {{($Blog->description)}}
@@ -147,7 +217,7 @@
                 @if(@Auth::user()->hasRole('admin'))
                      <!--Delete-->
                     @if(@Auth::user()->hasPermissionTo('DeleteBlog'))
-                        <form action="{{ route('deleteBlog',  $Blog->id) }}" method="post">
+                        <form action="{{ route('deleteBlogAdmin',  $Blog->id) }}" method="post">
                         @csrf                
                         <button type="submit" class="btn btn-primary"><a style=" text-decoration: none; color: inherit">Delete</a></button>   
                         <br>
@@ -156,7 +226,7 @@
                     @endif
                     <!--Update-->
                     @if(@Auth::user()->hasPermissionTo('UpdateBlog'))
-                        <form action="{{ route('UpdateBlog',  $Blog->id) }}" method="post">
+                        <form action="{{ route('UpdateBlogAdmin',  $Blog->id) }}" method="post">
                         @csrf                
                         <button type="submit" class="btn btn-primary"><a style=" text-decoration: none; color: inherit">Update Blog</a></button>  
                         </form> 
@@ -166,7 +236,7 @@
                 @hasrole('BlogCreator')
                      <!--Delete-->
                     @if(@Auth::user()->hasPermissionTo('DeleteBlog'))
-                        <form action="{{ route('deleteBlog',  $Blog->id) }}" method="post">
+                        <form action="{{ route('deleteBlogCreator',  $Blog->id) }}" method="post">
                         @csrf                
                         <button type="submit" class="btn btn-primary"><a style=" text-decoration: none; color: inherit">Delete</a></button>   
                         <br>
@@ -175,7 +245,7 @@
                     @endif
                     <!--Update-->
                     @if(@Auth::user()->hasPermissionTo('UpdateBlog'))
-                        <form action="{{ route('UpdateBlog',  $Blog->id) }}" method="post">
+                        <form action="{{ route('UpdateBlogCreator',  $Blog->id) }}" method="post">
                         @csrf                
                         <button type="submit" class="btn btn-primary"><a style=" text-decoration: none; color: inherit">Update Blog</a></button>  
                         </form> 
@@ -238,4 +308,20 @@
 
 
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        let selectCategory = document.getElementById("selectCategory");
+        let selectUser = document.getElementById("selectUser");
+
+        selectCategory.addEventListener("click", function() {
+            selectUser.style.display="none";
+            selectCategory.style.display="block";
+        });
+
+        selectUser.addEventListener("click", function() {
+            selectCategory.style.display="none";
+            selectUser.style.display="block";
+        });
+    });
+</script>
 @endsection

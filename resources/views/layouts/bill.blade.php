@@ -1,10 +1,10 @@
 @extends('layouts.menu')
   </head>
   @section('content')
-  <body class="bg-light"  style="height: 100vh;">
+  <body class="bg-light" style="height: 100vh;">
 
 <div class="container">
-  <main>   
+  <main>
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="logo.png" alt="" width="130" height="57">
       <h2>{{ __('Checkout form') }}</h2><br><br>
@@ -41,7 +41,7 @@
          @if (Session::has('danger'))
          <div class="p-4 mb-3 bg-green-400 rounded" x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show">
              <p class="text-danger">{{Session::get('danger')}}</p>
-         </div>    
+         </div>
          @endif
          @if (Session::has('success_message'))
          <div class="p-4 mb-3 bg-green-400 rounded" x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show">
@@ -49,9 +49,9 @@
          </div>
          @endif
         </form>
-        @endif
       </div>
-
+      @endif
+    </div>
       @if (!Session::has('coupon'))
       <div class="row g-5">
       <div class="col-lg-4 order-md-last">
@@ -82,7 +82,7 @@
         @if (Session::has('danger'))
         <div class="p-4 mb-3 bg-red-400 rounded" x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show">
             <p class="text-danger">{{Session::get('danger')}}</p>
-        </div>    
+        </div>
         @endif
       </form>
         @endif
