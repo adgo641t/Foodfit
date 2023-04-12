@@ -1,66 +1,41 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <title>Foodfit-Checkout</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="//unpkg.com/alpinejs" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+@extends('layouts.menu')
   </head>
-  <body class="bg-light">
+  @section('content')
+  <body class="bg-light"  style="height: 100vh;">
 
 <div class="container">
   <main>   
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="logo.png" alt="" width="130" height="57">
-      <h2>Checkout form</h2><br><br>
+      <h2>{{ __('Checkout form') }}</h2><br><br>
     </div>
 
     <section style="align-items: center;">
     <div class="row g-5">
       @if (Session::has('coupon'))
-      <div class="col-md-5 col-lg-4 order-md-last">
+      <div class="d-flex align-items-center justify-content-center">
         <ul class="list-group mb-3">
           @foreach (\Cart::getContent() as $item)
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
-              <h6 class="my-0">Nombre del Producto:</h6>
+              <h6 class="my-0">{{ __('bill1') }}</h6>
               <small class="text-muted">{{$item->name}}</small>
             </div>
             <span class="text-muted">{{$item->price}}€</span>
             @endforeach
           </li>
-          <li class="list-group-item d-flex justify-content-between" >
-            <span>IVA 21%</span>
-          </li>
+          <!--<li class="list-group-item d-flex justify-content-between">
+            <span>{{ __('bill2') }}</span>
+          </li>-->
         </ul>
         <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
           @csrf
           <div class="input-group">
            <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code">
-           <button type="submit" class="btn btn-secondary">Aplicar Cupon</button>
+           <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
-          <span>Total (EUR)</span>
+          <span>{{ __('bill4') }}</span>
           <strong>€{{round(Cart::getTotal()*1.21-Session::get('coupon')['amount'],2, PHP_ROUND_HALF_EVEN)}}</strong>
         </li>
          @if (Session::has('danger'))
@@ -83,29 +58,30 @@
           @foreach (\Cart::getContent() as $item)
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
-              <h6 class="my-0">Nombre del Producto:</h6>
+              <h6 class="my-0">{{ __('bill1') }}</h6>
               <small class="text-muted">{{$item->name}}</small>
             </div>
             <span class="text-muted">{{$item->price}}€</span>
           </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>IVA 21%</span>
-          </li>
+          <!--<li class="list-group-item d-flex justify-content-between">
+            <span>{{ __('bill2') }}</span>-->
+            @endforeach
+          <!--</li>-->
         </ul>
-        <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST" style="background-color: #e6f9ff;">
+        <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
           @csrf
           <div class="input-group">
            <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code">
-           <button type="submit" class="btn btn-secondary">Aplicar Cupon</button>
+           <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
-          <span>Total (EUR)</span>
+          <span>{{ __('bill4') }}</span>
           <strong>€{{round(Cart::getTotal()*1.21,2, PHP_ROUND_HALF_EVEN)}}</strong>
         </li>
         @if (Cart::getTotal()*1.21 > 40)
         <p class="text-success">Tienes un cupon disponible - <b>EATWELL</b></p>
        @endif
-       @endforeach
+    
         </form>
         @endif
       </div>
@@ -114,14 +90,14 @@
         
         <form action="pago" method="POST" class="mx-1 mx-md-4">
           <div style="margin:20px;">
-          <br><h4 class="mb-3">Facturación</h4>
+          <br><h4 class="mb-3">{{ __('bill5') }}</h4>
           @csrf
           <div class="row g-3">
             <div class="col-sm-6">
-              <label for="firstName" class="form-label">Nombre</label>
-              <input type="text" class="form-control" name="nombre">
+              <label for="firstName" class="form-label">{{ __('Name') }}</label>
+              <input value="{{old('nombre')}}" type="text" class="form-control" name="nombre">
               <div class="invalid-feedback">
-                Valid first name is required.
+                {{ __('bill6') }}
               </div>
               @error('nombre')
               <p class="text-danger">{{$message}}</p>
@@ -129,10 +105,10 @@
             </div>
 
             <div class="col-sm-6">
-              <label for="lastName" class="form-label">Apellidos</label>
-              <input type="text" class="form-control" name="apellidos">
+              <label for="lastName" class="form-label">{{ __('Lastnames') }}</label>
+              <input value="{{old('apellidos')}}" type="text" class="form-control" name="apellidos">
               <div class="invalid-feedback">
-                Valid last name is required.
+                {{ __('bill7') }}
               </div>
               @error('apellidos')
               <p class="text-danger">{{$message}}</p>
@@ -140,10 +116,10 @@
             </div>
 
             <div class="col-12">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" name="email">
+              <label for="email" class="form-label">{{ __('E-Mail Address') }}</label>
+              <input value="{{old('email')}}" type="email" class="form-control" name="email">
               <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
+                {{ __('bill8') }}
               </div>
               @error('email')
               <p class="text-danger">{{$message}}</p>
@@ -154,7 +130,7 @@
               <label for="address" class="form-label">Address</label>
               <input type="text" class="form-control" name="adresa">
               <div class="invalid-feedback">
-                Please enter your shipping address.
+                {{ __('bill9') }}
               </div>
               @error('adresa')
               <p class="text-danger">{{$message}}</p>
@@ -162,10 +138,10 @@
             </div>
 
             <div class="col-md-3">
-              <label for="zip" class="form-label">Zip</label>
-              <input type="text" class="form-control" name="zip">
+              <label for="zip" class="form-label">{{ __('Zip code') }}</label>
+              <input value="{{old('zip')}}" type="text" class="form-control" name="zip">
               <div class="invalid-feedback">
-                Zip code required.
+                {{ __('bill10') }}
               </div>
             </div>
             @error('zip')
@@ -175,13 +151,13 @@
 
           <hr class="my-4">
 
-          <h4 class="mb-3">Payment</h4>
+          <h4 class="mb-3">{{ __('Payment Method') }}</h4>
           <div class="row gy-3">
             <div class="col-md-6">
-              <label for="cc-name" class="form-label">Nombre en la tarjeta</label>
-              <input type="text" class="form-control" name="tarjeta">
+              <label for="cc-name" class="form-label">{{ __('Cardholder') }}</label>
+              <input value="{{old('tarjeta')}}" type="text" class="form-control" name="tarjeta">
               <div class="invalid-feedback">
-                Name on card is required
+                {{ __('bill11') }}
               </div>
               @error('tarjeta')
               <p class="text-danger">{{$message}}</p>
@@ -189,10 +165,10 @@
             </div>
 
             <div class="col-md-6">
-              <label for="cc-number" class="form-label">Numero de la tarjeta</label>
-              <input type="text" class="form-control" name="tarjetaNumero">
+              <label for="cc-number" class="form-label">{{ __('Card number') }}</label>
+              <input value="{{old('tarjetaNumero')}}" type="text" class="form-control" name="tarjetaNumero">
               <div class="invalid-feedback">
-                Credit card number is required
+                {{ __('bill12') }}
               </div>
               @error('tarjetaNumero')
               <p class="text-danger">{{$message}}</p>
@@ -200,10 +176,10 @@
             </div>
 
             <div class="col-md-3">
-              <label for="cc-cvv" class="form-label">CVV</label>
-              <input type="text" class="form-control" name="cvv">
+              <label for="cc-cvv" class="form-label">{{ __('CVV') }}</label>
+              <input value="{{old('cvv')}}" type="text" class="form-control" name="cvv">
               <div class="invalid-feedback">
-                Security code required
+                {{ __('bill13') }}
               </div>
             </div>
             @error('cvv')
@@ -214,7 +190,7 @@
           <hr class="my-4">
 
           <div style="margin-bottom:10px; text-align:center;">
-          <button type="submit" class="btn btn-outline-primary" >Completar Pago</button><br><br>
+          <button type="submit" class="btn btn-outline-primary" >{{ __('Complete payment') }}</button><br><br>
           </div>
           </div>
         </form>
@@ -225,11 +201,13 @@
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2017–2023 FoodFit</p>
     <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
+      <li class="list-inline-item"><a href="#">{{ __('Privacy') }}</a></li>
+      <li class="list-inline-item"><a href="#">{{ __('Terms') }}</a></li>
+      <li class="list-inline-item"><a href="#">{{ __('Support') }}</a></li>
     </ul>
   </footer>
 </div>
   </body>
-</html>
+@endsection
+
+

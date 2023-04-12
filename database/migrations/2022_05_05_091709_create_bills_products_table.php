@@ -26,12 +26,15 @@ return new class extends Migration
                     ->references('id')
                     ->on('users')
                     ->cascadeOnDelete()
-                    ->cascadeOnUpdate();        
+                    ->cascadeOnUpdate();  
+            $table->string('name_user');      
             $table->string('name');
             $table->integer('quantity');
-            $table->integer('price');
-            $table->integer('totalprice');
+            $table->double('price');
+            $table->double('totalprice');
+            $table->string('coupon')->nullable();
             $table->string('adress');
+            $table->string('status');
             $table->timestamps();
         });
     }

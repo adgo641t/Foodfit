@@ -22,6 +22,7 @@
                             <th class="p-3 text-left">Nombre</th>
                             <th class="p-3 text-left">Descuento</th>
                             <th class="p-3 text-left">Descripción</th>
+                            <th>Habilitar/Desabilitar</th>
                             <th class="p-3 text-left">Action</th>
                         </tr>
                     </thead>
@@ -39,6 +40,9 @@
                             </td>
                             <td class="p-3">
                                 {{$coupon->description}}
+                            </td>
+                            <td class="p-3">
+                                {{$coupon->habilitado}}
                             </td>
                             <td class="p-3 ">
                                 <a href="{{ route('coupons.edit',$coupon->id) }}" class="px-1">

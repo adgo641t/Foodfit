@@ -114,3 +114,36 @@ body{
         display: none;
     }
 }
+
+.dropbtn {
+    background-color: #ecffeb;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #ecffeb;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    background-color: #cbffc8;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .show {display: block;}

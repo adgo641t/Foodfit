@@ -20,13 +20,13 @@
                     @endif
 		<div class="text-center">
 			<img src="../logo.png" alt="" class="logo">
-			<p class="mt-2 text-sm text-gray-600">Recupere su contraseña</p>
+			<p class="mt-2 text-sm text-gray-600">{{ __('Recover your password') }}</p>
 		</div>
 		<form class="mt-8 space-y-6" action="{{ route('password.email') }}" method="POST">
             @csrf
 			<input type="hidden" name="remember" value="true">
 			<div class="relative">
-				<label class="text-sm font-bold text-gray-700 tracking-wide">{{ __('Correo Electrónico') }}</label>
+				<label class="text-sm font-bold text-gray-700 tracking-wide">{{ __('E-Mail Address') }}</label>
 				<input class=" w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-teal-500 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus type="email" id="email">
                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -37,7 +37,7 @@
 			<div>
                 <button type="submit" class="w-full flex justify-center bg-teal-500 text-gray-100 p-4  rounded-full tracking-wide
                 font-semibold  focus:outline-none focus:shadow-outline hover:bg-teal-600 shadow-lg cursor-pointer transition ease-in duration-300">
-                {{ __('Send Password Reset Link') }}
+                {{ __('Reset Password') }}
                 </button>
 			</div>
 		</form>

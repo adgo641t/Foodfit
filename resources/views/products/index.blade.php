@@ -41,7 +41,7 @@
                                     {{ $product->price }}€
                                 </td>
                                 <td class="pl-5">
-                                    <img src="../public/{{$product->image}}" width="100px">
+                                    <img src="public/{{$product->image}}" width="100px">
                                 </td>
                                 <td class="pl-5">
                                     <a href="{{ route('products.edit',$product->id) }}" class="px-1">

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->string('description');
-            $table->integer('value')->nullable();
+            $table->string('habilitado');
             $table->integer('amount')->nullable();
             $table->timestamps();
         });

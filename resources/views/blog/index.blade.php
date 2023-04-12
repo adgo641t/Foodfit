@@ -44,11 +44,17 @@
           </div>
       </form>
       <br>
-      @if(count($blogs) == 0)
+
+    @if(count($blogs) == 0)
         <h3 class="text-center">Blog no encontrados</h3>
     @endif
+
+    @if(count($users) == 0)
+        <h3 class="text-center">Blog no encontrados con esos usuarios</h3>
+    @endif
+   <!---Filtrar por categorias-->
     <div class="w-full lg:w-1/4">
-    <label for="category" class="block text-gray-700 font-bold mb-2">Categoría:</label>
+    <label for="category" class="block text-gray-700 font-bold mb-2">Filtrar por categorias:</label>
     <form action="blog">
                 <select name="category" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
                 <option value="">Todas las categorias</option>
@@ -58,6 +64,20 @@
                 }
                 @endif
                 <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+                </select>
+                <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Elegir categoria</button>
+        </form>
+    </div>
+    <br>
+    <!------Filtrar por usuarios-------->
+    <div class="w-full lg:w-1/4">
+    <label for="category" class="block text-gray-700 font-bold mb-2">Filtrar por usuarios:</label>
+    <form action="blog">
+                <select name="users" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
+                <option value="">Todas los Usuarios</option>
+                @foreach($users as $user)
+                <option value="{{$user->id}}">{{$user->name}}</option>
                 @endforeach
                 </select>
                 <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Elegir categoria</button>
@@ -84,33 +104,41 @@
             
             <div style="background-color:white" class="rounded overflow-hidden shadow-lg">
                 <a href="{{route('ShowBlog', $Blog->id)}}">
-                    <img  class="lg:h-72 md:h-48 w-full object-cover object-center" src="../public/{{$Blog->image}}" alt="Sunset in the mountains">
+                    <img  class="lg:h-72 md:h-48 w-full object-cover object-center" src="public/{{$Blog->image}}" alt="Sunset in the mountains">
                 </a>
                 <p
                 @foreach($Category_blogs as $category)
                     @if($Blog->category_id == $category->id)
-                        {{$Blog->category_id = $category->name}}
+                        @if($category->name  != 'Ninguna categoria')
+                            {{$Blog->category_id = $category->name}}
+                        @else 
+                            {{$Blog->category_id = null}}
+                        @endif          
                     @endif
+
                     @if($Blog->category_id_2 == $category->id)
+                        @if($category->name != 'Ninguna categoria')
                             {{$Blog->category_id_2 = $category->name}}
-                    @endif
+                         @else 
+                         {{$Blog->category_id_2 = null}}
+                        @endif          
+                    @endif    
+
                     @if($Blog->category_id_3 == $category->id)
+                        @if($category->name  != 'Ninguna categoria')
                             {{$Blog->category_id_3 = $category->name}}
-                    @endif
-                @endforeach            
-                @if($Blog->category_id == "Ninguna categoria")
-                {{$Blog->category_id = ''}}
-                @elseif($Blog->category_id_2 == "Ninguna categoria")
-                {{$Blog->category_id_2 = ''}}
-                @elseif($Blog->category_id_3 == "Ninguna categoria")
-                {{$Blog->category_id_3 = ''}}
-                @endif class="w-full text-gray-600 text-xs md:text-sm px-6">
+                        @else 
+                        {{$Blog->category_id_3 = null}}
+                        @endif   
+                    @endif               
+                @endforeach  class="w-full text-gray-600 text-xs md:text-sm px-6">
                          {{$Blog->category_id}} {{$Blog->category_id_2}} {{$Blog->category_id_3}}</p>
 
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-2"><a href="{{route('ShowBlog', $Blog->id)}}">{{$Blog->title}}</a></div>
                     <p class=" truncate ... text-gray-700 text-base">
-                        {{$Blog->description}}
+<!--{{$Blog->description}}-->
+                        {{($Blog->description)}}
                     </p>
                 </div>
                 <div class="px-6 pt-4 pb-2">
@@ -157,7 +185,13 @@
                 @endrole
             </div>
             <div class="px-6 pt-4 pb-2">
-                <div class="text-sm font-light text-gray-500 dark:text-gray-400">Creator: <b>{{$Blog->creator}}</b></div>
+                <div class="text-sm font-light text-gray-500 dark:text-gray-400">Creator: <b
+                @foreach ($users as $user)
+                    @if($user->id == $Blog->creator)
+                     {{$Blog->creator = $user->name}}
+                     
+                    @endif
+                @endforeach>{{$Blog->creator}}</b></div>
                 <div class="text-sm font-light text-gray-500 dark:text-gray-400">Created: <b>{{$Blog->created_at->format('d-m-Y')}}</b></div>
                 <div class="text-sm font-light text-gray-500 dark:text-gray-400">Updated: <b>{{$Blog->updated_at->format('d-m-Y')}} at {{$Blog->updated_at->format('H:i')}}</b></div>
             </div>
@@ -187,7 +221,7 @@
 						<a class="inline-block py-2 px-3 text-white no-underline" href="#">Blog</a>
 					  </li>
 					  <li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="{{ route('faqs') }}">Faqs</a>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3">Faqs</a>
 					  </li>
 					  <li>
 						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Facebook</a>

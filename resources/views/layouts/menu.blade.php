@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add to cart - Foot&Fit</title>
+    <title>{{ __('title1') }}</title>
     <script src="https://kit.fontawesome.com/2469414de4.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -50,33 +50,31 @@
         <header>
             <div class="container-fluid">
             <nav class="navbar navbar-expand-lg fixed-top navbar-light " style="background-color: #ecffeb" >
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div id="myMenu" class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         @if (Route::has('login'))
                             @auth
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
+                            <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+                            <button onclick="menu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
                             </button>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/abouts') }}">About</a>
-                            </li>
                                 <!--If user is logged-->
-                                @if(@Auth::user()->hasRole('cliente'))
+                                @if(@Auth::user()->hasRole('cliente'))   
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/product') }}">Pedir a
-                                        la carta</a>
+                                    <a class="nav-link" href="{{ url('/abouts') }}">{{ __('About us') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/show-bill') }}">Facturas cobradas</a>
+                                    <a class="nav-link" aria-current="page" href="{{ url('/product') }}">{{ __('Our dishes') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/show-bill') }}">{{ __('Bills') }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Blog</a>
                                 </li>
+                                    <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
+                                </li>
+
                                                                                 <!--Icon cart and go to cart-->
                                                                                 <a href="{{ route('cart.list') }}" class="flex items-center">
                                                                                     <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -90,38 +88,71 @@
                                 @endif
                                 @if(@Auth::user()->hasRole('admin'))
                                 <li class="nav-item">
-                                    <a class="nav-link " aria-current="page" href="{{ route('products.index') }}">Administración de productos</a>
+                                    <a class="nav-link" href="{{ url('/abouts') }}">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link " aria-current="page" href="{{ route('coupons.index') }}">Administración de cupones</a>
+                                    <a class="nav-link " aria-current="page" href="{{ route('products.index') }}">Gestión de productos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Administracion de Blog</a>
+                                    <a class="nav-link " aria-current="page" href="{{ route('coupons.index') }}">Gestión de cupones</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " aria-current="page" href="{{ route('categories.index') }}">Gestión de categorias</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Gestión de Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ route('listBills') }}">Gestión de Facturas</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
+                                </li>
+                                @endif
+                                @if(@Auth::user()->hasRole('BlogCreator'))
+ç                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Gestión de Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
+                                </li>
+                                @endif
+                                @if(@Auth::user()->hasRole('chef'))
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/showBill') }}">{{ __('Bills') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
                                 </li>
                                 @endif
                              <!--To logout-->
-                             <li class="nav-item">
-                            <a href="{{ url('/logout') }}"class="nav-link">Logout</a></li>
                             @else
-                            <a href="{{ url('/') }}"><img src="logo.png" alt="" class="logo-img"></a>
+                            <a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/abouts') }}">About</a>
+                                <a class="nav-link" href="{{ url('/abouts') }}">{{ __('About us') }}</a>
                             </li>
                                 <li class="nav-item">
                                     <a href="{{ route('login') }}"
-                                        class="nav-link text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                                        class="nav-link text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Sign in') }}</a>
                                 </li>
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}"
-                                        class="nav-link ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                        class="nav-link ml-4 text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Sign up') }}</a>
                                 @endif
                             @endauth
                         @endif
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link">{{ __("Choose language") }} <i class="fa fa-caret-down"></i></button>
+                            <div id="myDropdown" class="dropdown-content">
+                              <a href="{{route('set_language', ['es'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/es.png" alt=""> {{ __("idioma1") }}</a>
+                              <a href="{{route('set_language', ['en'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/en.png" alt=""> {{ __("idioma2") }}</a>
+                            </div>
+                          </div>
                     </ul>
             </nav>
         </header>
@@ -130,6 +161,7 @@
             @yield('content')
         </div>
         <script src="js/faqs.js"></script>
+        <script src="js/navbar.js"></script>
 </body>
 
 </html>

@@ -67,7 +67,7 @@ class LoginController extends Controller
         //$role = auth()->user()->type; 
 
         if(Auth::attempt($credentials)) {
-            return view('/');
+            return redirect("/home")->withSuccess('Te has registrado!');;
         } else {
             return view('auth.login');
         }
@@ -113,7 +113,7 @@ class LoginController extends Controller
         // if($user->created_at == $user->updated_at){
         //     return redirect("/home")->with("Coupon","Tienes un cupon");
         // }
-        return redirect("/home")->withSuccess('Te has registrado!');
+        return redirect("/")->withSuccess('Te has registrado!');
     }
 // Function that creates user that registrates and adds it to the database
     public function create(array $data)

@@ -17,37 +17,56 @@
         <a href="{{ route('blog') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Go back</a>
         <div class="row">
             <div style="background-color:white" class=" py-12 sw-75 rounded overflow-hidden shadow-lg">
-                <img  src="../../public/{{$blog->image}}" alt="Sunset in the mountains">
+                <img  src="../public/{{$blog->image}}" alt="Sunset in the mountains">
                 <br>
                 <div class="px-6 py-4">
                 <p
                 @foreach($Category_blogs as $category)
-				@if($blog->category_id == $category->id)
-                        {{$blog->category_id = $category->name}}
+                    @if($blog->category_id == $category->id)
+                        @if($category->name  != 'Ninguna categoria')
+                            {{$blog->category_id = $category->name}}
+                        @else 
+                            {{$blog->category_id = null}}
+                        @endif          
                     @endif
+
                     @if($blog->category_id_2 == $category->id)
+                        @if($category->name != 'Ninguna categoria')
                             {{$blog->category_id_2 = $category->name}}
-                    @endif
+							@else 
+                         {{$blog->category_id_2 = null}}
+                        @endif          
+                    @endif    
+
                     @if($blog->category_id_3 == $category->id)
+
+                        @if($category->name  != 'Ninguna categoria')
                             {{$blog->category_id_3 = $category->name}}
-                    @endif
-                @endforeach
-				@if($blog->category_id == "Ninguna categoria")
-                	{{$blog->category_id = ''}}
-                @elseif($blog->category_id_2 == "Ninguna categoria")
-                	{{$blog->category_id_2 = ''}}
-                @elseif($blog->category_id_3 == "Ninguna categoria")
-                	{{$blog->category_id_3 = ''}}
-                @endif class="w-full text-gray-600 text-xs md:text-sm px-6"> {{$blog->category_id}} {{$blog->category_id_2}} {{$blog->category_id_3}}</p>
+                        @else 
+                        {{$blog->category_id_3 = null}}
+                        @endif   
+
+                    @endif               
+                @endforeach  class="w-full text-gray-600 text-xs md:text-sm px-6">
+                         {{$blog->category_id}} 
+						 {{$blog->category_id_2}} 
+						 {{$blog->category_id_3}}</p>
                 <div class="font-bold text-xl mb-2">{{$blog->title}}</div>
                     <p class="text-gray-700 text-base">
-                        {{$blog->description}}
+						{!! nl2br(e($blog->description)) !!}
+
                     </p>
                 </div>
                 <div class="px-6 pt-4 pb-2">
                 <div class="px-6 pt-4 pb-2">
-                	<div class="text-sm font-light text-gray-500 dark:text-gray-400">Creator: <b>{{$blog->creator}}</b></div>
-                	<div class="text-sm font-light text-gray-500 dark:text-gray-400">Created: <b>{{$blog->created_at->format('d-m-Y')}}</b></div>
+				<div class="text-sm font-light text-gray-500 dark:text-gray-400">Creator: <b
+								@foreach ($users as $user)
+									@if($user->id == $blog->creator)
+									{{$blog->creator = $user->name}}
+									
+									@endif
+								@endforeach>{{$blog->creator}}</b></div>        
+				    <div class="text-sm font-light text-gray-500 dark:text-gray-400">Created: <b>{{$blog->created_at->format('d-m-Y')}}</b></div>
                 	<div class="text-sm font-light text-gray-500 dark:text-gray-400">Updated: <b>{{$blog->updated_at->format('d-m-Y')}} at {{$blog->updated_at->format('H:i')}}</b></div>
             	</div>
                 </div>

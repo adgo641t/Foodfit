@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Category_blogs;
+use App\Http\Controllers\Controller;
 
 
 class Category_controller extends Controller
@@ -22,7 +23,47 @@ class Category_controller extends Controller
         $category->save();
 
         return redirect()->route('add_blog');
+    }
 
+    public function index(){
+        $categories = Category::all();
+        return view('categories.index', compact('categories')); 
+    }
 
+    public function create(){
+        return view('categories.create');
+    }
+
+    public function edit(Category $category)
+    {
+        return view('categories.edit', compact('category')); 
+    }
+
+    public function update(Request $request,Category $category){
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+
+        $input = $request->all();
+        $category->update($input);
+        return redirect()->route('categories.index')
+        ->with('success','Categoria actualizada correctamente');
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+        $category = new Category;
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route('categories.index')
+        ->with('success','Categoria ha sido creada exitosamente.');
+    }
+
+    public function destroy(Category $category){
+        $category->delete();
+        return redirect()->route('categories.index')
+        ->with('success', 'Categoria eliminado correctamente');
     }
 }

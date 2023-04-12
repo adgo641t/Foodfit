@@ -19,12 +19,14 @@ class CouponsSeeder extends Seeder
         Coupon::create([
             'code' => 'ABC123',
             'description' => 'Te hacemos un dto por ser guay',
+            'habilitado' => 'desabilitado',
             'amount' => 15,
         ]);
 
         Coupon::create([
             'code' => 'EATWELL',
             'description' => 'Te hacemos un dto por ser sano',
+            'habilitado' => 'habilitado',
             'amount' => 10,
         ]);
     }

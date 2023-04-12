@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+
     // Function that displays the data of the user to edit
     public function edit(User $user)
     {   

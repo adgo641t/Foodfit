@@ -24,18 +24,7 @@
 }
 </style>
 </head>
-<body>
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Añadir nuevo cupón</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('coupons.index') }}">Atrás</a>
-            </div>
-        </div>
-    </div>
-         
+<body>         
     @if ($errors->any())
         <div class="alert alert-danger">
             <strong>Whoops!</strong> Ha habido algunos errores en tu input.<br><br>
@@ -80,6 +69,9 @@
           
               <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
                 <button class='w-auto bg-teal-500 hover:bg-teal-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Crear</button>
+              </div>
+              <div class='flex items-center justify-center  md:gap-8 gap-4 pt-2 pb-2'>
+                <a class="btn btn-primary" href="{{ route('coupons.index') }}">Atrás</a>
               </div>
              
         </form>

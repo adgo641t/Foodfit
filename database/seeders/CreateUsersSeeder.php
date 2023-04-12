@@ -19,7 +19,7 @@ class CreateUsersSeeder extends Seeder
     public function run()
     {
 
-        
+        //Rol de Administrador--//
         $user = User::create([
             'name' => 'Adrian',
             'email'     => 'Adrian@UPC.com',
@@ -58,6 +58,7 @@ class CreateUsersSeeder extends Seeder
         $role->givePermissionTo('UpdateCoupons');
 
 
+        //Rol de Blog Creator--///
         $user_blog = User::create([
             'name' => 'Jose',
             'email'     => 'Jose@upc.com',
@@ -82,7 +83,21 @@ class CreateUsersSeeder extends Seeder
         $user_cliente->assignRole($role_cliente);
 
 
+        //Rol de Chef----//
+        $user_chef= User::create([
+            'name' => 'Chef',
+            'email'     => 'Chef@upc.com',
+            'password' => '$2y$10$x.Ot5fO84DkomAhWkPBXTOEYNjsn.pZ9YGS2PDFPpfve8eJYsKu0q',
+        ]);
+
+        $rol_chef = Role::create(['name' => 'chef']);
+
+        Permission::create(['name' => 'UpdatePedido']);
+
+        $user_chef->givePermissionTo('UpdatePedido');      
         
+        $user_chef->assignRole($rol_chef);
+
         // $users = [
         //     [
         //        'name'=>'Admin User',
