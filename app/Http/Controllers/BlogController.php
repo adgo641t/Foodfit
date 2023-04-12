@@ -17,7 +17,7 @@ class BlogController extends Controller
 
     public function __construct()
     {
-        $this->middleware('role:admin|BlogCreator');
+        $this->middleware('role:admin|BlogCreator|cliente');
     }
 
 

@@ -43,7 +43,7 @@ Route::get('/faqs', function () {
 
 Route::get('/faq', function () {
     return view('profile.userFaqs');
-})->name('faqs');
+})->name('faq');
 
 Route::get('/sobre', function () {
     return view('sobre');
@@ -84,7 +84,7 @@ All Normal Users Routes List
 --------------------------------------------*/
 Route::group(['middleware' => ['role:cliente']],function () {
 
-    Route::get('ClientBlog', [BlogController::class, 'index'])->name('ClientBlog');
+    Route::get('/ClientBlogs', [BlogController::class, 'index'])->name('ClientBlog');
 
     Route::get('send-mail', [SendEmailController::class, 'index']);
 
@@ -176,6 +176,7 @@ Route::group(['middleware' => ['role:admin']],function () {
 });
 
 Route::group(['middleware' => ['role:BlogCreator']],function () {
+
 
     // Route::get('/home', [HomeController::class, 'index']);
 
