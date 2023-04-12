@@ -39,7 +39,7 @@
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">  
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
         <!-- My css style -->
     <link rel="stylesheet" href="css/index.css">
     <!-- Font awesome icons -->
@@ -50,6 +50,14 @@
         <header>
             <div class="container-fluid">
             <nav class="navbar navbar-expand-lg fixed-top navbar-light " style="background-color: #ecffeb" >
+            @auth
+            <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+            @else
+            <a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+            @endauth
+            <button onclick="menu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div id="myMenu" class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         @if (Route::has('login'))
@@ -59,7 +67,7 @@
                                     <span class="navbar-toggler-icon"></span>
                             </button>
                                 <!--If user is logged-->
-                                @if(@Auth::user()->hasRole('cliente'))   
+                                @if(@Auth::user()->hasRole('cliente'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('aboutUs') }}">{{ __('About us') }}</a>
                                 </li>
@@ -110,7 +118,7 @@
                                 </li>
                                 @endif
                                 @if(@Auth::user()->hasRole('BlogCreator'))
-ç                                <li class="nav-item">
+                               <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/CreatorsBlogs') }}">Gestión de Blog</a>
                                 </li>
                                 <li class="nav-item">

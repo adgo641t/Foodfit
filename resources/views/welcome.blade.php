@@ -1,5 +1,5 @@
 @extends('layouts.menu')
-@section('content')           
+@section('content')
             <!-- Header -->
       <div class="container-fluid pageHeader">
         <div class="row">
@@ -154,7 +154,7 @@
               <path
                 d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
             </svg>
-            {{ __('text9') }} 
+            {{ __('text9') }}
           </p>
           <ul class="mb-0 flex items-center justify-center">
         <li>
@@ -220,7 +220,7 @@
       </ul>
         </div>
       </div>
-      
+
     </div>
     <div>
       <div
@@ -308,7 +308,7 @@
       </ul>
         </div>
       </div>
-      
+
     </div>
   </div>
 </section>
@@ -337,7 +337,7 @@
   </div>
 
   <!-- Community section -->
-        
+
   <div class="row ">
     <div class="col-lg-12 col-md-12 col-sm-12 marginHeader">
       <p class="textAlignment marginHeader">{{ __('text21') }}</p>
@@ -355,7 +355,7 @@
     </div>
       <div class="col-md-2 mt-3 col-lg-4">
         <img src="public/gente-increible-hijo.png" class="img-fluid"  alt="">
-      </div> 
+      </div>
       <div class="col-md-2 mt-3 col-lg-4">
         <img src="public/gente-increible-trabajando.jpg" class="img-fluid" alt="">
       </div>
@@ -364,14 +364,14 @@
     </div>
       <div class="col-md-2 mt-3 col-lg-4">
         <img src="public/gente-increible-silencio.jpg" class="img-fluid"  alt="">
-      </div> 
+      </div>
     </div>
   </div>
 
   <!-- Footer section -->
 
   <br>
-  <footer class="bg-gray-900">	
+  <footer class="bg-gray-900">
 		<div class="container max-w-6xl mx-auto flex items-center px-2 py-8">
 
 			<div class="w-full mx-auto flex flex-wrap items-center">
@@ -394,9 +394,9 @@
 					</ul>
 				</div>
 			</div>
-        
 
-		
+
+
 		</div>
 	</footer>
 

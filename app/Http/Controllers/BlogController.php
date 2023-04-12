@@ -98,8 +98,12 @@ class BlogController extends Controller
                 $Post_blog_Category->post_id  = $blog->id;
     
                 $Post_blog_Category->save();
-    
-                return redirect()->route('blog');
+
+                if(auth()->user()->name == "Adrian") {
+                    return redirect()->route('AdminBlog');
+                } else if (auth()->user()->name == "Jose"){
+                    return redirect()->route('CreatorsBlogs');
+                }
             }
 
             }
@@ -113,7 +117,11 @@ class BlogController extends Controller
         $blog = Post::find($id);
         $blog->delete();
 
-        return redirect()->route('blog');
+        if(auth()->user()->name == "Adrian") {
+            return redirect()->route('AdminBlog');
+        } else if (auth()->user()->name == "Jose"){
+            return redirect()->route('CreatorsBlogs');
+        }
         
     }
 
@@ -163,7 +171,11 @@ class BlogController extends Controller
             }
 
             // redirect
-            return redirect()->route('blog');    
+            if(auth()->user()->name == "Adrian") {
+                return redirect()->route('AdminBlog');
+            } else if (auth()->user()->name == "Jose"){
+                return redirect()->route('CreatorsBlogs');
+            }
 
         }else if($inputs['category_id'] == 1 && $inputs['category_id_2'] == 1 && $inputs['category_id_3'] == 1) {
             unset($inputs['category_id']);
@@ -179,8 +191,12 @@ class BlogController extends Controller
             
             $blog->save();
 
-            // redirect
-            return redirect()->route('blog');  
+           
+            if(auth()->user()->name == "Adrian") {
+                return redirect()->route('AdminBlog');
+            } else if (auth()->user()->name == "Jose"){
+                return redirect()->route('CreatorsBlogs');
+            }
         } else {
             unset($inputs['image']);
 
@@ -207,12 +223,11 @@ class BlogController extends Controller
                 $post->update(['post_id' => $id_blog]);
             }
 
-            // redirect
-            return redirect()->route('blog');    
+            if(auth()->user()->name == "Adrian") {
+                return redirect()->route('AdminBlog');
+            } else if (auth()->user()->name == "Jose"){
+                return redirect()->route('CreatorsBlogs');
+            }
         }
-    }
-
-    public function CreateNewCategory(Request $request) {
-        dd($request);
     }
 }

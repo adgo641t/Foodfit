@@ -154,9 +154,19 @@
     @foreach($blogs as $Blog)
             
             <div style="background-color:white" class="rounded overflow-hidden shadow-lg">
-                <a href="{{route('ShowBlog', $Blog->id)}}">
+            @if(@Auth::user()->hasRole('BlogCreator'))
+                <a href="{{route('ShowBlogCreator', $Blog->id)}}">
                     <img  class="lg:h-72 md:h-48 w-full object-cover object-center" src="public/{{$Blog->image}}" alt="Sunset in the mountains">
                 </a>
+            @elseif(@Auth::user()->hasRole('admin'))
+                <a href="{{route('ShowBlogAdmin', $Blog->id)}}">
+                    <img  class="lg:h-72 md:h-48 w-full object-cover object-center" src="public/{{$Blog->image}}" alt="Sunset in the mountains">
+                </a>
+            @else
+            <a href="{{route('ShowBlogClient', $Blog->id)}}">
+                    <img  class="lg:h-72 md:h-48 w-full object-cover object-center" src="public/{{$Blog->image}}" alt="Sunset in the mountains">
+                </a>
+            @endif
                 <p
                 @foreach($Category_blogs as $category)
                     @if($Blog->category_id == $category->id)
@@ -186,7 +196,15 @@
                          {{$Blog->category_id}} {{$Blog->category_id_2}} {{$Blog->category_id_3}}</p>
 
                 <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2"><a href="{{route('ShowBlog', $Blog->id)}}">{{$Blog->title}}</a></div>
+                    <div class="font-bold text-xl mb-2">
+                    @if(@Auth::user()->hasRole('BlogCreator'))
+                    <a href="{{route('ShowBlogCreator', $Blog->id)}}">{{$Blog->title}}</a>
+                    @elseif(@Auth::user()->hasRole('admin'))
+                    <a href="{{route('ShowBlogAdmin', $Blog->id)}}">{{$Blog->title}}</a>
+                    @else
+                    <a href="{{route('ShowBlogClient', $Blog->id)}}">{{$Blog->title}}</a>
+                    @endif
+                    </div>
                     <p class=" truncate ... text-gray-700 text-base">
 <!--{{$Blog->description}}-->
                         {{($Blog->description)}}
@@ -208,7 +226,7 @@
                     @endif
                     <!--Update-->
                     @if(@Auth::user()->hasPermissionTo('UpdateBlog'))
-                        <form action="{{ route('UpdateBlog',  $Blog->id) }}" method="post">
+                        <form action="{{ route('UpdateBlogAdmin',  $Blog->id) }}" method="post">
                         @csrf                
                         <button type="submit" class="btn btn-primary"><a style=" text-decoration: none; color: inherit">Update Blog</a></button>  
                         </form> 
@@ -227,7 +245,7 @@
                     @endif
                     <!--Update-->
                     @if(@Auth::user()->hasPermissionTo('UpdateBlog'))
-                        <form action="{{ route('UpdateBlog',  $Blog->id) }}" method="post">
+                        <form action="{{ route('UpdateBlogCreator',  $Blog->id) }}" method="post">
                         @csrf                
                         <button type="submit" class="btn btn-primary"><a style=" text-decoration: none; color: inherit">Update Blog</a></button>  
                         </form> 
