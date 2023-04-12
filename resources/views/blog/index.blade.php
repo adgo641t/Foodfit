@@ -1,5 +1,4 @@
 @extends('layouts.menu')
-
 @section('content')
 <body class="bg-gray-200 font-sans leading-normal tracking-normal">
 	<!--Header-->
@@ -104,7 +103,7 @@
             
             <div style="background-color:white" class="rounded overflow-hidden shadow-lg">
                 <a href="{{route('ShowBlog', $Blog->id)}}">
-                    <img  class="lg:h-72 md:h-48 w-full object-cover object-center" src="../public/{{$Blog->image}}" alt="Sunset in the mountains">
+                    <img  class="lg:h-72 md:h-48 w-full object-cover object-center" src="public/{{$Blog->image}}" alt="Sunset in the mountains">
                 </a>
                 <p
                 @foreach($Category_blogs as $category)
@@ -221,7 +220,7 @@
 						<a class="inline-block py-2 px-3 text-white no-underline" href="#">Blog</a>
 					  </li>
 					  <li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="{{ route('faqs') }}">Faqs</a>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3">Faqs</a>
 					  </li>
 					  <li>
 						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Facebook</a>

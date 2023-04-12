@@ -99,7 +99,7 @@
 						<a class="inline-block py-2 px-3 text-white no-underline" href="#">Blog</a>
 					  </li>
 					  <li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="{{ route('faqs') }}">Faqs</a>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3">Faqs</a>
 					  </li>
 					  <li>
 						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Facebook</a>

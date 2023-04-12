@@ -65,7 +65,7 @@
                                 <!--If user is logged-->
                                 @if(@Auth::user()->hasRole('cliente'))   
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/abouts') }}">{{ __('About us') }}</a>
+                                    <a class="nav-link" href="{{ route('aboutUs') }}">{{ __('About us') }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/product') }}">{{ __('Our dishes') }}</a>
@@ -74,10 +74,7 @@
                                     <a class="nav-link" aria-current="page" href="{{ url('/show-bill') }}">{{ __('Bills') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Blog</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/show-coupons') }}">Cupones disponibles</a>
+                                    <a class="nav-link" aria-current="page" href="{{ route('ClientBlog') }}">Blog</a>
                                 </li>
                                     <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
                                 </li>
@@ -95,7 +92,7 @@
                                 @endif
                                 @if(@Auth::user()->hasRole('admin'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/abouts') }}">About</a>
+                                    <a class="nav-link" href="{{ route('aboutUs') }}">About</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link " aria-current="page" href="{{ route('products.index') }}">Gestión de productos</a>
@@ -107,7 +104,7 @@
                                     <a class="nav-link " aria-current="page" href="{{ route('categories.index') }}">Gestión de categorias</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Gestión de Blog</a>
+                                    <a class="nav-link" aria-current="page" href="{{ url('/AdminBlog') }}">Gestión de Blog</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ route('listBills') }}">Gestión de Facturas</a>
@@ -117,8 +114,13 @@
                                 </li>
                                 @endif
                                 @if(@Auth::user()->hasRole('BlogCreator'))
+<<<<<<< HEAD
                                <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Gestión de Blog</a>
+=======
+ç                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/CreatorsBlogs') }}">Gestión de Blog</a>
+>>>>>>> d8fc1c95dac90e560167bbf8ee04e79af720d3ff
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
@@ -145,7 +147,7 @@
                             </li>
                                 <li class="nav-item">
                                     <a href="{{ route('login') }}"
-                                        class="nav-link text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Sign in') }}</a>
+                                        class="nav-link">{{ __('Sign in') }}</a>
                                 </li>
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}"
@@ -166,7 +168,7 @@
     </div>
     <div class="mt-5">
             @yield('content')
-    </div>
+        </div>
         <script src="js/faqs.js"></script>
         <script src="js/navbar.js"></script>
 </body>

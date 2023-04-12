@@ -93,7 +93,7 @@
         <div class="h-28 overflow-hidden rounded-t-lg bg-[#9d789b]"></div>
         <div
           class="mx-auto -mt-12 w-24 overflow-hidden rounded-full border-2 border-white bg-white dark:border-neutral-800 dark:bg-neutral-800">
-          <img src="../public/don-limpio.png" style="width:300px" alt="lady-profile">
+          <img src="public/don-limpio.png" style="width:300px" alt="lady-profile">
         </div>
         <div class="p-6">
           <h4 class="mb-4 text-2xl font-semibold">Don Limpio</h4>
@@ -181,7 +181,7 @@
         <div class="h-28 overflow-hidden rounded-t-lg bg-[#7a81a8]"></div>
         <div
           class="mx-auto -mt-12 w-24 overflow-hidden rounded-full border-2 border-white bg-white dark:border-neutral-800 dark:bg-neutral-800">
-          <img class="content-center" src="../public/gordon.jpg" alt="dog-profile">
+          <img class="content-center" src="public/gordon.jpg" alt="dog-profile">
         </div>
         <div class="p-6">
           <h4 class="mb-4 text-2xl font-semibold">Gordon Ramsay</h4>
@@ -354,10 +354,10 @@
 </section>
 
   <section class="row py-12 object-center	" id="press">
-    <img class="press-logo" src="../public/Spacex.png" alt="tc-logo">
-    <img class="press-logo" src="../public/mcdonald.png" alt="tnw-logo">
-    <img class="press-logo" src="../public/forbes-logo.png" alt="biz-insider-logo">
-    <img class="press-logo" src="../public/masterchef.png" alt="mashable-logo">
+    <img class="press-logo" src="public/Spacex.png" alt="tc-logo">
+    <img class="press-logo" src="public/mcdonald.png" alt="tnw-logo">
+    <img class="press-logo" src="public/forbes-logo.png" alt="biz-insider-logo">
+    <img class="press-logo" src="public/masterchef.png" alt="mashable-logo">
   </section>
   </div>
 
@@ -387,22 +387,22 @@
   <div class="container">
     <div class="row marginHeader">
       <div class="col-md-2 mt-3 col-lg-4">
-        <img src="../public/gente-increible-bici.png" class="img-fluid" alt="">
+        <img src="public/gente-increible-bici.png" class="img-fluid" alt="">
       </div>
     <div class="col-md-2 mt-3 col-lg-4">
-      <img src="../public/gente-increible-comiendo.png" class="img-fluid" alt="">
+      <img src="public/gente-increible-comiendo.png" class="img-fluid" alt="">
     </div>
       <div class="col-md-2 mt-3 col-lg-4">
-        <img src="../public/gente-increible-hijo.png" class="img-fluid"  alt="">
+        <img src="public/gente-increible-hijo.png" class="img-fluid"  alt="">
       </div> 
       <div class="col-md-2 mt-3 col-lg-4">
-        <img src="../public/gente-increible-trabajando.jpg" class="img-fluid" alt="">
+        <img src="public/gente-increible-trabajando.jpg" class="img-fluid" alt="">
       </div>
     <div class="col-md-2 mt-3 col-lg-4">
-      <img src="../public/gente-increible-viaje.jpg" class="img-fluid" alt="">
+      <img src="public/gente-increible-viaje.jpg" class="img-fluid" alt="">
     </div>
       <div class="col-md-2 mt-3 col-lg-4">
-        <img src="../public/gente-increible-silencio.jpg" class="img-fluid"  alt="">
+        <img src="public/gente-increible-silencio.jpg" class="img-fluid"  alt="">
       </div> 
     </div>
   </div>
@@ -445,16 +445,13 @@
 				<div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
 					<ul class="list-reset flex justify-center flex-1 md:flex-none items-center">
 					  <li>
-						<a class="inline-block py-2 px-3 text-white no-underline" href="#">Blog</a>
+						<a class="inline-block py-2 px-3 text-white no-underline" href="#">Home</a>
 					  </li>
 					  <li>
 						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Faqs</a>
 					  </li>
 					  <li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Facebook</a>
-					  </li>
-						<li>
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="#">Linkedin</a>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="https://www.facebook.com/people/Comidas-Nutritivas-Y-Saludables/100066570821806/">Facebook</a>
 					  </li>
 					</ul>
 				</div>

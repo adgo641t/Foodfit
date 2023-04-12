@@ -97,7 +97,7 @@
                             <p class='lowercase text-sm text-gray-200 group-hover:text-teal-500 pt-1 tracking-wider'>Select a photo</p>
                           </div>
                           <input type="file" name="image" class="hidden" placeholder="image" />
-                          <img src="/public/{{$product->image}}" width="100px" class="mt-5">
+                          <img src="public/{{$product->image}}" width="100px" class="mt-5">
                         </label>
                   </div>
               </div>

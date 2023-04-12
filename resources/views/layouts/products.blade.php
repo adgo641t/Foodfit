@@ -46,7 +46,7 @@
         <div class="grid grid-cols-1 gap-6 mt-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             @foreach ($products as $product)
             <div class="w-full max-w-sm mx-auto overflow-hidden rounded-md shadow-md">
-                <img src="../public/{{$product->image}}" alt="" class="w-100 max-h-60">
+                <img src="public/{{$product->image}}" alt="" class="w-100 max-h-60">
                 <div class="flex items-end justify-end w-full bg-cover">
                     
                 </div>
