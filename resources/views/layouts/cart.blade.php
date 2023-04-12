@@ -92,8 +92,8 @@
                             @endforeach
                           </tbody>
                         </table>
-                        <div>
-                         Total: {{round(Cart::getTotal()*1.21 ,2, PHP_ROUND_HALF_EVEN)}}€
+                        <div style="float: right; font-size:1.5rem">
+                          <b>Total: {{round(Cart::getTotal()*1.21 ,2, PHP_ROUND_HALF_EVEN)}}€</b> 
                         </div>
                         <div>
                           <form action="{{ route('cart.clear') }}" method="POST">

@@ -98,7 +98,8 @@ class LoginController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'password' => 'required_with:password_confirmation|min:6|same:password_confirmation',
+            'password_confirmation' => 'min:6'
         ]);
             
         $data = $request->all();
