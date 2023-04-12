@@ -43,7 +43,7 @@ Route::get('/faqs', function () {
 
 Route::get('/faq', function () {
     return view('profile.userFaqs');
-})->name('faqs');
+})->name('faq');
 
 Route::get('/sobre', function () {
     return view('sobre');

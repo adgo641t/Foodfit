@@ -11,9 +11,9 @@
     </div>
 
     <section style="align-items: center;">
-    <div class="row g-5">
       @if (Session::has('coupon'))
-      <div class="col-md-5 col-lg-4 order-md-last">
+    <div class="row g-5">
+      <div class="col-lg-4 order-md-last">
         <ul class="list-group mb-3">
           @foreach (\Cart::getContent() as $item)
           <li class="list-group-item d-flex justify-content-between lh-sm">
@@ -31,7 +31,7 @@
         <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
           @csrf
           <div class="input-group">
-           <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code">
+           <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code" >
            <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
@@ -53,7 +53,8 @@
       </div>
 
       @if (!Session::has('coupon'))
-      <div class="col-md-5 col-lg-4 order-md-last">
+      <div class="row g-5">
+      <div class="col-lg-4 order-md-last">
         <ul class="list-group mb-3">
           @foreach (\Cart::getContent() as $item)
           <li class="list-group-item d-flex justify-content-between lh-sm">
@@ -71,7 +72,7 @@
         <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
           @csrf
           <div class="input-group">
-           <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code">
+           <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code" >
            <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
@@ -87,7 +88,7 @@
         @endif
       </div>
       
-      <div class="col-lg-8 offset-lg-2" style="background-color: #e6f9ff; ">
+      <div class="col-lg-8">
         
         <form action="pago" method="POST" class="mx-1 mx-md-4">
           <div style="margin:20px;">
