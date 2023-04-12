@@ -4,7 +4,7 @@
   <body class="bg-light"  style="height: 100vh;">
 
 <div class="container">
-  <main>   
+  <main>
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="logo.png" alt="" width="130" height="57">
       <h2>{{ __('Checkout form') }}</h2><br><br>
@@ -30,7 +30,7 @@
         <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
           @csrf
           <div class="input-group">
-           <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code">
+           <input type="text" class="coupon_code border border-3 border-secondary rounded-start" id="coupon_code" name="coupon_code" placeholder="Promo code">
            <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
@@ -40,7 +40,7 @@
          @if (Session::has('danger'))
          <div class="p-4 mb-3 bg-green-400 rounded" x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show">
              <p class="text-danger">{{Session::get('danger')}}</p>
-         </div>    
+         </div>
          @endif
          @if (Session::has('success_message'))
          <div class="p-4 mb-3 bg-green-400 rounded" x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show">
@@ -70,7 +70,7 @@
         <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
           @csrf
           <div class="input-group">
-           <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code">
+           <input type="text" class="coupon_code border border-3 border-secondary rounded-start" id="coupon_code" name="coupon_code" placeholder="Promo code">
            <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
@@ -80,14 +80,14 @@
         @if (Session::has('danger'))
         <div class="p-4 mb-3 bg-red-400 rounded" x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show">
             <p class="text-danger">{{Session::get('danger')}}</p>
-        </div>    
+        </div>
         @endif
       </form>
         @endif
       </div>
 
       <div class="col-md-7 col-lg-8">
-        
+
         <form action="pago" method="POST" class="mx-1 mx-md-4">
           <div style="margin:20px;">
           <br><h4 class="mb-3">{{ __('bill5') }}</h4>
@@ -194,7 +194,7 @@
           </div>
           </div>
         </form>
-        
+
       </div>
     </div>
   </main>

@@ -118,13 +118,8 @@
                                 </li>
                                 @endif
                                 @if(@Auth::user()->hasRole('BlogCreator'))
-<<<<<<< HEAD
-                               <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/blog') }}">Gestión de Blog</a>
-=======
-ç                                <li class="nav-item">
+                                <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url('/CreatorsBlogs') }}">Gestión de Blog</a>
->>>>>>> d8fc1c95dac90e560167bbf8ee04e79af720d3ff
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>

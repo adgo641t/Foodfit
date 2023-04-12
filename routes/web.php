@@ -43,7 +43,7 @@ Route::get('/faqs', function () {
 
 Route::get('/faq', function () {
     return view('profile.userFaqs');
-})->name('faqs');
+})->name('faq');
 
 Route::get('/sobre', function () {
     return view('sobre');
@@ -64,8 +64,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/bill', [CouponsController::class, 'validCoupon'], function () {
 })->name('coupon.store');
 
-Route::post('/validating', [LoginController::class, 'validating'])->name('validating'); 
-Route::post('/custom-registration', [LoginController::class, 'customRegistration'])->name('register.custom'); 
+Route::post('/validating', [LoginController::class, 'validating'])->name('validating');
+Route::post('/custom-registration', [LoginController::class, 'customRegistration'])->name('register.custom');
 
 
 //DELETES
@@ -73,7 +73,7 @@ Route::delete('/bill', [CouponsController::class, 'destroy'])->name('coupon.dest
 //Route::get('/home', [HomeController::class, 'index']);
 
 
-// Login views 
+// Login views
 
 
 
@@ -90,16 +90,16 @@ Route::group(['middleware' => ['role:cliente']],function () {
 
     Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
 
-    
+
     //Route::get('/user', [BlogController::class, 'index'])->name('user');
 
     //Route::post('/user','UserController@update')->name('users.update');
-    
+
     Route::get('/bill', [BillController::class, 'index'], function () {
     })->name('bill.list');
-    
+
     Route::post('/pago', [BillController::class, 'store']);
-    
+
     Route::get('/thanks', function () {
         return view('products.thanks');
     });
@@ -136,7 +136,7 @@ Route::group(['middleware' => ['role:admin']],function () {
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
 
-    
+
     //Route::get('/home', [HomeController::class, 'index']);
 
     Route::get('/AdminBlog', [BlogController::class, 'index'])->name('AdminBlog');
@@ -150,7 +150,7 @@ Route::group(['middleware' => ['role:admin']],function () {
 
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
-    Route::resource('categories', Category_controller::class);    
+    Route::resource('categories', Category_controller::class);
 
     Route::get('ShowAddCategory', function () {
         return view('blog.AddCategoryBlog');
@@ -192,7 +192,7 @@ Route::group(['middleware' => ['role:BlogCreator']],function () {
     Route::post('deleteBlogCreator/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlogCreator');
 
     Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
-    
+
     Route::post('UpdateNewBlog/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlog');
 
 });
