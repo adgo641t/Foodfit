@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </head>
 <body>
-      <div style="background-image:url('../public/fondothanks.jpg'); background-repeat:no-repeat" class="vh-100 d-flex justify-content-center align-items-center">
+      <div style="background-image:url('fondothanks.jpg'); background-repeat:no-repeat" class="vh-100 d-flex justify-content-center align-items-center">
             <div class="card col-md-4 bg-white shadow-md p-5">
                 <div class="mb-4 text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="text-success" width="75" height="75"

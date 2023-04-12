@@ -50,7 +50,7 @@
 	<div class="absolute bg-black opacity-60 inset-0 z-0"></div>
 	<div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl z-10">
 		<div class="text-center">
-			<img src="../logo.png" alt="" class="logo">
+			<img src="logo.png" alt="log" class="logo">
 			<p class="mt-2 text-sm text-gray-600">{{ __('Reset your password') }}</p>
 		</div>
 		<form class="mt-8 space-y-6" method="POST" action="{{ route('password.update') }}">
