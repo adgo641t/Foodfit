@@ -77,7 +77,6 @@ class BillController extends Controller
         ]);
 
         $cartItems = \Cart::getContent();
-
         foreach ($cartItems as $cartItem) {
             $coupon = $request->session()->get('coupon');
             if($coupon != null){
@@ -125,9 +124,9 @@ class BillController extends Controller
                 $bill->save();
         } 
 
-        $request->session()->forget('coupon');
-        return redirect('send-mail');
     }
+    $request->session()->forget('coupon');
+    return redirect('send-mail');
     }
 
     /**
@@ -151,7 +150,7 @@ class BillController extends Controller
     {
         $bill = Bill::all();
         
-        return view('layouts/show-bill', compact('bill'));
+        return view('layouts/showAllBills', compact('bill'));
     }
 
     public function updateStatus(Request $request, $bill_id)

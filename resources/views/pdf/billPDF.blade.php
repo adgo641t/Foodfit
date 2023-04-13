@@ -13,7 +13,7 @@
                 <th scope="col">Fecha</th>
                 <th scope="col">Comida</th>
                 <th scope="col">Cantidad</th>
-                <th scope="col">EStado del pedido</th>
+                <th scope="col">Estado del pedido</th>
                 <th scope="col">Precio</th>
             </tr>
         </thead>
@@ -23,7 +23,7 @@
                 <th scope="row">{{$billItem->created_at->format('d/m/y')}}</th>
                 <td>{{$billItem->name}}</td>
                 <td>{{$billItem->quantity}}</td>
-                <td>{{round($billItem->totalprice*1.21,2,PHP_ROUND_HALF_EVEN)}}€</td>
+                <td>{{($billItem->totalprice)}}€</td>
                 <td>{{$billItem->status}}</td>
             </tr>
             @endforeach

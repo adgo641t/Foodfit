@@ -8,7 +8,6 @@
                 <p class="lead">
                   {{ __('text2') }}
                 </p>
-                <button class="btn btnColor">{{ __('Our dishes') }}</button>
             </div>
         </div>
     </div>

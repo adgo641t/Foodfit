@@ -9,10 +9,10 @@
                   Food&Fit cocina por ti y llena tu nevera de tápers ricos y saludables sin complicarte la vida.
                 </p>
                 @if(@Auth::user()->hasRole('cliente'))
-                <button class="btn btnColor"><a href="product" style="all: inherit">PEDIR A LA CARTA</a></button>
+                <a href="product" class="btn btn-warning" role="button">PEDIR A LA CARTA</a>
                 @endif
                 @if(@Auth::user()->hasRole('admin'))
-                <button class="btn btnColor"><a href="{{ route('products.index')}}" style="all: inherit">PEDIR A LA CARTA</a></button>
+                <button type="button" class="btn btnColor"><a href="{{ route('products.index')}}" style="all: inherit">PEDIR A LA CARTA</a></button>
                 @endif
             </div>
         </div>

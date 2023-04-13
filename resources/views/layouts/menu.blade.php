@@ -80,6 +80,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ route('ClientBlog') }}">Blog</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url('/show-coupons') }}">Cupones disponibles</a>
+                                </li>
                                     <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
                                 </li>
 
