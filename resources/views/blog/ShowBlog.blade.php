@@ -53,7 +53,7 @@
 						 {{$blog->category_id_3}}</p>
                 <div class="font-bold text-xl mb-2">{{$blog->title}}</div>
                     <p class="text-gray-700 text-base">
-						{!! nl2br(e($blog->description)) !!}
+						{!! nl2br($blog->description) !!}
 
                     </p>
                 </div>

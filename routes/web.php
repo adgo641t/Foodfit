@@ -67,7 +67,7 @@ Route::get('/home', [HomeController::class, 'index']);
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::group(['middleware' => ['role:cliente']],function () {
+Route::group(['middleware', ['role:cliente']],function () {
     Route::get('/home', function () {
         return view('home');
     });
@@ -118,7 +118,7 @@ Route::group(['middleware' => ['role:cliente']],function () {
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::group(['middleware' => ['role:admin']],function () {
+Route::group(['middleware' , ['role:admin']],function () {
 
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
@@ -163,7 +163,7 @@ Route::group(['middleware' => ['role:admin']],function () {
 
 });
 
-Route::group(['middleware' => ['role:BlogCreator']],function () {
+Route::group(['middleware' , ['role:BlogCreator']],function () {
 
     // Route::get('/home', [HomeController::class, 'index']);
 
@@ -186,7 +186,7 @@ Route::group(['middleware' => ['role:BlogCreator']],function () {
 });
 
 
-Route::group(['middleware' => ['role:chef']],function () {
+Route::group(['middleware' , ['role:chef']],function () {
     Route::get('/home', function () {
         return view('home');
     });

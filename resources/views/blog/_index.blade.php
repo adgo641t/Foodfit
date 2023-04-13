@@ -138,8 +138,7 @@
                     <div class="font-bold text-xl mb-2"><a href="{{route('ShowBlog', $Blog->id)}}">{{$Blog->title}}</a></div>
                     <p class=" truncate ... text-gray-700 text-base">
 <!--{{$Blog->description}}-->
-                        {{($Blog->description)}}
-                    </p>
+                        {!!substr($Blog->description, 0, 500)!!}...                    </p>
                 </div>
                 <div class="px-6 pt-4 pb-2">
                    
