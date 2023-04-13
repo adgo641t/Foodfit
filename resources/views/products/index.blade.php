@@ -5,7 +5,7 @@
     <div class="rounded-t mb-0 px-4 py-3 border-0">
       <div class="flex flex-wrap items-center">
         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-          <h3 class="font-semibold text-base text-blueGray-700">Product List</h3>
+          <h3 class="font-semibold text-base text-blueGray-700">Lista de productos</h3>
         </div>
       </div>
     </div>
@@ -18,14 +18,14 @@
         <div class="block w-full overflow-x-auto">
             <div class="col-span-12">
                 <div class="overflow-auto lg:overflow-visible">
-                    <table class="items-center bg-transparent w-full border-collapse ">
+                    <table class="items-center bg-transparent w-full border-collapse text-center">
                         <thead class="bg-gray-50 text-gray-900">
                             <tr class="focus:outline-none h-16 border border-gray-100 rounded">
-                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">id</th>
-                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Nombre</th>
-                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Precio</th>
-                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Imagen</th>
-                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Action</th>
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">id</th>
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">Nombre</th>
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">Precio</th>
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">Imagen</th>
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">Action</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-700">
@@ -46,18 +46,18 @@
                                 <td class="pl-5">
                                     <a href="{{ route('products.edit',$product->id) }}" class="px-1">
                                         <button type="submit">
-                                            <i class="fa-solid fa-pen-to-square text-emerald-400"></i>
+                                            <i class="fa-solid fa-pen-to-square text-green-400"></i>
                                         </button>
                                     </a>
                                     <form action="{{ route('products.destroy',$product->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                            
+
                                         <button type="submit" onclick="return confirm('Estas seguro de borrar {{$product->name}}?')" class="px-1">
-                                            <i class="fa-solid fa-trash-can text-rose-400"></i>
+                                            <i class="fa-solid fa-trash-can text-red-400"></i>
                                           </button>
                                     </form>
-                                    
+
                                 </td>
                             </tr>
                             @endforeach
@@ -76,4 +76,3 @@
     </div>
 @endsection
 ''
-        

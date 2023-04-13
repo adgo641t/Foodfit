@@ -59,112 +59,136 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div id="myMenu" class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        @if (Route::has('login'))
-                            @auth
-                            {{-- <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
-                            <button onclick="menu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                            </button> --}}
-                                <!--If user is logged-->
-                                @if(@Auth::user()->hasRole('cliente'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('aboutUs') }}">{{ __('About us') }}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/product') }}">{{ __('Our dishes') }}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/show-bill') }}">{{ __('Bills') }}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ route('ClientBlog') }}">Blog</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/show-coupons') }}">Cupones disponibles</a>
-                                </li>
-                                    <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
-                                </li>
-
-                                                                                <!--Icon cart and go to cart-->
-                                                                                <a href="{{ route('cart.list') }}" class="flex items-center">
-                                                                                    <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                                                                        stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                        <path
-                                                                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
-                                                                                        </path>
-                                                                                    </svg>
-                                                                                    {{ Cart::getTotalQuantity() }}
-                                                                                </a>
-                                @endif
-                                @if(@Auth::user()->hasRole('admin'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('aboutUs') }}">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " aria-current="page" href="{{ route('products.index') }}">Gestión de productos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " aria-current="page" href="{{ route('coupons.index') }}">Gestión de cupones</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " aria-current="page" href="{{ route('categories.index') }}">Gestión de categorias</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/AdminBlog') }}">Gestión de Blog</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ route('listBills') }}">Gestión de Facturas</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
-                                </li>
-                                @endif
-                                @if(@Auth::user()->hasRole('BlogCreator'))
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/CreatorsBlogs') }}">Gestión de Blog</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
-                                </li>
-                                @endif
-                                @if(@Auth::user()->hasRole('chef'))
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url('/showBill') }}">{{ __('Bills') }}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
-                                </li>
-                                @endif
-                             <!--To logout-->
-                            @else
-                            {{-- <a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
+                <ul class="navbar-nav mr-auto">
+                    @if (Route::has('login'))
+                        @auth
+                        {{-- <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+                        <button onclick="menu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
-                            </button> --}}
+                        </button> --}}
+                            <!--If user is logged-->
+                            @if(@Auth::user()->hasRole('cliente'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/abouts') }}">{{ __('About us') }}</a>
+                                <a class="nav-link" href="{{ route('aboutUs') }}">{{ __('About us') }}</a>
                             </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('login') }}"
-                                        class="nav-link">{{ __('Sign in') }}</a>
-                                </li>
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}"
-                                        class="nav-link ml-4 text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Sign up') }}</a>
-                                @endif
-                            @endauth
-                        @endif
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ url('/product') }}">{{ __('Our dishes') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ url('/show-bill') }}">{{ __('Bills') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ route('ClientBlog') }}">{{ __('Blog') }}</a>
+                            </li>
+                            <div class="dropdown">
+                                <button onclick="myFunction()" class="dropbtn nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link">{{ __("Choose language") }} <i class="fa fa-caret-down"></i></button>
+                                <div id="myDropdown" class="dropdown-content">
+                                  <a href="{{route('set_language', ['es'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/es.png" alt=""> {{ __("idioma1") }}</a>
+                                  <a href="{{route('set_language', ['en'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/en.png" alt=""> {{ __("idioma2") }}</a>
+                                </div>
+                            </div>
+                            <!--Icon cart and go to cart-->
+                            <a href="{{ route('cart.list') }}" class="flex items-center text-gray-700 dark:text-gray-500">
+                                <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
+                                </svg>
+                                {{ Cart::getTotalQuantity() }}
+                            </a>
+                            <li class="nav-item">
+                                <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
+                            </li>
+
+
+                            @endif
+                            @if(@Auth::user()->hasRole('admin'))
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="{{ route('products.index') }}">{{ __('Product management') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="{{ route('coupons.index') }}">{{ __('Coupon management') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="{{ route('categories.index') }}">{{ __('Category management') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ url('/AdminBlog') }}">{{ __('Blog Management') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ route('listBills') }}">{{ __('Invoice Management') }}</a>
+                            </li>
+                            <div class="dropdown">
+                                <button onclick="myFunction()" class="dropbtn nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link">{{ __("Choose language") }} <i class="fa fa-caret-down"></i></button>
+                                <div id="myDropdown" class="dropdown-content">
+                                  <a href="{{route('set_language', ['es'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/es.png" alt=""> {{ __("idioma1") }}</a>
+                                  <a href="{{route('set_language', ['en'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/en.png" alt=""> {{ __("idioma2") }}</a>
+                                </div>
+                            </div>
+                            <li class="nav-item">
+                                <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
+                            </li>
+                            @endif
+                            @if(@Auth::user()->hasRole('BlogCreator'))
+                            <!--<li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ url('/CreatorsBlogs') }}">{{ __('Blog Management') }}</a>
+                            </li>-->
+                            <div class="dropdown">
+                                <button onclick="myFunction()" class="dropbtn nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link">{{ __("Choose language") }} <i class="fa fa-caret-down"></i></button>
+                                <div id="myDropdown" class="dropdown-content">
+                                  <a href="{{route('set_language', ['es'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/es.png" alt=""> {{ __("idioma1") }}</a>
+                                  <a href="{{route('set_language', ['en'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/en.png" alt=""> {{ __("idioma2") }}</a>
+                                </div>
+                            </div>
+                            <li class="nav-item">
+                                <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
+                            </li>
+                            @endif
+                            @if(@Auth::user()->hasRole('chef'))
+                            <!--<li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ url('/showBill') }}">{{ __('Bills') }}</a>
+                            </li>-->
+                            <div class="dropdown">
+                                <button onclick="myFunction()" class="dropbtn nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link">{{ __("Choose language") }} <i class="fa fa-caret-down"></i></button>
+                                <div id="myDropdown" class="dropdown-content">
+                                  <a href="{{route('set_language', ['es'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/es.png" alt=""> {{ __("idioma1") }}</a>
+                                  <a href="{{route('set_language', ['en'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/en.png" alt=""> {{ __("idioma2") }}</a>
+                                </div>
+                            </div>
+                            <li class="nav-item">
+                                <a href="{{ url('/logout') }}"class="nav-link">{{ __('Logout') }}</a>
+                            </li>
+                            @endif
+                         <!--To logout-->
+                        @else
+                        {{-- <a href="{{ url('/') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/abouts') }}">{{ __('About us') }}</a>
+                        </li>
                         <div class="dropdown">
                             <button onclick="myFunction()" class="dropbtn nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link">{{ __("Choose language") }} <i class="fa fa-caret-down"></i></button>
                             <div id="myDropdown" class="dropdown-content">
                               <a href="{{route('set_language', ['es'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/es.png" alt=""> {{ __("idioma1") }}</a>
                               <a href="{{route('set_language', ['en'])}}" class="nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link"><img src="public/en.png" alt=""> {{ __("idioma2") }}</a>
                             </div>
-                          </div>
-                    </ul>
+                        </div>
+                            <li class="nav-item">
+                                <a href="{{ route('login') }}"
+                                    class="nav-link">{{ __('Sign in') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}"
+                                    class="nav-link ml-4 text-sm text-gray-700 dark:text-gray-500 underline">{{ __('Sign up') }}</a>
+                            @endif
+                        @endauth
+                    @endif
+                </ul>
             </nav>
         </header>
     </div>

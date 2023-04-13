@@ -1,7 +1,7 @@
 @extends('layouts.menu')
   </head>
   @section('content')
-  <body class="bg-light"  style="height: 100vh;">
+  <body class="bg-light" style="height: 100vh;">
 
 <div class="container">
   <main>
@@ -9,10 +9,10 @@
       <img class="d-block mx-auto mb-4" src="logo.png" alt="" width="130" height="57">
       <h2>{{ __('Checkout form') }}</h2><br><br>
     </div>
-    <section>
+    <section style="align-items: center;">
     <div class="row g-5">
-      @if (Session::has('coupon'))
-      <div class="col-md-5 col-lg-4 order-md-last">
+    @if (Session::has('coupon'))
+      <div class="col-lg-4 order-md-last">
         <ul class="list-group mb-3">
           @foreach (\Cart::getContent() as $item)
           <li class="list-group-item d-flex justify-content-between lh-sm">
@@ -30,7 +30,7 @@
         <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
           @csrf
           <div class="input-group">
-           <input type="text" class="coupon_code border border-3 border-secondary rounded-start" id="coupon_code" name="coupon_code" placeholder="Promo code">
+           <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code" >
            <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
@@ -48,11 +48,12 @@
          </div>
          @endif
         </form>
-        @endif
       </div>
-
+      @endif
+    </div>
       @if (!Session::has('coupon'))
-      <div class="col-md-5 col-lg-4 order-md-last">
+      <div class="row g-5">
+      <div class="col-lg-4 order-md-last">
         <ul class="list-group mb-3">
           @foreach (\Cart::getContent() as $item)
           <li class="list-group-item d-flex justify-content-between lh-sm">
@@ -70,7 +71,7 @@
         <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
           @csrf
           <div class="input-group">
-           <input type="text" class="coupon_code border border-3 border-secondary rounded-start" id="coupon_code" name="coupon_code" placeholder="Promo code">
+           <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code" >
            <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
@@ -85,9 +86,9 @@
       </form>
         @endif
       </div>
-
-      <div class="col-md-7 col-lg-8">
-
+      
+      <div class="col-lg-8">
+        
         <form action="pago" method="POST" class="mx-1 mx-md-4">
           <div style="margin:20px;">
           <br><h4 class="mb-3">{{ __('bill5') }}</h4>
@@ -127,8 +128,8 @@
             </div>
 
             <div class="col-12">
-              <label for="address" class="form-label">{{ __('Address') }}</label>
-              <input value="{{old('adresa')}}" type="text" class="form-control" id="adresa" name="adresa">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" name="adresa">
               <div class="invalid-feedback">
                 {{ __('bill9') }}
               </div>
@@ -194,11 +195,10 @@
           </div>
           </div>
         </form>
-
+        </section>
       </div>
     </div>
   </main>
-  </section>
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2017–2023 FoodFit</p>
     <ul class="list-inline">
