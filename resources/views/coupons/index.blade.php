@@ -8,7 +8,7 @@
           <div class="rounded-t mb-0 px-4 py-3 border-0">
             <div class="flex flex-wrap items-center">
               <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                <h3 class="font-semibold text-base text-blueGray-700">Lista de cupones</h3>
+                <h3 class="font-semibold text-base text-blueGray-700">{{ __('Coupons list') }}</h3>
               </div>
             </div>
           </div>
@@ -25,12 +25,12 @@
                 <table class="items-center bg-transparent w-full border-collapse text-center">
                     <thead class="bg-gray-50 text-gray-900">
                         <tr class="focus:outline-none h-16 border border-gray-100 rounded">
-                            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">id</th>
-                            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">Nombre</th>
-                            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">Descuento</th>
-                            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">Descripción</th>
-                            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">Habilitar/Desabilitar</th>
-                            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">Action</th>
+                            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">{{ __('ID') }}</th>
+                            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">{{ __('Name') }}</th>
+                            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">{{ __('Discount') }}</th>
+                            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">{{ __('Description') }}</th>
+                            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">{{ __('Enable/Disable') }}</th>
+                            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">{{ __('Action') }}</th>
                         </tr>
                     </thead>
                     <tbody class="text-gray-700">
@@ -61,7 +61,7 @@
                                     @csrf
                                     @method('DELETE')
 
-                                    <button type="submit" onclick="return confirm('Estas seguro de borrar {{$coupon->code}}?')" class="px-1">
+                                    <button type="submit" onclick="return confirm('{{ __('Are you sure to delete') }} {{$coupon->code}}?')" class="px-1">
                                         <i class="fa-solid fa-trash-can text-red-400"></i>
                                       </button>
                                 </form>
@@ -75,8 +75,8 @@
                 {!! $coupons->links() !!}
                 <br>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ url('/home') }}"> Atrás</a>
-                    <a class="btn btn-success" href="{{ route('coupons.create') }}"> Crear nuevo cupón</a>
+                    <a class="btn btn-primary" href="{{ url('/home') }}"> {{ __('Back') }}</a>
+                    <a class="btn btn-success" href="{{ route('coupons.create') }}"> {{ __('Create new coupon') }}</a>
                 </div>
             </div>
         </div>

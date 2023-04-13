@@ -29,7 +29,6 @@ class CartController extends Controller
             'quantity' => $request->quantity,
             'attributes' => array(
             'image' => $request->image,
-            'categories' => $request->categories,
             'stock' => $request->stock
             ),
         ]);

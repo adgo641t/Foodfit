@@ -12,7 +12,7 @@
                 type="text"
                 name="search"
                 class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
-                placeholder="{{ __('Buscador de facturas...') }}"
+                placeholder="{{ __('Invoice finder...') }}"
             />
             <div class="absolute top-2 right-2">
                 <button
@@ -26,16 +26,16 @@
     </form>
 </div>
 @if(count($bills) == 0)
-<h3 class="text-center">Factura no encontrada</h3>
+<h3 class="text-center">{{ __('Invoice not found') }}</h3>
 @endif
 <section class="relative py-16 bg-blueGray-50">
 <div class="w-full mb-12 px-4">
-  <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded 
+  <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded
   bg-gray-300">
     <div class="rounded-t mb-0 px-4 py-3 border-0">
       <div class="flex flex-wrap items-center">
         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-center">
-          <h3 class="font-semibold text-lg">Lista de facturas</h3>
+          <h3 class="font-semibold text-lg">{{ __('Invoice list') }}</h3>
         </div>
       </div>
     </div>
@@ -43,25 +43,26 @@
       <table class="items-center w-full bg-transparent border-collapse">
         <thead>
           <tr class="text-center">
-            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Nombre de usuario</th>
-            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Nombre de producto</th>
-            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Cantidad</th>
-            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Precio final</th>
-            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Cupon aplicado</th>
-            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Domicilio de envio</th>
-            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">Fecha</th>
+            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">{{ __('Username') }}</th>
+            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">{{ __('Name of product') }}</th>
+            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">{{ __('Quantity') }}</th>
+            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">{{ __('Final price') }}</th>
+            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">{{ __('Coupon applied') }}</th>
+            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">{{ __('Shipping address') }}</th>
+            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 bg-gray-200">{{ __('Date') }}</th>
           </tr>
         </thead>
         <tbody>
         @foreach ($bills as $billItem)
           <tr class="text-center">
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->name_user}}</td>   
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->name_user}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->name}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->quantity}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->totalprice}}€</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->coupon}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->adress}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->created_at->format('d/m/y')}}</td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">{{$billItem->created_at->format('h:i')}}</td>
           </tr>
           @endforeach
         </tbody>
