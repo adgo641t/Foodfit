@@ -51,6 +51,9 @@ class BlogController extends Controller
         return view('blog/ShowBlog', compact('blog', 'Category_blogs','users'));  
     }
 
+    /**
+     * This method Return the view to add a new blog
+     */
     public function AddNewBlog() {
 
         $category_blog = Category_blogs::all();
@@ -58,15 +61,21 @@ class BlogController extends Controller
        return view('blog/AddBlog', compact('category_blog')); 
     }
 
+    /**
+     * This function Stores the blog in the database 
+     * if it contains an image and contains at least 
+     * one category otherwise it returns a message.
+     */
     public function StoreBlog(Request $request) {
 
-       //dd($request);
+       dd($request);
         $request->validate([
             'title' => ['required','string','max:50'],
             'description' => ['required','string'],
-            'category_id' => ['sometimes','required'],
+            'category_id' => ['required'],
             'category_id_2' => ['sometimes','required'],
             'category_id_3' => ['sometimes','required'],
+            'file' => ['required']
         ]);
 
         if($request->hasFile('file')){
@@ -75,18 +84,11 @@ class BlogController extends Controller
             $request->file->move(public_path('public'), $imageName);
 
             $blog = new Post();
-            $blog->title = $request->title;
-            $blog->description = $request->description;
-            $blog->category_id = $request->category_id;
-            $blog->category_id_2 = $request->category_id_2;
-            $blog->category_id_3 = $request->category_id_3;
-            $blog->creator =  auth()->user()->id;
-            $blog->image =  $imageName;
-
+    
             if($blog->category_id == 1 && $blog->category_id_2 == 1 && $blog->category_id_3 == 1) {
 
                 return redirect()->back()->withInput()->withErrors([
-                    'category_id_3' => 'El blog tiene que tener como minimo una categoria',
+                    'category_id' => 'El blog tiene que tener como minimo una categoria',
                 ]);
 
             } else {
@@ -106,7 +108,10 @@ class BlogController extends Controller
             return redirect()->route('CreatorsBlogs');
             }
             }
-
+            } else {
+                return redirect()->back()->withInput()->withErrors([
+                    'file' => 'El blog tiene que tener una imagen',
+                ]);
             }
             //$request->file->store('product', 'public');
 

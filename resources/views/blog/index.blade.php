@@ -17,9 +17,9 @@
 			<div class="mx-0 sm:mx-6">
 				
 <section class="mx-auto flex flex-row items-center text-gray-600">
-    
-        <div class="container px-6 py-24 mx-auto ">
-        <form action="blog">
+    <div class="container px-6 py-24 mx-auto ">
+        @if(@Auth::user()->hasRole('admin'))   
+        <form action="AdminBlog">
           <div class="relative border-2 border-gray-100 rounded-lg search">
               <div class="absolute top-4 left-3">
                   <i
@@ -42,6 +42,55 @@
               </div>
           </div>
       </form>
+      @elseif(@Auth::user()->hasRole('BlogCreator'))  
+      <form action="CreatorsBlogs">
+          <div class="relative border-2 border-gray-100 rounded-lg search">
+              <div class="absolute top-4 left-3">
+                  <i
+                      class="fa fa-search text-gray-400 z-20 hover:text-gray-500"
+                  ></i>
+              </div>
+              <input
+                  type="text"
+                  name="search"
+                  class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
+                  placeholder="Busca un blog...."
+              />
+              <div class="absolute top-2 right-2">
+                  <button
+                      type="submit"
+                      class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600"
+                  >
+                      Search
+                  </button>
+              </div>
+          </div>
+      </form>
+      @else
+      <form action="ClientBlogs">
+          <div class="relative border-2 border-gray-100 rounded-lg search">
+              <div class="absolute top-4 left-3">
+                  <i
+                      class="fa fa-search text-gray-400 z-20 hover:text-gray-500"
+                  ></i>
+              </div>
+              <input
+                  type="text"
+                  name="search"
+                  class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
+                  placeholder="Busca un blog...."
+              />
+              <div class="absolute top-2 right-2">
+                  <button
+                      type="submit"
+                      class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600"
+                  >
+                      Search
+                  </button>
+              </div>
+          </div>
+      </form>
+    @endif
       <br>
 
     @if(count($blogs) == 0)
@@ -83,7 +132,7 @@
                 <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Elegir categoria</button>
         </form>
     @else 
-    <form action="ClientBlog">
+    <form action="ClientBlogs">
                 <select name="category" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
                 <option value="">Todas las categorias</option>
                 @foreach($Category_blogs as $category)
@@ -123,7 +172,7 @@
                 <button type="submit" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Elegir categoria</button>
         </form>
     @else
-    <form action="ClientBlog">
+    <form action="ClientBlogs">
                 <select name="users" class="bg-white border border-gray-400 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" aria-label="Default select example">
                 <option value="">Todas los Usuarios</option>
                 @foreach($users as $user)

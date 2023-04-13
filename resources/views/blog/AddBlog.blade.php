@@ -114,6 +114,10 @@
             <option value="{{$id->id}}">{{$id->name}}</option>
         @endforeach
         </select>
+        @error('category_id')
+        <br>
+            <small style="color: red;">{{$message}}</small>
+        @enderror
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
           Category Blog 2
         </label>
@@ -130,11 +134,6 @@
             <option value="{{$id->id}}">{{$id->name}}</option>
         @endforeach
         </select>
-        @if ($errors->has('category_id_3'))
-            <div class="alert alert-danger">
-                {{ $errors->first('category_id_3') }}
-            </div>
-        @endif
           <br>
           <a href="{{ route('ShowAddCategory') }}" type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Category</a>  
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
