@@ -7,14 +7,14 @@
 <body>
     <h1>{{ $title }} de {{ $user->name }}</h1>
 
-    <table class="table">
+    <table class="table text-center">
         <thead>
             <tr>
                 <th scope="col">Fecha</th>
                 <th scope="col">Comida</th>
                 <th scope="col">Cantidad</th>
-                <th scope="col">EStado del pedido</th>
                 <th scope="col">Precio</th>
+                <th scope="col">Estado del pedido</th>
             </tr>
         </thead>
         <tbody>
