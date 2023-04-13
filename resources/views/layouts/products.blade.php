@@ -62,7 +62,7 @@
                         <input type="hidden" value="{{ $product->stock }}" name="stock">
                         <input type="hidden" value="1" name="quantity">
                         @if ($product->categories == 'Desayuno')
-                        <p style="color: darkgoldenrod" value="{{$product->categories}}" name="categories">🥓 {{$product->categories}}</p>
+                        <p style="color: darkgoldenrod" value="🥓 {{$product->categories}}" name="categories">🥓 {{$product->categories}}</p>
                         @elseif ($product->categories == 'Favoritos')
                         <p style="color:darkorange" value="{{$product->categories}}" name="categories">{{$product->categories}}</p>
                         @elseif ($product->categories == 'Vegetariano')

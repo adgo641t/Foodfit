@@ -129,10 +129,17 @@ class BillController extends Controller
                 $bill->save();
         } 
 
+<<<<<<< HEAD
+    }
+    $request->session()->forget('coupon');
+    return redirect('send-mail');
+    }
+=======
     }
         $request->session()->forget('coupon');
         return redirect('send-mail');
     }
+>>>>>>> d4f1c140992f72762f482e0bf3723a104ce6e8ef
 
     /**
      * Display the specified resource.
@@ -155,7 +162,7 @@ class BillController extends Controller
     {
         $bill = Bill::all();
         
-        return view('layouts/show-bill', compact('bill'));
+        return view('layouts/showAllBills', compact('bill'));
     }
 
     public function updateStatus(Request $request, $bill_id)
