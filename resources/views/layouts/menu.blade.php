@@ -131,9 +131,9 @@
                             </li>
                             @endif
                             @if(@Auth::user()->hasRole('BlogCreator'))
-                            <!--<li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="{{ url('/CreatorsBlogs') }}">{{ __('Blog Management') }}</a>
-                            </li>-->
+                            </li>
                             <div class="dropdown">
                                 <button onclick="myFunction()" class="dropbtn nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link">{{ __("Choose language") }} <i class="fa fa-caret-down"></i></button>
                                 <div id="myDropdown" class="dropdown-content">
