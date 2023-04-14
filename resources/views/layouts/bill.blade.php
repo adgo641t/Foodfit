@@ -30,7 +30,7 @@
         <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
           @csrf
           <div class="input-group">
-           <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code" >
+           <input type="text" class="coupon_code border border-secondary border-2 rounded-start" id="coupon_code" name="coupon_code" placeholder="Promo code" >
            <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
@@ -71,7 +71,7 @@
         <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
           @csrf
           <div class="input-group">
-           <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code" >
+           <input type="text" class="coupon_code border border-secondary border-2 rounded-start" id="coupon_code" name="coupon_code" placeholder="Promo code" >
            <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
@@ -86,9 +86,9 @@
       </form>
         @endif
       </div>
-      
+
       <div class="col-lg-8">
-        
+
         <form action="pago" method="POST" class="mx-1 mx-md-4">
           <div style="margin:20px;">
           <br><h4 class="mb-3">{{ __('bill5') }}</h4>
