@@ -54,7 +54,7 @@ class CouponsController extends Controller
             }else if($coupon->habilitado == "Desabilitado"){
                 return redirect()->route('bill.list')->with('danger', 'Cupon Desabilitado');
             }
-            return redirect()->route('bill.list')->with('success_message', 'cupon ha sido aplicado con exito');
+            return redirect()->route('bill.list')->with('success_message', 'cupon aplicado por precio mas de 40€');
         } 
     }
 

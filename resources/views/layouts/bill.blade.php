@@ -50,8 +50,6 @@
         </form>
       </div>
       @endif
-<<<<<<< HEAD
-=======
     </div>
       @if (!Session::has('coupon'))
       <div class="row g-5">
@@ -89,7 +87,6 @@
         @endif
       </div>
 
->>>>>>> ac9022cf45a21d7dabe8b01ef2c7c665c87d544d
       <div class="col-lg-8">
 
         <form action="pago" method="POST" class="mx-1 mx-md-4">

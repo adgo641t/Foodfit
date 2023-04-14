@@ -82,6 +82,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="{{ route('ClientBlog') }}">{{ __('Blog') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ url('/show-coupons') }}">Cupones habilitados</a>
+                            </li>
                             <div class="dropdown">
                                 <button onclick="myFunction()" class="dropbtn nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link">{{ __("Choose language") }} <i class="fa fa-caret-down"></i></button>
                                 <div id="myDropdown" class="dropdown-content">

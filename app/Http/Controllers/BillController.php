@@ -125,9 +125,9 @@ class BillController extends Controller
                 $bill->save();
         }
 
-        $request->session()->forget('coupon');
-        return redirect('send-mail');
     }
+    $request->session()->forget('coupon');
+    return redirect('send-mail');
     }
 
     /**
