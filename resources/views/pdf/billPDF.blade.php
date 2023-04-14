@@ -13,7 +13,6 @@
                 <th scope="col">Fecha</th>
                 <th scope="col">Comida</th>
                 <th scope="col">Cantidad</th>
-                <th scope="col">Estado del pedido</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Estado del pedido</th>
             </tr>

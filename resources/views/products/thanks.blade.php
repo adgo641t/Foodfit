@@ -22,10 +22,10 @@
                     </svg>
                 </div>
                 <div class="text-center">
-                    <h1>Gracias por tu compra !</h1>
-                    <p>Gracias por su compra y por confiar en FoodFit</p>
-                    <p>Su pedido se entregará pronto</p>
-                    <a class="btn btn-outline-success" href="{{ url('/home') }}" role="button">Vuelve a la pagina principal</a>
+                    <h1>{{ __('thanks1') }}</h1>
+                    <p>{{ __('thanks2') }}</p>
+                    <p>{{ __('thanks3') }}</p>
+                    <a class="btn btn-outline-success" href="{{ url('/home') }}" role="button">{{ __('thanks4') }}</a>
                 </div>
             </div>
       </div>

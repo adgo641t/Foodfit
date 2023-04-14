@@ -41,9 +41,9 @@ class BillController extends Controller
                 "source" => $request->stripeToken,
                 "description" => "Test payment from Food&Fit."
         ]);
-   
+
         Session::flash('success', 'Pago completo!');
-           
+
         return back();
     }
 
@@ -64,7 +64,7 @@ class BillController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {
        // dd($request);
         $formFields = $request->validate([
             'nombre' => 'required|alpha',
@@ -80,16 +80,16 @@ class BillController extends Controller
         $cartItems = \Cart::getContent();
         foreach ($cartItems as $cartItem) {
             $coupon = $request->session()->get('coupon');
-            
+
             if($coupon != null){
                 $quantity = $cartItem->quantity;
-    
+
                 $product = Product::find($cartItem->id);
-    
+
                 $stockActual = $product->stock;
-    
+
                 $product->stock = $stockActual-$quantity;
-    
+
                 $bill = new Bill;
                 $bill->user_id = auth()->user()->id;
                 $bill->product_id = $cartItem->id;
@@ -105,13 +105,13 @@ class BillController extends Controller
                 $bill->save();
             }else{
                 $quantity = $cartItem->quantity;
-    
+
                 $product = Product::find($cartItem->id);
-    
+
                 $stockActual = $product->stock;
-    
+
                 $product->stock = $stockActual-$quantity;
-    
+
                 $bill = new Bill;
                 $bill->user_id = auth()->user()->id;
                 $bill->name_user = auth()->user()->name;
@@ -127,19 +127,12 @@ class BillController extends Controller
                 $product->save();
 
                 $bill->save();
-        } 
+        }
 
-<<<<<<< HEAD
-    }
-    $request->session()->forget('coupon');
-    return redirect('send-mail');
-    }
-=======
     }
         $request->session()->forget('coupon');
         return redirect('send-mail');
     }
->>>>>>> d4f1c140992f72762f482e0bf3723a104ce6e8ef
 
     /**
      * Display the specified resource.
@@ -154,14 +147,14 @@ class BillController extends Controller
         $bill = Bill::select('*')
         ->where('user_id', '=', $user)
         ->get();
-        
+
         return view('layouts/show-bill', compact('bill'));
     }
 
     public function ShowAll()
     {
         $bill = Bill::all();
-        
+
         return view('layouts/showAllBills', compact('bill'));
     }
 
