@@ -24,7 +24,7 @@
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
         Description of Blog
       </label>
-      <textarea  name="description" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text-area" placeholder="Description of the new blog here.....">{{old('description')}}</textarea>
+      <textarea class="ckeditor form-control appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="description"></textarea>
         @error('description')
             <small style="color: red;">{{$message}}</small>
           @enderror
@@ -114,6 +114,10 @@
             <option value="{{$id->id}}">{{$id->name}}</option>
         @endforeach
         </select>
+        @error('category_id')
+        <br>
+            <small style="color: red;">{{$message}}</small>
+        @enderror
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
           Category Blog 2
         </label>
@@ -130,11 +134,6 @@
             <option value="{{$id->id}}">{{$id->name}}</option>
         @endforeach
         </select>
-        @if ($errors->has('category_id_3'))
-            <div class="alert alert-danger">
-                {{ $errors->first('category_id_3') }}
-            </div>
-        @endif
           <br>
           <a href="{{ route('ShowAddCategory') }}" type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Category</a>  
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Stripe;
 use App\Models\Bill;
-use Carbon\Carbon;
 use App\Models\Coupon;
 use App\Models\Product;
 use Darryldecode\Cart\Cart;
@@ -41,9 +40,9 @@ class BillController extends Controller
                 "source" => $request->stripeToken,
                 "description" => "Test payment from Food&Fit."
         ]);
-   
+
         Session::flash('success', 'Pago completo!');
-           
+
         return back();
     }
 
@@ -64,7 +63,7 @@ class BillController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {
        // dd($request);
         $formFields = $request->validate([
             'nombre' => 'required|alpha',
@@ -78,40 +77,39 @@ class BillController extends Controller
         ]);
 
         $cartItems = \Cart::getContent();
+
         foreach ($cartItems as $cartItem) {
             $coupon = $request->session()->get('coupon');
-            
             if($coupon != null){
                 $quantity = $cartItem->quantity;
-    
+
                 $product = Product::find($cartItem->id);
-    
+
                 $stockActual = $product->stock;
-    
+
                 $product->stock = $stockActual-$quantity;
-    
+
                 $bill = new Bill;
                 $bill->user_id = auth()->user()->id;
                 $bill->product_id = $cartItem->id;
                 $bill->name_user = auth()->user()->name;
                 $bill->name = $cartItem->name;
-                $bill->price = $product->price;
+                $bill->price = $cartItem->price;
                 $bill->quantity = $cartItem->quantity;
                 $bill->totalprice = round(\Cart::getTotal()*1.21,2);
                 $bill->adress = $request->adresa;
                 $bill->status = 'En realización';
-
                 $product->save();
                 $bill->save();
             }else{
                 $quantity = $cartItem->quantity;
-    
+
                 $product = Product::find($cartItem->id);
-    
+
                 $stockActual = $product->stock;
-    
+
                 $product->stock = $stockActual-$quantity;
-    
+
                 $bill = new Bill;
                 $bill->user_id = auth()->user()->id;
                 $bill->name_user = auth()->user()->name;
@@ -123,11 +121,9 @@ class BillController extends Controller
                 $bill->coupon = "Sin cupon";
                 $bill->adress = $request->adresa;
                 $bill->status = 'En realización';
-
                 $product->save();
-
                 $bill->save();
-        } 
+        }
 
     }
     $request->session()->forget('coupon');
@@ -147,7 +143,7 @@ class BillController extends Controller
         $bill = Bill::select('*')
         ->where('user_id', '=', $user)
         ->get();
-        
+
         return view('layouts/show-bill', compact('bill'));
     }
 
@@ -155,7 +151,7 @@ class BillController extends Controller
     {
         $bill = Bill::all();
         
-        return view('layouts/showAllBills', compact('bill'));
+        return view('layouts/show-bill', compact('bill'));
     }
 
     public function updateStatus(Request $request, $bill_id)

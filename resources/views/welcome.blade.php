@@ -2,12 +2,15 @@
 @section('content')
             <!-- Header -->
       <div class="container-fluid pageHeader">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12 marginHeader">
+        <div class="row align-items-center">
+        <div class="col-lg-6 col-md-12 col-sm-12 p-5">
                 <h1> {{ __('text1') }}</h1>
                 <p class="lead">
                   {{ __('text2') }}
                 </p>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12  w-3">
+                <img class="img-fluid w-50 float-right" src="https://www.hogarmania.com/archivos/202004/recetas-familia-1280x720x80xX.jpg" alt="">
             </div>
         </div>
     </div>
@@ -321,6 +324,7 @@
   </section>
   </div>
 
+  <div class="container">
   <!-- Another information section -->
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -334,9 +338,11 @@
       <img src="../public/sostenible.png" class="vegies" alt="">
     </div>
   </div>
+</div>
+
 
   <!-- Community section -->
-
+  <div class="container">
   <div class="row ">
     <div class="col-lg-12 col-md-12 col-sm-12 marginHeader">
       <p class="textAlignment marginHeader">{{ __('text21') }}</p>
@@ -366,7 +372,7 @@
       </div>
     </div>
   </div>
-
+  </div>
   <!-- Footer section -->
 
   <br>

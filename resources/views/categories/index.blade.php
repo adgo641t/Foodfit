@@ -8,7 +8,7 @@
           <div class="rounded-t mb-0 px-4 py-3 border-0">
             <div class="flex flex-wrap items-center">
               <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                <h3 class="font-semibold text-base text-blueGray-700">Lista de categories</h3>
+                <h3 class="font-semibold text-base text-blueGray-700">{{ __('Categories list') }}</h3>
               </div>
             </div>
           </div>
@@ -25,9 +25,9 @@
             <table class="items-center bg-transparent w-full border-collapse text-center">
                 <thead class="bg-gray-50 text-gray-900">
                     <tr class="focus:outline-none h-16 border border-gray-100 rounded">
-                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">id</th>
-                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">Nombre</th>
-                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">Action</th>
+                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">{{ __('ID') }}</th>
+                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">{{ __('Name') }}</th>
+                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold">{{ __('Action') }}</th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-700">
@@ -62,8 +62,8 @@
             <br>
             <br>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ url('/home') }}"> Atrás</a>
-                <a class="btn btn-success" href="{{ route('categories.create') }}"> Crear nueva Categoria</a>
+                <a class="btn btn-primary" href="{{ url('/home') }}"> {{ __('Back') }}</a>
+                <a class="btn btn-success" href="{{ route('categories.create') }}"> {{ __('Create new category') }}</a>
             </div>
         </div>
     </div>
