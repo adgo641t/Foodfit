@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Crear Cupón - Food&Fit</title>
+    <title>{{ __('Create coupon') }} - Food&Fit</title>
     <!-- Icon -->
     <link rel="icon" href="../public/favicon.ico">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@200&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@200&display=swap" rel="stylesheet">
     <!-- Bootstrap & TailwindCSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,10 +24,10 @@
 }
 </style>
 </head>
-<body>         
+<body>
     @if ($errors->any())
         <div class="alert alert-danger">
-            <strong>Whoops!</strong> Ha habido algunos errores en tu input.<br><br>
+            <strong>{{ __('Whoops!') }}</strong> {{ __('There have been some errors in your input.') }}<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -41,49 +41,49 @@
           <div class="flex justify-center py-4">
             <img src="public/favicon.ico" alt="" class="logo-img">
           </div>
-      
+
           <div class="flex justify-center">
             <div class="flex">
-              <h1 class="text-gray-500 font-bold md:text-2xl text-xl">Añadir Cupón</h1>
+              <h1 class="text-gray-500 font-bold md:text-2xl text-xl">{{ __('Add coupon') }}</h1>
             </div>
           </div>
-      
+
           <form action="{{ route('coupons.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-    
+
               <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
                 <div class="grid grid-cols-1">
-                  <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Nombre</label>
-                  <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="text" name="code" placeholder="Code" />
+                  <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">{{ __('Name') }}</label>
+                  <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="text" name="code" placeholder="{{ __('Name') }}" />
                 </div>
                 <div class="grid grid-cols-1">
-                  <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Descuento</label>
-                  <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="text" name="amount" placeholder="Amount" />
+                  <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">{{ __('Discount') }}</label>
+                  <input class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" type="text" name="amount" placeholder="{{ __('Discount') }}" />
                 </div>
                 <div class="grid grid-cols-1">
-                  <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Estado del Cupón</label>
+                  <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">{{ __('Coupon status') }}</label>
                   <select class="form-select" name="habilitado">
-                        <option value="habilitado">habilitado</option>
-                        <option value="Desabilitado">Desabilitado</option>
+                        <option value="habilitado">{{ __('Enabled') }}</option>
+                        <option value="Desabilitado">{{ __('Disabled') }}</option>
 
                   </select>
                 </div>
               </div>
 
               <div class="grid grid-cols-1 mt-5 mx-7">
-                <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Descripción</label>
-                <textarea class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" style="height:150px" name="description" placeholder="Description"></textarea>
+                <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">{{ __('Description') }}</label>
+                <textarea class="py-2 px-3 rounded-lg border-2 border-teal-200 mt-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" style="height:150px" name="description" placeholder="{{ __('Description') }}"></textarea>
               </div>
-          
+
               <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
-                <button class='w-auto bg-teal-500 hover:bg-teal-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Crear</button>
+                <button class='w-auto bg-teal-500 hover:bg-teal-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>{{ __('Create') }}</button>
               </div>
               <div class='flex items-center justify-center  md:gap-8 gap-4 pt-2 pb-2'>
-                <a class="btn btn-primary" href="{{ route('coupons.index') }}">Atrás</a>
+                <a class="btn btn-primary" href="{{ route('coupons.index') }}">{{ __('Back') }}</a>
               </div>
-             
+
         </form>
-      
+
         </div>
       </div>
 </body>

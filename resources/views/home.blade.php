@@ -369,11 +369,11 @@
   <div class="container">
   <div class="row align-items-center p-5">
     <div class="col-lg-6 col-md-12 col-sm-12">
-      <h1 class="display-5 px-5">{{ __('text13') }}</h1>
-      <p class="px-5">{{ __('text14') }}</p>
-      <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text15') }}</strong> {{ __('text16') }}</p>
-      <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text17') }}</strong> {{ __('text18') }}</p>
-      <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text19') }}</strong> {{ __('text20') }}</p>
+      <h1 class="display-5 px-5 float">{{ __('text13') }}</h1>
+      <p class="px-5 float">{{ __('text14') }}</p>
+      <p class="px-5 float"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text15') }}</strong> {{ __('text16') }}</p>
+      <p class="px-5 float"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text17') }}</strong> {{ __('text18') }}</p>
+      <p class="px-5 float"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text19') }}</strong> {{ __('text20') }}</p>
     </div>
     <div class="col-lg-6 col-md-12 col-sm-12">
       <img class="p-5 float-image" src="https://canalcocina.es/medias/_cache/zoom-7633d99ea9677004a4988e94e5d30aa0-920-518.jpg" class="vegies" alt="">

@@ -40,9 +40,9 @@ class BillController extends Controller
                 "source" => $request->stripeToken,
                 "description" => "Test payment from Food&Fit."
         ]);
-   
+
         Session::flash('success', 'Pago completo!');
-           
+
         return back();
     }
 
@@ -63,7 +63,7 @@ class BillController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {
        // dd($request);
         $formFields = $request->validate([
             'nombre' => 'required|alpha',
@@ -82,13 +82,13 @@ class BillController extends Controller
             $coupon = $request->session()->get('coupon');
             if($coupon != null){
                 $quantity = $cartItem->quantity;
-    
+
                 $product = Product::find($cartItem->id);
-    
+
                 $stockActual = $product->stock;
-    
+
                 $product->stock = $stockActual-$quantity;
-    
+
                 $bill = new Bill;
                 $bill->user_id = auth()->user()->id;
                 $bill->product_id = $cartItem->id;
@@ -103,13 +103,13 @@ class BillController extends Controller
                 $bill->save();
             }else{
                 $quantity = $cartItem->quantity;
-    
+
                 $product = Product::find($cartItem->id);
-    
+
                 $stockActual = $product->stock;
-    
+
                 $product->stock = $stockActual-$quantity;
-    
+
                 $bill = new Bill;
                 $bill->user_id = auth()->user()->id;
                 $bill->name_user = auth()->user()->name;
@@ -123,7 +123,7 @@ class BillController extends Controller
                 $bill->status = 'En realización';
                 $product->save();
                 $bill->save();
-        } 
+        }
 
         $request->session()->forget('coupon');
         return redirect('send-mail');
@@ -143,7 +143,7 @@ class BillController extends Controller
         $bill = Bill::select('*')
         ->where('user_id', '=', $user)
         ->get();
-        
+
         return view('layouts/show-bill', compact('bill'));
     }
 
