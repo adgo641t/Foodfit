@@ -1,12 +1,12 @@
 @extends('layouts.menu')
 @section('content')
             <!-- Header -->
-      <div class="container-fluid pageHeader">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12 marginHeader">
+    <div class="container-fluid pageHeader">
+        <div class="row align-items-center">
+        <div class="col-lg-6 col-md-12 col-sm-12 p-5">
                 <h1> {{ __('text1') }}</h1>
                 <p class="lead">
-                    {{ __('text2') }}
+                  {{ __('text2') }}
                 </p>
                 @if(@Auth::user()->hasRole('cliente'))
                 <a href="product" class="btn btn-warning" role="button">PEDIR A LA CARTA</a>
@@ -14,6 +14,9 @@
                 @if(@Auth::user()->hasRole('admin'))
                 <button type="button" class="btn btnColor"><a href="{{ route('products.index')}}" style="all: inherit">PEDIR A LA CARTA</a></button>
                 @endif
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <img class="img-fluid float-right" src="https://www.hogarmania.com/archivos/202004/recetas-familia-1280x720x80xX.jpg" alt="">
             </div>
         </div>
     </div>
@@ -352,7 +355,7 @@
       </div>
     </div>
 </section>
-
+  <div class="container">
   <section class="row py-12 object-center	" id="press">
     <img class="press-logo" src="public/Spacex.png" alt="tc-logo">
     <img class="press-logo" src="public/mcdonald.png" alt="tnw-logo">
@@ -360,23 +363,26 @@
     <img class="press-logo" src="public/masterchef.png" alt="mashable-logo">
   </section>
   </div>
+  </div>
 
   <!-- Another information section -->
-  <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-6">
+  <div class="container">
+  <div class="row align-items-center p-5">
+    <div class="col-lg-6 col-md-12 col-sm-12">
       <h1 class="display-5 px-5">{{ __('text13') }}</h1>
       <p class="px-5">{{ __('text14') }}</p>
       <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text15') }}</strong> {{ __('text16') }}</p>
       <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text17') }}</strong> {{ __('text18') }}</p>
       <p class="px-5"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text19') }}</strong> {{ __('text20') }}</p>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-6">
-      <img src="public/sostenible.png" class="vegies" alt="">
+    <div class="col-lg-6 col-md-12 col-sm-12">
+      <img class="p-5 float-image" src="https://canalcocina.es/medias/_cache/zoom-7633d99ea9677004a4988e94e5d30aa0-920-518.jpg" class="vegies" alt="">
     </div>
+  </div>
   </div>
 
   <!-- Community section -->
-
+  <div class="container">
   <div class="row ">
     <div class="col-lg-12 col-md-12 col-sm-12 marginHeader">
       <p class="textAlignment marginHeader">{{ __('text21') }}</p>
@@ -405,6 +411,7 @@
         <img src="public/gente-increible-silencio.jpg" class="img-fluid"  alt="">
       </div>
     </div>
+  </div>
   </div>
 
   <!-- Footer section -->

@@ -57,9 +57,8 @@
                          {{$blog->category_id}} 
 						 {{$blog->category_id_2}} 
 						 {{$blog->category_id_3}}</p>
-                <div class="font-bold text-xl mb-2">{{$blog->title}}</div>
                     <p class="text-gray-700 text-base">
-						{!! nl2br(e($blog->description)) !!}
+						{!! $blog->description !!}
 
                     </p>
                 </div>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Stripe;
 use App\Models\Bill;
-use Carbon\Carbon;
 use App\Models\Coupon;
 use App\Models\Product;
 use Darryldecode\Cart\Cart;
@@ -78,9 +77,9 @@ class BillController extends Controller
         ]);
 
         $cartItems = \Cart::getContent();
+
         foreach ($cartItems as $cartItem) {
             $coupon = $request->session()->get('coupon');
-            
             if($coupon != null){
                 $quantity = $cartItem->quantity;
     
@@ -95,12 +94,11 @@ class BillController extends Controller
                 $bill->product_id = $cartItem->id;
                 $bill->name_user = auth()->user()->name;
                 $bill->name = $cartItem->name;
-                $bill->price = $product->price;
+                $bill->price = $cartItem->price;
                 $bill->quantity = $cartItem->quantity;
                 $bill->totalprice = round(\Cart::getTotal()*1.21,2);
                 $bill->adress = $request->adresa;
                 $bill->status = 'En realización';
-
                 $product->save();
                 $bill->save();
             }else{
@@ -123,23 +121,14 @@ class BillController extends Controller
                 $bill->coupon = "Sin cupon";
                 $bill->adress = $request->adresa;
                 $bill->status = 'En realización';
-
                 $product->save();
-
                 $bill->save();
         } 
 
-<<<<<<< HEAD
-    }
-    $request->session()->forget('coupon');
-    return redirect('send-mail');
-    }
-=======
-    }
         $request->session()->forget('coupon');
         return redirect('send-mail');
     }
->>>>>>> d4f1c140992f72762f482e0bf3723a104ce6e8ef
+    }
 
     /**
      * Display the specified resource.
@@ -162,7 +151,7 @@ class BillController extends Controller
     {
         $bill = Bill::all();
         
-        return view('layouts/showAllBills', compact('bill'));
+        return view('layouts/show-bill', compact('bill'));
     }
 
     public function updateStatus(Request $request, $bill_id)
