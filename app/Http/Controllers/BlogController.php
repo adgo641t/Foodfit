@@ -47,6 +47,12 @@ class BlogController extends Controller
         $blog = Post::find($id);
         $users = User::all();
         $Category_blogs = Category_blogs::all();
+
+        foreach ($users as $user) {
+            if($user->id == $blog->creator) {
+                $blog->creator = $user->name;
+        }
+    }
         
         return view('blog/ShowBlog', compact('blog', 'Category_blogs','users'));  
     }

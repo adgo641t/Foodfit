@@ -28,13 +28,13 @@ class blog extends Model
     {
         if($filters['category'] ?? false){
             $query->where('category_id', 'like', '%' . request('category') . '%');
+            $query->where('category_id_2', 'like', '%' . request('category') . '%');
+            $query->where('category_id_3', 'like', '%' . request('category') . '%');
         }
 
         if($filters['search'] ?? false){
-
             $query->where('title', 'like', '%' . request('search') . '%')
             ->orWhere('description', 'like', '%' . request('search') . '%')
-            ->orWhere('category_id', 'like', '%' . request('search') . '%')
             ->orWhere('creator', 'like', '%' . request('search') . '%')
             ->orWhere('created_at', 'like', '%' . request('search') . '%');
         }
