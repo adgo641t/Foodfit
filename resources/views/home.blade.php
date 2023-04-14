@@ -96,7 +96,7 @@
         <div class="h-28 overflow-hidden rounded-t-lg bg-[#9d789b]"></div>
         <div
           class="mx-auto -mt-12 w-24 overflow-hidden rounded-full border-2 border-white bg-white dark:border-neutral-800 dark:bg-neutral-800">
-          <img src="public/don-limpio.png" style="width:300px" alt="lady-profile">
+          <img src="public/don-limpio.png" alt="lady-profile">
         </div>
         <div class="p-6">
           <h4 class="mb-4 text-2xl font-semibold">{{ __('text12') }}</h4>
@@ -355,14 +355,12 @@
       </div>
     </div>
 </section>
-  <div class="container">
   <section class="row py-12 object-center	" id="press">
     <img class="press-logo" src="public/Spacex.png" alt="tc-logo">
     <img class="press-logo" src="public/mcdonald.png" alt="tnw-logo">
     <img class="press-logo" src="public/forbes-logo.png" alt="biz-insider-logo">
     <img class="press-logo" src="public/masterchef.png" alt="mashable-logo">
   </section>
-  </div>
   </div>
 
   <!-- Another information section -->
@@ -373,7 +371,7 @@
       <p class="px-5 float">{{ __('text14') }}</p>
       <p class="px-5 float"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text15') }}</strong> {{ __('text16') }}</p>
       <p class="px-5 float"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text17') }}</strong> {{ __('text18') }}</p>
-      <p class="px-5 float"><i class="fa-solid fa-check px-2"></i><strong>{{ __('text19') }}</strong> {{ __('text20') }}</p>
+      <p class="px-5 "><i class="fa-solid fa-check px-2"></i><strong>{{ __('text19') }}</strong> {{ __('text20') }}</p>
     </div>
     <div class="col-lg-6 col-md-12 col-sm-12">
       <img class="p-5 float-image" src="https://canalcocina.es/medias/_cache/zoom-7633d99ea9677004a4988e94e5d30aa0-920-518.jpg" class="vegies" alt="">
@@ -383,7 +381,7 @@
 
   <!-- Community section -->
   <div class="container">
-  <div class="row ">
+  <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 marginHeader">
       <p class="textAlignment marginHeader">{{ __('text21') }}</p>
       <h1 class="display-5 px-5 textAlignment ">{{ __('text22') }}</h1>
@@ -391,23 +389,23 @@
     <p class="textAlignment ">{{ __('text23') }}</p>
   </div>
   <div class="container">
-    <div class="row marginHeader">
-      <div class="col-md-2 mt-3 col-lg-4">
+    <div class="row align-items-center">
+      <div class="col-md-2 mt-3 col-lg-4 align-items-center">
         <img src="public/gente-increible-bici.png" class="img-fluid" alt="">
       </div>
-    <div class="col-md-2 mt-3 col-lg-4">
+    <div class="col-md-2 mt-3 col-lg-4 align-items-center">
       <img src="public/gente-increible-comiendo.png" class="img-fluid" alt="">
     </div>
-      <div class="col-md-2 mt-3 col-lg-4">
+      <div class="col-md-2 mt-3 col-lg-4 align-items-center">
         <img src="public/gente-increible-hijo.png" class="img-fluid"  alt="">
       </div>
-      <div class="col-md-2 mt-3 col-lg-4">
+      <div class="col-md-2 mt-3 col-lg-4 align-items-center">
         <img src="public/gente-increible-trabajando.jpg" class="img-fluid" alt="">
       </div>
-    <div class="col-md-2 mt-3 col-lg-4">
+    <div class="col-md-2 mt-3 col-lg-4 align-items-center">
       <img src="public/gente-increible-viaje.jpg" class="img-fluid" alt="">
     </div>
-      <div class="col-md-2 mt-3 col-lg-4">
+      <div class="col-md-2 mt-3 col-lg-4 align-items-center">
         <img src="public/gente-increible-silencio.jpg" class="img-fluid"  alt="">
       </div>
     </div>
