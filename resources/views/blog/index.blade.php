@@ -247,17 +247,16 @@
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-2">
                     @if(@Auth::user()->hasRole('BlogCreator'))
-                    <a href="{{route('ShowBlogCreator', $Blog->id)}}">{{$Blog->title}}</a>
+                    <h3><a href="{{route('ShowBlogCreator', $Blog->id)}}">{{$Blog->title}}</a></h3>
                     @elseif(@Auth::user()->hasRole('admin'))
-                    <a href="{{route('ShowBlogAdmin', $Blog->id)}}">{{$Blog->title}}</a>
+                    <h3><a href="{{route('ShowBlogAdmin', $Blog->id)}}">{{$Blog->title}}</a></h3>
                     @else
-                    <a href="{{route('ShowBlogClient', $Blog->id)}}">{{$Blog->title}}</a>
+                    <h3><a href="{{route('ShowBlogClient', $Blog->id)}}">{{$Blog->title}}</a></h3>
                     @endif
                     </div>
                     <p class=" truncate ... text-gray-700 text-base">
 <!--{{$Blog->description}}-->
-                        {{($Blog->description)}}
-                    </p>
+                        {!!substr($Blog->description, 0, 100)!!}...                    </p>
                 </div>
                 <div class="px-6 pt-4 pb-2">
 

@@ -14,6 +14,8 @@
  crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 
+ <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+ <script  href="../js/ckeditor.js"></script>
 
 
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -49,7 +51,7 @@
     <div class="bg-white">
         <header>
             <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg fixed-top navbar-light " style="background-color: #ecffeb" >
+            <nav class="navbar navbar-expand-lg fixed-top navbar-light" style="background-color: #ecffeb" >
             @auth
             <a href="{{ url('/home') }}"><img src="../public/logo.png" alt="" class="logo-img"></a>
             @else
@@ -79,6 +81,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="{{ route('ClientBlog') }}">{{ __('Blog') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ url('/show-coupons') }}">Cupones habilitados</a>
                             </li>
                             <div class="dropdown">
                                 <button onclick="myFunction()" class="dropbtn nav-link text-sm text-gray-700 dark:text-gray-500 underline nav-link">{{ __("Choose language") }} <i class="fa fa-caret-down"></i></button>
@@ -189,7 +194,9 @@
                         @endauth
                     @endif
                 </ul>
+            </div>
             </nav>
+            </div>
         </header>
     </div>
     <div class="mt-5">

@@ -17,9 +17,9 @@ body{
     background-color: #FAF3EF;
 }
 
-.marginHeader{
+/* .marginHeader{
     margin-top: 50px;
-}
+} */
 
 .btnColor{
     background-color: #DDC44B;
@@ -68,7 +68,6 @@ body{
 }
 
 .vegies{
-    width: 500px;
     height: 500px;
     border-radius: 50%;
 }
