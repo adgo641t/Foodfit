@@ -188,14 +188,14 @@
       @if(@Auth::user()->hasRole('admin'))
     <div class="container">
         <p>{{ __('Add a post as Admin') }}</p>
-        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><a style="all:unset" href="{{route('add_blogAdmin')}}">Add a Blog</a></button>
+        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><a style="all:unset" href="{{route('add_blogAdmin')}}">{{ __('Add a post') }}</a></button>
     </div>
 @endif
 <br>
 @hasrole('BlogCreator')
     <div class="container">
         <p>{{ __('Add a post as BlogCreator') }}</p>
-        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><a style="all: unset;" href="{{route('add_blogCreator')}}">Add a Blog</a></button>
+        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><a style="all: unset;" href="{{route('add_blogCreator')}}">{{ __('Add a post') }}</a></button>
     </div>
 @endrole
 <br>
