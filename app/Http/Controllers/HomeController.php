@@ -10,6 +10,11 @@ use App\Models\User;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Post;
+use App\Models\Category_blogs;
+use App\Models\Post_category_blog;
+use App\Models\Bill;
+use App\Models\Coupon;
 
 class HomeController extends Controller
 {
@@ -37,6 +42,19 @@ class HomeController extends Controller
             $products = Product::latest()->paginate(5);
             return view('products.index',compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
+        }
+        elseif (Auth::user()->hasRole('BlogCreator')) {
+            return view('blog/index' ,[
+                'blogs' => Post::latest()->filter(request(['category','search','users']))->simplePaginate(4),
+                'Category_blogs' => Category_blogs::all(),
+                'users' => User::all()
+            ]);
+        }
+
+        elseif (Auth::user()->hasRole('chef')) {
+            $bill = Bill::all();
+
+        return view('layouts/show-bill', compact('bill'));
         }
         else {
             return view('home');
