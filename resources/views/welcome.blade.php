@@ -9,9 +9,9 @@
                   {{ __('text2') }}
                 </p>
             </div>
-            <div class="col-lg-6 col-md-12 col-sm-12  w-3">
-                <img class="img-fluid w-50 float-right" src="https://www.hogarmania.com/archivos/202004/recetas-familia-1280x720x80xX.jpg" alt="">
-            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+              <img class="img-fluid float-right" src="https://www.hogarmania.com/archivos/202004/recetas-familia-1280x720x80xX.jpg" alt="">
+          </div>
         </div>
     </div>
   </div>

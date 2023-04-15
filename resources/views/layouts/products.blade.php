@@ -71,6 +71,8 @@
                         <p style="color:rgb(208, 188, 6)" value="{{$product->categories}}" name="categories">🌟 {{$product->categories}}</p>
                         @elseif ($product->categories == '100% saludable')
                         <p style="color:rgb(66, 69, 224)" value="{{$product->categories}}" name="categories">🥗 {{$product->categories}}</p>
+                        @else
+                        <p value="{{$product->categories}}" name="categories">{{$product->categories}}</p>
                         @endif
                         <button class="px-4 py-2 text-white bg-blue-800 rounded">{{ __('Add to cart') }}</button>
                     </form>
