@@ -45,12 +45,14 @@ class CouponsController extends Controller
         $coupon = Coupon::where('code', $request->coupon_code)->first();
         if (!$coupon) {
             return redirect()->route('bill.list')->with('danger', 'coupon no existe. Inténtalo otra vez.');
-        }else if($request->coupon_code === $coupon->code){
-            if(\Cart::getTotal()*1.21 > 40){
+        }else if($request->coupon_code === "EATWELL"){
+            if($coupon->habilitado === 'habilitado' && \Cart::getTotal() > 40){
                 $request->session()->put('coupon',  [
                     'code' => $coupon->code,
                     'amount' => $coupon->amount,
                 ]);
+            }else if($coupon->habilitado == "Desabilitado"){
+                return redirect()->route('bill.list')->with('danger', 'Cupon Desabilitado');
             }
             return redirect()->route('bill.list')->with('success_message', 'cupon ha sido aplicado con exito');
         } 
@@ -68,18 +70,17 @@ class CouponsController extends Controller
             $coupon->code = $request->code;
             $coupon->amount = $request->amount;
             $coupon->description = $request->description;
-            $coupon->habilitado = 'yes';
+            $coupon->habilitado = $request->habilitado;
             $coupon->save();
             return redirect()->route('coupons.index')
             ->with('success','Cupón ha sido creado exitosamente.');
     }
 
-    // public function couponList()
-    // {
-    //     $cuponItems = Coupon::getContent();
-    //     // dd($cartItems);
-    //     return view('layouts/cart', compact('cartItems'));
-    // }
+
+    public function displayCoupons(){
+        $coupon = Coupon::all();
+        return view('layouts.show-coupons',compact('coupon'));
+    }
 
     /**
      * Display the specified resource.
@@ -126,6 +127,7 @@ class CouponsController extends Controller
             $coupon->code = $input['code'];
             $coupon->description = $input['description'];
             $coupon->amount = $input['amount'];
+            $coupon->habilitado = $input['habilitado'];
             
             $coupon->save();
             return redirect()->route('coupons.index')

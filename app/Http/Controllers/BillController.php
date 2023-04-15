@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Stripe;
 use App\Models\Bill;
+use Carbon\Carbon;
 use App\Models\Coupon;
 use App\Models\Product;
 use Darryldecode\Cart\Cart;
@@ -71,62 +72,66 @@ class BillController extends Controller
             'email' => ['required', 'email'],
             'adresa' => 'required',
             'zip' => 'required|digits:5',
-            'tarjeta' => 'required|alpha',
+            'tarjeta' => 'required',
             'tarjetaNumero' => 'required|digits:15',
             'cvv' => 'required|digits:3',
         ]);
 
-
         $cartItems = \Cart::getContent();
-
-        
         foreach ($cartItems as $cartItem) {
             $coupon = $request->session()->get('coupon');
+            
             if($coupon != null){
                 $quantity = $cartItem->quantity;
+    
                 $product = Product::find($cartItem->id);
     
                 $stockActual = $product->stock;
     
                 $product->stock = $stockActual-$quantity;
+    
                 $bill = new Bill;
                 $bill->user_id = auth()->user()->id;
                 $bill->product_id = $cartItem->id;
                 $bill->name_user = auth()->user()->name;
                 $bill->name = $cartItem->name;
-                $bill->price = $cartItem->price;
+                $bill->price = $product->price;
                 $bill->quantity = $cartItem->quantity;
-                $bill->totalprice = round(\Cart::getTotal()*1.21,PHP_ROUND_HALF_EVEN);
-                $bill->coupon = $coupon['code'];
+                $bill->totalprice = round(\Cart::getTotal()*1.21,2);
                 $bill->adress = $request->adresa;
-                $bill->status = 'En realizing';
+                $bill->status = 'En realización';
+
                 $product->save();
                 $bill->save();
             }else{
                 $quantity = $cartItem->quantity;
+    
                 $product = Product::find($cartItem->id);
     
                 $stockActual = $product->stock;
     
                 $product->stock = $stockActual-$quantity;
+    
                 $bill = new Bill;
                 $bill->user_id = auth()->user()->id;
-                $bill->product_id = $cartItem->id;
                 $bill->name_user = auth()->user()->name;
+                $bill->product_id = $cartItem->id;
                 $bill->name = $cartItem->name;
                 $bill->price = $cartItem->price;
                 $bill->quantity = $cartItem->quantity;
-                $bill->totalprice = round(\Cart::getTotal()*1.21,PHP_ROUND_HALF_EVEN);
+                $bill->totalprice = round(\Cart::getTotal()*1.21,2);
                 $bill->coupon = "Sin cupon";
                 $bill->adress = $request->adresa;
-                $bill->status = 'En realizing';
+                $bill->status = 'En realización';
+
                 $product->save();
+
                 $bill->save();
-            }
         } 
 
-        $request->session()->forget('coupon');
-        return redirect('send-mail');
+    }
+    $request->session()->forget('coupon');
+    return redirect('send-mail');
     }
 
     /**
@@ -150,7 +155,7 @@ class BillController extends Controller
     {
         $bill = Bill::all();
         
-        return view('layouts/show-bill', compact('bill'));
+        return view('layouts/showAllBills', compact('bill'));
     }
 
     public function updateStatus(Request $request, $bill_id)

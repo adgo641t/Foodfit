@@ -52,8 +52,8 @@
                             <p class="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4">Adrian</p>
                         </div>
                         <div class="p-4 pb-6 flex justify-center flex-col items-center">
-                            <img class="md:block hidden" src="https://i.ibb.co/fGmxhVy/Rectangle-119.png" alt="Olivia featured Image" />
-                            <img class="md:hidden block" src="https://i.ibb.co/NrWKJ1M/Rectangle-119.png" alt="Olivia featured Image" />
+                            <img class="md:block hidden" src="public/david.jpg" alt="Olivia featured Image" />
+                            <img class="md:hidden block" src="public/david.jpg" alt="Olivia featured Image" />
                             <p class="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4">Wintop</p>
                         </div>
                         <div class="p-4 pb-6 flex justify-center flex-col items-center">

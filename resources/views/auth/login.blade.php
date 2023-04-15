@@ -24,7 +24,7 @@
 					{{ __('E-Mail Address') }}
 				</label>
 				<input type="text" id="email" class="w-full content-center text-base py-2 border-b border-gray-400 focus:outline-none focus:border-gray-600" name="email" required
-					autofocus>
+					autofocus value="{{old('email')}}">
 				@if ($errors->has('email'))
 				<span class="text-danger">{{ $errors->first('email') }}</span>
 				@endif

@@ -14,7 +14,13 @@
 <br>
 
         <div class="container mx-auto mr-auto">
-        <a href="{{ route('blog') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Go back</a>
+		@if(@Auth::user()->hasRole('BlogCreator'))
+        	<a href="{{ route('CreatorsBlogs') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Go back</a>
+        @elseif(@Auth::user()->hasRole('admin'))
+        	<a href="{{ route('AdminBlog') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Go back</a>
+        @else
+        	<a href="{{ url('ClientBlogs') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Go back</a>
+        @endif
         <div class="row">
             <div style="background-color:white" class=" py-12 sw-75 rounded overflow-hidden shadow-lg">
                 <img  src="../public/{{$blog->image}}" alt="Sunset in the mountains">
@@ -51,7 +57,6 @@
                          {{$blog->category_id}} 
 						 {{$blog->category_id_2}} 
 						 {{$blog->category_id_3}}</p>
-                <div class="font-bold text-xl mb-2">{{$blog->title}}</div>
                     <p class="text-gray-700 text-base">
 						{!! nl2br($blog->description) !!}
 

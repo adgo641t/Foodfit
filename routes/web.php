@@ -29,14 +29,29 @@ use App\Http\Controllers\PDFController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
 Route::get('/faqs', function () {
     return view('faqs');
 });
 
+Route::get('/faqs', function () {
+    return view('profile.userFaqs');
+});
+
+Route::get('/faq', function () {
+    return view('profile.userFaqs');
+})->name('faq');
 
 Route::get('/sobre', function () {
     return view('sobre');
 });
+
+Route::get('/abouts', function () {
+    return view('layouts.about');
+})->name('aboutUs');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
@@ -49,16 +64,16 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/bill', [CouponsController::class, 'validCoupon'], function () {
 })->name('coupon.store');
 
-Route::post('/validating', [LoginController::class, 'validating'])->name('validating'); 
-Route::post('/custom-registration', [LoginController::class, 'customRegistration'])->name('register.custom'); 
+Route::post('/validating', [LoginController::class, 'validating'])->name('validating');
+Route::post('/custom-registration', [LoginController::class, 'customRegistration'])->name('register.custom');
 
 
 //DELETES
 Route::delete('/bill', [CouponsController::class, 'destroy'])->name('coupon.destroy');
-Route::get('/home', [HomeController::class, 'index']);
+//Route::get('/home', [HomeController::class, 'index']);
 
 
-// Login views 
+// Login views
 
 
 
@@ -67,32 +82,34 @@ Route::get('/home', [HomeController::class, 'index']);
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::group(['middleware', ['role:cliente']],function () {
-    Route::get('/home', function () {
-        return view('home');
-    });
+Route::group(['middleware' => ['role:cliente']],function () {
+
+    Route::get('/ClientBlogs', [BlogController::class, 'index'])->name('ClientBlog');
+
     Route::get('send-mail', [SendEmailController::class, 'index']);
 
-    Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
+    Route::get('/ShowBlogClient/{id}', [BlogController::class, 'show'])->name('ShowBlogClient');
 
-    Route::get('/faq', function () {
-        return view('profile.userFaqs');
-    });
-    
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
     //Route::get('/user', [BlogController::class, 'index'])->name('user');
 
     //Route::post('/user','UserController@update')->name('users.update');
-    
+
     Route::get('/bill', [BillController::class, 'index'], function () {
     })->name('bill.list');
-    
+
     Route::post('/pago', [BillController::class, 'store']);
-    
+
     Route::get('/thanks', function () {
         return view('products.thanks');
     });
+
     Route::get('/show-bill', [BillController::class, 'show'], function () {
     })->name('show');
+
+    Route::get('/show-coupons', [CouponsController::class, 'displayCoupons'], function () {
+    })->name('displayCoupons');
 
     Route::post('/user/profile', [UserController::class, 'update'], function () {
     })->name('users.update');
@@ -105,9 +122,6 @@ Route::group(['middleware', ['role:cliente']],function () {
     Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
     Route::post('/coupon', [CouponsController::class, 'validCoupon']);
     Route::post('removeAllItems', [CartController::class, 'removeAllItems'])->name('cart.deleteAll');
-    Route::get('/abouts', function () {
-        return view('layouts.about');
-    });
 });
 
 
@@ -123,14 +137,13 @@ Route::group(['middleware' , ['role:admin']],function () {
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
 
-    
+
     //Route::get('/home', [HomeController::class, 'index']);
+
+    Route::get('/AdminBlog', [BlogController::class, 'index'])->name('AdminBlog');
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
-    Route::get('/faqs', function () {
-        return view('profile.userFaqs');
-    });
 
     Route::get('/admin', function () {
         return view('admin');
@@ -141,22 +154,29 @@ Route::group(['middleware' , ['role:admin']],function () {
 
     Route::resource('products', ProductController::class);
     Route::resource('coupons', CouponsController::class);
-    Route::resource('categories', Category_controller::class);    
+    Route::resource('categories', Category_controller::class);
+
+    Route::get('/ShowBlogAdmin/{id}', [BlogController::class, 'show'])->name('ShowBlogAdmin');
+
 
     Route::get('ShowAddCategory', function () {
         return view('blog.AddCategoryBlog');
     })->name('ShowAddCategory');
+
+    Route::get('/add_blogAdmin', [BlogController::class, 'AddNewBlog'])->name('add_blogAdmin');
+    
+    Route::post('/blogAdmin.store', [BlogController::class, 'StoreBlog'])->name('blogAdmin.store');
 
     Route::post('Add_new_category', [BlogController::class,'CreateNewCategory'])->name('Add_new_category');
 
     Route::post('StoreCategory', [Category_controller::class,'CreateNewCategory'])->name('StoreCategory');
 
 
-    Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
+    Route::post('deleteBlogAdmin/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlogAdmin');
 
-    Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
+    Route::post('UpdateBlogAdmin/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlogAdmin');
 
-    Route::post('UpdateNewBlog/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlog');
+    Route::post('UpdateNewBlogAdmin/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlogAdmin');
 
     Route::get('list-bill', [ProductController::class, 'listBills'], function(){
     })->name('listBills');
@@ -165,33 +185,30 @@ Route::group(['middleware' , ['role:admin']],function () {
 
 Route::group(['middleware' , ['role:BlogCreator']],function () {
 
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
     // Route::get('/home', [HomeController::class, 'index']);
 
-    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
-    Route::get('/ShowBlog/{id}', [BlogController::class, 'show'])->name('ShowBlog');
+    Route::get('/CreatorsBlogs', [BlogController::class, 'index'])->name('CreatorsBlogs');
+    Route::get('/ShowBlogCreator/{id}', [BlogController::class, 'show'])->name('ShowBlogCreator');
     Route::get('/ShowCategoryBlog/{category}', [BlogController::class, 'showCategory'])->name('ShowCategoryBlog');
 
-    Route::get('/add_blog', [BlogController::class, 'AddNewBlog'])->name('add_blog');
+    Route::get('/add_blogCreator', [BlogController::class, 'AddNewBlog'])->name('add_blogCreator');
 
 
-    Route::post('/blog.store', [BlogController::class, 'StoreBlog'])->name('blog.store');
+    Route::post('/blogCreator.store', [BlogController::class, 'StoreBlog'])->name('blogCreator.store');
 
 
-    Route::post('deleteBlog/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlog');
+    Route::post('deleteBlogCreator/{id}', [BlogController::class,'DeleteBlog'])->name('deleteBlogCreator');
 
-    Route::post('UpdateBlog/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlog');
-    
-    Route::post('UpdateNewBlog/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlog');
+    Route::post('UpdateBlogCreator/{id}',[BlogController::class,'GetUpdateView'])->name('UpdateBlogCreator');
+
+    Route::post('UpdateNewBlogCreator/{blog}',[BlogController::class,'UpdateNewBlog'])->name('UpdateNewBlogCreator');
 
 });
 
 
-Route::group(['middleware' , ['role:chef']],function () {
-    Route::get('/home', function () {
-        return view('home');
-    });
-    
-    
+Route::group(['middleware' => ['role:chef']],function () {
     Route::get('/showBill', [BillController::class, 'ShowAll'], function () {
     })->name('show');
 

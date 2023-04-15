@@ -20,7 +20,7 @@
                           <p class="text-green-800">{{ $message }}</p>
                       </div>
                   @endif
-                      <a href="/product" class="inline-block text-black ml-4 mb-4"
+                      <a href="product" class="inline-block text-black ml-4 mb-4"
 ><i class="fa-solid fa-arrow-left"></i> {{ __('Back') }}
 </a>
                         <h3 class="text-3xl text-bold">{{ __('Your cart') }}</h3>
@@ -42,7 +42,7 @@
                               @foreach ($cartItems as $item)
                             <tr>
                               <td class="hidden pb-4 md:table-cell">
-                                  <img src="../public/{{ $item->attributes->image }}" class="w-20 rounded" alt="Thumbnail">
+                                  <img src="public/{{ $item->attributes->image }}" class="w-20 rounded" alt="Thumbnail">
                               </td>
                               <td>
                                   <p class="mb-2 md:ml-4">{{ $item->name }}</p>
@@ -92,8 +92,8 @@
                             @endforeach
                           </tbody>
                         </table>
-                        <div>
-                         Total: {{round(Cart::getTotal()*1.21 ,2, PHP_ROUND_HALF_EVEN)}}€
+                        <div style="float: right; font-size:1.5rem">
+                          <b>Total: {{round(Cart::getTotal()*1.21 ,2, PHP_ROUND_HALF_EVEN)}}€</b> 
                         </div>
                         <div>
                           <form action="{{ route('cart.clear') }}" method="POST">
