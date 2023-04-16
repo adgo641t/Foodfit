@@ -1,5 +1,5 @@
-{ 
-    "idioma1" : "Español",    
+{
+    "idioma1" : "Español",
     "idioma2" : "English",
     "title1": "Foot&Fit - Nourish what you want",
     "title2": "Food&Fit - Checkout",
@@ -97,5 +97,13 @@
     "faq41": "Can I cancel my order?",
     "faq42": "We may cancel and/or refund your order as long as your dishes have not been cooked.",
     "faq43": "Contact us by calling +34 934 37 56 23 on Mondays and Fridays from 09:00 to 19:00; Tuesdays, Wednesdays and Thursdays from 09:00 to 18:00; and Sundays from 12:00 to 21:00. Or, if you prefer, you can write to us at faqsfoodfit@gmail.com",
-    "faq44": "Depending on your postcode you will have the option to receive your order in the"
+    "faq44": "Depending on your postcode you will have the option to receive your order in the",
+    "thanks1": "Thank you for your purchase!",
+    "thanks2": "Thank you for your purchase and for trusting FoodFit",
+    "thanks3": "Your order will be delivered soon",
+    "thanks4": "Back to the main page",
+    "blog1": "Food&Fit Blog",
+    "blog2": "Welcome to Food&Fit Blog",
+    "blog3": "Posts not found",
+    "blog4": "Posts not found with those users"
 }

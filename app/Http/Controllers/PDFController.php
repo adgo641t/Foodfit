@@ -1,14 +1,14 @@
 <?php
-  
+
 namespace App\Http\Controllers;
-  
+
 use Illuminate\Http\Request;
 use App\Models\User;
 use PDF;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Bill;
 use Darryldecode\Cart\Cart;
-  
+
 class PDFController extends Controller
 {
     /**
@@ -29,10 +29,10 @@ class PDFController extends Controller
             'user' => $user,
             'cart' => $cartItem,
             'total' => $cartTotal
-        ]; 
-            
-        $pdf = PDF::loadView('pdf\emailPDF', $data);
-     
+        ];
+
+        $pdf = PDF::loadView('pdf.emailPDF', $data);
+
         return $pdf->download('Recibo.pdf');
     }
 
@@ -43,7 +43,7 @@ class PDFController extends Controller
      */
     public function billPDF(Bill $bill)
     {
-        
+
         $user = Auth::user();
 
         $users = auth()->user()->id;
@@ -57,10 +57,10 @@ class PDFController extends Controller
             'date' => date('d/m/Y'),
             'user' => $user,
             'bill' => $bill
-        ]; 
-            
-        $pdf = PDF::loadView('pdf\billPDF', $data);
-     
+        ];
+
+        $pdf = PDF::loadView('pdf.billPDF', $data);
+
         return $pdf->download('Historial de facturas.pdf');
     }
 }

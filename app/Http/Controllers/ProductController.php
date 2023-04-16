@@ -26,7 +26,6 @@ class ProductController extends Controller
 public function index()
 {
     $products = Product::latest()->paginate(5);
-
     return view('products.index',compact('products'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
 }
@@ -176,6 +175,7 @@ public function listBills(){
 // It displays all the products and it's attributes
     public function productList()
     {
+        $product = Product::all();
         return view('layouts/products', [
             'products' => Product::latest()->filter(request(['category','search']))->simplePaginate(4)
         ]);

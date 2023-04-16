@@ -30,7 +30,7 @@
         <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
           @csrf
           <div class="input-group">
-           <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code" >
+           <input type="text" class="coupon_code border border-secondary border-2 rounded-start" id="coupon_code" name="coupon_code" placeholder="Promo code" >
            <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
@@ -71,7 +71,7 @@
         <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
           @csrf
           <div class="input-group">
-           <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code" >
+           <input type="text" class="coupon_code border border-secondary border-2 rounded-start" id="coupon_code" name="coupon_code" placeholder="Promo code" >
            <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
          </div>
          <li class="list-group-item d-flex justify-content-between">
@@ -86,9 +86,9 @@
       </form>
         @endif
       </div>
-      
+
       <div class="col-lg-8">
-        
+
         <form action="pago" method="POST" class="mx-1 mx-md-4">
           <div style="margin:20px;">
           <br><h4 class="mb-3">{{ __('bill5') }}</h4>
@@ -195,20 +195,47 @@
           </div>
           </div>
         </form>
-        </section>
+        </div>
+    </div>
+      <!-- @if (!Session::has('coupon'))
+      <div class="row g-5">
+      <div class="col-lg-4 order-md-last">
+        <ul class="list-group mb-3">
+          @foreach (\Cart::getContent() as $item)
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">{{ __('bill1') }}</h6>
+              <small class="text-muted">{{$item->name}}</small>
+            </div>
+            <span class="text-muted">{{$item->price}}€</span>
+          </li>
+          <!--<li class="list-group-item d-flex justify-content-between">
+            <span>{{ __('bill2') }}</span>-->
+           <!-- @endforeach-->
+          <!--</li>-->
+        <!-- </ul>
+        <form class="card p-2 mb-5" action="{{route('coupon.store')}}" method="POST">
+          @csrf
+          <div class="input-group">
+           <input type="text" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Promo code" >
+           <button type="submit" class="btn btn-secondary">{{ __('bill3') }}</button>
+         </div>
+         <li class="list-group-item d-flex justify-content-between">
+          <span>{{ __('bill4') }}</span>
+          <strong>€{{round(Cart::getTotal()*1.21,2, PHP_ROUND_HALF_EVEN)}}</strong>
+        </li>
+        @if (Session::has('danger'))
+        <div class="p-4 mb-3 bg-red-400 rounded" x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show">
+            <p class="text-danger">{{Session::get('danger')}}</p>
+        </div>
+        @endif
+      </form>
+        @endif --> 
       </div>
+        </section>
+      <div>
     </div>
   </main>
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2017–2023 FoodFit</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">{{ __('Privacy') }}</a></li>
-      <li class="list-inline-item"><a href="#">{{ __('Terms') }}</a></li>
-      <li class="list-inline-item"><a href="#">{{ __('Support') }}</a></li>
-    </ul>
-  </footer>
 </div>
   </body>
 @endsection
-
-

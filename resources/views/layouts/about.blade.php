@@ -47,22 +47,22 @@
                 <div class="w-full lg:w-8/12 lg:pt-8">
                     <div class="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 lg:gap-4 shadow-lg rounded-md">
                         <div class="p-4 pb-6 flex justify-center flex-col items-center">
-                            <img class="md:block hidden" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Jordan_Peterson_by_Gage_Skidmore.jpg/1200px-Jordan_Peterson_by_Gage_Skidmore.jpg" alt="Alexa featured Image" />
+                            <img class="md:block hidden w-75 rounded" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Jordan_Peterson_by_Gage_Skidmore.jpg/1200px-Jordan_Peterson_by_Gage_Skidmore.jpg" alt="Alexa featured Image" />
                             <img class="md:hidden block" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Jordan_Peterson_by_Gage_Skidmore.jpg/1200px-Jordan_Peterson_by_Gage_Skidmore.jpg" alt="Alexa featured Image" />
                             <p class="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4">Adrian</p>
                         </div>
                         <div class="p-4 pb-6 flex justify-center flex-col items-center">
-                            <img class="md:block hidden" src="public/david.jpg" alt="Olivia featured Image" />
+                            <img class="md:block hidden rounded" style="width: 135px;" src="public/david.jpg" alt="Olivia featured Image" />
                             <img class="md:hidden block" src="public/david.jpg" alt="Olivia featured Image" />
                             <p class="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4">Wintop</p>
                         </div>
                         <div class="p-4 pb-6 flex justify-center flex-col items-center">
-                            <img class="md:block hidden" src="https://i.ibb.co/Pc6XVVC/Rectangle-120.png" alt="Liam featued Image" />
+                            <img class="md:block hidden rounded" src="https://i.ibb.co/Pc6XVVC/Rectangle-120.png" alt="Liam featued Image" />
                             <img class="md:hidden block" src="https://i.ibb.co/C5MMBcs/Rectangle-120.png" alt="Liam featued Image" />
                             <p class="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4">Jose</p>
                         </div>
                         <div class="p-4 pb-6 flex justify-center flex-col items-center">
-                            <img class="md:block hidden" src="https://i.ibb.co/7nSJPXQ/Rectangle-121.png" alt="Elijah featured image" />
+                            <img class="md:block hidden " src="https://i.ibb.co/7nSJPXQ/Rectangle-121.png" alt="Elijah featured image" />
                             <img class="md:hidden block" src="https://i.ibb.co/ThZBWxH/Rectangle-121.png" alt="Elijah featured image" />
                             <p class="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4">Pau</p>
                         </div>
@@ -72,19 +72,29 @@
         </div>
     
     <!-- Footer section -->
-    <footer id="footer">
-      <div class="col text-center">
-        <a class="nav-link" href="{{ url('/faq') }}">Faqs</a>
-      </div>
-      <div class="col text-center">
-        <div class="icon-footer">
-          <i class="fa-brands fa-twitter"></i>
-          <i class="fa-brands fa-facebook"></i>
-          <i class="fa-brands fa-instagram"></i>
-          <i class="fa-solid fa-envelope"></i>
-        </div>
-      </div>
-      <p class="text-center">© Copyright FOOD&FIT</p>
-  
-    </footer>
+    <footer class="bg-gray-900">
+		<div class="container max-w-6xl mx-auto flex items-center px-2 py-8">
+
+			<div class="w-full mx-auto flex flex-wrap items-center">
+				<div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+					<a class="text-gray-900 no-underline hover:text-gray-900 hover:no-underline" href="/">
+					    <span class="text-base text-gray-200">Food&Fit</span>
+					</a>
+				</div>
+				<div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+					<ul class="list-reset flex justify-center flex-1 md:flex-none items-center">
+					  <li>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="{{route('faq')}}">{{ __('FAQs') }}</a>
+					  </li>
+					  <li>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 px-3" href="https://www.facebook.com/people/Comidas-Nutritivas-Y-Saludables/100066570821806/">Facebook</a>
+					  </li>
+					</ul>
+				</div>
+			</div>
+
+
+
+		</div>
+	</footer>
 @endsection

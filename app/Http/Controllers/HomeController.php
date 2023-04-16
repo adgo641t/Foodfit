@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -11,11 +10,9 @@ use App\Models\User;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\Category_blogs;
 use App\Models\Post_category_blog;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
-use App\Models\Post;
 use App\Models\Bill;
 use App\Models\Coupon;
 
@@ -40,6 +37,8 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('admin')) {
+            /*$productController = app(\App\Http\Controllers\ProductController::class);
+            $productController->index();*/
             $products = Product::latest()->paginate(5);
             return view('products.index',compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -51,11 +50,11 @@ class HomeController extends Controller
                 'users' => User::all()
             ]);
         }
-        elseif (Auth::user()->hasRole('chef')) {
 
+        elseif (Auth::user()->hasRole('chef')) {
             $bill = Bill::all();
 
-            return view('layouts/show-bill', compact('bill'));
+        return view('layouts/show-bill', compact('bill'));
         }
         else {
             return view('home');
