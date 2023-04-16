@@ -7,9 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Forget Password Email</h1>
+<h1>{{ __('Forget Password Email') }}</h1>
    
-You can reset password from bellow link:
-<a href="{{ route('reset.password.get', $token) }}">Reset Password</a>
+{{ __('You can reset password from bellow link:') }}
+<a href="{{ route('reset.password.get', $token) }}">{{ __('Reset Password') }}</a>
 </body>
 </html>
